@@ -10,7 +10,7 @@
       .state('authSignIn', {
         url: '/authSignIn',
         templateUrl: 'app/pages/authSignIn/authSignIn.html',
-        title: 'My Page',
+        title: 'Home',
         controller: 'authSignInCtrl',
         sidebarMeta: {
           order: 800,
