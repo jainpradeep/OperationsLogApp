@@ -1,0 +1,6 @@
+{
+  "directory": "bower_components",
+  "proxy": "http://DS.INDIANOIL.IN%5Cmjpladmin:TypeScript42@plproxy.ds.indianoil.in:8080/",
+  "https-proxy":"http://DS.INDIANOIL.IN%5Cmjpladmin:TypeScript42@plproxy.ds.indianoil.in:8080/",
+  "no-proxy":"http://DS.INDIANOIL.IN"
+}
