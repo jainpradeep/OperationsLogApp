@@ -1,0 +1,160 @@
+
+Remarks Table
+{
+    date: 
+    shift:
+    shiftOfficer: \\Automtically from login
+    location:  \\ {Tundla, Bharatpur, Tikrikalan, Meerut, Mathura 
+    batch: 
+    fmr_pumping:{
+        type: "", //FMR, Pumping
+        value : ""
+    }
+    remarks: \\ text Area,
+}
+
+Daily Reports Table:
+{
+    date: 
+    shift:
+    shiftOfficer: \\Automtically from login
+    station:  \\ ["EX_Mat_MD","Pnp_Del_Rev_Pumping", "EX_Mat_MTPL","EX_Mat_MBPL", "Del_Delivery", "Rev_Del_Delivery", "Bha_Delivery", "Tun_Delivery", "Del_Pnp_Pupming", "Tik_Delivery","Mee_Delivery", "Pnp_Delivery" ]
+    batch_no:
+    tank_no
+    fmr_reading
+    dip_reading
+}
+
+    [{
+        "name" : "Bijwasan",
+        "table_types" :  ["EX_Mat_MD","Pnp_Del_Rev_Pumping", "EX_Mat_MTPL","EX_Mat_MBPL", "Del_Delivery", "Rev_Del_Delivery", "Bha_Delivery", "Tun_Delivery", "Del_Pnp_Pupming", "Tik_Delivery","Mee_Delivery", "Pnp_Delivery" ]
+    },
+       {
+        "name" : "Mathura",
+        "table_types" :  ["EX_Mat_MD","EX_Mat_MTPL","EX_Mat_MBPL"]
+    },{
+        "name" : "Bharatpur",
+        "table_types" :  ["Bha_Delivery"]
+    },{
+        "name" : "Tundla";
+        "table_types" :  ["Tun_Delivery" ]
+    },{
+        "name" : "Tikrikalan";
+        "table_types" :  ["Tik_Delivery"]
+    },{
+        "name" : "Meerut";
+        "table_types" :  ["Mee_Delivery"]
+    }]
+
+productCodeMatrix = [{'HSDIV':['4H']},{'HSDVI':['6H']},{'MSIV':['4M']},{'MSVI':['6M']},
+                                {'SKO':['PCK','0S','NS']},
+                                {'ATF':['A']},{'PNCP':['PNCP']},
+                                {'PXPT':['PXPT']}];
+
+epquipments = ["BP-1","BP-2","MP-1","MP-2","MP-3","DG_SET", "FFE", "FFM", "SUMP_PUMP", "S-R_Pump", "OWS_Pump"]  
+
+Equipment Running Hours table
+{
+    date: "",
+    shiftOfficer: "", \\Automtically from login
+    equipmentName: "",  
+    prevEqipmentRuntime : {
+        "hrs" : "",
+        "mins" : ""
+    },
+    shiftARuntime : {
+        "hrs" : "",
+        "mins" : ""
+    },
+    shiftBRuntime : {
+        "hrs" : "",
+        "mins" : ""
+    },
+    shiftCRuntime : {
+        "hrs" : "",
+        "mins" : ""
+    }
+}
+
+
+Product in station linefill
+\\daily one entry
+{
+    "station_line_fill"  : ""  \\["stn_BP", "stn_pmp_line","stn_del_md", "stn_del_pd", "bp1","bp2", "mp1", "mp2", "mp3", "sep_fltr_md", "sep_fltr_pd", "sump_tk_dip", "sr_tk_dip", "meter_prover", "tank_lined_up", "BP_to_mov-708"]
+    "shiftA": "",
+    "shiftB": "",
+    "shiftC": "",
+    "remarks" : "", 
+}
+
+Bijwasan Product Plan (Remarks Table):
+[
+    date: "",
+    shift: "",
+    shiftOfficer: "",\\Automtically from login
+    product_planning : "", \\textArea
+    tk_t-o_h-o_details : "",
+    equipments_NA: "", 
+    tank_with_P-L: "", 
+    tank_to_be_T-O : "" , //Text Area
+    tank_to_be_T-O : "" , //Text Area
+]
+
+Mathura Pressue table
+[
+    date: "",
+    shift: "",
+    shiftOfficer: "",\\Automtically from login
+    hrs : "",  \\7-24, 1N-7N
+    mtpl-mbpl_data : {
+        "MPR" : "",
+        "TPR": "",
+        "BPR": "",
+    }, 
+    mathura_data : {
+        "suction_pressure" : "",
+        "pump_no": "",
+        "line_pressure": "",
+    }
+ ]
+
+
+ Pupming/Delivery table
+
+
+ {
+    table_name: "",
+    date: "",
+    shift: "",
+    shiftOfficer: "",\\Automtically from login
+    batch_no:"", \\locationCode (MR) + product + sequence_no 
+                 \\ clarification required
+    density_temp:{
+        "density" : "",
+        "tempreture" : "",
+    }
+    density_var_15:{
+        "density" : "",
+        "variation" : "",
+    }
+    fmr_pumping_bybass:{
+        FMR: "", 
+        Pumping: ""
+        bypass : ""
+    },
+    tank_no:"",
+    tank_dip:"",
+        P-C-O_B-C-O:{
+        type: "", //PCO, BCO 
+        product_details : "", //text area
+        fmr: "",
+        tank: "", 
+        value : "",
+    },
+    flow_rate: {
+        "delivery": "",
+        "pumping" : ""   
+    },
+    remarks: "" 
+ }
+
