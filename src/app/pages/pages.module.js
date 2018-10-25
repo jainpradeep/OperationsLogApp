@@ -19,15 +19,33 @@
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/authSignIn');
     baSidebarServiceProvider.addStaticItem({
-      title: 'Menu Level 1',
+      title: 'Bijwasan',
       icon: 'ion-ios-more',
       subMenu: [{
-        title: 'Menu Level 1.1',
+        title: 'Delhi (EX-MR)',
+        disabled: true
+      },{
+        title: 'SKO LBT-Pumping',
+        disabled: true
+      },{
+        title: 'Dellhi (EX-PR)',
         disabled: true
       }, {
-        title: 'Menu Level 1.2',
+        title: 'Daily Report',
         subMenu: [{
-          title: 'Menu Level 1.2.1',
+          title: 'Rev-pumping Pnp-Del',
+          disabled: true
+        },{
+          title: 'Delivery Del',
+          disabled: true
+        },{
+          title: 'Rev-Delivery Del',
+          disabled: true
+        },{
+          title: 'Pumping Del-Pnp',
+          disabled: true
+        },{
+          title: 'Deliery Pnp (PDPL 14")',
           disabled: true
         }]
       }]
