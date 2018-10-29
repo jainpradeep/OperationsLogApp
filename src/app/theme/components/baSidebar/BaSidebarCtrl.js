@@ -21,6 +21,10 @@
       $scope.hoverElemTop = $event.currentTarget.getBoundingClientRect().top - menuTopValue;
     };
 
+    // $scope.changeState = function(title){
+
+    // }
+
     $scope.$on('$stateChangeSuccess', function () {
       if (baSidebarService.canSidebarBeHidden()) {
         baSidebarService.setMenuCollapsed(true);

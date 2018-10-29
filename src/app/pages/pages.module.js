@@ -11,6 +11,7 @@
       'BlurAdmin.pages.config',
       'BlurAdmin.pages.main',
       'BlurAdmin.pages.dashboard',
+      'BlurAdmin.pages.bijwasan',
       'BlurAdmin.pages.authSignIn'
     ])
     .config(routeConfig);
@@ -28,7 +29,7 @@
         title: 'SKO LBT-Pumping',
         disabled: true
       },{
-        title: 'Dellhi (EX-PR)',
+        title: 'Delhi (EX-PR)',
         disabled: true
       }, {
         title: 'Daily Report',
@@ -48,6 +49,15 @@
           title: 'Deliery Pnp (PDPL 14")',
           disabled: true
         }]
+      },{
+        title: 'Equipment running hours of Bijwasan',
+        disabled: true
+      },{
+        title: 'Product in Station Linefill',
+        disabled: true
+      },{
+        title: 'Product Planning',
+        disabled: true
       }]
     });
   }

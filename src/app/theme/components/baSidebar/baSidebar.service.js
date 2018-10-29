@@ -19,21 +19,42 @@
       function _factory() {
         var isMenuCollapsed = shouldMenuBeCollapsed();
 
-        this.getMenuItems = function() {
+        this.getMenuItems = function () {
           var states = defineMenuItemStates();
-          var menuItems = states.filter(function(item) {
-            return item.level == 0;
+          var children0 = states.filter(function (child0) {
+              return child0.level == 0;
           });
 
-          menuItems.forEach(function(item) {
-            var children = states.filter(function(child) {
-              return child.level == 1 && child.name.indexOf(item.name) === 0;
-            });
-            item.subMenu = children.length ? children : null;
+          //Menu level 1
+          children0.forEach(function (item1) {
+              var children1 = states.filter(function (child1) {
+                  return child1.level == 1 && child1.name.indexOf(item1.name) === 0;
+              });
+
+              //Menu level 2
+              children1.forEach(function (item2) {
+                  var children2 = states.filter(function (child2) {
+                      return child2.level == 2 && child2.name.indexOf(item2.name) === 0;
+
+                  });
+
+                  //Menu level 3
+                  children2.forEach(function (item3) {
+                      var children3 = states.filter(function (child3) {
+                          return child3.level == 3 && child3.name.indexOf(item3.name) === 0;
+                      });
+
+                      item3.subMenu = children3.length ? children3 : null;
+                  });
+
+                  item2.subMenu = children2.length ? children2 : null;
+              });
+
+              item1.subMenu = children1.length ? children1 : null;
           });
 
-          return menuItems.concat(staticMenuItems);
-        };
+          return children0.concat(staticMenuItems);
+      };
 
         this.shouldMenuBeCollapsed = shouldMenuBeCollapsed;
         this.canSidebarBeHidden = canSidebarBeHidden;
