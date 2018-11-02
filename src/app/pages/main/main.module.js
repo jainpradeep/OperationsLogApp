@@ -16,8 +16,6 @@
         templateUrl: 'app/pages/main/main.html',
         redirectTo: 'main.dashboard',
         authenticate: true
-
-
       });
   }
 
