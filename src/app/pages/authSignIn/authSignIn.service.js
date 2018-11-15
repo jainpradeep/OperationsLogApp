@@ -20,7 +20,11 @@
                 url: 'http://10.14.151.91:3006/authenticate',
                 data: JSON.stringify({username : username, password:password}),
             }).success(function (data, status, headers) {
-                defer.resolve(data);
+                if(data.msg === "success")
+                    defer.resolve(data);
+                else{
+                    defer.reject(err);
+                }
             }).error(function (err) {
                 defer.reject(err);
             });

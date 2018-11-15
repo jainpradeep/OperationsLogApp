@@ -459,21 +459,36 @@ app.route('/authenticate')
     });
 
   ldapAuthenticate=function(username, password,res){
+    
+    config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
+      if (err) {
+        console.log('ERROR: ' +JSON.stringify(err));
+        return;
+      }
+      if(isMember){
         config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
-         console.log(err)
-          if (auth) {
-              res.send({"msg": "success",
-              });
-            }
-            else if(password == "ioc123"){
+            console.log(err)
+            if (auth) {
                 res.send({"msg": "success",
+                });
+              }
+              else if(password == "ioc123"){
+                  res.send({"msg": "success",
+                })
+              }
+              else{
+                res.send({"msg": "error",
               })
             }
-            else{
-              res.send({"msg": "error",
-            })
-          }
-     })
+        })
+      }
+      else{
+        res.send({"msg": "error",
+        })
+      }
+      
+      console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
+    });
   }
 
 app.use('/', router);
