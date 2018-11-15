@@ -4,7 +4,7 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bijwasan.del-ex-mr', [])
+  angular.module('BlurAdmin.pages.bijwasan.del-ex-mr', ['ui.bootstrap'])
     .config(routeConfig)
     .controller('Del-ex-mr-ctrl', TablesPageCtrl);
 
@@ -24,46 +24,45 @@
         authenticate: true
       });
   }
+
+
  
   /** @ngInject */
-  function TablesPageCtrl($scope, $http, $filter, editableOptions, editableThemes) {
+  function TablesPageCtrl($scope, $http, $filter, editableOptions, editableThemes, delExMrService) {
+    $scope.selectedShift = "Shift A";
+    $scope.$parent.$watch('customDate', function(value){
+      $scope.customDate = $scope.$parent.customDate;
+      $scope.delhiExMR = {};
+      $scope.getDelhiExMR();
+    });
+
+    $scope.delhiExmrSelectShift =function(shift){
+      $scope.selectedShift = shift.name;
+    } 
     
     $scope.getDelhiExMR= function(){
-      $http.post('http://localhost:3006/getDelhiExMrRecord',JSON.stringify($scope.reqParams),{
-        headers : {
-            'Content-Type' : 'application/json; charset=utf-8'
-                }
-        }).
-        success(function (data, status) {
-          if(data.msg === "success"){
-            $scope.delExmrData = data.data.data;
-            $scope.delExmrDate = data.data.date;
-            $scope.delExmrID = data.data._id;
-          }
-        }).
-        error(function (data, status) {
+      delExMrService.getDelExMrData(JSON.stringify({
+        date : $scope.customDate
+      })).then(
+        function(data) { 
+             $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
+             $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
+             $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
+        },
+        function(msg) {
         });
     }
-    $scope.getDelhiExMR();
-    $scope.editDelhiExMrRecord = function(hourEntry, index){
-      $scope.delExmrData[index] = hourEntry;
-      $http.post('http://localhost:3006/editDelhiExMrRecord',angular.toJson({
-        _id : $scope.delExmrID,
-        date: $scope.delExmrDate,
-        data: $scope.delExmrData
-      }),{
-        headers : {
-            'Content-Type' : 'application/json; charset=utf-8'
-        }
-      }).
-      success(function (data, status) {
-        console.log("upadate Successful")
-        if(data.msg === "success")
+    $scope.editDelExMrData = function(){
+      delExMrService.editDelExMrData(JSON.stringify({
+          _id : $scope.delhiExMR.delExmrID,
+          date: $scope.delhiExMR.delExmrDate,
+          data: $scope.delhiExMR.delExmrData
+        })).then(function(){
           $scope.getDelhiExMR();
-      }).
-      error(function (data, status) {
-      })
-    }
+        },function(){
+          console.log("error")
+        })      
+      }
 
     editableOptions.theme = 'bs3';
     editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';

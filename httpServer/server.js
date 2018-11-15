@@ -48,12 +48,12 @@ app.listen(app.get('port'), function () {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 14;
-rule.minute = 48;
+rule.hour = 15;
+rule.minute = 09;
 
 app.route('/editDelhiExMrRecord')  
 .post(function (req, res) {
-  console.log("Aasdsa");
+  console.log(req.body)
   MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
       if (err) return
       req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
@@ -66,7 +66,6 @@ app.route('/editDelhiExMrRecord')
       });
   })
 });  
-
 schedule.scheduleJob(rule, function(){
   (async () => {
     MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
@@ -75,6 +74,7 @@ schedule.scheduleJob(rule, function(){
         date : new Date(),
         data : [ {
           hours: "7:00 AM",
+          shift: "Shift A",
           batch_no: "",
           density: "",
           variation: "",
@@ -88,6 +88,7 @@ schedule.scheduleJob(rule, function(){
           flow_Difference: ""
       },{
         hours: "8:00 AM",
+        shift: "Shift A",
         batch_no: "",
         density: "",
         variation: "",
@@ -101,6 +102,7 @@ schedule.scheduleJob(rule, function(){
         flow_Difference: ""
     },{
       hours: "9:00 AM",
+      shift: "Shift A",
       batch_no: "",
       density: "",
       variation: "",
@@ -114,6 +116,7 @@ schedule.scheduleJob(rule, function(){
       flow_Difference: ""
   },{
     hours: "10:00 AM",
+    shift: "Shift A",
     batch_no: "",
     density: "",
     variation: "",
@@ -127,6 +130,7 @@ schedule.scheduleJob(rule, function(){
     flow_Difference: ""
 },{
   hours: "11:00 AM",
+  shift: "Shift A",
   batch_no: "",
   density: "",
   variation: "",
@@ -140,6 +144,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
   hours: "12:00 PM",
+  shift: "Shift A",
   batch_no: "",
   density: "",
   variation: "",
@@ -153,6 +158,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
   hours: "13:00 PM",
+  shift: "Shift A",
   batch_no: "",
   density: "",
   variation: "",
@@ -166,6 +172,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "14:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -180,6 +187,7 @@ schedule.scheduleJob(rule, function(){
 },{
    hours: "15:00 PM",
   batch_no: "",
+  shift: "Shift B",
   density: "",
   variation: "",
   fmr: "",
@@ -192,6 +200,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "16:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -205,6 +214,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "17:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -218,6 +228,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "18:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -231,6 +242,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "19:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -244,6 +256,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "20:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -257,6 +270,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "21:00 PM",
+   shift: "Shift B",
   batch_no: "",
   density: "",
   variation: "",
@@ -271,6 +285,7 @@ schedule.scheduleJob(rule, function(){
 },{
    hours: "22:00 PM",
   batch_no: "",
+  shift: "Shift C",
   density: "",
   variation: "",
   fmr: "",
@@ -283,6 +298,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "23:00 PM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -296,6 +312,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
   hours: "24:00 AM",
+  shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -309,6 +326,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "1:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -322,6 +340,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "2:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -335,6 +354,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "3:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -348,6 +368,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "4:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -361,6 +382,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "5:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -374,6 +396,7 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: ""
 },{
    hours: "6:00 AM",
+   shift: "Shift C",
   batch_no: "",
   density: "",
   variation: "",
@@ -405,13 +428,27 @@ app.route('/getDelhiExMrRecord')
       if (err) return
         database.db('operationsDB').collection('delhiExMr').findOne({}, function(err, result) {
           if (err) throw err;
-          console.log(err);
-          console.log(result);
-          res.send({"msg" : "success",
-            "data" : result,
-          })
-          database.close();
+
         });
+        req.body.date =  new Date(req.body.date)
+      database.db('operationsDB').collection('delhiExMr').aggregate([
+          {
+            $match:{'date':
+                {
+                  $lte: new Date(req.body.date.setHours(23,59,59,999)),
+                  $gte: new Date(req.body.date.setHours(0,0,0,0))
+                }           
+              }
+          }
+      ]).toArray(function (er, items){
+          if (er) throw er;
+            console.log(er);
+            console.log(items)
+          res.send({"msg" : "success",
+            "data" : JSON.stringify(items),
+          })
+        //  database.close();
+      });
     })
 });  
 

@@ -3,6 +3,12 @@
 <!-- <div class="add-row-editable-table">
     <button class="btn btn-primary" ng-click="adddata()">Add row</button>
   </div> -->
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
+       <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); delhiExmrSelectShift(shift)" role="tab">{{shift.name}}</a>
+    </li>
+ </ul>
+
   <table class="table table-bordered table-hover table-condensed">
       <thead>
           <tr rowspan="2">
@@ -32,80 +38,80 @@
             <th></th>
           </tr>
         </thead>
-    <tr ng-repeat="data in delExmrData" class="editable-row">
+    <tr ng-repeat="data in delhiExMR.delExmrData | filter : selectedShift track by $index" class="editable-row">
       <td>
           <span >
-              {{ data.hours || 'empty' }}
+              {{ data.hours || '-' }}
           </span>
       </td>
       <td>
           <span editable-text="data.batch_no" e-name="batch_no"  e-form="rowform" e-required>
-              {{ data.batch_no || 'empty' }}
+              {{ data.batch_no || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.density" e-name="density" e-form="rowform" e-required>
-              {{ data.density || 'empty' }}
+              {{ data.density || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.variation" e-name="variation" e-form="rowform" e-required>
-              {{ data.variation || 'empty' }}
+              {{ data.variation || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.fmr" e-name="fmr" e-form="rowform" e-required>
-              {{ data.fmr || 'empty' }}
+              {{ data.fmr || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.pumping" e-name="pumping" e-form="rowform" e-required>
-              {{ data.pumping || 'empty' }}
+              {{ data.pumping || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.bypass" e-name="bypass" e-form="rowform" e-required>
-              {{ data.bypass || 'empty' }}
+              {{ data.bypass || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.flow_rate_delivery" e-name="flow_rate_delivery" e-form="rowform" e-required>
-              {{ data.flow_rate_delivery || 'empty' }}
+              {{ data.flow_rate_delivery || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.flow_rate_pumping" e-name="flow_rate_pumping" e-form="rowform" e-required>
-              {{ data.flow_rate_pumping || 'empty' }}
+              {{ data.flow_rate_pumping || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform" e-required>
-              {{ data.tank_no || 'empty' }}
+              {{ data.tank_no || '-' }}
           </span>
       </td>
 
       <td>
           <span editable-text="data.tank_dip" e-name="tank_dip" e-form="rowform" e-required>
-              {{ data.tank_dip || 'empty' }}
+              {{ data.tank_dip || '-' }}
           </span>
       </td>
       <td>
           <span editable-text="data.flow_Difference" e-name="flow_Difference" e-form="rowform" e-required>
-              {{ data.flow_Difference || 'empty' }}
+              {{ data.flow_Difference || '-' }}
           </span>
       </td>
 
 
       <td>
-        <form editable-form name="rowform" onaftersave = "editDelhiExMrRecord(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+        <form editable-form name="rowform" onaftersave = "editDelExMrData()" ng-show="rowform.$visible" class="form-buttons form-inline"
               shown="inserted == data">
           <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
             Save

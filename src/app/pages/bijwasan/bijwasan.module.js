@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.pages.bijwasan', ['BlurAdmin.pages.bijwasan.del-ex-mr','BlurAdmin.pages.bijwasan.sko-lbt-pumping','BlurAdmin.pages.bijwasan.daily-reports' ])
+  angular.module('BlurAdmin.pages.bijwasan', ['BlurAdmin.pages.bijwasan.del-ex-mr','BlurAdmin.pages.bijwasan.sko-lbt-pumping','BlurAdmin.pages.bijwasan.daily-reports','ui.bootstrap'])
     .config(routeConfig);
 
   /** @ngInject */
@@ -11,6 +11,7 @@
         url: '/bijwasan',
         templateUrl: 'app/pages/bijwasan/bijwasan.html',
         title: 'Bijwasan',
+        controller: 'Bijwasan-ctrl',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
