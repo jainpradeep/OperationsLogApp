@@ -32,33 +32,24 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _) {
-
-    $scope.user = {
-    }
-
-    $scope.seqNoMaxLength = "3"
-
-    $scope.user.desc = "DAdas"
-  
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _) {
+    $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
-
-  
-      $scope.remarksModal =  $uibModal.open({
+    $scope.remarksModal =  $uibModal.open({
         scope: $scope,
         templateUrl: "/app/pages/bijwasan/del-ex-mr/remarksmodal.html",
         size: '',
       })
     }
-
-
+    $scope.user = {
+      desc: 'Awesome user \ndescription!'
+    };
 
     $scope.validate = function(){
       console.log("Sadas")     
     }
 
     $scope.editRemarksModal = function() {
-      
       $scope.remarksModal.close();
     };
   
@@ -117,12 +108,19 @@
         });
     }
 
-    $scope.editDelhiExMrStart = function(){
+    $scope.editDelhiExMrStart = function(data){
+      $scope.editableDelhiExMrHourlyRec = angular.copy(data);
+    }
+
+    $scope.editDelhiExMrRemark = function(remark){
+      
+      $scope.delhiExMR.delExMrRemarks[$scope.$parent.selectedShift.name] = remark 
+
       delExMrService.editDelExMrData(JSON.stringify({
         _id : $scope.delhiExMR.delExmrID,
         date: $scope.delhiExMR.delExmrDate,
         data: $scope.delhiExMR.delExmrData,
-        remarks: $scope.delhiExMR.remarks
+        remarks: $scope.delhiExMR.delExMrRemarks
       })).then(function(){
         $scope.getDelhiExMR();
       },function(){
@@ -138,7 +136,7 @@
           _id : $scope.delhiExMR.delExmrID,
           date: $scope.delhiExMR.delExmrDate,
           data: $scope.delhiExMR.delExmrData,
-          remarks: $scope.delhiExMR.remarks
+          remarks:  $scope.delhiExMR.delExMrRemarks
         })).then(function(){
           $scope.getDelhiExMR();
         },function(){

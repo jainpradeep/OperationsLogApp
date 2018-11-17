@@ -48,8 +48,8 @@ app.listen(app.get('port'), function () {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 9;
-rule.minute = 55;
+rule.hour = 12;
+rule.minute = 19;
 
 app.route('/editDelhiExMrRecord')  
 .post(function (req, res) {

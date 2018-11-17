@@ -11,6 +11,7 @@
     function BijwasanCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
         $scope.products = ["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","6m"]
+        $scope.selectedShift = $scope.shifts[0];
         $scope.selectShift = function(shift){
             $scope.shifts.map(function(shft){
                 shft.isSelected = false
