@@ -4,54 +4,41 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bijwasan.del-ex-mr', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
-    .config(routeConfig)
-    .controller('Del-ex-mr-ctrl', TablesPageCtrl)
+  angular.module('BlurAdmin.pages.bijwasan.sko-lbt-pumping', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+    .config(routeConfig)  
+    .controller('Sko-lbt-pumping-ctrl', SkoLbtPumpingPageCtrl)
     .constant('_',
       window._
-    );
-
+    )
 
     /** @ngInject */
-  function routeConfig($stateProvider) {
-    $stateProvider
-      .state('main.bijwasan.del-ex-mr', {
-        parent: "main.bijwasan",
-        url: '/del-ex-mr',
-        templateUrl: 'app/pages/bijwasan/del-ex-mr/del-ex-mr.html',
-        controller: 'Del-ex-mr-ctrl',
-        title: 'Delhi [EX-MR]',
-        sidebarMeta: {
-          icon: 'ion-android-home',
-          order: 0,
-        },
-        authenticate: true
-      });
-  }
+    function routeConfig($stateProvider) {
+      $stateProvider
+        .state('main.bijwasan.sko-lbt-pumping', {
+          url: '/sko-lbt-pumping',
+          templateUrl: 'app/pages/bijwasan/sko-lbt-pumping/sko-lbt-pumping.html',
+          title: 'SKO-LBT-Pumping',
+          controller: 'Sko-lbt-pumping-ctrl',
+          sidebarMeta: {
+            icon: '',
+            order: 0,
+          },
+          authenticate: true
+        });
+    }
 
-
- 
-  /** @ngInject */
-  function TablesPageCtrl($scope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _) {
-
+    /** @ngInject */
+  function SkoLbtPumpingPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, skoLbtPumpingService, $uibModal, $log, _) {
+    $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
-      $scope.remarksModal =  $uibModal.open({
+    $scope.remarksModal =  $uibModal.open({
         scope: $scope,
-        templateUrl: "/app/pages/bijwasan/del-ex-mr/remarksmodal.html",
+        templateUrl: "/app/pages/bijwasan/sko-lbt-pumping/remarksmodal.html",
         size: '',
       })
     }
 
-    $scope.$watch('user', function(newValue, oldValue) {
-      console.log("Sadas")      
-    });
-
-    $scope.validate = function(data){
-      console.log("Sadas")     
-    }
-
     $scope.editRemarksModal = function() {
-      
       $scope.remarksModal.close();
     };
   
@@ -73,7 +60,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/del-ex-mr/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/sko-lbt-pumping/editHistoryModal.html",
           size: '',
         })
       };
@@ -89,40 +76,58 @@
     $scope.selectedShift = "Shift A";
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
-      $scope.delhiExMR = {};
-      $scope.getDelhiExMR();
+      $scope.skoLbtPumping = {};
+      $scope.getSkoLbtPumping();
     });
-    $scope.delhiExmrSelectShift =function(shift){
+    $scope.skoLbtPumpingSelectShift =function(shift){
       $scope.selectedShift = shift.name;
     } 
     
-    $scope.getDelhiExMR= function(){
-      delExMrService.getDelExMrData(JSON.stringify({
+    $scope.getSkoLbtPumping= function(){
+      skoLbtPumpingService.getSkoLbtPumpingData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
-          $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
-          $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
+          $scope.skoLbtPumping.skoLbtPumpingData = JSON.parse(data.data.data)[0].data;
+          $scope.skoLbtPumping.skoLbtPumpingDate = JSON.parse(data.data.data)[0].date;
+          $scope.skoLbtPumping.skoLbtPumpingID = JSON.parse(data.data.data)[0]._id;
+          $scope.skoLbtPumping.skoLbtPumpingRemarks = JSON.parse(data.data.data)[0].remarks;
         },
         function(msg) {
         });
     }
 
-    $scope.editDelhiExMrStart = function(data){
-      $scope.editableDelhiExMrHourlyRec = angular.copy(data);
+    $scope.editSkoLbtPumpingStart = function(data){
+      $scope.editableSkoLbtPumpingHourlyRec = angular.copy(data);
     }
 
-    $scope.editDelExMrData = function(data, index){
-      data.editHistory = $scope.editableDelhiExMrHourlyRec;
+    $scope.editSkoLbtPumpingRemark = function(remark){
+      
+      $scope.skoLbtPumping.skoLbtPumpingRemarks[$scope.$parent.selectedShift.name] = remark 
+
+      skoLbtPumpingService.editSkoLbtPumpingData(JSON.stringify({
+        _id : $scope.skoLbtPumping.skoLbtPumpingID,
+        date: $scope.skoLbtPumping.skoLbtPumpingDate,
+        data: $scope.skoLbtPumping.skoLbtPumpingData,
+        remarks: $scope.skoLbtPumping.skoLbtPumpingRemarks
+      })).then(function(){
+        $scope.getSkoLbtPumping();
+      },function(){
+        console.log("error")
+      })  
+    }
+
+    $scope.editSkoLbtPumpingData = function(data, index){
+      data.editHistory = $scope.editableSkoLbtPumpingHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      delExMrService.editDelExMrData(JSON.stringify({
-          _id : $scope.delhiExMR.delExmrID,
-          date: $scope.delhiExMR.delExmrDate,
-          data: $scope.delhiExMR.delExmrData
+      skoLbtPumpingService.editSkoLbtPumpingData(JSON.stringify({
+          _id : $scope.skoLbtPumping.skoLbtPumpingID,
+          date: $scope.skoLbtPumping.skoLbtPumpingDate,
+          data: $scope.skoLbtPumping.skoLbtPumpingData,
+          remarks:  $scope.skoLbtPumping.skoLbtPumpingRemarks
         })).then(function(){
-          $scope.getDelhiExMR();
+          $scope.getSkoLbtPumping();
         },function(){
           console.log("error")
         })      

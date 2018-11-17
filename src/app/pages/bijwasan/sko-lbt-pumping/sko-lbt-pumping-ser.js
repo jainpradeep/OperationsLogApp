@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.bijwasan.del-ex-mr').service('delExMrService', function ($http,$q) {
+angular.module('BlurAdmin.pages.bijwasan.sko-lbt-pumping').service('skoLbtPumpingService', function ($http,$q) {
     this.message = '';
-    this.getDelExMrData = function(reqJSON){
+    this.getSkoLbtPumpingData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDelhiExMrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getSkoLbtPumpingRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -20,9 +20,9 @@ angular.module('BlurAdmin.pages.bijwasan.del-ex-mr').service('delExMrService', f
        return deferred.promise;
     }
 
-    this.editDelExMrData = function(reqJSON){
+    this.editSkoLbtPumpingData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDelhiExMrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editSkoLbtPumpingRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
