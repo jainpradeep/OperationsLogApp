@@ -1,10 +1,11 @@
 <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">{{$parent.selectedShift}} Remarks</h3>
-    </div>
+        <h3 class="modal-title" id="modal-title">{{$parent.selectedShift}} Remarks {{user.desc}}fsfd</h3> 
+    </div>      {{user.desc}}
     <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
             <div id="TextareaCtrl">
-                    <a onbeforesave="validate($data)" href="#" editable-textarea="user.desc" e-rows="7" e-cols="40">
-                      <pre>{{ delhiExMR.delExMrRemarks['$parent.selectedShift'] || 'no remarks' }}</pre>
+                    <a onbeforesave="validate($data)" submit-on-enter="true" href="#" editable-textarea="user.desc" e-rows="7" e-cols="40">
+                        {{user.desc}}
+                        <pre>{{ user.desc || 'no remarks' }}</pre>
                     </a>
             </div>
     </div>

@@ -47,7 +47,7 @@
         </span>
       </td>
       <td>
-        <span numbers-only editable-text="data.seq_no" e-name="seq_no"  e-form="rowform" e-required>
+        <span  e-max="{{seqNoMaxLength}}" editable-number="data.seq_no" e-step="any" e-name="seq_no"  e-form="rowform" e-required>
             {{ data.seq_no || '-' }}
         </span>
       </td>

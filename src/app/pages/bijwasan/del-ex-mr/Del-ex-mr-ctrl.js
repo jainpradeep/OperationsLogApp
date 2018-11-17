@@ -34,7 +34,16 @@
   /** @ngInject */
   function TablesPageCtrl($scope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _) {
 
+    $scope.user = {
+    }
+
+    $scope.seqNoMaxLength = "3"
+
+    $scope.user.desc = "DAdas"
+  
     $scope.openRemarks = function(){
+
+  
       $scope.remarksModal =  $uibModal.open({
         scope: $scope,
         templateUrl: "/app/pages/bijwasan/del-ex-mr/remarksmodal.html",
@@ -42,15 +51,9 @@
       })
     }
 
-    $scope.user = {
-      desc: 'Awesome user \ndescription!'
-    };
 
-    $scope.$watch('user', function(newValue, oldValue) {
-      console.log("Sadas")      
-    });
 
-    $scope.validate = function(data){
+    $scope.validate = function(){
       console.log("Sadas")     
     }
 
@@ -114,8 +117,17 @@
         });
     }
 
-    $scope.editDelhiExMrStart = function(data){
-      $scope.editableDelhiExMrHourlyRec = angular.copy(data);
+    $scope.editDelhiExMrStart = function(){
+      delExMrService.editDelExMrData(JSON.stringify({
+        _id : $scope.delhiExMR.delExmrID,
+        date: $scope.delhiExMR.delExmrDate,
+        data: $scope.delhiExMR.delExmrData,
+        remarks: $scope.delhiExMR.remarks
+      })).then(function(){
+        $scope.getDelhiExMR();
+      },function(){
+        console.log("error")
+      })  
     }
 
     $scope.editDelExMrData = function(data, index){
@@ -125,7 +137,8 @@
       delExMrService.editDelExMrData(JSON.stringify({
           _id : $scope.delhiExMR.delExmrID,
           date: $scope.delhiExMR.delExmrDate,
-          data: $scope.delhiExMR.delExmrData
+          data: $scope.delhiExMR.delExmrData,
+          remarks: $scope.delhiExMR.remarks
         })).then(function(){
           $scope.getDelhiExMR();
         },function(){

@@ -42,10 +42,6 @@
       })
     }
 
-    $scope.user = {
-      desc: 'Awesome user \ndescription!'
-    };
-
     $scope.$watch('user', function(newValue, oldValue) {
       console.log("Sadas")      
     });

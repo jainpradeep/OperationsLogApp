@@ -49,7 +49,7 @@ app.listen(app.get('port'), function () {
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 9;
-rule.minute = 14;
+rule.minute = 55;
 
 app.route('/editDelhiExMrRecord')  
 .post(function (req, res) {
@@ -410,9 +410,9 @@ schedule.scheduleJob(rule, function(){
   flow_Difference: "", oficer: ""
 }],
 remarks : {
-  "Shift A" : [],
-  "Shift B" : [],
-  "Shift C" : []
+  "Shift A" : "",
+  "Shift B" : "",
+  "Shift C" : ""
 }
       }
       database.db('operationsDB').collection('delhiExMr').insertOne(data, function(er, records) {
