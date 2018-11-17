@@ -12,7 +12,7 @@ var util = require('util');
 var proxyMiddleware = require('http-proxy-middleware');
 
 function browserSyncInit(baseDir, browser) {
-  browser = browser === undefined ? 'default' : browser;
+  browser = ["chrome.exe"];
 
   var routes = null;
   if(baseDir === conf.paths.src || (util.isArray(baseDir) && baseDir.indexOf(conf.paths.src) !== -1)) {

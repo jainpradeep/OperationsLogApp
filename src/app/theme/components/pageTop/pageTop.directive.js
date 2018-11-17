@@ -7,12 +7,21 @@
 
   angular.module('BlurAdmin.theme.components')
       .directive('pageTop', pageTop);
+      pageTop.$inject = ['$state', '$stateParams', '$compile'];
 
   /** @ngInject */
-  function pageTop() {
+  function pageTop($state, $stateParams, $compile) {
     return {
       restrict: 'E',
-      templateUrl: 'app/theme/components/pageTop/pageTop.html'
+      scope:{
+        send:"&"
+      },
+      templateUrl: 'app/theme/components/pageTop/pageTop.html',
+      link: function($scope, element, attrs) {
+        $scope.logout = function(){
+          $state.go('authSignIn')
+        }
+      }
     };
   }
 

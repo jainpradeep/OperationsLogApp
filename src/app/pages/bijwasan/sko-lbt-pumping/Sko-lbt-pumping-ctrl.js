@@ -108,7 +108,6 @@
           $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
           $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
           $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
-          $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data)[0].remarks;
         },
         function(msg) {
         });

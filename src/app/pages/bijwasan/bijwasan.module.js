@@ -11,7 +11,7 @@
         url: '/bijwasan',
         templateUrl: 'app/pages/bijwasan/bijwasan.html',
         title: 'Bijwasan',
-        controller: 'Bijwasan-ctrl',
+        controller: 'Bijwasan-ctrl',  
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,

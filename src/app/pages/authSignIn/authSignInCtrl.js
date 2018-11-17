@@ -19,10 +19,10 @@
           user: vm.user,
           password: vm.password
         };
-        localStorage.setObject('dataUser', credentials);
         authservice.authenticate(credentials.user,credentials.password).then(function(data) {
+          localStorage.setObject('dataUser', credentials);
           $state.go('main.dashboard');
-        }, function() {
+        }, function() { 
           $state.go('404');
         });
       }

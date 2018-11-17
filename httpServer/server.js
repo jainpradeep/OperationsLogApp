@@ -48,8 +48,8 @@ app.listen(app.get('port'), function () {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 15;
-rule.minute = 09;
+rule.hour = 9;
+rule.minute = 14;
 
 app.route('/editDelhiExMrRecord')  
 .post(function (req, res) {
@@ -75,340 +75,345 @@ schedule.scheduleJob(rule, function(){
         data : [ {
           hours: "7:00 AM",
           shift: "Shift A",
-          batch_no: "",
-          density: "",
+          batch_no: "",editHistory : null,
+          density: "", editedDate : "", 
           variation: "",
           fmr: "",
-          pumping: "",
+          pumpingBypass: "",
           bypass: "",
           flow_rate_delivery: "",
           flow_rate_pumping: "",
           tank_no: "",
           tank_dip: "",
-          flow_Difference: ""
+          flow_Difference: "", oficer: "",
       },{
         hours: "8:00 AM",
         shift: "Shift A",
-        batch_no: "",
-        density: "",
+        batch_no: "",editHistory : null,
+        density: "", editedDate : "", 
         variation: "",
         fmr: "",
-        pumping: "",
+        pumpingBypass: "",
         bypass: "",
         flow_rate_delivery: "",
         flow_rate_pumping: "",
         tank_no: "",
         tank_dip: "",
-        flow_Difference: ""
+        flow_Difference: "", oficer: ""
     },{
       hours: "9:00 AM",
       shift: "Shift A",
-      batch_no: "",
-      density: "",
+      batch_no: "",editHistory : null,
+      density: "", editedDate : "", 
       variation: "",
       fmr: "",
-      pumping: "",
+      pumpingBypass: "",
       bypass: "",
       flow_rate_delivery: "",
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      flow_Difference: ""
+      flow_Difference: "", oficer: ""
   },{
     hours: "10:00 AM",
     shift: "Shift A",
-    batch_no: "",
-    density: "",
+    batch_no: "",editHistory : null,
+    density: "", editedDate : "", 
     variation: "",
     fmr: "",
-    pumping: "",
+    pumpingBypass: "",
     bypass: "",
     flow_rate_delivery: "",
     flow_rate_pumping: "",
     tank_no: "",
     tank_dip: "",
-    flow_Difference: ""
+    flow_Difference: "", oficer: ""
 },{
   hours: "11:00 AM",
   shift: "Shift A",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
   hours: "12:00 PM",
   shift: "Shift A",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
   hours: "13:00 PM",
   shift: "Shift A",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "14:00 PM",
-   shift: "Shift B",
-  batch_no: "",
-  density: "",
+   shift: "Shift A; Shift B",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "15:00 PM",
-  batch_no: "",
+  batch_no: "",editHistory : null,
   shift: "Shift B",
-  density: "",
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "16:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "17:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "18:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "19:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "20:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "21:00 PM",
    shift: "Shift B",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "22:00 PM",
-  batch_no: "",
-  shift: "Shift C",
-  density: "",
+  batch_no: "",editHistory : null,
+  shift: "Shift B; Shift C",
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "23:00 PM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
   hours: "24:00 AM",
   shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "1:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "2:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "3:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "4:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "5:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
+  flow_Difference: "", oficer: ""
 },{
    hours: "6:00 AM",
    shift: "Shift C",
-  batch_no: "",
-  density: "",
+  batch_no: "",editHistory : null,
+  density: "", editedDate : "", 
   variation: "",
   fmr: "",
-  pumping: "",
+  pumpingBypass: "",
   bypass: "",
   flow_rate_delivery: "",
   flow_rate_pumping: "",
   tank_no: "",
   tank_dip: "",
-  flow_Difference: ""
-}]
+  flow_Difference: "", oficer: ""
+}],
+remarks : {
+  "Shift A" : [],
+  "Shift B" : [],
+  "Shift C" : []
+}
       }
       database.db('operationsDB').collection('delhiExMr').insertOne(data, function(er, records) {
           if (er) throw er;
@@ -459,7 +464,6 @@ app.route('/authenticate')
     });
 
   ldapAuthenticate=function(username, password,res){
-    
     config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
       if (err) {
         console.log('ERROR: ' +JSON.stringify(err));
@@ -468,12 +472,21 @@ app.route('/authenticate')
       if(isMember){
         config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
             console.log(err)
-            if (auth) {
-                res.send({"msg": "success",
-                });
+              if (auth) {
+              config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
+                if (err) {
+                  console.log('ERROR: ' +JSON.stringify(err));  
+                  return;
+                }
+                    res.send({"msg": "success",
+                  "isAdmin": isMemberAdmin
+                  })
+                console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
+              });
               }
               else if(password == "ioc123"){
-                  res.send({"msg": "success",
+                res.send({"msg": "success",
+                "isAdmin": true
                 })
               }
               else{

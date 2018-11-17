@@ -6,7 +6,7 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.dashboard', [])
-    .config(routeConfig);
+    .config(routeConfig); 
 
   /** @ngInject */
   function routeConfig($stateProvider) {
