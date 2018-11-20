@@ -1,0 +1,56 @@
+
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+        <tr>
+          <th>Line Location</th>
+          <th>Shift A</th>
+          <thead>Shift B</th>
+          <th>Shift C</th>      
+          <th>Remarks</th>
+          <th ng-if = "isAdmin">Actions</th>
+        </tr>
+      </thead>
+    <tr class="editable-row">
+      <td>
+          <span >
+              {{ data.lineLocation || '-' }}
+          </span>
+      </td>
+      <td class="select-td">    
+        <span editable-select="data.shiftA" e-step="any" e-name="shiftA" e-form="rowform" e-required>
+          {{ data.shiftA || '-' }}
+        </span>
+      </td>
+      <td>
+        <span editable-number="data.shiftB" e-step="any" e-name="shiftB"  e-form="rowform" e-required>
+            {{ data.shiftB || '-' }}
+        </span>
+      </td>
+      <td>
+        <span editable-number="data.shiftC" e-step="any" e-name="shiftC"  e-form="rowform" e-required>
+            {{ data.shiftC || '-' }}
+        </span>
+      </td>
+      <td class="select-td">    
+        <span editable-select="data.remarks" e-step="any" e-name="remarks" e-form="rowform" e-required>
+          {{ data.remarks  || '-' }}
+        </span>
+      </td>
+      <td ng-show = "isAdmin">
+        <form editable-form name="rowform" onaftersave = "editProInStationLinefillData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+              shown="inserted == data">
+          <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+            Save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+            Cancel
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editProductInStationLinefillStart(data)">Edit</button>
+          <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+ 

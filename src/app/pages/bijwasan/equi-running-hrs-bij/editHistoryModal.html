@@ -1,0 +1,113 @@
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Edit History</h3>
+        </div>
+        <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+            
+            <div class="container">
+                <div class="row">
+                <div class="col-sm">
+                    <table  class="table table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr rowspan="2">
+                                <th colspan="1">Name Of Equipment</th>
+                                <th colspan="2">Previous Hrs</th>
+                                <th colspan="2">Shift A</th>
+                                <th colspan="2">Shift B</th>
+                                <th colspan="2">Shift C</th>      
+                                <th colspan="2">Cummulative Hrs</th>
+                                <th>Officer</th>
+                                <th>Edited Date And Time</th>
+                            </tr>
+                            <tr rowspan="2">
+                                <th></th>
+                                <th>Hours</th>
+                                <th>Minutes</th>
+                                <th>Hours</th>
+                                <th>Minutes</th>
+                                <th>Hours</th>
+                                <th>Minutes</th>
+                                <th>Hours</th>
+                                <th>Minutes</th>
+                                <th>Hours</th>
+                                <th>Minutes</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="data in flattenedHourEditHistory">
+                            <td>
+                                <span >
+                                    {{ data.equipment || '-' }}
+                                </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.previousHrs  || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.previousMin || '-' }}
+                              </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.shiftAHrs  || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.shiftAMin || '-' }}
+                              </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.shiftBHrs  || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.shiftBMin || '-' }}
+                              </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.shiftCHrs  || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.shiftCMin || '-' }}
+                              </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.cummulativeHrs  || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.cummulativeMin || '-' }}
+                              </span>
+                            </td><td>
+                                <span>
+                                    {{ data.officer || '-' }}
+                                </span>
+                          </td>
+                          <td>
+                                <span>
+                                        {{ data.editedDate | date : "short"  || '-' }}
+                                </span>
+                          </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="modal-footer">
+            <!-- <button class="btn btn-primary" type="button" ng-click="pc.ok()">OK</button> -->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>

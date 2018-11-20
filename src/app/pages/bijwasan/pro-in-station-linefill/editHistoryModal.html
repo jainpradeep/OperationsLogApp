@@ -1,0 +1,66 @@
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Edit History</h3>
+        </div>
+        <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+            
+            <div class="container">
+                <div class="row">
+                <div class="col-sm">
+                    <table  class="table table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Line Location</th>
+                                <th>Shift A</th>
+                                <thead>Shift B</th>
+                                <th>Shift C</th>      
+                                <th>Remarks</th>
+                                <th>Officer</th>
+                                <th>Edited Date And Time</th>
+                        </thead>
+                        <tr ng-repeat="data in flattenedHourEditHistory">
+                            <td>
+                                <span >
+                                    {{ data.lineLocation || '-' }}
+                                </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.shiftA || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.shiftB || '-' }}
+                              </span>
+                            </td>
+                            <td>
+                              <span>
+                                  {{ data.shiftC || '-' }}
+                              </span>
+                            </td>
+                            <td>    
+                              <span>
+                                {{ data.remarks  || '-' }}
+                              </span>
+                            </td><td>
+                                <span>
+                                    {{ data.officer || '-' }}
+                                </span>
+                          </td>
+                          <td>
+                                <span>
+                                        {{ data.editedDate | date : "short"  || '-' }}
+                                </span>
+                          </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="modal-footer">
+            <!-- <button class="btn btn-primary" type="button" ng-click="pc.ok()">OK</button> -->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
