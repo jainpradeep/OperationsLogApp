@@ -1,4 +1,4 @@
-angular.module('BlurAdmin.pages.bijwasan.pumpedFromMathura-MD').service('pumpedFromMatMDService', function ($http,$q) {
+angular.module('BlurAdmin.pages.mathura.pumpedFromMathura-MD').service('pumpedFromMatMDService', function ($http,$q) {
     this.message = '';
     this.getpumpedFromMatMDData = function(reqJSON){
         var deferred = $q.defer();
