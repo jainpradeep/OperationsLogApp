@@ -4,23 +4,22 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bijwasan.del-ex-mr', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.bijwasan.equi-running-hrs-bij', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('Del-ex-mr-ctrl', TablesPageCtrl)
+    .controller('equi-running-hrs-bij-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
 
-
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.bijwasan.del-ex-mr', {
+      .state('main.bijwasan.equi-running-hrs-bij', {
         parent: "main.bijwasan",
-        url: '/del-ex-mr',
-        templateUrl: 'app/pages/bijwasan/del-ex-mr/del-ex-mr.html',
-        controller: 'Del-ex-mr-ctrl',
-        title: 'Delhi [EX-MR]',
+        url: '/equi-running-hrs-bij',
+        templateUrl: 'app/pages/bijwasan/equi-running-hrs-bij/equi-running-hrs-bij.html',
+        controller: 'equi-running-hrs-bij-ctrl',
+        title: 'Equipment Running Hrs Bijwasan',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
@@ -32,21 +31,14 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, equiRunningHrsBijService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
-        templateUrl: "/app/pages/bijwasan/del-ex-mr/remarksmodal.html",
+        templateUrl: "/app/pages/bijwasan/equi-running-hrs-bij/remarksmodal.html",
         size: '',
       })
-    }
-    $scope.user = {
-      desc: 'Awesome user \ndescription!'
-    };
-
-    $scope.validate = function(){
-      console.log("Sadas")     
     }
 
     $scope.editRemarksModal = function() {
@@ -71,7 +63,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/del-ex-mr/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/equi-running-hrs-bij/editHistoryModal.html",
           size: '',
         })
       };
@@ -84,61 +76,57 @@
           $scope.$modalInstance.dismiss('cancel');
       };
     
-    $scope.selectedShift = "Shift A";
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
-      $scope.delhiExMR = {};
-      $scope.getDelhiExMR();
+      $scope.equiRunningHrsBijwasan = {};
+      $scope.getEquiRunningHrsBijwasan();
     });
-    $scope.delhiExmrSelectShift =function(shift){
-      $scope.selectedShift = shift.name;
-    } 
     
-    $scope.getDelhiExMR= function(){
-      delExMrService.getDelExMrData(JSON.stringify({
+    $scope.getEquiRunningHrsBijwasan= function(){
+      equiRunningHrsBijService.getEquiRunningHrsBijData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
-          $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
-          $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
-          $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijData = JSON.parse(data.data.data)[0].data;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate = JSON.parse(data.data.data)[0].date;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijID = JSON.parse(data.data.data)[0]._id;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = JSON.parse(data.data.data)[0].remarks;
         },
         function(msg) {
         });
     }
 
-    $scope.editDelhiExMrStart = function(data){
-      $scope.editableDelhiExMrHourlyRec = angular.copy(data);
+    $scope.editEquiRunningHrsBijwasanStart = function(data){
+      $scope.editableEquiRunningHrsBijwasanHourlyRec = angular.copy(data);
     }
 
-    $scope.editDelhiExMrRemark = function(remark){
+    $scope.editEquiRunningHrsBijwasanRemark = function(remark){
       
-      $scope.delhiExMR.delExMrRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = remark 
 
-      delExMrService.editDelExMrData(JSON.stringify({
-        _id : $scope.delhiExMR.delExmrID,
-        date: $scope.delhiExMR.delExmrDate,
-        data: $scope.delhiExMR.delExmrData,
-        remarks: $scope.delhiExMR.delExMrRemarks
+      delExMrService.editEquiRunningHrsBijData(JSON.stringify({
+        _id : $scope.equiRunningHrsBijwasan.equiRunningHrsBijID,
+        date: $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate,
+        data: $scope.equiRunningHrsBijwasan.equiRunningHrsBijData,
+        remarks: $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks
       })).then(function(){
-        $scope.getDelhiExMR();
+        $scope.getEquiRunningHrsBijwasan();
       },function(){
         console.log("error")
       })  
     }
 
-    $scope.editDelExMrData = function(data, index){
-      data.editHistory = $scope.editableDelhiExMrHourlyRec;
+    $scope.editEquiRunningHrsBijData = function(data, index){
+      data.editHistory = $scope.editableEquiRunningHrsBijwasanHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      delExMrService.editDelExMrData(JSON.stringify({
-          _id : $scope.delhiExMR.delExmrID,
-          date: $scope.delhiExMR.delExmrDate,
-          data: $scope.delhiExMR.delExmrData,
-          remarks:  $scope.delhiExMR.delExMrRemarks
-        })).then(function(){
-          $scope.getDelhiExMR();
+      equiRunningHrsBijService.editEquiRunningHrsBijData(JSON.stringify({
+        _id : $scope.equiRunningHrsBijwasan.equiRunningHrsBijID,
+        date: $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate,
+        data: $scope.equiRunningHrsBijwasan.equiRunningHrsBijData,
+        remarks: $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks  
+      })).then(function(){
+          $scope.getEquiRunningHrsBijwasan();
         },function(){
           console.log("error")
         })      

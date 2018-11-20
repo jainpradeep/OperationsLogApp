@@ -22,7 +22,6 @@
           <th>Minutes</th>
           <th>Hours</th>
           <th>Minutes</th>
-          <th></th>
           <th ng-if = "isAdmin"></th>
         </tr>
       </thead>
@@ -32,7 +31,7 @@
               {{ data.equipment || '-' }}
           </span>
       </td>
-      <td class="select-td">    
+      <td>    
         <span editable-select="data.previousHrs" e-step="any" e-name="previousHrs" e-form="rowform" e-required>
           {{ data.previousHrs  || '-' }}
         </span>
@@ -42,7 +41,7 @@
             {{ data.previousMin || '-' }}
         </span>
       </td>
-      <td class="select-td">    
+      <td>    
         <span editable-select="data.shiftAHrs" e-step="any" e-name="shiftAHrs" e-form="rowform" e-required>
           {{ data.shiftAHrs  || '-' }}
         </span>
@@ -52,7 +51,7 @@
             {{ data.shiftAMin || '-' }}
         </span>
       </td>
-      <td class="select-td">    
+      <td>    
         <span editable-select="data.shiftBHrs" e-step="any" e-name="shiftBHrs" e-form="rowform" e-required>
           {{ data.shiftBHrs  || '-' }}
         </span>
@@ -62,7 +61,7 @@
             {{ data.shiftBMin || '-' }}
         </span>
       </td>
-      <td class="select-td">    
+      <td>    
         <span editable-select="data.shiftCHrs" e-step="any" e-name="shiftCHrs" e-form="rowform" e-required>
           {{ data.shiftCHrs  || '-' }}
         </span>
@@ -72,7 +71,7 @@
             {{ data.shiftCMin || '-' }}
         </span>
       </td>
-      <td class="select-td">    
+      <td>    
         <span editable-select="data.cummulativeHrs" e-step="any" e-name="cummulativeHrs" e-form="rowform" e-required>
           {{ data.cummulativeHrs  || '-' }}
         </span>
