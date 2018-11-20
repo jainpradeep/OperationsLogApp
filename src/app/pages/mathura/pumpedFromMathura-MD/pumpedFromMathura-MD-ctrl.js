@@ -4,7 +4,7 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bijwasan.pumpedFromMathura-MD', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.mathura.pumpedFromMathura-MD', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
     .controller('pumpedFromMathura-MD-ctrl', TablesPageCtrl)
     .constant('_',
@@ -15,10 +15,10 @@
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.bijwasan.pumpedFromMathura-MD', {
-        parent: "main.bijwasan",
+      .state('main.mathura.pumpedFromMathura-MD', {
+        parent: "main.mathura",
         url: '/pumpedFromMathura-MD',
-        templateUrl: 'app/pages/bijwasan/pumpedFromMathura-MD/pumpedFromMathura-MD.html',
+        templateUrl: 'app/pages/mathura/pumpedFromMathura-MD/pumpedFromMathura-MD.html',
         controller: 'pumpedFromMathura-MD-ctrl',
         title: 'Pumped From Mathura [MD]',
         sidebarMeta: {
@@ -37,7 +37,7 @@
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
-        templateUrl: "/app/pages/bijwasan/pumpedFromMathura-MD/remarksmodal.html",
+        templateUrl: "/app/pages/mathura/pumpedFromMathura-MD/remarksmodal.html",
         size: '',
       })
     }
@@ -64,7 +64,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/pumpedFromMathura-MD/editHistoryModal.html",
+          templateUrl: "/app/pages/mathura/pumpedFromMathura-MD/editHistoryModal.html",
           size: '',
         })
       };

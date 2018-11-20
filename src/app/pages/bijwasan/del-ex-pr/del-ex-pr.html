@@ -9,9 +9,9 @@
         <tr rowspan="2">
           <th colspan="1">Hours</th>
           <th colspan="2">Batch no</th>
-          <th colspan="2">Density Variation at 15&deg;</th>
+          <th colspan="2">Density temperature &deg;C</th>
           <th colspan="2">FMR Pumping Bypass</th>
-          <th colspan="2">Flow Rate</th>      
+          <th colspan="1">Flow Rate</th>      
           <th colspan="1">Tank no</th>
           <th colspan="1">Tank Dip</th>
           <th colspan="1" ng-if = "isAdmin">Actions</th>
@@ -21,11 +21,10 @@
           <th>Product</th>
           <th>Seq. No</th>
           <th>Density</th>
-          <th>Variation</th>
+          <th>Temperature</th>
           <th>FMR(D)</th>
           <th>Pumping/Bypass</th>
-          <th>Delivery</th>
-          <th>Pumping</th>
+          <th></th>
           <th></th>
           <th></th>
           <th ng-if = "isAdmin"></th>
@@ -55,8 +54,8 @@
       </td>
 
       <td>
-          <span editable-number="data.variation" e-name="variation" e-form="rowform" e-required>
-              {{ data.variation || '-' }}
+          <span editable-number="data.temperature" e-name="temperature" e-form="rowform" e-required>
+              {{ data.temperature || '-' }}
           </span>
       </td>
 
@@ -67,19 +66,13 @@
       </td>
 
       <td>
-          <span editable-number="data.pumping" e-name="pumping" e-form="rowform" e-required>
+          <span editable-number="data.pumpingBypass" e-name="pumpingBypass" e-form="rowform" e-required>
               {{ data.pumpingBypass || '-' }}
           </span>
       </td>
       <td>
-          <span editable-number="data.flow_rate_delivery" e-name="flow_rate_delivery" e-form="rowform" e-required>
-              {{ data.flow_rate_delivery || '-' }}
-          </span>
-      </td>
-
-      <td>
-          <span editable-number="data.flow_rate_pumping" e-name="flow_rate_pumping" e-form="rowform" e-required>
-              {{ data.flow_rate_pumping || '-' }}
+          <span editable-number="data.flow_rate" e-name="flow_rate" e-form="rowform" e-required>
+              {{ data.flow_rate || '-' }}
           </span>
       </td>
 

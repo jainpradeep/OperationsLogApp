@@ -56,8 +56,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 6;
-rule.minute = 59;
+rule.hour = 9;
+rule.minute = 46;
 
 schedule.scheduleJob(rule, function() {
   (async () => {

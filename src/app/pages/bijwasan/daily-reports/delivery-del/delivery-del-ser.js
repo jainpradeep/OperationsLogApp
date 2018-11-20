@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.mathura.pumpedFromMathura-MD').service('pumpedFromMatMDService', function ($http,$q) {
+angular.module('BlurAdmin.pages.bijwasan.del-ex-mr').service('delExMrService', function ($http,$q) {
     this.message = '';
-    this.getpumpedFromMatMDData = function(reqJSON){
+    this.getDelExMrData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getpumpedFromMathuraMDRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getDelhiExMrRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.mathura.pumpedFromMathura-MD').service('pumpedFr
 
     this.editDelExMrData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editpumpedFromMathuraMDRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editDelhiExMrRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
