@@ -68,7 +68,7 @@
     });
     
     $scope.getProductInStationLinefill= function(){
-      delExMrService.getProInStationLinefillData(JSON.stringify({
+      proInStationLinefillService.getProInStationLinefillData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 

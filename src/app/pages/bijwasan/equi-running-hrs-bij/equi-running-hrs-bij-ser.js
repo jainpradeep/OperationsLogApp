@@ -1,6 +1,6 @@
 angular.module('BlurAdmin.pages.bijwasan.equi-running-hrs-bij').service('equiRunningHrsBijService', function ($http,$q) {
     this.message = '';
-    this.getDelExMrData = function(reqJSON){
+    this.getEquiRunningHrsBijData = function(reqJSON){
         var deferred = $q.defer();
 
         $http.post('http://10.14.151.91:3006/getEquiRunningHrsBijwasanRecord',reqJSON,{

@@ -10,7 +10,7 @@
           <th ng-if = "isAdmin">Actions</th>
         </tr>
       </thead>
-    <tr class="editable-row">
+    <tr class="editable-row" ng-repeat="data in productInStationLinefill.proInStationLinefillData">
       <td>
           <span >
               {{ data.lineLocation || '-' }}
