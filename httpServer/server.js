@@ -17,7 +17,8 @@ var path = require('path');
 var moment = require('moment');
 var config = require('./config');
 var skoLbtPumpingInitDB = require('./skoLbtPumpingInitDB')
-
+var delExPrInitDB = require('./delExPrInitDB')
+var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
 
 var fs = require('fs')
 const multer = require('multer');
@@ -53,8 +54,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 15;
-rule.minute = 24;
+rule.hour = 6;
+rule.minute = 59;
 
 schedule.scheduleJob(rule, function() {
   (async () => {
@@ -485,6 +486,14 @@ schedule.scheduleJob(rule, function() {
               if (er) throw er;
               console.log(records)
           });
+          database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
       })
 
   })().catch(err => {
@@ -602,6 +611,120 @@ app.route('/getSkoLbtPumpingRecord')
             });
         })
     });
+
+
+    app.route('/editDelhiExPrRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delhiExPr').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getDelhiExPrRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            database.db('operationsDB').collection('delhiExPr').findOne({}, function(err, result) {
+                if (err) throw err;
+
+            });
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delhiExPr').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
+
+
+    app.route('/editpumpedFromMathuraMDRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('pumpedFromMathuraMD').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getpumpedFromMathuraMDRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            database.db('operationsDB').collection('pumpedFromMathuraMD').findOne({}, function(err, result) {
+                if (err) throw err;
+
+            });
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('pumpedFromMathuraMD').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
+
+
 
 app.route('/authenticate')
     .post(function(req, res) {
