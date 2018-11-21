@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.mathura.monitoring-mt-mb-mdpl').service('monMtMbMdplService', function ($http,$q) {
+angular.module('BlurAdmin.pages.bijwasan.daily-reports.delivery-del-rev').service('delhiDeliveryRevService', function ($http,$q) {
     this.message = '';
-    this.getMonMtMbMdplData = function(reqJSON){
+    this.getdelhiDeliveryRevData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getMonitoringMtMbMdplRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getDelhiDeliveryRevRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -20,9 +20,9 @@ angular.module('BlurAdmin.pages.mathura.monitoring-mt-mb-mdpl').service('monMtMb
        return deferred.promise;
     }
 
-    this.editMonMtMbMdplData = function(reqJSON){
+    this.editdelhiDeliveryRevData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editMonitoringMtMbMdplRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editDelhiDeliveryRevRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

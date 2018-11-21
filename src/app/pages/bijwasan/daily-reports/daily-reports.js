@@ -1,7 +1,7 @@
 (function() {
   'use strict';
-
-  angular.module('BlurAdmin.pages.bijwasan.daily-reports', ['BlurAdmin.pages.bijwasan.daily-reports.delivery-del'])
+//,'BlurAdmin.pages.bijwasan.daily-reports.delivery-del-rev'
+  angular.module('BlurAdmin.pages.bijwasan.daily-reports', ['BlurAdmin.pages.bijwasan.daily-reports.delivery-del','BlurAdmin.pages.bijwasan.daily-reports.delivery-del-rev','ui.bootstrap'])
     .config(routeConfig);
 
   /** @ngInject */

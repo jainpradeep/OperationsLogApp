@@ -23,7 +23,7 @@
           <th ng-if = "isAdmin"></th>
         </tr>
     </thead>
-    <tr ng-repeat="data in delhiDelivery.delhiDeliveryData track by $index" class="editable-row">
+    <tr ng-repeat="data in delhiDeliveryRev.delhiDeliveryRevData track by $index" class="editable-row">
       <td class="select-td">    
         <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
           {{ data.product }}
@@ -50,7 +50,7 @@
           </span>
       </td>
       <td ng-show = "isAdmin">
-        <form editable-form name="rowform" onaftersave = "editdelhiDeliveryData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+        <form editable-form name="rowform" onaftersave = "editdelhiDeliveryRevData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
               shown="inserted == data">
           <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
             Save
@@ -60,7 +60,7 @@
           </button>
         </form>
         <div class="buttons" ng-show="!rowform.$visible">
-          <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryStart(data)">Edit</button>
+          <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryRevStart(data)">Edit</button>
           <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
         </div>
       </td>

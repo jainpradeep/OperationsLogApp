@@ -1,4 +1,4 @@
-exports.delDeliveryInitDB = {
+exports.delDeliveryRevInitDB = {
     date : new Date(),
     data :  [{
         product:"",

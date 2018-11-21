@@ -33,6 +33,25 @@
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delhiDeliveryService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
  
+    $scope.openRemarks = function(){
+      $scope.remarksModal =  $uibModal.open({
+          scope: $scope,
+          templateUrl: "/app/pages/bijwasan/daily-reports/delivery-del/remarksmodal.html",
+          size: '',
+        })
+      }
+  
+      $scope.editRemarksModal = function() {
+        $scope.remarksModal.close();
+      };
+    
+      $scope.cancelRemarksModal = function() {
+        $scope.remarksModal.dismiss('cancel');
+      };
+
+
+
+
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -46,10 +65,14 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/del-ex-mr/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/daily-reports/delivery-del/editHistoryModal.html",
           size: '',
         })
       };
+
+      $scope.editdelhiDeliveryStart = function(data){
+        $scope.editableDelhiDeliveryHourlyRec = angular.copy(data);
+      }
       
       $scope.ok = function() {
           $scope.$modalInstance.close();
@@ -83,13 +106,29 @@
           $scope.delhiDelivery.delhiDeliveryData = JSON.parse(data.data.data)[0].data;
           $scope.delhiDelivery.delhiDeliveryDate = JSON.parse(data.data.data)[0].date;
           $scope.delhiDelivery.delhiDeliveryID = JSON.parse(data.data.data)[0]._id;
+          $scope.delhiDelivery.delhiDeliveryRemarks = JSON.parse(data.data.data)[0].remarks;
         },
         function(msg) {
         });
     }
 
+
+    $scope.editdelhiDeliveryRemark = function(remark){
+      $scope.delhiDelivery.delhiDeliveryRemarks = remark 
+      delhiDeliveryService.editdelhiDeliveryData(JSON.stringify({
+        _id: $scope.delhiDelivery.delhiDeliveryID,
+        date: $scope.delhiDelivery.delhiDeliveryDate,
+        data: $scope.delhiDelivery.delhiDeliveryData,
+        remarks: $scope.delhiDelivery.delhiDeliveryRemarks
+      })).then(function(){
+        $scope.getdelhiDelivery();
+      },function(){
+        console.log("error")
+      })  
+    }
+
     $scope.editdelhiDeliveryData = function(data, index){
-      data.editHistory = $scope.editabledelhiDeliveryHourlyRec;
+      data.editHistory = $scope.editableDelhiDeliveryHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
       delhiDeliveryService.editdelhiDeliveryData(JSON.stringify({

@@ -20,7 +20,7 @@
         url: '/monitoring-mt-mb-mdpl',
         templateUrl: 'app/pages/mathura/monitoring-mt-mb-mdpl/monitoring-mt-mb-mdpl.html',
         controller: 'monitoring-mt-mb-mdpl-ctrl',
-        title: 'Monitoring Of Tundla,Bharatpur and Mathura Line',
+        title: 'Monitoring Of MT,MB & MDPL',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, MonMtMbMdplService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, monMtMbMdplService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -88,7 +88,7 @@
     } 
     
     $scope.getMonitoringMtMbMdpl= function(){
-      MonMtMbMdplService.getMonMtMbMdplData(JSON.stringify({
+      monMtMbMdplService.getMonMtMbMdplData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 

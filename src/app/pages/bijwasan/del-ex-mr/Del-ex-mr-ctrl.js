@@ -41,13 +41,6 @@
         size: '',
       })
     }
-    $scope.user = {
-      desc: 'Awesome user \ndescription!'
-    };
-
-    $scope.validate = function(){
-      console.log("Sadas")     
-    }
 
     $scope.editRemarksModal = function() {
       $scope.remarksModal.close();

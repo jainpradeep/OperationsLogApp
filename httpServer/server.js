@@ -20,6 +20,8 @@ var skoLbtPumpingInitDB = require('./skoLbtPumpingInitDB')
 var delExPrInitDB = require('./delExPrInitDB')
 var delExMrInitDB = require('./delExMrInitDB')
 var delDeliveryInitDB = require('./delDeliveryInitDB');
+var delDeliveryRevInitDB = require('./delDeliveryRevInitDB');
+
 var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
 var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
 var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
@@ -59,8 +61,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 11;
-rule.minute = 03;
+rule.hour = 13;
+rule.minute = 43;
 
 schedule.scheduleJob(rule, function() {
   (async () => {
@@ -70,7 +72,11 @@ schedule.scheduleJob(rule, function() {
               if (er) throw er;
               console.log(records)
           });
-          database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
+        database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -78,7 +84,7 @@ schedule.scheduleJob(rule, function() {
               if (er) throw er;
               console.log(records)
           });
-          database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
+        database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -109,7 +115,9 @@ schedule.scheduleJob(rule, function() {
 app.route('/editDelhiExMrRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -160,6 +168,8 @@ app.route('/editDelhiExMrRecord')
         })
     });
 
+
+
 app.route('/getDelhiExMrRecord')
     .post(function(req, res) {
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
@@ -190,7 +200,9 @@ app.route('/getDelhiExMrRecord')
 app.route('/editSkoLbtPumpingRecord')
 .post(function(req, res) {
     console.log(req.body)
-    MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
         if (err) return
         req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
         req.body.date = new Date(req.body.date)
@@ -246,7 +258,9 @@ app.route('/getSkoLbtPumpingRecord')
     app.route('/editDelhiExPrRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -270,7 +284,9 @@ app.route('/getSkoLbtPumpingRecord')
     app.route('/editDelhiDeliveryRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -323,11 +339,69 @@ app.route('/getDelhiExPrRecord')
         })
     });
 
+ app.route('/editDelhiDeliveryRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delDelivery').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                console.log(result)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });    
 
+app.route('/getDelhiExPrRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            database.db('operationsDB').collection('delhiExPr').findOne({}, function(err, result) {
+                if (err) throw err;
+
+            });
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delhiExPr').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
     app.route('/editpumpedFromMathuraMDRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -351,7 +425,9 @@ app.route('/getDelhiExPrRecord')
     app.route('/editpumpedFromMathuraMDRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -408,7 +484,9 @@ app.route('/getpumpedFromMathuraMDRecord')
     app.route('/editEquiRunningHrsBijwasanRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -465,7 +543,9 @@ app.route('/getEquiRunningHrsBijwasanRecord')
     app.route('/editProductInStationLinefillRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -517,11 +597,69 @@ app.route('/getProductInStationLinefillRecord')
         })
     });
 
+    app.route('/editDelhiDeliveryRevRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delDeliveryRev').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getDelhiDeliveryRevRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            database.db('operationsDB').collection('delDeliveryRev').findOne({}, function(err, result) {
+                if (err) throw err;
+
+            });
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('delDeliveryRev').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
 
     app.route('/editMonitoringMtMbMdplRecord')
     .post(function(req, res) {
         console.log(req.body)
-        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB",{
+            useNewUrlParser: true
+        }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -548,10 +686,6 @@ app.route('/getMonitoringMtMbMdplRecord')
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
-            database.db('operationsDB').collection('monitoringMtMbMdpl').findOne({}, function(err, result) {
-                if (err) throw err;
-
-            });
             req.body.date = new Date(req.body.date)
             database.db('operationsDB').collection('monitoringMtMbMdpl').aggregate([{
                 $match: {
