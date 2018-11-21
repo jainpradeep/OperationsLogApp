@@ -23,6 +23,7 @@ var delDeliveryInitDB = require('./delDeliveryInitDB');
 var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
 var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
 var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
+var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
 
 var fs = require('fs')
 const multer = require('multer');
@@ -90,6 +91,10 @@ schedule.scheduleJob(rule, function() {
             console.log(records)
         });
         database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -511,6 +516,63 @@ app.route('/getProductInStationLinefillRecord')
             });
         })
     });
+
+
+    app.route('/editMonitoringMtMbMdplRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('monitoringMtMbMdpl').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getMonitoringMtMbMdplRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            database.db('operationsDB').collection('monitoringMtMbMdpl').findOne({}, function(err, result) {
+                if (err) throw err;
+
+            });
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('monitoringMtMbMdpl').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
+
 
 
 app.route('/authenticate')
