@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.bijwasan.del-ex-mr').service('delExMrService', function ($http,$q) {
+angular.module('BlurAdmin.pages.bijwasan.daily-reports.delivery-del').service('delhiDeliveryService', function ($http,$q) {
     this.message = '';
-    this.getDelExMrData = function(reqJSON){
+    this.getdelhiDeliveryData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDelhiExMrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getDelhiDeliveryRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -20,9 +20,9 @@ angular.module('BlurAdmin.pages.bijwasan.del-ex-mr').service('delExMrService', f
        return deferred.promise;
     }
 
-    this.editDelExMrData = function(reqJSON){
+    this.editdelhiDeliveryData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDelhiExMrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editDelhiDeliveryRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
