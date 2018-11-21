@@ -29,7 +29,7 @@
                     defer.resolve(data);
                 }
                 else{
-                    defer.reject(err);
+                    defer.reject("err");
                 }
             }).error(function (err) {
                 defer.reject(err);
