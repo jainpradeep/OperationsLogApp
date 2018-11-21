@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.pages.mathura', ['BlurAdmin.pages.mathura.pumpedFromMathura-MD','ui.bootstrap'])
+  angular.module('BlurAdmin.pages.mathura', ['BlurAdmin.pages.mathura.pumpedFromMathura-MD','BlurAdmin.pages.mathura.monitoring-mt-mb-mdpl','ui.bootstrap'])
     .config(routeConfig);
 
   /** @ngInject */
