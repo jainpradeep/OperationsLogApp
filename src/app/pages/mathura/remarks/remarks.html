@@ -1,0 +1,41 @@
+
+
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
+       <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); remarksSelectShift(shift)" role="tab">{{shift.name}}</a>
+    </li>
+ </ul>
+
+<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+    <div class="panel-body" > 
+        <div class="ng-scope">
+            <div style="text-align: center;">
+                <div editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
+                                {{ data.product }}
+                </div>
+                <div editable-number="data.seqnNo" e-name="seqnNo" e-form="rowform">
+                                {{ data.seqnNo }}
+                </div>
+                <div editable-text="data.fmrPumping" e-name="fmrPumping" e-form="rowform">
+                                {{ data.fmrPumping }}
+                </div>
+                <div editable-textArea="data.remarks" e-name="remarks" e-form="rowform">
+                    {{ data.remarks }}
+                </div>
+            </div>
+            <form editable-form name="rowform" onaftersave = "editDelExMrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == data">
+                <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                Save
+                </button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                Cancel
+                </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-danger" ng-click="rowform.$show(); editDelhiExMrStart(data)">Edit</button>
+                <button class="btn btn-info" ng-click="open(data)">History</button>
+            </div>
+        </div>
+    </div>
+</div>
