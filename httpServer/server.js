@@ -19,8 +19,11 @@ var config = require('./config');
 var skoLbtPumpingInitDB = require('./skoLbtPumpingInitDB')
 var delExPrInitDB = require('./delExPrInitDB')
 var delExMrInitDB = require('./delExMrInitDB')
+var revPumpingPnpDelhiInitDB = require('./revPumpingPnpDelhiInitDB')
 var delDeliveryInitDB = require('./delDeliveryInitDB');
 var delDeliveryRevInitDB = require('./delDeliveryRevInitDB');
+var deliveryPnpInitDB = require('./deliveryPnpInitDB');
+var pumpingDelhiPnpInitDB = require('./pumpingDelhiPnpInitDB');
 
 var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
 var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
@@ -61,17 +64,30 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 13;
-rule.minute = 43;
-
+rule.hour = 15;
+rule.minute = 6;
 schedule.scheduleJob(rule, function() {
   (async () => {
-      MongoClient.connect("mongodb://localhost:27017/operationsDB", function(err, database) {
+      MongoClient.connect("mongodb://localhost:27017/operationsDB",{
+        useNewUrlParser: true
+    }, function(err, database) {
           if (err) return
-          database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
-              if (er) throw er;
-              console.log(records)
-          });
+        database.db('operationsDB').collection('deliveryPnpInitDB').insertOne(deliveryPnpInitDB.DeliveryPnpInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('pumpingDelhiPnpInitDB').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
         database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
@@ -138,17 +154,41 @@ app.route('/editDelhiExMrRecord')
         })
     });
 
+app.route('/getDelhiDeliveryRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('delDelivery').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
 
-    
-
-    app.route('/getDelhiDeliveryRecord')
+app.route('/getRevPumpingPnpDelhiRecord')
     .post(function(req, res) {
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
             req.body.date = new Date(req.body.date)
-            database.db('operationsDB').collection('delDelivery').aggregate([{
+            database.db('operationsDB').collection('revPumpingPnpDelhi').aggregate([{
                 $match: {
                     'date': {
                         $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
@@ -168,6 +208,31 @@ app.route('/editDelhiExMrRecord')
         })
     });
 
+app.route('/editRevPumpingPnpDelhiRecord')
+    .post(function(req, res) {
+    console.log(req.body)
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('revPumpingPnpDelhi').updateOne({
+            "_id": req.body._id
+        }, {
+            $set: req.body
+        }, function(err, result) {
+            console.log(err)
+            res.send(
+                (err === null) ? {
+                    msg: 'success'
+                } : {
+                    msg: err
+                }
+            );
+        });
+    })
+});
 
 
 app.route('/getDelhiExMrRecord')
