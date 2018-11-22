@@ -71,7 +71,7 @@
       };
 
       $scope.editrevPumpingPnpDelhiStart = function(data){
-        $scope.editableDelhiDeliveryRevHourlyRec = angular.copy(data);
+        $scope.editableRevPumpingPnpDelhiRevHourlyRec = angular.copy(data);
       }
       
       $scope.ok = function() {
@@ -85,7 +85,7 @@
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.revPumpingPnpDelhi = {};
-      $scope.getrevPumpingPnpDelhi();
+      $scope.getRevPumpingPnpDelhi();
     });
    
     $scope.addNewRecord = function(){
@@ -98,8 +98,8 @@
       })
     }
 
-    $scope.getrevPumpingPnpDelhi= function(){
-      revPumpingPnpDelhiService.getrevPumpingPnpDelhiData(JSON.stringify({
+    $scope.getRevPumpingPnpDelhi= function(){
+      revPumpingPnpDelhiService.getRevPumpingPnpDelhiData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
@@ -121,14 +121,14 @@
         data: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiData,
         remarks: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiRemarks
       })).then(function(){
-        $scope.getrevPumpingPnpDelhi();
+        $scope.getRevPumpingPnpDelhi();
       },function(){
         console.log("error")
       })  
     }
 
     $scope.editrevPumpingPnpDelhiData = function(data, index){
-      data.editHistory = $scope.editableDelhiDeliveryRevHourlyRec;
+      data.editHistory = $scope.editableRevPumpingPnpDelhiRevHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
       revPumpingPnpDelhiService.editrevPumpingPnpDelhiData(JSON.stringify({
@@ -137,7 +137,7 @@
           data: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiData,
           remarks: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiRemarks
         })).then(function(){
-          $scope.getdelhiDelivery(Rev);
+          $scope.getRevPumpingPnpDelhi();
         },function(){
           console.log("error")
         })      

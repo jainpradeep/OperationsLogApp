@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.bijwasan.daily-reports.rev-pumping-pnp-delhi').service('revPumpingPnpDelhiService', function ($http,$q) {
+angular.module('BlurAdmin.pages.bijwasan.daily-reports.pumping-delhi-pnp').service('PumpingDelhiPnpService', function ($http,$q) {
     this.message = '';
-    this.getRevPumpingPnpDelhiData = function(reqJSON){
+    this.getPumpingDelhiPnpData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getRevPumpingPnpDelhiRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getPumpingDelhiPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -20,9 +20,9 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.rev-pumping-pnp-delhi').s
        return deferred.promise;
     }
 
-    this.editrevPumpingPnpDelhiData = function(reqJSON){
+    this.editPumpingDelhiPnpData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editRevPumpingPnpDelhiRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editPumpingDelhiPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
