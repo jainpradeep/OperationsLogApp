@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.pages.tundla', ['ui.bootstrap'])
+  angular.module('BlurAdmin.pages.tundla', ['BlurAdmin.pages.tundla.remarks','ui.bootstrap'])
     .config(routeConfig);
 
   /** @ngInject */
