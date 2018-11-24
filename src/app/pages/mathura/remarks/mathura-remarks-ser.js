@@ -1,4 +1,4 @@
-angular.module('BlurAdmin.pages.mathura.remarks').service('remarksService', function ($http,$q) {
+angular.module('BlurAdmin.pages.mathura.remarks').service('mathuraRemarksService', function ($http,$q) {
     this.message = '';
     this.getremarksData = function(reqJSON){
         var deferred = $q.defer();

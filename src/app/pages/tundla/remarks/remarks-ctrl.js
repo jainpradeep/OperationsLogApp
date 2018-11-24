@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, remarksService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, tundlaRemarksService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
@@ -72,7 +72,7 @@
     } 
     
     $scope.getremarks= function(){
-      remarksService.getremarksData(JSON.stringify({
+      tundlaRemarksService.getremarksData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
@@ -92,7 +92,7 @@
       data.editHistory = $scope.editableremarksHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      remarksService.editremarksData(JSON.stringify({
+      tundlaRemarksService.editremarksData(JSON.stringify({
           _id : $scope.remarks.remarksID,
           date: $scope.remarks.remarksDate,
           data: $scope.remarks.remarksData,

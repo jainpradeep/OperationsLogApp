@@ -1,9 +1,9 @@
-angular.module('BlurAdmin.pages.meerut.remarks').service('remarksService', function ($http,$q) {
+angular.module('BlurAdmin.pages.tundla.remarks').service('tundlaRemarksService', function ($http,$q) {
     this.message = '';
     this.getremarksData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getRemarksMeerutRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getRemarksTundlaRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.meerut.remarks').service('remarksService', funct
 
     this.editremarksData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editRemarksMeerutRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editRemarksTundlaRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
