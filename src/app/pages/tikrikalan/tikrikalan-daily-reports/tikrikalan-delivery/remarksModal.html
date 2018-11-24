@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">    Remarks</h3> 
+</div>
+
+<div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+    <div id="TextareaCtrl">
+            <a onbeforesave="editdeliveryTikrikalanRemark($data)" submit-on-enter="true" href="#" editable-textarea="deliveryTikrikalan.deliveryTikrikalanRemarks" e-rows="7" e-cols="40">
+                <pre>{{ deliveryTikrikalan.deliveryTikrikalanRemarks || 'no remarks' }}</pre>
+            </a>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <!-- <button class="btn btn-primary" type="button" ng-click="editRemarksModal()">Edit</button> -->
+    <button class="btn btn-warning" type="button" ng-click="cancelRemarksModal()">Cancel</button>
+</div>

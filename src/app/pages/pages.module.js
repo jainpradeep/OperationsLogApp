@@ -15,6 +15,8 @@
       'BlurAdmin.pages.mathura',
       'BlurAdmin.pages.tundla',
       'BlurAdmin.pages.meerut',
+      'BlurAdmin.pages.tikrikalan',
+      'BlurAdmin.pages.bharatpur',
       'BlurAdmin.pages.authSignIn'
     ])
     .config(routeConfig);

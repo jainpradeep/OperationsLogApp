@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.pages.meerut', ['BlurAdmin.pages.meerut.remarks','ui.bootstrap'])
+  angular.module('BlurAdmin.pages.meerut', ['BlurAdmin.pages.meerut.remarks','BlurAdmin.pages.meerut.meerut-daily-reports','ui.bootstrap'])
     .config(routeConfig);
 
   /** @ngInject */

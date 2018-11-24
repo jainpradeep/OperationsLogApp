@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-//,'BlurAdmin.pages.bijwasan.daily-reports.delivery-del-rev'
   angular.module('BlurAdmin.pages.mathura.mathura-daily-reports', ['ui.bootstrap'])
     .config(routeConfig);
 
