@@ -137,7 +137,7 @@
           data: $scope.DeliveryPnp.DeliveryPnpData,
           remarks: $scope.DeliveryPnp.DeliveryPnpRemarks
         })).then(function(){
-          $scope.getDeliveryPnp(Rev);
+          $scope.getDeliveryPnp();
         },function(){
           console.log("error")
         })      

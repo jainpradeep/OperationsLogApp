@@ -71,15 +71,15 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 12;
-rule.minute = 39;
+rule.hour = 15;
+rule.minute = 12;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
-        database.db('operationsDB').collection('deliveryPnpInitDB').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
+        database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -159,7 +159,31 @@ schedule.scheduleJob(rule, function() {
 
 });
 
-
+app.route('/getRemarksMathuraRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksMathura", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksMathura').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
 app.route('/editRemarksMathuraRecord')
     .post(function(req, res) {
         console.log(req.body)
@@ -186,14 +210,14 @@ app.route('/editRemarksMathuraRecord')
         })
     });
 
-app.route('/getRemarksMathuraRecord')
+app.route('/getDeliveryPnpRecord')
 .post(function(req, res) {
-    MongoClient.connect("mongodb://localhost:27017/remarksMathura", {
+    MongoClient.connect("mongodb://localhost:27017/deliveryPnp", {
         useNewUrlParser: true
     }, function(err, database) {
         if (err) return
         req.body.date = new Date(req.body.date)
-        database.db('operationsDB').collection('remarksMathura').aggregate([{
+        database.db('operationsDB').collection('deliveryPnp').aggregate([{
             $match: {
                 'date': {
                     $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
@@ -212,6 +236,89 @@ app.route('/getRemarksMathuraRecord')
         });
     })
 });
+
+
+app.route('/editDeliveryPnpRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/deliveryPnp", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('deliveryPnp').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+
+app.route('/getPumpingDelhiPnpRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/pumpingDelhiPnp", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('pumpingDelhiPnp').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
+    
+    
+    app.route('/editPumpingDelhiPnpRecord')
+        .post(function(req, res) {
+            console.log(req.body)
+            MongoClient.connect("mongodb://localhost:27017/pumpingDelhiPnp", {
+                useNewUrlParser: true
+            }, function(err, database) {
+                if (err) return
+                req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+                req.body.date = new Date(req.body.date)
+                database.db('operationsDB').collection('pumpingDelhiPnp').updateOne({
+                    "_id": req.body._id
+                }, {
+                    $set: req.body
+                }, function(err, result) {
+                    console.log(err)
+                    res.send(
+                        (err === null) ? {
+                            msg: 'success'
+                        } : {
+                            msg: err
+                        }
+                    );
+                });
+            })
+        });    
+
 
 app.route('/editRemarksBharatpurRecord')
     .post(function(req, res) {

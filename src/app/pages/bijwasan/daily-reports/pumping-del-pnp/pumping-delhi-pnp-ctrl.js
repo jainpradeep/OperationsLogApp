@@ -15,7 +15,7 @@
     $stateProvider
       .state('main.bijwasan.daily-reports.pumping-delhi-pnp', {
         url: '/pumping-delhi-pnp',
-        templateUrl: 'app/pages/bijwasan/daily-reports/pumping-delhi-pnp/pumping-delhi-pnp.html',
+        templateUrl: 'app/pages/bijwasan/daily-reports/pumping-del-pnp/pumping-delhi-pnp.html',
         title: 'Pumping Delhi Panipat  ',
         controller: 'pumping-delhi-pnp-ctrl',
         sidebarMeta: {
@@ -25,9 +25,6 @@
         authenticate: true
       });
   }
-
-
-
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, PumpingDelhiPnpService, $uibModal, $log, _) {
@@ -36,7 +33,7 @@
     $scope.openRemarks = function(){
       $scope.remarksModal =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/daily-reports/pumping-delhi-pnp/remarksmodal.html",
+          templateUrl: "/app/pages/bijwasan/daily-reports/pumping-del-pnp/remarksmodal.html",
           size: '',
         })
       }
@@ -65,7 +62,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/daily-reports/pumping-delhi-pnp/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/daily-reports/pumping-del-pnp/editHistoryModal.html",
           size: '',
         })
       };
@@ -137,7 +134,7 @@
           data: $scope.PumpingDelhiPnp.PumpingDelhiPnpData,
           remarks: $scope.PumpingDelhiPnp.PumpingDelhiPnpRemarks
         })).then(function(){
-          $scope.getpumpingDelhiPnp(Rev);
+          $scope.getpumpingDelhiPnp();
         },function(){
           console.log("error")
         })      

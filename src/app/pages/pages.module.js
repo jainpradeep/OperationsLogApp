@@ -14,6 +14,7 @@
       'BlurAdmin.pages.bijwasan',
       'BlurAdmin.pages.mathura',
       'BlurAdmin.pages.tundla',
+      'BlurAdmin.pages.meerut',
       'BlurAdmin.pages.authSignIn'
     ])
     .config(routeConfig);
