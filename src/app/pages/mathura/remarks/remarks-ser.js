@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.mathura.remarks').service('remarksService', func
     this.getremarksData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getremarksRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getRemarksMathuraRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.mathura.remarks').service('remarksService', func
 
     this.editremarksData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editremarksRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editRemarksMathuraRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

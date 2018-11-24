@@ -35,90 +35,90 @@
           <th ng-if = "isAdmin"></th>
         </tr>
       </thead>
-    <tr ng-repeat="data in delhiExMR.delExmrData | filter : selectedShift track by $index" class="editable-row">
-      <td>
-          <span >
-              {{ data.hours || '-' }}
-          </span>
-      </td>
-      <td class="select-td">    
-        <span editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-          {{ data.product }}
-        </span>
-      </td>
-      <td>
-        <span editable-number="data.seq_no" e-step="any" e-name="seq_no"  e-form="rowform" e-required>
-            {{ data.seq_no || '-' }}
-        </span>
-      </td>
+        <tr ng-repeat="data in delhiExMR.delExmrData | filter : selectedShift track by $index" class="editable-row">
+        <td>
+            <span >
+                {{ data.hours || '-' }}
+            </span>
+        </td>
+        <td class="select-td">    
+            <span editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
+            {{ data.product }}
+            </span>
+        </td>
+        <td>
+            <span editable-number="data.seq_no" e-step="any" e-name="seq_no"  e-form="rowform" e-required>
+                {{ data.seq_no || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.density" e-name="density" e-form="rowform" e-required>
-              {{ data.density || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.density" e-name="density" e-form="rowform" e-required>
+                {{ data.density || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.temperature" e-name="temperature" e-form="rowform" e-required>
-              {{ data.temperature || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.temperature" e-name="temperature" e-form="rowform" e-required>
+                {{ data.temperature || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required>
-              {{ data.fmr || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required>
+                {{ data.fmr || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.pumpingBypass" e-name="pumpingBypass" e-form="rowform" e-required>
-              {{ data.pumpingBypass || '-' }}
-          </span>
-      </td>
-      <td>
-          <span editable-number="data.flow_rate_delivery" e-name="flow_rate_delivery" e-form="rowform" e-required>
-              {{ data.flow_rate_delivery || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.pumpingBypass" e-name="pumpingBypass" e-form="rowform" e-required>
+                {{ data.pumpingBypass || '-' }}
+            </span>
+        </td>
+        <td>
+            <span editable-number="data.flow_rate_delivery" e-name="flow_rate_delivery" e-form="rowform" e-required>
+                {{ data.flow_rate_delivery || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.flow_rate_pumping" e-name="flow_rate_pumping" e-form="rowform" e-required>
-              {{ data.flow_rate_pumping || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.flow_rate_pumping" e-name="flow_rate_pumping" e-form="rowform" e-required>
+                {{ data.flow_rate_pumping || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
-              {{ data.tank_no || '-' }}
-          </span>
-      </td>
+        <td>
+            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
+                {{ data.tank_no || '-' }}
+            </span>
+        </td>
 
-      <td>
-          <span editable-number="data.tank_dip" e-name="tank_dip" e-form="rowform" e-required>
-              {{ data.tank_dip || '-' }}
-          </span>
-      </td>
-      <td>
-          <span editable-number="data.flow_Difference" e-name="flow_Difference" e-form="rowform" e-required>
-              {{ data.flow_Difference || '-' }}
-          </span>
-      </td>
-      <td ng-show = "isAdmin">
-        <form editable-form name="rowform" onaftersave = "editDelExMrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
-              shown="inserted == data">
-          <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
-            Save
-          </button>
-          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
-            Cancel
-          </button>
-        </form>
-        <div class="buttons" ng-show="!rowform.$visible">
-          <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editDelhiExMrStart(data)">Edit</button>
-          <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
-        </div>
-      </td>
-    </tr>
+        <td>
+            <span editable-number="data.tank_dip" e-name="tank_dip" e-form="rowform" e-required>
+                {{ data.tank_dip || '-' }}
+            </span>
+        </td>
+        <td>
+            <span editable-number="data.flow_Difference" e-name="flow_Difference" e-form="rowform" e-required>
+                {{ data.flow_Difference || '-' }}
+            </span>
+        </td>
+        <td ng-show = "isAdmin">
+            <form editable-form name="rowform" onaftersave = "editDelExMrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                shown="inserted == data">
+            <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                Save
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                Cancel
+            </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editDelhiExMrStart(data)">Edit</button>
+            <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
+            </div>
+        </td>
+        </tr>
   </table>
   <div class="button-wrapper ng-scope">
       <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>

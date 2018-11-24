@@ -23,6 +23,13 @@ var revPumpingPnpDelhiInitDB = require('./revPumpingPnpDelhiInitDB')
 var delDeliveryInitDB = require('./delDeliveryInitDB');
 var delDeliveryRevInitDB = require('./delDeliveryRevInitDB');
 var deliveryPnpInitDB = require('./deliveryPnpInitDB');
+var remarksMathuraInitDB = require('./remarksMathuraInitDB');
+var remarksBijwasanInitDB = require('./remarksBijwasanInitDB');
+var remarksTundlaInitDB = require('./remarksTundlaInitDB');
+var remarksMeerutInitDB = require('./remarksMeerutInitDB');
+var remarksBhartpurInitDB = require('./remarksBhartpurInitDB');
+var remarksTikrikalanInitDB = require('./remarksTikrikalanInitDB');
+
 var pumpingDelhiPnpInitDB = require('./pumpingDelhiPnpInitDB');
 
 var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
@@ -64,19 +71,43 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 15;
-rule.minute = 6;
+rule.hour = 12;
+rule.minute = 29;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
-        database.db('operationsDB').collection('deliveryPnpInitDB').insertOne(deliveryPnpInitDB.DeliveryPnpInitDB, function(er, records) {
+        database.db('operationsDB').collection('deliveryPnpInitDB').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
-        database.db('operationsDB').collection('pumpingDelhiPnpInitDB').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
+        database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -126,6 +157,325 @@ schedule.scheduleJob(rule, function() {
       console.error(err);
   });
 
+});
+
+
+app.route('/editRemarksMathuraRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksMathura", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksMathura').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksMathuraRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksMathura", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksMathura').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+app.route('/editRemarksBharatpurRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksBharatpur", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksBharatpur').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksBharatpurRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksBharatpur", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksBharatpur').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+app.route('/editRemarksMeerutRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksMeerut", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksMeerut').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksMeerutRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksMeerut", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksMeerut').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+app.route('/editRemarksTundlaRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksTundla", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksTundla').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksTundlaRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksTundla", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksTundla').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+app.route('/editRemarksTikrikalanRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksTikrikalan", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksTikrikalan').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksTikrikalanRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksTikrikalan", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksTikrikalan').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+app.route('/editRemarksBijwasanRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/remarksBijwasan", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('remarksBijwasan').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+app.route('/getRemarksBijwasanRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/remarksBijwasan", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('remarksBijwasan').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
 });
 
 app.route('/editDelhiExMrRecord')
