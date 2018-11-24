@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.tundla.tundla-daily-reports.delivery-tundla').se
     this.getdeliveryTundlaData  = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDeliveryTundla',reqJSON,{
+        $http.post('http://localhost:3006/getDeliveryTundla',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.tundla.tundla-daily-reports.delivery-tundla').se
 
     this.editdeliveryTundlaData  = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDeliveryTundla',reqJSON,{
+        $http.post('http://localhost:3006/editDeliveryTundla',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

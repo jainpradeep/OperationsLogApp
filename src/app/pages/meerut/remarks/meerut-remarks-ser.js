@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.meerut.remarks').service('meerutRemarksService',
     this.getremarksData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getRemarksMeerutRecord',reqJSON,{
+        $http.post('http://localhost:3006/getRemarksMeerutRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.meerut.remarks').service('meerutRemarksService',
 
     this.editremarksData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editRemarksMeerutRecord',reqJSON,{
+        $http.post('http://localhost:3006/editRemarksMeerutRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

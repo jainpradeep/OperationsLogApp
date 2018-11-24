@@ -12,15 +12,26 @@
     borderDark: '#aaaaaa',
   };
 
+
+  
   // main functional color scheme
+  // main color scheme
   var colorScheme = {
-    primary: '#209e91',
+      primary: '#209e91',
     info: '#2dacd1',
     success: '#90b900',
     warning: '#dfb81c',
     danger: '#e85656',
   };
 
+  // background color palette
+  var bgColorPalette = {
+    blueStone: '#005562',
+    surfieGreen: '#0e8174',
+    silverTree: '#6eba8c',
+    gossip: '#b9f2a1',
+    white: '#ffffff',
+  };
   // dashboard colors for charts
   var dashboardColors = {
     blueStone: '#005562',

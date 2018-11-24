@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.tundla.remarks').service('tundlaRemarksService',
     this.getremarksData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getRemarksTundlaRecord',reqJSON,{
+        $http.post('http://localhost:3006/getRemarksTundlaRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.tundla.remarks').service('tundlaRemarksService',
 
     this.editremarksData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editRemarksTundlaRecord',reqJSON,{
+        $http.post('http://localhost:3006/editRemarksTundlaRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

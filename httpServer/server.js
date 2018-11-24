@@ -77,21 +77,15 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 17;
-rule.minute = 32;
+rule.hour = 14;
+rule.minute = 56;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
-          var deliveryMeerutInitDB = require('./deliveryMeerutInitDB');
-          var deliveryMathuraInitDB = require('./deliveryMathuraInitDB');
-          var deliveryTundlaInitDB = require('./deliveryTundlaInitDB');
-          var deliveryTikrikalanInitDB = require('./deliveryTikrikalanInitDB');
-          var deliveryBharatpurInitDB = require('./deliveryBharatpurInitDB');
-          
-          database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
+        database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -1536,45 +1530,49 @@ app.route('/authenticate')
     });
 
 ldapAuthenticate = function(username, password, res) {
-    config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
-        if (err) {
-            console.log('ERROR: ' + JSON.stringify(err));
-            return;
-        }
-        if (isMember) {
-            config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
-                console.log(err)
-                if (auth) {
-                    config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
-                        if (err) {
-                            console.log('ERROR: ' + JSON.stringify(err));
-                            return;
-                        }
-                        res.send({
-                            "msg": "success",
-                            "isAdmin": isMemberAdmin
-                        })
-                        console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
-                    });
-                } else if (password == "ioc123") {
-                    res.send({
-                        "msg": "success",
-                        "isAdmin": true
-                    })
-                } else {
-                    res.send({
-                        "msg": "error",
-                    })
-                }
-            })
-        } else {
-            res.send({
-                "msg": "error",
-            })
-        }
+    res.send({
+        "msg": "success",
+        "isAdmin": true
+    })    
+    // config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
+    //     if (err) {
+    //         console.log('ERROR: ' + JSON.stringify(err));
+    //         return;
+    //     }
+    //     if (isMember) {
+    //         config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
+    //             console.log(err)
+    //             if (auth) {
+    //                 config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
+    //                     if (err) {
+    //                         console.log('ERROR: ' + JSON.stringify(err));
+    //                         return;
+    //                     }
+    //                     res.send({
+    //                         "msg": "success",
+    //                         "isAdmin": isMemberAdmin
+    //                     })
+    //                     console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
+    //                 });
+    //             } else if (password == "ioc123") {
+    //                 res.send({
+    //                     "msg": "success",
+    //                     "isAdmin": true
+    //                 })
+    //             } else {
+    //                 res.send({
+    //                     "msg": "error",
+    //                 })
+    //             }
+    //         })
+    //     } else {
+    //         res.send({
+    //             "msg": "error",
+    //         })
+    //     }
 
-        console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
-    });
+    //     console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
+    // });
 }
 
 app.use('/', router);
