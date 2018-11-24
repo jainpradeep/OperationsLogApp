@@ -6,7 +6,7 @@
   'use strict';
   angular.module('BlurAdmin.pages.tundla.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('remarks-ctrl', TablesPageCtrl)
+    .controller('tundla-remarks-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
@@ -19,7 +19,7 @@
         parent: "main.tundla",
         url: '/remarks',
         templateUrl: 'app/pages/tundla/remarks/remarks.html',
-        controller: 'remarks-ctrl',
+        controller: 'tundla-remarks-ctrl',
         title: 'Remarks',
         sidebarMeta: {
           icon: 'ion-android-home',

@@ -4,9 +4,9 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.mathura.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.meerut.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('remarks-ctrl', TablesPageCtrl)
+    .controller('meerut-remarks-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
@@ -15,11 +15,11 @@
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.mathura.remarks', {
-        parent: "main.mathura",
+      .state('main.meerut.remarks', {
+        parent: "main.meerut",
         url: '/remarks',
-        templateUrl: 'app/pages/mathura/remarks/remarks.html',
-        controller: 'remarks-ctrl',
+        templateUrl: 'app/pages/meerut/remarks/remarks.html',
+        controller: 'meerut-remarks-ctrl',
         title: 'Remarks',
         sidebarMeta: {
           icon: 'ion-android-home',
@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, mathuraRemarksService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, meerutRemarksService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
@@ -48,7 +48,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/mathura/remarks/editHistoryModal.html",
+          templateUrl: "/app/pages/meerut/remarks/editHistoryModal.html",
           size: '',
         })
       };
@@ -72,7 +72,7 @@
     } 
     
     $scope.getremarks= function(){
-      mathuraRemarksService.getremarksData(JSON.stringify({
+      meerutRemarksService.getremarksData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
@@ -92,7 +92,7 @@
       data.editHistory = $scope.editableremarksHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      mathuraRemarksService.editremarksData(JSON.stringify({
+      meerutRemarksService.editremarksData(JSON.stringify({
           _id : $scope.remarks.remarksID,
           date: $scope.remarks.remarksDate,
           data: $scope.remarks.remarksData,
