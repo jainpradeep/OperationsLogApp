@@ -1,0 +1,48 @@
+<div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Edit History</h3>
+    </div>
+    <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+        
+        <div class="container">
+            <div class="row">
+            <div class="col-sm">
+                <table  class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <th>Product</th>
+                        <th>SeqnNo</th>
+                        <th>RmrPumping</th>
+                        <th>Remarks</th>
+                    </thead>
+                    <tr ng-repeat="data in flattenedHourEditHistory track by $index">
+                        <td>
+                            <span >
+                                    {{data.product }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                    {{data.seqnNo }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.fmrPumping }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.remarks }}  
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="modal-footer">
+        <!-- <button class="btn btn-primary" type="button" ng-click="pc.ok()">OK</button> -->
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>

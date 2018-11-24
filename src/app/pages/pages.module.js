@@ -13,6 +13,7 @@
       'BlurAdmin.pages.dashboard',
       'BlurAdmin.pages.bijwasan',
       'BlurAdmin.pages.mathura',
+      'BlurAdmin.pages.tundla',
       'BlurAdmin.pages.authSignIn'
     ])
     .config(routeConfig);
