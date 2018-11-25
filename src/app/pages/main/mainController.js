@@ -9,7 +9,7 @@
  
   /** @ngInject */
   function MainCntrl($scope,$rootScope, toasterService){
-    toasterService.openInfoToast("Welcome!");
+    toasterService.openInfoToast("Welcome User : " + localStorage.getItem('username'));
   }
 
 })();

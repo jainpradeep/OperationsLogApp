@@ -4,9 +4,9 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bharatpur.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.bijwasan.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('bharatpur-remarks-ctrl', TablesPageCtrl)
+    .controller('bijwasan-remarks-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
@@ -15,11 +15,11 @@
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.bharatpur.remarks', {
-        parent: "main.bharatpur",
+      .state('main.bijwasan.remarks', {
+        parent: "main.bijwasan",
         url: '/remarks',
-        templateUrl: 'app/pages/bharatpur/remarks/remarks.html',
-        controller: 'bharatpur-remarks-ctrl',
+        templateUrl: 'app/pages/bijwasan/remarks/remarks.html',
+        controller: 'bijwasan-remarks-ctrl',
         title: 'Remarks',
         sidebarMeta: {
           icon: 'ion-android-home',
@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bharatpurRemarksService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bijwasanRemarksService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
@@ -48,7 +48,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bharatpur/remarks/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/remarks/editHistoryModal.html",
           size: '',
         })
       };
@@ -72,7 +72,7 @@
     } 
     
     $scope.getremarks= function(){
-      bharatpurRemarksService.getremarksData(JSON.stringify({
+      bijwasanRemarksService.getRemarksData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
@@ -92,7 +92,7 @@
       data.editHistory = $scope.editableremarksHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      bharatpurRemarksService.editremarksData(JSON.stringify({
+      bijwasanRemarksService.editRemarksData(JSON.stringify({
           _id : $scope.remarks.remarksID,
           date: $scope.remarks.remarksDate,
           data: $scope.remarks.remarksData,

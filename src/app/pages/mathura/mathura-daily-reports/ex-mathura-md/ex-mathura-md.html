@@ -1,0 +1,76 @@
+<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+  <div class="panel-body" > 
+    <div class = "row">
+      <div class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
+        <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+          Add New Record
+      </div>
+    </div>  
+      <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr rowspan="2">
+              <th colspan="2">Batch no</th>
+              <th colspan="1">Tank no</th>
+              <th colspan="1">FMR Qty.</th>
+              <th colspan="1">Dip Qty.</th>      
+              <th colspan="1" ng-if = "isAdmin">Actions</th>
+            </tr>
+            <tr rowspan="2">
+              <th>Product</th>
+              <th>Seq. No</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th ng-if = "isAdmin"></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="data in exMathuraMD.exMathuraMDData track by $index" class="editable-row">
+          <td class="select-td">    
+            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in products">
+              {{ data.product }}
+            </span>
+          </td>
+          <td>
+            <span editable-number="data.seq_no" e-step="any" e-name="seq_no"  e-form="rowform" e-required>
+                {{ data.seq_no || '-' }}
+            </span>
+          </td>
+          <td>
+            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
+                {{ data.tank_no || '-' }}
+            </span>
+          </td>
+          <td>
+              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required>
+                  {{ data.fmr || '-' }}
+              </span>
+          </td>
+          <td>
+              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required>
+                  {{ data.dip_qty || '-' }}
+              </span>
+          </td>
+          <td ng-show = "isAdmin">
+            <form editable-form name="rowform" onaftersave = "editexMathuraMDData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                  shown="inserted == data">
+              <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                Save
+              </button>
+              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                Cancel
+              </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editexMathuraMDStart(data)">Edit</button>
+              <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="button-wrapper ng-scope">
+        <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+    </div>
+  </div>
+</div>
+
+

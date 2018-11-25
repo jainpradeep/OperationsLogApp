@@ -4,9 +4,9 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bharatpur.remarks', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.bijwasan.bijwasan-product-planning', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('bharatpur-remarks-ctrl', TablesPageCtrl)
+    .controller('bijwasan-bijwasan-product-planning-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
@@ -15,12 +15,12 @@
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.bharatpur.remarks', {
-        parent: "main.bharatpur",
-        url: '/remarks',
-        templateUrl: 'app/pages/bharatpur/remarks/remarks.html',
-        controller: 'bharatpur-remarks-ctrl',
-        title: 'Remarks',
+      .state('main.bijwasan.bijwasan-product-planning', {
+        parent: "main.bijwasan",
+        url: '/bijwasan-product-planning',
+        templateUrl: 'app/pages/bijwasan/bijwasan-product-planning/bijwasan-product-planning.html',
+        controller: 'bijwasan-bijwasan-product-planning-ctrl',
+        title: 'Pproduct Planning',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bharatpurRemarksService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bijwasanProductPlanningService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
@@ -48,7 +48,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bharatpur/remarks/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/bijwasan-product-planning/editHistoryModal.html",
           size: '',
         })
       };
@@ -64,41 +64,41 @@
     $scope.selectedShift = "Shift A";
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
-      $scope.remarks = {};
-      $scope.getremarks();
+      $scope.bijwasanProductPlanning = {};
+      $scope.getbijwasanProductPlanning();
     });
-    $scope.remarksSelectShift =function(shift){
+    $scope.bijwasanProductPlanningSelectShift =function(shift){
       $scope.selectedShift = shift.name;
     } 
     
-    $scope.getremarks= function(){
-      bharatpurRemarksService.getremarksData(JSON.stringify({
+    $scope.getbijwasanProductPlanning= function(){
+      bijwasanProductPlanningService.getBijwasanProductPlanningData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.remarks.remarksData = JSON.parse(data.data.data)[0].data;
-          $scope.remarks.remarksDate = JSON.parse(data.data.data)[0].date;
-          $scope.remarks.remarksID = JSON.parse(data.data.data)[0]._id;
+          $scope.bijwasanProductPlanning.bijwasanProductPlanningData = JSON.parse(data.data.data)[0].data;
+          $scope.bijwasanProductPlanning.bijwasanProductPlanningDate = JSON.parse(data.data.data)[0].date;
+          $scope.bijwasanProductPlanning.bijwasanProductPlanningID = JSON.parse(data.data.data)[0]._id;
         },
         function(msg) {
         });
     }
 
-    $scope.editremarksStart = function(data){
-      $scope.editableremarksHourlyRec = angular.copy(data);
+    $scope.editBijwasanProductPlanningStart = function(data){
+      $scope.editableBijwasanProductPlanningHourlyRec = angular.copy(data);
     }
 
-    $scope.editremarksData = function(data, index){
-      data.editHistory = $scope.editableremarksHourlyRec;
+    $scope.editBijwasanProductPlanningData = function(data, index){
+      data.editHistory = $scope.editableBijwasanProductPlanningHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      bharatpurRemarksService.editremarksData(JSON.stringify({
-          _id : $scope.remarks.remarksID,
-          date: $scope.remarks.remarksDate,
-          data: $scope.remarks.remarksData,
+      bijwasanProductPlanningService.editBijwasanProductPlanningData(JSON.stringify({
+          _id : $scope.bijwasanProductPlanning.bijwasanProductPlanningID,
+          date: $scope.bijwasanProductPlanning.bijwasanProductPlanningDate,
+          data: $scope.bijwasanProductPlanning.bijwasanProductPlanningData,
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getremarks();
+          $scope.getbijwasan-product-planning();
         },function(){
           console.log("error")
         })      

@@ -1,4 +1,4 @@
-exports.deliveryMathuraInitDB = {
+exports.exMathuraMDInitDB = {
     date : new Date(),
     data :  [{
         product:"",

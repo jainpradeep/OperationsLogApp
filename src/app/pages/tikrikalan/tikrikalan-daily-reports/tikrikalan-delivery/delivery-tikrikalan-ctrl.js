@@ -86,6 +86,16 @@
     $scope.deliveryTikrikalanSelectShift =function(shift){
       $scope.selectedShift = shift.name;
     } 
+
+    $scope.addNewRecord = function(){
+      $scope.deliveryTikrikalan.deliveryTikrikalanData.push({
+        product:"",
+        seq_no:"",
+        tank_no:"",
+        fmr:"",
+        dip_qty:"",
+      })
+    }
     
     $scope.getdeliveryTikrikalan= function(){
       deliveryTikrikalanService.getdeliveryTikrikalanData(JSON.stringify({

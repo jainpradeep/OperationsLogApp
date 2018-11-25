@@ -87,6 +87,16 @@
       $scope.selectedShift = shift.name;
     } 
     
+    $scope.addNewRecord = function(){
+      $scope.deliveryBharatpur.deliveryBharatpurData.push({
+        product:"",
+        seq_no:"",
+        tank_no:"",
+        fmr:"",
+        dip_qty:"",
+      })
+    }
+
     $scope.getdeliveryBharatpur= function(){
       deliveryBharatpurService.getdeliveryBharatpurData(JSON.stringify({
         date : $scope.customDate
