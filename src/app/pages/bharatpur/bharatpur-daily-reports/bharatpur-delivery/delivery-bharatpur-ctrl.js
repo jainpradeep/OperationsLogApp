@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryBharatpurService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryBharatpurService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -108,13 +108,13 @@
     $scope.editdeliveryBharatpurRemark = function(remark){
       
       $scope.deliveryBharatpur.deliveryBharatpurRemarks = remark 
-
       deliveryBharatpurService.editdeliveryBharatpurData(JSON.stringify({
         _id : $scope.deliveryBharatpur.deliveryBharatpurID,
         date: $scope.deliveryBharatpur.deliveryBharatpurDate,
         data: $scope.deliveryBharatpur.deliveryBharatpurData,
         remarks: $scope.deliveryBharatpur.deliveryBharatpurRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getdeliveryBharatpur();
       },function(){
         console.log("error")
@@ -131,12 +131,13 @@
           data: $scope.deliveryBharatpur.deliveryBharatpurData,
           remarks:  $scope.deliveryBharatpur.deliveryBharatpurRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getdeliveryBharatpur();
         },function(){
           console.log("error")
         })      
     }
-
+    
     editableOptions.theme = 'bs3';
     editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
     editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';

@@ -30,7 +30,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, revPumpingPnpDelhiService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, revPumpingPnpDelhiService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
  
     $scope.openRemarks = function(){
@@ -121,6 +121,7 @@
         data: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiData,
         remarks: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getRevPumpingPnpDelhi();
       },function(){
         console.log("error")
@@ -137,6 +138,7 @@
           data: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiData,
           remarks: $scope.revPumpingPnpDelhi.revPumpingPnpDelhiRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getRevPumpingPnpDelhi();
         },function(){
           console.log("error")

@@ -14,6 +14,7 @@
       .state('main', {
         url: '/main',
         templateUrl: 'app/pages/main/main.html',
+        controller : "main-ctrl",
         redirectTo: 'main.dashboard',
         authenticate: true
       });

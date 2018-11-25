@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExPrService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExPrService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -115,6 +115,7 @@
         data: $scope.delhiExPR.delExprData,
         remarks: $scope.delhiExPR.delExPrRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getDelhiExPR();
       },function(){
         console.log("error")
@@ -131,6 +132,7 @@
           data: $scope.delhiExPR.delExprData,
           remarks:  $scope.delhiExPR.delExPrRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getDelhiExPR();
         },function(){
           console.log("error")

@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, proInStationLinefillService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, proInStationLinefillService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     
     $scope.open = function(data) {
@@ -95,6 +95,7 @@
           data: $scope.productInStationLinefill.proInStationLinefillData,
           remarks:  $scope.productInStationLinefill.proInStationLinefillRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getProductInStationLinefill();
         },function(){
           console.log("error")

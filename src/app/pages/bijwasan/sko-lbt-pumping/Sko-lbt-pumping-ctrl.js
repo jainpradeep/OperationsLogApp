@@ -28,7 +28,7 @@
     }
 
     /** @ngInject */
-  function SkoLbtPumpingPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, skoLbtPumpingService, $uibModal, $log, _) {
+  function SkoLbtPumpingPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, skoLbtPumpingService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -111,6 +111,7 @@
         data: $scope.skoLbtPumping.skoLbtPumpingData,
         remarks: $scope.skoLbtPumping.skoLbtPumpingRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getSkoLbtPumping();
       },function(){
         console.log("error")
@@ -127,6 +128,7 @@
           data: $scope.skoLbtPumping.skoLbtPumpingData,
           remarks:  $scope.skoLbtPumping.skoLbtPumpingRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getSkoLbtPumping();
         },function(){
           console.log("error")

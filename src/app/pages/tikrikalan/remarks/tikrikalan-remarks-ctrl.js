@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, tikrikalanRemarksService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, tikrikalanRemarksService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
@@ -97,6 +97,7 @@
           date: $scope.remarks.remarksDate,
           data: $scope.remarks.remarksData,
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getremarks();
         },function(){
           console.log("error")

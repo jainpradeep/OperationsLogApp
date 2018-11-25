@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryTikrikalanService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryTikrikalanService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -115,6 +115,7 @@
         data: $scope.deliveryTikrikalan.deliveryTikrikalanData,
         remarks: $scope.deliveryTikrikalan.deliveryTikrikalanRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getdeliveryTikrikalan();
       },function(){
         console.log("error")
@@ -131,6 +132,7 @@
           data: $scope.deliveryTikrikalan.deliveryTikrikalanData,
           remarks:  $scope.deliveryTikrikalan.deliveryTikrikalanRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getdeliveryTikrikalan();
         },function(){
           console.log("error")

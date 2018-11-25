@@ -31,7 +31,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, equiRunningHrsBijService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, equiRunningHrsBijService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -110,6 +110,7 @@
         data: $scope.equiRunningHrsBijwasan.equiRunningHrsBijData,
         remarks: $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getEquiRunningHrsBijwasan();
       },function(){
         console.log("error")
@@ -126,6 +127,7 @@
         data: $scope.equiRunningHrsBijwasan.equiRunningHrsBijData,
         remarks: $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks  
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getEquiRunningHrsBijwasan();
         },function(){
           console.log("error")

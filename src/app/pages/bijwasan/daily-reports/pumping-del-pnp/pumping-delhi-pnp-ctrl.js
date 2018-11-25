@@ -27,7 +27,7 @@
   }
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, PumpingDelhiPnpService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, PumpingDelhiPnpService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
  
     $scope.openRemarks = function(){
@@ -118,6 +118,7 @@
         data: $scope.PumpingDelhiPnp.PumpingDelhiPnpData,
         remarks: $scope.PumpingDelhiPnp.PumpingDelhiPnpRemarks
       })).then(function(){
+        toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getPumpingDelhiPnp();
       },function(){
         console.log("error")
@@ -134,6 +135,7 @@
           data: $scope.PumpingDelhiPnp.PumpingDelhiPnpData,
           remarks: $scope.PumpingDelhiPnp.PumpingDelhiPnpRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getpumpingDelhiPnp();
         },function(){
           console.log("error")
