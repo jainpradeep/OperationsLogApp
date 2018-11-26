@@ -6,7 +6,19 @@
     </li>
  </ul>
 
-<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+ <div class="row" ng-if = "!bijwasanProductPlanning.bijwasanProductPlanningData">
+    <div class="loader">Loading...</div>
+  </div>
+
+    <div ng-if = "bijwasanProductPlanning.bijwasanProductPlanningData &&  bijwasanProductPlanning.bijwasanProductPlanningData.length == 0">
+      <div class="alert">
+          <h3>
+            <strong>Sorry!</strong> No records fould as per the set filters
+          </h3>
+      </div>
+    </div>  
+   
+<div ng-if = "bijwasanProductPlanning.bijwasanProductPlanningData &&  bijwasanProductPlanning.bijwasanProductPlanningData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
     <div class="panel-body" > 
         <div class="ng-scope" ng-repeat = "data in bijwasanProductPlanning.bijwasanProductPlanningData | filter : selectedShift track by $index">
             <table cellspacing="20" class="table table-hover table-condensed">
@@ -38,7 +50,7 @@
                         </tr>   
 
                         <tr>
-                            <th width= "50%" style ="text-align: right; padding-top: 8px">Remarks</th>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Tanks with P/L</th>
                                     <td style ="border-top : 0px" class="editable-row">
                                             <div editable-textArea="data.tanksWithPL" e-name="tanksWithPL" e-form="rowform">
                                                     {{ data.tanksWithPL }}

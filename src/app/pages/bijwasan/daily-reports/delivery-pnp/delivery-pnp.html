@@ -1,4 +1,16 @@
-<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div class="row" ng-if = "!DeliveryPnp.DeliveryPnpData">
+  <div class="loader">Loading...</div>
+</div>
+
+  <div ng-if = "DeliveryPnp.DeliveryPnpData &&  DeliveryPnp.DeliveryPnpData.length == 0">
+    <div class="alert">
+        <h3>
+          <strong>Sorry!</strong> No records fould as per the set filters
+        </h3>
+    </div>
+  </div>  
+ 
+<div ng-if = "DeliveryPnp.DeliveryPnpData &&  DeliveryPnp.DeliveryPnpData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
   <div class="panel-body" > 
     <div class = "row">
       <div class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
@@ -6,7 +18,6 @@
           Add New Record
       </div>
     </div>  
-      
     <table class="table table-bordered table-hover table-condensed">
         <thead>
             <tr rowspan="2">
