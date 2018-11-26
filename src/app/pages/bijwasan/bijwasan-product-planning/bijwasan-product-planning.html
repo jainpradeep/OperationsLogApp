@@ -12,41 +12,56 @@
             <table cellspacing="20" class="table table-hover table-condensed">
                 <tbody>
                     <td style ="border-top : 0px">
-                            <tr>
-                                    <th width= "50%" style ="text-align: right; padding-top: 8px">product</th>
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Planning</th>
                                     <td style ="border-top : 0px" class="editable-row">
-                                                <div editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-                                                        {{data.product }}  
-                                                    </div>
-            
+                                            <div editable-textArea="data.plan" e-name="plan" e-form="rowform">
+                                                    {{ data.plan }}
+                                                </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th width= "50%" style ="text-align: right; padding-top: 8px">seqnNo</th>
-                                    <td style ="border-top : 0px" border: none; class="editable-row">
-                                            <div editable-number="data.seqnNo" e-name="seqnNo" e-form="rowform">
-                                                    {{ data.seqnNo }}
-                                                    </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th width= "50%" style ="text-align: right; padding-top: 8px">fmrPumping</th>
+                        </tr>   
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">TK T/O-H/O Details</th>
                                     <td style ="border-top : 0px" class="editable-row">
-                                            <div editable-text="data.fmrPumping" e-name="fmrPumping" e-form="rowform">
-                                                    {{ data.fmrPumping }}
-                                                    </div>
+                                            <div editable-textArea="data.toHoDetails" e-name="toHoDetails" e-form="rowform">
+                                                    {{ data.toHoDetails }}
+                                                </div>
                                     </td>
-                                </tr>      
-                                <tr>
-                                    <th width= "50%" style ="text-align: right; padding-top: 8px">bijwasanProductPlanning</th>
-                                            <td style ="border-top : 0px" class="editable-row">
-                                                    <div editable-textArea="data.bijwasanProductPlanning" e-name="bijwasanProductPlanning" e-form="rowform">
-                                                            {{ data.bijwasanProductPlanning }}
-                                                        </div>
-                                            </td>
-                                </tr>
-                    </td>
+                        </tr>   
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Equipments (N/A)</th>
+                                    <td style ="border-top : 0px" class="editable-row">
+                                            <div editable-textArea="data.equipments" e-name="equipments" e-form="rowform">
+                                                    {{ data.equipments }}
+                                                </div>
+                                    </td>
+                        </tr>   
 
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Remarks</th>
+                                    <td style ="border-top : 0px" class="editable-row">
+                                            <div editable-textArea="data.tanksWithPL" e-name="tanksWithPL" e-form="rowform">
+                                                    {{ data.tanksWithPL }}
+                                                </div>
+                                    </td>
+                        </tr>   
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Tank to be T/O</th>
+                                    <td style ="border-top : 0px" class="editable-row">
+                                            <div editable-textArea="data.tankToBeTO" e-name="tankToBeTO" e-form="rowform">
+                                                    {{ data.tankToBeTO }}
+                                                </div>
+                                    </td>
+                        </tr>              
+                        <tr>
+                            <th width= "50%" style ="text-align: right; padding-top: 8px">Tank to be H/O</th>
+                                    <td style ="border-top : 0px" class="editable-row">
+                                            <div editable-textArea="data.tankToBeHO" e-name="tankToBeHO" e-form="rowform">
+                                                    {{ data.tankToBeHO }}
+                                                </div>
+                                    </td>
+                        </tr>               
+                    </td>
                 </tbody>
             </table>
             <center>

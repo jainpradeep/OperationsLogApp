@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.equi-running-hrs-bij').service('equiRun
     this.getEquiRunningHrsBijData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://localhost:3006/getEquiRunningHrsBijwasanRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getEquiRunningHrsBijwasanRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.equi-running-hrs-bij').service('equiRun
 
     this.editDelExMrData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://localhost:3006/editEquiRunningHrsBijwasanRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editEquiRunningHrsBijwasanRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

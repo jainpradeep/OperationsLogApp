@@ -20,7 +20,7 @@
         url: '/bijwasan-product-planning',
         templateUrl: 'app/pages/bijwasan/bijwasan-product-planning/bijwasan-product-planning.html',
         controller: 'bijwasan-bijwasan-product-planning-ctrl',
-        title: 'Pproduct Planning',
+        title: 'Product Planning',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
@@ -100,7 +100,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getbijwasan-product-planning();
         },function(){
-          console.log("error")
+          toasterService.openErrorToast("Something went wrong. Please contact the IS department!");
         })      
     }
 

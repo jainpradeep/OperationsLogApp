@@ -8,30 +8,53 @@
             <div class="col-sm">
                 <table  class="table table-bordered table-hover table-condensed">
                     <thead>
-                        <th>Product</th>
-                        <th>SeqnNo</th>
-                        <th>RmrPumping</th>
-                        <th>Remarks</th>
+                        <th>Planning</th>
+                        <th>TK T/O-H/O Details</th>
+                        <th>Equipments (N/A)</th>
+                        <th>Tanks with P/L</th>
+                        <th>Tank to be T/O</th>
+                        <th>Tank to be H/O</th>
+                        <th>Officer</th>
                     </thead>
                     <tr ng-repeat="data in flattenedHourEditHistory track by $index">
                         <td>
                             <span >
-                                    {{data.product }}  
+                                {{data.plan || '-' }}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                    {{data.seqnNo }}  
+                                {{data.toHoDetails || '-' }}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                {{data.fmrPumping }}  
+                                {{data.equipments || '-' }}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                {{data.remarks }}  
+                                {{data.tanksWithPL || '-' }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.tankToBeTO || '-' }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.tankToBeHO || '-' }}  
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.editedDate| date : "short"  || '-' }} 
+                            </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.officer|| '-' }}  
                             </span>
                         </td>
                     </tr>

@@ -124,7 +124,7 @@
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getdelhiDeliveryRev();
       },function(){
-        console.log("error")
+        toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
     }
 
@@ -141,7 +141,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getdelhiDelivery(Rev);
         },function(){
-          console.log("error")
+          toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      
     }
 

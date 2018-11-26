@@ -58,10 +58,10 @@
       toastr.clear();
     };
 
-    this.openErrorToast = function () {
+    this.openErrorToast = function (msg) {
       var toastType = this.types[1];
       var toastQuote = this.messages[1];
-      openedToasts.push(toastr[toastType]('Error', 'Something went wrong!'));
+      openedToasts.push(toastr[toastType]('Error', msg));
       this.optionsStr = "toastr." + "Error" + "(\'" + toastQuote.message + "\', \'" + toastQuote.title + "', " + JSON.stringify(toastQuote.options || {}, null, 2) + ")";
     };
 
@@ -72,10 +72,10 @@
       this.optionsStr = "toastr." + toastType + "(\'" + toastQuote.message + "\', \'" + toastQuote.title + "', " + JSON.stringify(toastQuote.options || {}, null, 2) + ")";
     };
 
-    this.openWarningToast = function () {
+    this.openWarningToast = function (msg) {
       var toastType = this.types[3];
       var toastQuote = this.messages[3];
-      openedToasts.push(toastr[toastType]('Warning', 'This might create problems later!'));
+      openedToasts.push(toastr[toastType]('Warning', msg));
       this.optionsStr = "toastr." + toastType + "(\'" + toastQuote.message + "\', \'" + toastQuote.title + "', " + JSON.stringify(toastQuote.options || {}, null, 2) + ")";
     };
 

@@ -131,7 +131,7 @@
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getexMathuraMTPL();
       },function(){
-        console.log("error")
+        toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
     }
 
@@ -148,7 +148,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getexMathuraMTPL();
         },function(){
-          console.log("error")
+          toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      
     }
 

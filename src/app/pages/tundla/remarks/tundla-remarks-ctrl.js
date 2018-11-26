@@ -100,7 +100,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getremarks();
         },function(){
-          console.log("error")
+          toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      
     }
 

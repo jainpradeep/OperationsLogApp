@@ -4,9 +4,9 @@
  */
 (function () {
   'use strict';
-  angular.module('BlurAdmin.pages.bijwasan.del-ex-mr', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+  angular.module('BlurAdmin.pages.bijwasan.lbt-table', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig)
-    .controller('Del-ex-mr-ctrl', TablesPageCtrl)
+    .controller('lbt-table-ctrl', TablesPageCtrl)
     .constant('_',
       window._
     );
@@ -15,12 +15,12 @@
     /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('main.bijwasan.del-ex-mr', {
+      .state('main.bijwasan.lbt-table', {
         parent: "main.bijwasan",
-        url: '/del-ex-mr',
-        templateUrl: 'app/pages/bijwasan/del-ex-mr/del-ex-mr.html',
-        controller: 'Del-ex-mr-ctrl',
-        title: 'Delhi [EX-MR]',
+        url: '/lbt-table',
+        templateUrl: 'app/pages/bijwasan/lbt-table/lbt-table.html',
+        controller: 'lbt-table-ctrl',
+        title: 'LBT Details',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
@@ -32,12 +32,12 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, lbtTabService, $uibModal, $log, _) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
-        templateUrl: "/app/pages/bijwasan/del-ex-mr/remarksmodal.html",
+        templateUrl: "/app/pages/bijwasan/lbt-table/remarksmodal.html",
         size: '',
       })
     }
@@ -64,7 +64,7 @@
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/del-ex-mr/editHistoryModal.html",
+          templateUrl: "/app/pages/bijwasan/lbt-table/editHistoryModal.html",
           size: '',
         })
       };
@@ -77,63 +77,61 @@
           $scope.$modalInstance.dismiss('cancel');
       };
     
-    $scope.selectedShift = "Shift A";
+    $scope.selectedLbt = "LBT 01";
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
-      $scope.delhiExMR = {};
-      $scope.getDelhiExMR();
+      $scope.lbtTable = {};
+      $scope.getLbtTable();
     });
-    $scope.delhiExmrSelectShift =function(shift){
+    $scope.lbtTableSelectShift =function(shift){
       $scope.selectedShift = shift.name;
     } 
     
-    $scope.getDelhiExMR= function(){
-      delExMrService.getDelExMrData(JSON.stringify({
+    $scope.getLbtTable= function(){
+      lbtTabService.getLbtTabData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
-          $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
-          $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
-          $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.lbtTable.lbtTabData = JSON.parse(data.data.data)[0].data;
+          $scope.lbtTable.lbtTabDate = JSON.parse(data.data.data)[0].date;
+          $scope.lbtTable.lbtTabID = JSON.parse(data.data.data)[0]._id;
+          $scope.lbtTable.lbtTabRemarks = JSON.parse(data.data.data)[0].remarks;
         },
         function(msg) {
         });
     }
 
-    $scope.editDelhiExMrStart = function(data){
-      $scope.editableDelhiExMrHourlyRec = angular.copy(data);
+    $scope.editLbtTableStart = function(data){
+      $scope.editableLbtTableHourlyRec = angular.copy(data);
     }
 
-    $scope.editDelhiExMrRemark = function(remark){
+    $scope.editLbtTableRemark = function(remark){
       
-      $scope.delhiExMR.delExMrRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.lbtTable.lbtTabRemarks[$scope.$parent.selectedLbt.name] = remark 
 
-      delExMrService.editDelExMrData(JSON.stringify({
-        _id : $scope.delhiExMR.delExmrID,
-        date: $scope.delhiExMR.delExmrDate,
-        data: $scope.delhiExMR.delExmrData,
-        remarks: $scope.delhiExMR.delExMrRemarks
+      lbtTabService.editLbtTabData(JSON.stringify({
+        _id : $scope.lbtTable.lbtTabID,
+        date: $scope.lbtTable.lbtTabDate,
+        data: $scope.lbtTable.lbtTabData,
+        remarks: $scope.lbtTable.lbtTabRemarks
       })).then(function(){
-        toasterService.openSucessToast("Record has been successfully inserted/updated!");
-        $scope.getDelhiExMR();
+        $scope.getLbtTable();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
     }
 
-    $scope.editDelExMrData = function(data, index){
-      data.editHistory = $scope.editableDelhiExMrHourlyRec;
+    $scope.editLbtTabData = function(data, index){
+      data.editHistory = $scope.editableLbtTableHourlyRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
-      delExMrService.editDelExMrData(JSON.stringify({
-          _id : $scope.delhiExMR.delExmrID,
-          date: $scope.delhiExMR.delExmrDate,
-          data: $scope.delhiExMR.delExmrData,
-          remarks:  $scope.delhiExMR.delExMrRemarks
+      lbtTabService.editLbtTabData(JSON.stringify({
+          _id : $scope.lbtTable.lbtTabID,
+          date: $scope.lbtTable.lbtTabDate,
+          data: $scope.lbtTable.lbtTabData,
+          remarks:  $scope.lbtTable.lbtTabRemarks
         })).then(function(){
-          toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getDelhiExMR();
+          $scope.getLbtTable();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      

@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.pumping-delhi-pnp').servi
     this.getPumpingDelhiPnpData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://localhost:3006/getPumpingDelhiPnpRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getPumpingDelhiPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.pumping-delhi-pnp').servi
 
     this.editPumpingDelhiPnpData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://localhost:3006/editPumpingDelhiPnpRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editPumpingDelhiPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

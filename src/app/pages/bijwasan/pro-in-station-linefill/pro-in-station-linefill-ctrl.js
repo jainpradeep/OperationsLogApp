@@ -98,7 +98,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getProductInStationLinefill();
         },function(){
-          console.log("error")
+          toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      
     }
 
