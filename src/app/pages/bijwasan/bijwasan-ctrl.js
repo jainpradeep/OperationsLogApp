@@ -10,6 +10,7 @@
     /** @ngInject */
     function BijwasanCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
+        $scope.lbt = [{name: "LBT 01", isSelected : true},{name: "LBT 02"}]
         $scope.products = ["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","6m"]
         $scope.selectedShift = $scope.shifts[0];
         $scope.selectShift = function(shift){
@@ -19,6 +20,14 @@
             })
             $scope.selectedShift = shift
             shift.isSelected = true;
+        }
+        $scope.selectLbt = function(lbt){
+            $scope.lbt.map(function(lb){
+                lb.isSelected = false
+                return lb;
+            })
+            $scope.selectedLbt = lbt
+            lbt.isSelected = true;
         }
         $scope.today = function() {
             $scope.customDate = new Date();

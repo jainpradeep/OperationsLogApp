@@ -9,7 +9,7 @@
       .state('main.tikrikalan.tikrikalan-daily-reports', {
         url: '/daily-reports',
         templateUrl: 'app/pages/tikrikalan/tikrikalan-daily-reports/tikrikalan-daily-reports.html',
-        title: 'daily-reports',
+        title: 'Daily Reports',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,

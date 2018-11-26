@@ -1,4 +1,16 @@
-<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div class="row" ng-if = "!equiRunningHrsBijwasan.equiRunningHrsBijData">
+      <div class="loader">Loading...</div>
+  </div>
+      
+  <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0">
+      <div class="alert">
+          <h3>
+          <strong>Sorry!</strong> No records fould as per the set filters
+          </h3>
+      </div>
+  </div>  
+         
+<div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
   <div class="panel-body" > 
     <table class="table table-bordered table-hover table-condensed">
       <thead>

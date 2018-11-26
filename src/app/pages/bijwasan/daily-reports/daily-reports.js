@@ -10,7 +10,7 @@
       .state('main.bijwasan.daily-reports', {
         url: '/daily-reports',
         templateUrl: 'app/pages/bijwasan/daily-reports/daily-reports.html',
-        title: 'daily-reports',
+        title: 'Daily Reports',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,

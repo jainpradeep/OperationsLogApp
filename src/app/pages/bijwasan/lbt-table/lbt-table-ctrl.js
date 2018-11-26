@@ -83,8 +83,8 @@
       $scope.lbtTable = {};
       $scope.getLbtTable();
     });
-    $scope.lbtTableSelectShift =function(shift){
-      $scope.selectedShift = shift.name;
+    $scope.lbtTableSelectLbt =function(lbt){
+      $scope.selectedLbt = lbt.name;
     } 
     
     $scope.getLbtTable= function(){

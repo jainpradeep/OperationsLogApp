@@ -9,7 +9,7 @@
       .state('main.mathura.mathura-daily-reports', {
         url: '/daily-reports',
         templateUrl: 'app/pages/mathura/mathura-daily-reports/mathura-daily-reports.html',
-        title: 'daily-reports',
+        title: 'Daily Reports',
         controller: 'mathura-daily-reports-ctrl',
         sidebarMeta: {
           icon: 'ion-android-home',

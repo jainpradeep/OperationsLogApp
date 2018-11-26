@@ -9,7 +9,7 @@
       .state('main.tundla.tundla-daily-reports', {
         url: '/daily-reports',
         templateUrl: 'app/pages/tundla/tundla-daily-reports/tundla-daily-reports.html',
-        title: 'daily-reports',
+        title: 'Daily Reports',
         sidebarMeta: {
           icon: 'ion-android-home',
           order: 0,
