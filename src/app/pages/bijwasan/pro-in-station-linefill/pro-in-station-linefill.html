@@ -29,23 +29,40 @@
                 {{ data.lineLocation || '-' }}
             </span>
         </td>
-        <td class="select-td">    
-          <span editable-select="data.shiftA" e-step="any" e-name="shiftA" e-form="rowform" e-required>
-            {{ data.shiftA || '-' }}
-          </span>
-        </td>
-        <td>
-          <span editable-number="data.shiftB" e-step="any" e-name="shiftB"  e-form="rowform" e-required>
-              {{ data.shiftB || '-' }}
-          </span>
-        </td>
-        <td>
-          <span editable-number="data.shiftC" e-step="any" e-name="shiftC"  e-form="rowform" e-required>
-              {{ data.shiftC || '-' }}
-          </span>
-        </td>
-        <td class="select-td">    
-          <span editable-select="data.remarks" e-step="any" e-name="remarks" e-form="rowform" e-required>
+          <td ng-if = "data.productList">    
+            <span editable-select="data.shiftA" e-name="shiftA" e-form="rowform"  e-selectpicker e-ng-options="product for product in data.productList" e-required>
+              {{ data.shiftA || '-' }}
+            </span>
+          </td>
+          <td ng-if = "data.productList">
+            <span editable-select="data.shiftB" e-name="shiftB"  e-form="rowform"  e-selectpicker e-ng-options="product for product in data.productList" e-required>
+                {{ data.shiftB || '-' }}
+            </span>
+          </td>
+          <td ng-if = "data.productList">
+            <span editable-select="data.shiftC" e-name="shiftC"  e-form="rowform"  e-selectpicker e-ng-options="product for product in data.productList" e-required>
+                {{ data.shiftC || '-' }}
+            </span>
+          </td>
+
+        <td ng-if = "!data.productList">    
+            <span editable-number="data.shiftA" e-step="any" e-name="shiftA" e-form="rowform" e-required>
+              {{ data.shiftA || '-' }}
+            </span>
+          </td>
+          <td ng-if = "!data.productList">
+            <span editable-number="data.shiftB" e-step="any" e-name="shiftB"  e-form="rowform" e-required>
+                {{ data.shiftB || '-' }}
+            </span>
+          </td>
+          <td ng-if = "!data.productList">
+            <span editable-number="data.shiftC" e-step="any" e-name="shiftC"  e-form="rowform" e-required>
+                {{ data.shiftC || '-' }}
+            </span>
+          </td>
+
+        <td >    
+          <span editable-text="data.remarks" e-name="remarks" e-form="rowform" e-required>
             {{ data.remarks  || '-' }}
           </span>
         </td>

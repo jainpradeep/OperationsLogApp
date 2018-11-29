@@ -13,7 +13,7 @@
         title: 'Tikrikalan',
         controller: 'Tikrikalan-ctrl',  
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

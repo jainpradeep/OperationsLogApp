@@ -22,7 +22,7 @@
         controller: 'bijwasan-bijwasan-product-planning-ctrl',
         title: 'Product Planning',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

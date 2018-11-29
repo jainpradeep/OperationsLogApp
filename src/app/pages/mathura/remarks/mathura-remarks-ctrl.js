@@ -22,7 +22,7 @@
         controller: 'mathura-remarks-ctrl',
         title: 'Remarks',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

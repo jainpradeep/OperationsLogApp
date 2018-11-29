@@ -22,7 +22,7 @@
         controller: 'lbt-table-ctrl',
         title: 'LBT Details',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true
@@ -41,6 +41,55 @@
         size: '',
       })
     }
+
+    $scope.lbtData = {
+    date : new Date(),
+    lbtNo : "",
+    data :  [
+        {
+        "name" : "Opening Stock",
+        "details" : [{
+            product:"32",
+            seq_no:"42",
+            qty:"462",
+        }],
+        "addRowsEnabled" : false
+    },
+    {
+        "name" : "Delivery",
+        "details" : [{
+            product:"62",
+            seq_no:"63",
+            qty:"63",
+        }],
+        "addRowsEnabled" : true
+    },{
+        "name" : "Pumping",
+        "details" : [{
+            product:"62",
+            seq_no:"62",
+            qty:"74",
+        }],
+        "addRowsEnabled" : true
+    },{
+        "name" : "Closing Stock",
+        "details" : [{
+            product:"74",
+            seq_no:"84",
+            qty:"84",
+        }],
+        "addRowsEnabled" : true   
+    }],
+    remarks:""
+}
+
+$scope.addNewLbtRecord = function(data){
+    data.details.push({
+      product:"-",
+      seq_no:"-",
+      qty:"-"
+  })
+}
 
     $scope.editRemarksModal = function() {
       $scope.remarksModal.close();

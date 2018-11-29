@@ -1,6 +1,7 @@
 exports.proInStationLinefillInitDB = {
     date : new Date(),
     data :  [{
+      productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
       lineLocation:"STN. BP",
       shiftA:"",
       shiftB:"",
@@ -10,7 +11,8 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
-    lineLocation:"STN. PMP. LINE",
+      productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+      lineLocation:"STN. PMP. LINE",
       shiftA:"",
       shiftB:"",
       shiftC:"",
@@ -19,6 +21,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"STN. DEL. (MD)",
     shiftA:"",
     shiftB:"",
@@ -28,6 +31,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"STN. DEL. (PD)",
       shiftA:"",
       shiftB:"",
@@ -37,6 +41,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"BP 1",
     shiftA:"",
     shiftB:"",
@@ -46,6 +51,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"BP 2",
       shiftA:"",
       shiftB:"",
@@ -55,6 +61,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 1",
     shiftA:"",
     shiftB:"",
@@ -64,6 +71,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 2",
     shiftA:"",
     shiftB:"",
@@ -73,6 +81,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
+    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 3",
       shiftA:"",
       shiftB:"",
@@ -82,6 +91,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["ATF", "By-Pass", "SKO"],
     lineLocation:"SEP. FLTR. (MD)",
       shiftA:"",
       shiftB:"",
@@ -91,6 +101,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["ATF", "By-Pass", "SKO"],
     lineLocation:"SEP. FLTR. (PD)",
       shiftA:"",
       shiftB:"",
@@ -118,15 +129,6 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
-    lineLocation:"METER PROVER",
-      shiftA:"",
-      shiftB:"",
-      shiftC:"",
-      remarks:"",
-      editHistory: null,
-      editedDate: "",
-      oficer: "",
-  }, {
     lineLocation:"TANK LINED UP",
       shiftA:"",
       shiftB:"",
@@ -136,6 +138,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
+    productList :["PN","SKO","PCK"],
     lineLocation:"BP TO MOV-708",
       shiftA:"",
       shiftB:"",

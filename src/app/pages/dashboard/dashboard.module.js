@@ -16,7 +16,7 @@
         templateUrl: 'app/pages/dashboard/dashboard.html',
         title: 'Dashboard',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

@@ -22,7 +22,7 @@
         controller: 'Del-ex-pr-ctrl',
         title: 'Delhi [EX-PR]',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

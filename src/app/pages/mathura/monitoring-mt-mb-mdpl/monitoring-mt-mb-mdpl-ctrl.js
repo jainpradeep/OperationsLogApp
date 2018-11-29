@@ -22,7 +22,7 @@
         controller: 'monitoring-mt-mb-mdpl-ctrl',
         title: 'Monitoring Of MT,MB & MDPL',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

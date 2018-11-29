@@ -1,0 +1,27 @@
+<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+    <div class="panel-body" > 
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
+                <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); lineFillMathuraSelectShift(shift)" role="tab">{{shift.name}}</a>
+                </li>
+            </ul>
+
+            <table ng-repeat = "line in lineFillData" class="table table-bordered table-hover table-condensed">
+                <tr>
+                    <th>Line</th>
+                    <th>{{line.lineFillName}}</th>
+                    <td ng-repeat = "lineFillEntry in line.lineFill">product</td>
+                </tr>
+                <tr>
+                    <th>Volume</th>
+                    <th>{{line.lineFillVolume}}</th>
+                    <td ng-repeat = "lineFillEntry in line.lineFill">{{volume}}</td>
+                </tr>
+            </table>
+            <div class="button-wrapper ng-scope">
+              <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+            </div>
+          
+    </div>
+  </div>
+

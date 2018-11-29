@@ -22,7 +22,7 @@
         controller: 'meerut-daily-report-ctrl',
         title: 'Meerut Daily Reports',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

@@ -22,7 +22,7 @@
         controller: 'tikrikalan-daily-report-ctrl',
         title: 'Tikrikalan Daily Reports',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

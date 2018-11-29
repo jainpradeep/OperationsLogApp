@@ -22,7 +22,7 @@
         controller: 'pro-in-station-linefill-ctrl',
         title: 'Product In Station Line Fill',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

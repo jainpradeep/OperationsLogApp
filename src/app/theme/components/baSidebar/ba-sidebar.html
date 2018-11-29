@@ -24,7 +24,8 @@
             ba-sidebar-toggling-item="subitem" class="ba-sidebar-sublist-item">
           <a ng-mouseenter="hoverItem($event, item)" ng-if="::subitem.subMenu" ba-ui-sref-toggler
              class="al-sidebar-list-link subitem-submenu-link">
-             <i class="{{ ::subitem.icon }}"></i><span>{{ ::subitem.title }}</span>
+             <!-- <i class="{{ ::subitem.icon }}"></i>  -->
+            <span>{{ ::subitem.title }}</span>
             <b class="fa" ng-class="{'fa-angle-up': subitem.expanded, 'fa-angle-down': !subitem.expanded}"
                ng-if="::subitem.subMenu"></b>
           </a>

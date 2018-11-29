@@ -22,7 +22,7 @@
         controller: 'pumpedFromMathura-MD-ctrl',
         title: 'Pumped From Mathura [MD]',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

@@ -22,7 +22,7 @@
         controller: 'ex-mathura-mbpl-ctrl',
         title: 'Ex Mathura MBPL',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

@@ -12,7 +12,7 @@
         title: 'Daily Reports',
         controller: 'mathura-daily-reports-ctrl',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

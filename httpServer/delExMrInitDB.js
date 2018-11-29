@@ -408,6 +408,23 @@ exports.delExMrInitDB = {
         tank_dip: "",
         flow_Difference: "",
         oficer: ""
+    },{
+        hours: "7:00 AM",
+        shift: "Shift C",
+        batch_no: "",
+        editHistory: null,
+        density: "",
+        editedDate: "",
+        variation: "",
+        fmr: "",
+        pumpingBypass: "",
+        bypass: "",
+        flow_rate_delivery: "",
+        flow_rate_pumping: "",
+        tank_no: "",
+        tank_dip: "",
+        flow_Difference: "",
+        oficer: ""
     }],
     remarks: {
         "Shift A": "",

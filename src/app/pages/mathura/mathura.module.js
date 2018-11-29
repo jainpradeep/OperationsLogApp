@@ -13,7 +13,7 @@
         title: 'Mathura',
         controller: 'Mathura-ctrl',  
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

@@ -11,11 +11,11 @@
                             <tr rowspan="2">
                             <th colspan="1">Hours</th>
                             <th colspan="2">Batch no</th>
-                            <th colspan="2">Density temperature at 15&deg;</th>
-                            <th colspan="2">FMR Pumping Bypass</th>
+                            <th colspan="2">Density Temp&deg; C</th>
+                            <th colspan="2">Density Variation at 15&deg;</th>
+                            <th colspan="2">FMR Pumping</th>
                             <th colspan="1">Flow Rate</th>      
                             <th colspan="1">Tank no</th>
-                            <th colspan="1">Tank Dip</th>
                             <th colspan="1">Officer</th>
                             <th colspan="1">Edit Date</th>
                             </tr>
@@ -24,10 +24,11 @@
                             <th>Product</th>
                             <th>Seq. No</th>
                             <th>Density</th>
-                            <th>temperature</th>
+                            <th>Temperature</th>
+                            <th>Density</th>
+                            <th>Variation</th>
                             <th>FMR(D)</th>
-                            <th>Pumping/Bypass(Ex-PRD)</th>
-                            <th></th>
+                            <th>Pumping</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -40,7 +41,7 @@
                                 {{ data.hours || '-' }}
                             </span>
                         </td>
-                        <td style="width:50px" class="select-td">    
+                        <td class="select-td">    
                             <span>
                             {{ data.product }}
                             </span>
@@ -53,13 +54,25 @@
                     
                         <td>
                             <span>
-                                {{ data.density || '-' }}
+                                {{ data.density1 || '-' }}
                             </span>
                         </td>
                     
                         <td>
                             <span >
                                 {{ data.temperature || '-' }}
+                            </span>
+                        </td>
+                    
+                        <td>
+                            <span>
+                                {{ data.density2 || '-' }}
+                            </span>
+                        </td>
+                    
+                        <td>
+                            <span >
+                                {{ data.variation || '-' }}
                             </span>
                         </td>
                     
@@ -75,20 +88,14 @@
                             </span>
                         </td>
                         <td>
-                            <span>
-                                {{ data.flow_rate || '-' }}
+                            <span >
+                                {{ data.flow_rate|| '-' }}
                             </span>
                         </td>
                     
                         <td>
                             <span >
                                 {{ data.tank_no || '-' }}
-                            </span>
-                        </td>
-                    
-                        <td>
-                            <span >
-                                {{ data.tank_dip || '-' }}
                             </span>
                         </td>
                         <td>

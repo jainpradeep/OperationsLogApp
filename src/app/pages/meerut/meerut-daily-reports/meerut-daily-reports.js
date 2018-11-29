@@ -11,7 +11,7 @@
         templateUrl: 'app/pages/meerut/meerut-daily-reports/meerut-daily-reports.html',
         title: 'Daily Reports',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

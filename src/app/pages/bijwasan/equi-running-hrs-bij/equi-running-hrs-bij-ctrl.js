@@ -21,7 +21,7 @@
         controller: 'equi-running-hrs-bij-ctrl',
         title: 'Equipment Running Hrs Bijwasan',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

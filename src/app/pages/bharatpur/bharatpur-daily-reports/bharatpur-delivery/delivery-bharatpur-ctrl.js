@@ -22,7 +22,7 @@
         controller: 'bharatpur-daily-report-ctrl',
         title: 'Bharatpur Daily Reports',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

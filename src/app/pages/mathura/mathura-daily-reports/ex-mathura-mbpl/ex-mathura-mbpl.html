@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tr ng-repeat="data in exMathuraMBPL.exMathuraMBPLData track by $index" class="editable-row">
-          <td class="select-td">    
+          <td style = "width:100px" class="select-td">    
             <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in products">
               {{ data.product }}
             </span>

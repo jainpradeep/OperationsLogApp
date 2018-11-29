@@ -12,7 +12,7 @@
         templateUrl: 'app/pages/bijwasan/daily-reports/daily-reports.html',
         title: 'Daily Reports',
         sidebarMeta: {
-          icon: 'ion-android-home',
+          icon: 'ion-waterdrop',
           order: 0,
         },
         authenticate: true

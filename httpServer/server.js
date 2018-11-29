@@ -45,6 +45,7 @@ var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
 var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
 var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
 var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
+var lbtTableInitDB = require('./lbtTableInitDB')
 
 var fs = require('fs')
 const multer = require('multer');
@@ -77,11 +78,10 @@ app.listen(app.get('port'), function() {
     console.log('Express up and listening on port ' + app.get('port'));
 });
 
-
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 8;
-rule.minute = 55
+rule.hour = 10;
+rule.minute = 26;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
@@ -193,6 +193,10 @@ schedule.scheduleJob(rule, function() {
             if (er) throw er;
             console.log(records)
         });
+        database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        }); 
       })
 
   })().catch(err => {
@@ -1533,6 +1537,7 @@ app.route('/getEquiRunningHrsBijwasanRecord')
             });
         })
 });
+
 
 app.route('/editProductInStationLinefillRecord')
     .post(function(req, res) {
