@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                 <div class="col-sm">
-                    <table  class="table table-bordered table-hover table-condensed">
+                    <table class="table table-bordered table-hover table-condensed">
                         <thead>
                             <tr rowspan="2">
                             <th colspan="1">Hours</th>
@@ -27,7 +27,7 @@
                             <th>Density</th>
                             <th>Temperature</th>
                             <th>FMR(D)</th>
-                            <th>Pumping/Bypass(Ex-PRD)</th>
+                            <th>Pumping/Bypass</th>
                             <th>Delivery</th>
                             <th>Pumping</th>
                             <th></th>
@@ -45,7 +45,7 @@
                         </td>
                         <td style="width:50px" class="select-td">    
                             <span>
-                            {{ data.product }}
+                                {{ data.product  || '-' }}
                             </span>
                         </td>
                         <td>
@@ -79,13 +79,13 @@
                         </td>
                         <td>
                             <span >
-                                {{ data.flow_rate_delivery || '-' }}
+                                {{ data.flow_rate_delivery || '0' }}
                             </span>
                         </td>
                     
                         <td>
                             <span>
-                                {{ data.flow_rate_pumping || '-' }}
+                                {{ data.flow_rate_pumping || '0' }}
                             </span>
                         </td>
                     
@@ -102,7 +102,7 @@
                         </td>
                         <td>
                             <span >
-                                {{ data.flow_Difference || '-' }}
+                                {{ data.flow_Difference || '0' }}
                             </span>
                         </td>
                         <td>

@@ -25,7 +25,7 @@
                         <tr ng-repeat="data in flattenedHourEditHistory track by $index">
                         <td style = "width:100px" class="select-td">    
                             <span>
-                            {{ data.product }}
+                            {{ data.product || '-' }}
                             </span>
                         </td>
                         <td>

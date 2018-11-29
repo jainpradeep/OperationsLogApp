@@ -21,3 +21,15 @@
 .blurCalendar{
   height: 475px;
 }
+
+
+table.table-bordered{
+  border:1px solid grey;
+  margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+  border:1px solid grey;
+}
+table.table-bordered > tbody > tr > td{
+  border:1px solid grey;
+}

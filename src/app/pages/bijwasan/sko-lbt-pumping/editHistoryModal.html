@@ -11,8 +11,8 @@
                             <tr rowspan="2">
                             <th colspan="1">Hours</th>
                             <th colspan="2">Batch no</th>
-                            <th colspan="2">Density temperature at 15&deg;</th>
-                            <th colspan="2">FMR Pumping Bypass</th>
+                            <th colspan="2">Density temperature &deg;C</th>
+                            <th colspan="1">FMR/Pumping</th>
                             <th colspan="1">Tank no</th>
                             <th colspan="1">Officer</th>
                             <th colspan="1">Edit Date</th>
@@ -23,8 +23,7 @@
                             <th>Seq. No</th>
                             <th>Density</th>
                             <th>Temperature</th>
-                            <th>FMR(D)</th>
-                            <th>Pumping/Bypass(Ex-PRD)</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -38,7 +37,7 @@
                         </td>
                         <td class="select-td">    
                             <span>
-                            {{ data.product }}
+                            {{ data.product || '-'}}
                             </span>
                         </td>
                         <td>
@@ -64,12 +63,6 @@
                                 {{ data.fmr || '-' }}
                             </span>
                         </td>
-                    
-                        <td>
-                            <span >
-                                {{ data.pumpingBypass || '-' }}
-                            </span>
-                        </td>
                         <td>
                             <span >
                                 {{ data.tank_no || '-' }}
@@ -82,7 +75,7 @@
                           </td>
                           <td>
                                 <span>
-                                        {{ data.editedDate | date : "short"  || '-' }}
+                                        {{ (data.editedDate | date : "short" ) || '-' }}
                                 </span>
                           </td>
                         </tr>

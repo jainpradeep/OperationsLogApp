@@ -15,6 +15,7 @@
                         <th>Tank to be T/O</th>
                         <th>Tank to be H/O</th>
                         <th>Officer</th>
+                        <th>Edit Date</th>
                     </thead>
                     <tr ng-repeat="data in flattenedHourEditHistory track by $index">
                         <td>
@@ -49,7 +50,7 @@
                         </td>
                         <td>
                             <span >
-                                {{data.editedDate| date : "short"  || '-' }} 
+                                {{ (data.editedDate| date : "short" ) || '-' }} 
                             </span>
                         </td>
                         <td>

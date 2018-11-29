@@ -20,7 +20,7 @@ angular.module('BlurAdmin.pages.bijwasan.equi-running-hrs-bij').service('equiRun
        return deferred.promise;
     }
 
-    this.editDelExMrData = function(reqJSON){
+    this.editEquiRunningHrsBijData = function(reqJSON){
         var deferred = $q.defer();
         $http.post('http://10.14.151.91:3006/editEquiRunningHrsBijwasanRecord',reqJSON,{
             headers : {

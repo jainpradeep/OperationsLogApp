@@ -98,7 +98,7 @@
           data: $scope.bijwasanProductPlanning.bijwasanProductPlanningData,
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getbijwasan-product-planning();
+          $scope.getbijwasanProductPlanning();
         },function(){
           toasterService.openErrorToast("Something went wrong. Please contact the IS department!");
         })      

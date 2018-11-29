@@ -23,7 +23,7 @@
             <th ng-if = "isAdmin">Actions</th>
           </tr>
         </thead>
-      <tr class="editable-row" ng-repeat="data in productInStationLinefill.proInStationLinefillData">
+      <tr class="editable-row" ng-repeat="data in productInStationLinefill.proInStationLinefillData track by $index">
         <td>
             <span >
                 {{ data.lineLocation || '-' }}

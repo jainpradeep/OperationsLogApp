@@ -38,7 +38,7 @@
                   <th>Density</th>
                   <th>Temperature</th>
                   <th>FMR(D)</th>
-                  <th>Pumping/Bypass(Ex-PRD)</th>
+                  <th>Pumping/Bypass</th>
                   <th>Delivery</th>
                   <th>Pumping</th>
                   <th></th>
@@ -55,7 +55,7 @@
                 </td>
                 <td style = "width:100px" class="select-td">    
                     <span editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-                    {{ data.product }}
+                    {{ data.product || '-' }}
                     </span>
                 </td>
                 <td>
@@ -88,14 +88,14 @@
                     </span>
                 </td>
                 <td>
-                    <span editable-number="data.flow_rate_delivery" e-name="flow_rate_delivery" e-form="rowform" e-required>
-                        {{ data.flow_rate_delivery || '-' }}
+                    <span>
+                        {{ data.flow_rate_delivery || '0' }}
                     </span>
                 </td>
         
                 <td>
-                    <span editable-number="data.flow_rate_pumping" e-name="flow_rate_pumping" e-form="rowform" e-required>
-                        {{ data.flow_rate_pumping || '-' }}
+                    <span>
+                        {{ data.flow_rate_pumping || '0' }}
                     </span>
                 </td>
         
@@ -111,8 +111,8 @@
                     </span>
                 </td>
                 <td>
-                    <span editable-number="data.flow_Difference" e-name="flow_Difference" e-form="rowform" e-required>
-                        {{ data.flow_Difference || '-' }}
+                    <span>
+                        {{ data.flow_Difference || '0' }}
                     </span>
                 </td>
                 <td ng-show = "isAdmin">

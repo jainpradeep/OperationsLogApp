@@ -18,14 +18,13 @@
                <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); skoLbtPumpingSelectShift(shift)" role="tab">{{shift.name}}</a>
             </li>
          </ul>
-        
           <table class="table table-bordered table-hover table-condensed">
             <thead>
                 <tr rowspan="2">
                   <th colspan="1">Hours</th>
                   <th colspan="2">Batch no</th>
-                  <th colspan="2">Density Temperature at 15&deg;</th>
-                  <th colspan="2">FMR Pumping Bypass</th>
+                  <th colspan="2">Density Temperature &deg;C</th>
+                  <th colspan="1">FMR/Pumping</th>
                   <th colspan="1">Tank no</th>
                   <th colspan="1" ng-if = "isAdmin">Actions</th>
                 </tr>
@@ -35,12 +34,11 @@
                   <th>Seq. No</th>
                   <th>Density</th>
                   <th>Temperature</th>
-                  <th>FMR(D)</th>
-                  <th>Pumping/Bypass(Ex-PRD)</th>
+                  <th></th>
                   <th></th>
                   <th ng-if = "isAdmin"></th>
                 </tr>
-              </thead>``
+              </thead>
             <tr ng-repeat="data in skoLbtPumping.skoLbtPumpingData | filter : selectedShift track by $index" class="editable-row">
               <td>
                   <span >
@@ -49,7 +47,7 @@
               </td>
               <td style = "width:100px" class="select-td">    
                 <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-                  {{ data.product }}
+                  {{ data.product || '-' }}
                 </span>
               </td>
               <td>
@@ -73,12 +71,6 @@
               <td>
                   <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required>
                       {{ data.fmr || '-' }}
-                  </span>
-              </td>
-        
-              <td>
-                  <span editable-number="data.pumpingBypass" e-name="pumpingBypass" e-form="rowform" e-required>
-                      {{ data.pumpingBypass || '-' }}
                   </span>
               </td>
               <td>

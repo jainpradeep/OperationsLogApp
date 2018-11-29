@@ -14,85 +14,45 @@
   <div class="panel-body" > 
     <table class="table table-bordered table-hover table-condensed">
       <thead>
-         <tr rowspan="2">
-            <th colspan="1">Name Of Equipment</th>
-            <th colspan="2">Previous Hrs</th>
-            <th colspan="2">Shift A</th>
-            <th colspan="2">Shift B</th>
-            <th colspan="2">Shift C</th>
-            <th colspan="2">Cummulative Hrs</th>
-            <th colspan="1" ng-if = "isAdmin">Actions</th>
-         </tr>
-         <tr rowspan="2">
-            <th></th>
-            <th>Hours</th>
-            <th>Minutes</th>
-            <th>Hours</th>
-            <th>Minutes</th>
-            <th>Hours</th>
-            <th>Minutes</th>
-            <th>Hours</th>
-            <th>Minutes</th>
-            <th>Hours</th>
-            <th>Minutes</th>
-            <th ng-if = "isAdmin"></th>
-         </tr>
+            <th>Name Of Equipment</th>
+            <th >Previous Hrs</th>
+            <th >Shift A</th>
+            <th >Shift B</th>
+            <th >Shift C</th>
+            <th >Cummulative Hrs</th>
+            <th ng-if = "isAdmin">Actions</th>
+
       </thead>
-      <tr class="editable-row"  ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData">
+      <tr class="editable-row"  ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
          <td>
             <span >
             {{ data.equipment || '-' }}
             </span>
          </td>
          <td>    
-            <span editable-number="data.previousHrs" e-step="any" e-name="previousHrs" e-form="rowform" e-required>
-            {{ data.previousHrs  || '-' }}
+            <span>
+                 {{ data.previous  | date:'shortTime'}}
             </span>
          </td>
-         <td>
-            <span editable-number="data.previousMin" e-step="any" e-name="previousMin"  e-form="rowform" e-required>
-            {{ data.previousMin || '-' }}
-            </span>
-         </td>
-         <td>    
-            <span editable-number="data.shiftAHrs" e-step="any" e-name="shiftAHrs" e-form="rowform" e-required>
-            {{ data.shiftAHrs  || '-' }}
-            </span>
-         </td>
-         <td>
-            <span editable-number="data.shiftAMin" e-step="any" e-name="shiftAMin"  e-form="rowform" e-required>
-            {{ data.shiftAMin || '-' }}
-            </span>
+         <td>  
+            <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required e-name="shiftA" e-form="rowform" e-required>
+                  {{ data.shiftA | date:'shortTime' }}
+            </span>  
          </td>
          <td>    
-            <span editable-number="data.shiftBHrs" e-step="any" e-name="shiftBHrs" e-form="rowform" e-required>
-            {{ data.shiftBHrs  || '-' }}
-            </span>
+               <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required e-name="shiftB" e-form="rowform" e-required>
+                  {{ data.shiftB | date:'shortTime' }}
+               </span>
          </td>
-         <td>
-            <span editable-number="data.shiftBMin" e-step="any" e-name="shiftBMin"  e-form="rowform" e-required>
-            {{ data.shiftBMin || '-' }}
-            </span>
-         </td>
-         <td>    
-            <span editable-number="data.shiftCHrs" e-step="any" e-name="shiftCHrs" e-form="rowform" e-required>
-            {{ data.shiftCHrs  || '-' }}
-            </span>
-         </td>
-         <td>
-            <span editable-number="data.shiftCMin" e-step="any" e-name="shiftCMin"  e-form="rowform" e-required>
-            {{ data.shiftCMin || '-' }}
-            </span>
+         <td> 
+            <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required e-name="shiftC" e-form="rowform" e-required>
+                  {{ data.shiftC | date:'shortTime' }}
+            </span>   
          </td>
          <td>    
-            <span editable-number="data.cummulativeHrs" e-step="any" e-name="cummulativeHrs" e-form="rowform" e-required>
-            {{ data.cummulativeHrs  || '-' }}
-            </span>
-         </td>
-         <td>
-            <span editable-number="data.cummulativeMin" e-step="any" e-name="cummulativeMin"  e-form="rowform" e-required>
-            {{ data.cummulativeMin || '-' }}
-            </span>
+            <span>
+                  {{ data.cummulative | date:'shortTime' }}
+            </span>   
          </td>
          <td ng-show = "isAdmin">
             <form editable-form name="rowform" onaftersave = "editEquiRunningHrsBijData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"

@@ -104,7 +104,7 @@
       
       $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = remark 
 
-      delExMrService.editEquiRunningHrsBijData(JSON.stringify({
+      equiRunningHrsBijService.editEquiRunningHrsBijData(JSON.stringify({
         _id : $scope.equiRunningHrsBijwasan.equiRunningHrsBijID,
         date: $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate,
         data: $scope.equiRunningHrsBijwasan.equiRunningHrsBijData,

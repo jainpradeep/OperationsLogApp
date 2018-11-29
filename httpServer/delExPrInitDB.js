@@ -8,11 +8,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: "",
@@ -24,11 +24,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -40,11 +40,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -56,11 +56,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -72,11 +72,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -88,11 +88,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -104,11 +104,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -120,11 +120,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -136,11 +136,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -152,11 +152,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -168,11 +168,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -184,11 +184,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -200,11 +200,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -216,11 +216,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -232,11 +232,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -248,11 +248,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -264,11 +264,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -280,11 +280,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -296,11 +296,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -312,11 +312,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",  
       oficer: ""
@@ -328,11 +328,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -344,11 +344,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -360,11 +360,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -376,11 +376,11 @@ exports.delExPrInitDB = {
       density: "",
       editedDate: "",
       variation: "",
-      fmr: "",
-      pumpingBypass: "",
-      bypass: "",
-      flow_rate_delivery: "",
-      flow_rate_pumping: "",
+      fmr: "0",
+
+
+      flow_rate: "",
+
       tank_no: "",
       tank_dip: "",
       oficer: ""
@@ -392,11 +392,8 @@ exports.delExPrInitDB = {
     density: "",
     editedDate: "",
     variation: "",
-    fmr: "",
-    pumpingBypass: "",
-    bypass: "",
-    flow_rate_delivery: "",
-    flow_rate_pumping: "",
+    fmr: "0",
+    flow_rate: "",
     tank_no: "",
     tank_dip: "",
     oficer: ""

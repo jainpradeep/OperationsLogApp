@@ -81,7 +81,7 @@ app.listen(app.get('port'), function() {
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 10;
-rule.minute = 26;
+rule.minute = 39;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
@@ -1548,6 +1548,7 @@ app.route('/editProductInStationLinefillRecord')
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
+            console.log(req.body)
             database.db('operationsDB').collection('proInStationLinefill').updateOne({
                 "_id": req.body._id
             }, {
@@ -1571,10 +1572,6 @@ app.route('/getProductInStationLinefillRecord')
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
-            database.db('operationsDB').collection('proInStationLinefill').findOne({}, function(err, result) {
-                if (err) throw err;
-
-            });
             req.body.date = new Date(req.body.date)
             database.db('operationsDB').collection('proInStationLinefill').aggregate([{
                 $match: {

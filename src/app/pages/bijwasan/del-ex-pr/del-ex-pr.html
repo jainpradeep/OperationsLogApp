@@ -24,7 +24,7 @@
                   <th colspan="1">Hours</th>
                   <th colspan="2">Batch no</th>
                   <th colspan="2">Density temperature &deg;C</th>
-                  <th colspan="2">FMR Pumping Bypass</th>
+                  <th colspan="1">FMR</th>
                   <th colspan="1">Flow Rate</th>      
                   <th colspan="1">Tank no</th>
                   <th colspan="1">Tank Dip</th>
@@ -36,8 +36,7 @@
                   <th>Seq. No</th>
                   <th>Density</th>
                   <th>Temperature</th>
-                  <th>FMR(D)</th>
-                  <th>Pumping/Bypass</th>
+                  <th></th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -50,9 +49,9 @@
                       {{ data.hours || '-' }}
                   </span>
               </td>
-              <td class="select-td">    
-                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-                  {{ data.product }}
+              <td style = "width:100px" class="select-td">    
+                <span editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
+                  {{ data.product  || '-' }}
                 </span>
               </td>
               <td>
@@ -76,12 +75,6 @@
               <td>
                   <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required>
                       {{ data.fmr || '-' }}
-                  </span>
-              </td>
-        
-              <td>
-                  <span editable-number="data.pumpingBypass" e-name="pumpingBypass" e-form="rowform" e-required>
-                      {{ data.pumpingBypass || '-' }}
                   </span>
               </td>
               <td>

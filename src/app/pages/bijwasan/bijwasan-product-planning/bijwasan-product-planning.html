@@ -28,15 +28,15 @@
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">Planning</th>
                                         <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.plan" e-name="plan" e-form="rowform">
-                                                        {{ data.plan }}
+                                                        {{ data.plan || '-' }}
                                                     </div>
                                         </td>
                             </tr>   
                             <tr>
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">TK T/O-H/O Details</th>
-                                        <td style ="border-top : 0px" class="editable-row">
+                                        <td style =" word-wrap: break-word;border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.toHoDetails" e-name="toHoDetails" e-form="rowform">
-                                                        {{ data.toHoDetails }}
+                                                        {{ data.toHoDetails || '-' }}
                                                     </div>
                                         </td>
                             </tr>   
@@ -44,7 +44,7 @@
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">Equipments (N/A)</th>
                                         <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.equipments" e-name="equipments" e-form="rowform">
-                                                        {{ data.equipments }}
+                                                        {{ data.equipments || '-' }}
                                                     </div>
                                         </td>
                             </tr>   
@@ -53,7 +53,7 @@
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">Tanks with P/L</th>
                                         <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.tanksWithPL" e-name="tanksWithPL" e-form="rowform">
-                                                        {{ data.tanksWithPL }}
+                                                        {{ data.tanksWithPL || '-' }}
                                                     </div>
                                         </td>
                             </tr>   
@@ -61,7 +61,7 @@
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">Tank to be T/O</th>
                                         <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.tankToBeTO" e-name="tankToBeTO" e-form="rowform">
-                                                        {{ data.tankToBeTO }}
+                                                        {{ data.tankToBeTO || '-' }}
                                                     </div>
                                         </td>
                             </tr>              
@@ -69,7 +69,7 @@
                                 <th width= "50%" style ="text-align: right; padding-top: 8px">Tank to be H/O</th>
                                         <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-textArea="data.tankToBeHO" e-name="tankToBeHO" e-form="rowform">
-                                                        {{ data.tankToBeHO }}
+                                                        {{ data.tankToBeHO || '-' }}
                                                     </div>
                                         </td>
                             </tr>               
