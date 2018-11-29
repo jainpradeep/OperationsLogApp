@@ -77,7 +77,7 @@
           $scope.$modalInstance.dismiss('cancel');
       };
     
-    $scope.selectedShift = "Shift A";
+      $scope.selectedShift =  $scope.$parent.selectedShift
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.delhiExMR = {};
@@ -85,6 +85,7 @@
     });
     $scope.delhiExmrSelectShift =function(shift){
       $scope.selectedShift = shift.name;
+      $scope.$parent.selectedShift = shift.name;
     } 
     
     $scope.getDelhiExMR= function(){

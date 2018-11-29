@@ -34,7 +34,7 @@
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bijwasanProductPlanningService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
-    $scope.selectedShift = "Shift A";
+    $scope.selectedShift =  $scope.$parent.selectedShift
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)

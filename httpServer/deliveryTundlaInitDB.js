@@ -4,8 +4,8 @@ exports.deliveryTundlaInitDB = {
         product:"",
         seq_no:"",
         tank_no:"",
-        fmr:"",
-        dip_qty:"",
+        fmr:0,
+        dip_qty:0,
   }],
   remarks:""
 }

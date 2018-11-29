@@ -99,6 +99,7 @@ exports.monitoringMtMbMdplInitDB = {
   }, {
       hours: "15:00 PM",
       batch_no: "",
+      shift: "Shift B",
       editHistory: null,
       editedDate: "",
       mpr: "",
@@ -183,6 +184,7 @@ exports.monitoringMtMbMdplInitDB = {
   }, {
       hours: "22:00 PM",
       batch_no: "",
+      shift: "Shift B, Shift C",
       editHistory: null,
       editedDate: "",
       mpr: "",

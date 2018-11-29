@@ -20,7 +20,7 @@ angular.module('BlurAdmin.pages.mathura.pumpedFromMathura-MD').service('pumpedFr
        return deferred.promise;
     }
 
-    this.editDelExMrData = function(reqJSON){
+    this.editpumpedFromMatMDData  = function(reqJSON){
         var deferred = $q.defer();
         $http.post('http://10.14.151.91:3006/editpumpedFromMathuraMDRecord',reqJSON,{
             headers : {

@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, exMathuraMDService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http,$state, $filter, editableOptions, editableThemes, exMathuraMDService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.products = ["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"]
 
@@ -95,8 +95,8 @@
         product:"",
         seq_no:"",
         tank_no:"",
-        fmr:"",
-        dip_qty:"",
+        fmr:0,
+        dip_qty:0,
       })
     }
 
@@ -129,7 +129,7 @@
         remarks: $scope.exMathuraMD.exMathuraMDRemarks
       })).then(function(){
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
-        $scope.getexMathuraMD();
+        $state.reload();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
@@ -146,7 +146,7 @@
           remarks:  $scope.exMathuraMD.exMathuraMDRemarks
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getexMathuraMD();
+          $state.reload();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      

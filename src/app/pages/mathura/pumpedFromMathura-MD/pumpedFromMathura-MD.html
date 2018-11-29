@@ -2,7 +2,7 @@
     <div class="panel-body" > 
         <ul class="nav nav-tabs nav-justified" role="tablist">
             <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
-               <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); pumpedFromMatMDSelectShift(shift)" role="tab">{{shift.name}}</a>
+               <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); pumpedFromMathuraMDSelectShift(shift)" role="tab">{{shift.name}}</a>
             </li>
          </ul>
         
@@ -13,7 +13,7 @@
                   <th colspan="2">Batch no</th>
                   <th colspan="2">Density Temperature&deg; C</th>
                   <th colspan="2">Density Variation at 15&deg;</th>
-                  <th colspan="2">FMR Pumping Bypass</th>
+                  <th colspan="1">FMR</th>
                   <th colspan="1">Flow Rate</th>      
                   <th colspan="1">Tank no</th>
                     <th colspan="1" ng-if = "isAdmin">Actions</th>
@@ -26,8 +26,7 @@
                   <th>Temperature</th>
                   <th>Density</th>
                   <th>Variation</th>
-                  <th>FMR(D)</th>
-                  <th>Pumping/Bypass(Ex-PRD)</th>
+                  <th></th>
                   <th></th>
                   <th></th>
                   <th ng-if = "isAdmin"></th>
@@ -78,15 +77,14 @@
                       {{ data.fmr || '-' }}
                   </span>
               </td>
-        
               <td>
-                  <span editable-number="data.pumping" e-name="pumping" e-form="rowform" e-required>
-                      {{ data.pumpingBypass || '-' }}
-                  </span>
-              </td>
-              <td>
-                  <span editable-number="data.flow_rate" e-name="flow_rate" e-form="rowform" e-required>
-                      {{ data.flow_rate || '-' }}
+                    <div>
+                        <span ng-if= "$index > 0 && data.fmr">
+                        {{ (data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr) > 0 ? data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr : data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr + 10000 }}
+                        </span>
+                    </div>
+                    <span ng-if= "$index == 0 ">
+                        {{ data.fmr}}
                   </span>
               </td>
               <td>
@@ -94,7 +92,7 @@
                       {{ data.tank_no || '-' }}
                   </span>
               </td>
-              <td ng-show = "isAdmin">
+              <td ng-show = "isAdmin" >
                 <form editable-form name="rowform" onaftersave = "editpumpedFromMatMDData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
@@ -105,8 +103,8 @@
                   </button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editpumpedFromMathuraMDStart(data)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "!pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr" ng-click="rowform.$show(); editpumpedFromMathuraMDStart(data)">Edit</button>
+                  <button class="btn btn-info editable-table-button btn-xs" ng-disabled = "!pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr" ng-click="open(data)">History</button>
                 </div>
               </td>
             </tr>

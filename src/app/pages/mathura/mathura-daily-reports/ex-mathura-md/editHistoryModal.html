@@ -12,11 +12,15 @@
                               <th colspan="2">Batch no</th>
                               <th colspan="1">Tank no</th>
                               <th colspan="1">FMR Qty.</th>
-                              <th colspan="1">Dip Qty.</th>      
+                              <th colspan="1">Dip Qty.</th> 
+                              <th>Officer</th>
+                              <th>Edit Date</th>         
                             </tr>
                             <tr rowspan="2">
                               <th>Product</th>
                               <th>Seq. No</th>
+                              <th></th>
+                              <th></th>
                               <th></th>
                               <th></th>
                               <th></th>
@@ -48,6 +52,16 @@
                                 {{ data.dip_qty || '-' }}
                             </span>
                         </td>
+                        <td>
+                                <span >
+                                        {{ (data.editedDate| date : "short" ) || '-' }} 
+                                    </span>
+                                </td>
+                                <td>
+                                    <span >
+                                        {{data.officer|| '-' }}  
+                                    </span>
+                                </td>
                       </tr>
                     </table>
                 </div>

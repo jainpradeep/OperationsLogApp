@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryBharatpurService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http,$state, $filter, editableOptions, editableThemes, deliveryBharatpurService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -92,8 +92,8 @@
         product:"",
         seq_no:"",
         tank_no:"",
-        fmr:"",
-        dip_qty:"",
+        fmr:0,
+        dip_qty:0,
       })
     }
 
@@ -125,7 +125,7 @@
         remarks: $scope.deliveryBharatpur.deliveryBharatpurRemarks
       })).then(function(){
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
-        $scope.getdeliveryBharatpur();
+        $state.reload();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
@@ -142,7 +142,7 @@
           remarks:  $scope.deliveryBharatpur.deliveryBharatpurRemarks
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getdeliveryBharatpur();
+          $state.reload();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      

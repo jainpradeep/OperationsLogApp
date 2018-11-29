@@ -80,8 +80,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 10;
-rule.minute = 39;
+rule.hour = 16;
+rule.minute = 03;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
@@ -1455,28 +1455,30 @@ app.route('/getpumpedFromMathuraMDRecord')
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
-            database.db('operationsDB').collection('pumpedFromMathuraMD').findOne({}, function(err, result) {
-                if (err) throw err;
-
-            });
             req.body.date = new Date(req.body.date)
+            yesterdaysDate = new Date(req.body.date.valueOf())
+            var yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
             database.db('operationsDB').collection('pumpedFromMathuraMD').aggregate([{
                 $match: {
                     'date': {
                         $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
-                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                        $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
             }]).toArray(function(er, items) {
-                if (er) throw er;
-                console.log(er);
                 console.log(items)
+                if (er) throw er;
+                if(items.length>1){
+                    items[0].data[0] = items[1].data[24];
+                    items[0].data[0].shift = "Shift A";
+                }
+
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
                 })
-                //  database.close();
             });
+
         })
 });
 

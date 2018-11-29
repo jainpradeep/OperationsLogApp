@@ -360,7 +360,7 @@ exports.pumpedFromMathuraMDInitDB = {
       tank_no: "",
       tank_dip: "",
       oficer: ""
-  },, {
+  }, {
     hours: "7:00 AM",
     shift: "Shift C",
     batch_no: "",

@@ -26,11 +26,9 @@
       });
   }
 
-
-
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delhiDeliveryService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter,$state , editableOptions, editableThemes, delhiDeliveryService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
  
     $scope.openRemarks = function(){
@@ -122,7 +120,7 @@
         remarks: $scope.delhiDelivery.delhiDeliveryRemarks
       })).then(function(){
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
-        $scope.getdelhiDelivery();
+        $state.reload();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
@@ -138,7 +136,7 @@
           data: $scope.delhiDelivery.delhiDeliveryData,
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getdelhiDelivery();
+          $state.reload();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      

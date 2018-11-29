@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, deliveryTundlaService, $uibModal, $log, _, toasterService) {
+  function TablesPageCtrl($scope,$rootScope, $http,$state, $filter, editableOptions, editableThemes, deliveryTundlaService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -77,6 +77,17 @@
           $scope.$modalInstance.dismiss('cancel');
       };
     
+      $scope.addNewRecord = function(){
+        $scope.deliveryTundla.deliveryTundlaData.push({
+          product:"",
+          seq_no:"",
+          tank_no:"",
+          fmr:0,
+          dip_qty:0,
+        })
+      }
+
+
     $scope.selectedShift = "Shift A";
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
@@ -116,7 +127,7 @@
         remarks: $scope.deliveryTundla.deliveryTundlaRemarks
       })).then(function(){
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
-        $scope.getdeliveryTundla();
+        $state.reload();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
@@ -133,7 +144,7 @@
           remarks:  $scope.deliveryTundla.deliveryTundlaRemarks
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
-          $scope.getdeliveryTundla();
+          $state.reload();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");
         })      
