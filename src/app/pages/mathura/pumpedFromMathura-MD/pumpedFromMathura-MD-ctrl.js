@@ -93,10 +93,10 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.pumpedFromMathuraMD.pumpedFromMatMDData = JSON.parse(data.data.data)[0].data;
-          $scope.pumpedFromMathuraMD.pumpedFromMatMDDate = JSON.parse(data.data.data)[0].date;
-          $scope.pumpedFromMathuraMD.pumpedFromMatMDID = JSON.parse(data.data.data)[0]._id;
-          $scope.pumpedFromMathuraMD.pumpedFromMatMDRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.pumpedFromMathuraMD.pumpedFromMatMDData = JSON.parse(data.data.data)[1].data;
+          $scope.pumpedFromMathuraMD.pumpedFromMatMDDate = JSON.parse(data.data.data)[1].date;
+          $scope.pumpedFromMathuraMD.pumpedFromMatMDID = JSON.parse(data.data.data)[1]._id;
+          $scope.pumpedFromMathuraMD.pumpedFromMatMDRemarks = JSON.parse(data.data.data)[1].remarks;
         },
         function(msg) {
         });

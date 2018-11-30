@@ -93,10 +93,11 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.delhiExMR.delExmrData = JSON.parse(data.data.data)[0].data;
-          $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data)[0].date;
-          $scope.delhiExMR.delExmrID = JSON.parse(data.data.data)[0]._id;
-          $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.delhiExMR.delExmrData = JSON.parse(data.data.data).items[1].data;
+          $scope.delhiExMR.mathuraPumpedData = JSON.parse(data.data.data).items[1].data;
+          $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data).items[1].date;
+          $scope.delhiExMR.delExmrID = JSON.parse(data.data.data).items[1]._id;
+          $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data).items[1].remarks;
         },
         function(msg) {
         });
