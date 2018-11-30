@@ -2,73 +2,51 @@
     <div class="panel-body" > 
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
-                <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); lineFillMathuraSelectShift(shift)" role="tab">{{shift.name}}</a>
+                <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); lineFillSelectShift(shift)" role="tab">{{shift.name}}</a>
                 </li>
             </ul>
-
-            <!-- <table ng-repeat = "line in lineFill.lineFillData" class="table table-bordered table-hover table-condensed">
+            <table  ng-repeat = "line in lineFill.lineFillData[selectedShiftTrimmed]  track by $index" class="table table-bordered table-hover editable-row table-condensed">
                 <tr>
-                    <th>Line</th>
-                    <th>{{line.lineFillName}}</th>
-                    <td ng-repeat = "lineFillEntry in line.lineFill">
+                    <th style = "width : 100px">{{line.lineFillName}}</th>
+                    <td style = "width : 100px" ng-repeat = "data in line.lineFill track by $index">
                         <span editable-text="data.product" e-name="product" e-form="rowform" e-required>
                                 {{ data.product  || '-' }}
                         </span>
                     </td>
+                    <th>Check</th>
+                    <th>Action</th>
                 </tr>
                 <tr>
-                    <th>Volume</th>
-                    <th>{{line.lineFillVolume}}</th>
-                    <td ng-repeat = "lineFillEntry in line.lineFill">
+                    <th  style = "width : 100px">{{line.lineFillVolume}}</th>
+                    <td style = "width : 100px" ng-repeat = "data in line.lineFill track by $index">
                         <span editable-number="data.volume" e-step="any" e-name="volume"  e-form="rowform" e-required>
                             {{ data.volume || '-' }}
                         </span>
                     </td>
+                    <td style = "width : 100px" >
+                            <span ng-style="line.style"> 
+                                {{ sumLineFill(line)  || '-' }}
+                            </span>
+                    </td>
+                    
                     <td ng-show = "isAdmin">
-                            <form editable-form name="rowform" onaftersave = "editlineFillData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
-                                shown="inserted == data">
-                                <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
-                                Save
-                                </button>
-                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
-                                Cancel      
-                                </button>
-                            </form>
-                            <div class="buttons" ng-show="!rowform.$visible">
-                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editlineFillStart(data)">Edit</button>
-                                <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
-                            </div>
+                        <form editable-form name="rowform" onaftersave = "editlineFillData(line, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                            shown="inserted == line">
+                        <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                            Save
+                        </button>
+                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                            Cancel
+                        </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                        <button class="btn btn-danger editable-table-button btn-xs" ng-if = "line.lineFill.length" ng-click="rowform.$show(); editlineFillStart(line)">Edit</button>
+                        <button class="btn btn-info editable-table-button btn-xs" ng-click="open(line)">History</button>
+                        <button type="button" ng-click= "rowform.$show();addNewRecord(line.lineFill)" class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
+                    </div>
                     </td>
                 </tr>
-            </table> -->
-
-            <div ng-repeat="line in lineFill.lineFillData track by $index">
-                <table  class="table table-bordered table-hover table-condensed">
-                    <tr ng-repeat="(index, values) in line track by index">
-                            <th>{{ index }}</th>
-                            <td ng-repeat="value in values track by  $index">
-                                <span editable-text="value" e-name="value" e-form="groupform" e-required>
-                                        {{ value  || '-' }}
-                                        </span>
-                            </td>
-                        </tr>
-                </table>
-                <center>
-                        <form editable-form name="groupform" onaftersave="saveColumn('group')" ng-show="groupform.$visible">
-                                <button type="submit" ng-disabled="groupform.$waiting" class="btn btn-primary">
-                                save
-                                </button>
-                                <button type="button" ng-disabled="groupform.$waiting" ng-click="groupform.$cancel()" class="btn btn-default">
-                                cancel
-                                </button>
-                            </form>  
-                            <button class="btn btn-default" ng-show="!groupform.$visible" ng-click="groupform.$show()">
-                                edit
-                            </button>
-                </center>
-            </div>
-
-
+            </table>
             <div class="button-wrapper ng-scope">
               <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
             </div>

@@ -20,7 +20,7 @@ angular.module('BlurAdmin.pages.bijwasan.lineFill').service('lineFillService', f
        return deferred.promise;
     }
 
-    this.editDelExMrData = function(reqJSON){
+    this.editlineFillData  = function(reqJSON){
         var deferred = $q.defer();
         $http.post('http://10.14.151.91:3006/editlineFillRecord',reqJSON,{
             headers : {

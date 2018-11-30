@@ -50,7 +50,13 @@
       $scope.remarksModal.dismiss('cancel');
     };
 
-    
+    $scope.addNewRecord = function(data){
+      data.push({
+        product:"",
+        volume : ""
+      })
+    }
+
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -63,7 +69,7 @@
       }
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
-          templateUrl: "/app/pages/bijwasan/lineFill/lineFill.html",
+          templateUrl: "/app/pages/bijwasan/lineFill/editHistoryModal.html",
           size: '',
         })
       };
@@ -75,8 +81,9 @@
       $scope.cancel = function() {
           $scope.$modalInstance.dismiss('cancel');
       };
-    
+      $scope.$parent.lineFillTotal =0
     $scope.selectedShift = "Shift A";
+    $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.lineFill = {};
@@ -84,6 +91,7 @@
     });
     $scope.lineFillSelectShift =function(shift){
       $scope.selectedShift = shift.name;
+      $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
     } 
     
     $scope.getlineFill= function(){
@@ -91,17 +99,18 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.lineFill.lineFillData = JSON.parse(data.data.data)[0].data.map(function(collection) {
-            return collection.lineFill.reduce(function(result, item) {
+          $scope.lineFill.lineFillData = JSON.parse(data.data.data)[0].data
+          // .map(function(collection) {
+          //   return collection.lineFill.reduce(function(result, item) {
               
-              angular.forEach(item, function(value, index) {
-                result[index] = result[index] || [];
-                result[index].push(value);
-              });
+          //     angular.forEach(item, function(value, index) {
+          //       result[index] = result[index] || [];
+          //       result[index].push(value);
+          //     });
               
-              return result;
-            }, {});
-          });
+          //     return result;
+          //   }, {});
+          // });
           $scope.lineFill.lineFillDate = JSON.parse(data.data.data)[0].date;
           $scope.lineFill.lineFillID = JSON.parse(data.data.data)[0]._id;
           $scope.lineFill.lineFillRemarks = JSON.parse(data.data.data)[0].remarks;
@@ -111,14 +120,25 @@
     }
 
     $scope.editlineFillStart = function(data){
-      $scope.editablelineFillHourlyRec = angular.copy(data);
+      $scope.editablelineFillRec = angular.copy(data);
+    }
+
+    $scope.sumLineFill = function(line){
+      line.lineFillSum = 0;
+      line.lineFill.map(function(prd){
+        line.lineFillSum = Number(line.lineFillSum) + Number(prd.volume); 
+        return prd;
+      })
+      var diff = line.lineFillSum - line.lineFillVolume
+      line.style = { "color" : diff > 0 ? "red" : diff < 0 ? "yellow": "green"}
+      return diff
     }
 
     $scope.editlineFillRemark = function(remark){
       
-      $scope.delhiExMRlineFill.lineFillRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.lineFill.lineFillRemarks[$scope.$parent.selectedShift.name] = remark 
 
-      delExMrService.editlineFillData(JSON.stringify({
+      lineFillService.editlineFillData(JSON.stringify({
         _id : $scope.lineFill.lineFillID,
         date: $scope.lineFill.lineFillDate,
         data: $scope.lineFill.lineFillData,
@@ -132,7 +152,7 @@
     }
 
     $scope.editlineFillData = function(data, index){
-      data.editHistory = $scope.editablelineFillHourlyRec;
+      data.editHistory = $scope.editablelineFillRec;
       data.editedDate = new Date();
       data.officer = localStorage.getItem("username");
       lineFillService.editlineFillData(JSON.stringify({
