@@ -32,7 +32,7 @@
 
  
   /** @ngInject */
-  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, lbtTabService, $uibModal, $log, _) {
+  function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, lbtTabService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -42,52 +42,11 @@
       })
     }
 
-    $scope.lbtData = {
-    date : new Date(),
-    lbtNo : "",
-    data :  [
-        {
-        "name" : "Opening Stock",
-        "details" : [{
-            product:"32",
-            seq_no:"42",
-            qty:"462",
-        }],
-        "addRowsEnabled" : false
-    },
-    {
-        "name" : "Delivery",
-        "details" : [{
-            product:"62",
-            seq_no:"63",
-            qty:"63",
-        }],
-        "addRowsEnabled" : true
-    },{
-        "name" : "Pumping",
-        "details" : [{
-            product:"62",
-            seq_no:"62",
-            qty:"74",
-        }],
-        "addRowsEnabled" : true
-    },{
-        "name" : "Closing Stock",
-        "details" : [{
-            product:"74",
-            seq_no:"84",
-            qty:"84",
-        }],
-        "addRowsEnabled" : true   
-    }],
-    remarks:""
-}
-
 $scope.addNewLbtRecord = function(data){
     data.details.push({
-      product:"-",
-      seq_no:"-",
-      qty:"-"
+      product:"",
+      seq_no:0,
+      qty:0
   })
 }
 
@@ -141,10 +100,11 @@ $scope.addNewLbtRecord = function(data){
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.lbtTable.lbtTabData = JSON.parse(data.data.data)[0].data;
-          $scope.lbtTable.lbtTabDate = JSON.parse(data.data.data)[0].date;
-          $scope.lbtTable.lbtTabID = JSON.parse(data.data.data)[0]._id;
-          $scope.lbtTable.lbtTabRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.lbtTable.lbtTabData = JSON.parse(data.data.data)[1].data;
+          $scope.lbtTable.lbtTabData[0] = JSON.parse(data.data.data)[0].data[3];
+          $scope.lbtTable.lbtTabDate = JSON.parse(data.data.data)[1].date;
+          $scope.lbtTable.lbtTabID = JSON.parse(data.data.data)[1]._id;
+          $scope.lbtTable.lbtTabRemarks = JSON.parse(data.data.data)[1].remarks;
         },
         function(msg) {
         });
@@ -164,6 +124,7 @@ $scope.addNewLbtRecord = function(data){
         data: $scope.lbtTable.lbtTabData,
         remarks: $scope.lbtTable.lbtTabRemarks
       })).then(function(){
+        toasterService.openSucessToast ("Record has been successfully inserted/updated!");
         $scope.getLbtTable();
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
@@ -180,6 +141,7 @@ $scope.addNewLbtRecord = function(data){
           data: $scope.lbtTable.lbtTabData,
           remarks:  $scope.lbtTable.lbtTabRemarks
         })).then(function(){
+          toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getLbtTable();
         },function(){
           toasterService.openErrorToast("Record has been successfully inserted/updated!");

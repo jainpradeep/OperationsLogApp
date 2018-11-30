@@ -24,7 +24,7 @@ exports.lbtTableInitDB =  {
             editedDate: "",        
             oficer: ""
         }],
-        addRowsEnabled : false,
+        addRowsEnabled : true,
     },{
         name : "Pumping",
         details : [{
@@ -35,7 +35,7 @@ exports.lbtTableInitDB =  {
             editedDate: "",        
             oficer: ""
         }],
-        addRowsEnabled : false,
+        addRowsEnabled : true,
     },{
         name : "Closing Stock",
         details : [{
@@ -46,7 +46,7 @@ exports.lbtTableInitDB =  {
             editedDate: "",        
             oficer: ""
         }],
-        addRowsEnabled : false,
+        addRowsEnabled : true,
     }],
     remarks:""
 }

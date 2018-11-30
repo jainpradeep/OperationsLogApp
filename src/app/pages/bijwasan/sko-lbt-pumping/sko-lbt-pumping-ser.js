@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.sko-lbt-pumping').service('skoLbtPumpin
     this.getSkoLbtPumpingData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getSkoLbtPumpingRecord',reqJSON,{
+        $http.post('http://localhost:3006/getSkoLbtPumpingRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.sko-lbt-pumping').service('skoLbtPumpin
 
     this.editSkoLbtPumpingData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editSkoLbtPumpingRecord',reqJSON,{
+        $http.post('http://localhost:3006/editSkoLbtPumpingRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }
