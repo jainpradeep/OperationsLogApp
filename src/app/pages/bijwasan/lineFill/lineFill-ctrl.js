@@ -51,66 +51,6 @@
     };
 
     
-    $scope.lineFillData = [{
-      lineFillName : "Matura - Delhi",
-      lineFillVolume : "17738",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "Delhi-Tikri",
-      lineFillVolume : "1882",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "Tikri-Sonipat",
-      lineFillVolume : "3125",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "PNP-BIJ (ATF)",
-      lineFillVolume : "5900",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "Sonipat-Panipat",
-      lineFillVolume : "6145",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "Sonipat-Meerut",
-      lineFillVolume : "3775",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "-Bharatpur",
-      lineFillVolume : "752",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    },{
-      lineFillName : "-Tundla",
-      lineFillVolume : "6995",
-      lineFill : [{
-          product : "",
-          volume : ""
-      }]
-    }];
-
-
-    
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -140,7 +80,7 @@
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.lineFill = {};
-      //$scope.getlineFill();
+      $scope.getlineFill();
     });
     $scope.lineFillSelectShift =function(shift){
       $scope.selectedShift = shift.name;
@@ -151,7 +91,17 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.lineFill.lineFillData = JSON.parse(data.data.data)[0].data;
+          $scope.lineFill.lineFillData = JSON.parse(data.data.data)[0].data.map(function(collection) {
+            return collection.lineFill.reduce(function(result, item) {
+              
+              angular.forEach(item, function(value, index) {
+                result[index] = result[index] || [];
+                result[index].push(value);
+              });
+              
+              return result;
+            }, {});
+          });
           $scope.lineFill.lineFillDate = JSON.parse(data.data.data)[0].date;
           $scope.lineFill.lineFillID = JSON.parse(data.data.data)[0]._id;
           $scope.lineFill.lineFillRemarks = JSON.parse(data.data.data)[0].remarks;
