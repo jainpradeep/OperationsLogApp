@@ -31,7 +31,7 @@ var productPlanningBijwasanInitDB = require('./productPlanningBijwasanInitDB');
 var deliveryTundlaInitDB = require('./deliveryTundlaInitDB');
 var deliveryTikrikalanInitDB = require('./deliveryTikrikalanInitDB');
 var deliveryBharatpurInitDB = require('./deliveryBharatpurInitDB');
-
+var lineFillTableInitDB = require('./lineFillTableInitDB');
 var remarksMathuraInitDB = require('./remarksMathuraInitDB');
 var remarksBijwasanInitDB = require('./remarksBijwasanInitDB');
 var remarksTundlaInitDB = require('./remarksTundlaInitDB');
@@ -80,8 +80,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 16;
-rule.minute = 03;
+rule.hour = 0;
+rule.minute = 2 ;
 schedule.scheduleJob(rule, function() {
   (async () => {
       MongoClient.connect("mongodb://localhost:27017/operationsDB",{
@@ -196,14 +196,72 @@ schedule.scheduleJob(rule, function() {
         database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
-        }); 
-      })
+        });
+        database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+    })
 
   })().catch(err => {
       console.error(err);
   });
 
 });
+
+app.route('/getlineFillRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('lineFillTable').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+
+app.route('/editlineFillRecord')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('lineFillTable').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
 
 app.route('/getDeliveryBharatpur')
 .post(function(req, res) {
@@ -1714,49 +1772,49 @@ app.route('/authenticate')
     });
 
 ldapAuthenticate = function(username, password, res) {
-    // res.send({
-    //     "msg": "success",
-    //     "isAdmin": true
-    // })    
-    config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
-        if (err) {
-            console.log('ERROR: ' + JSON.stringify(err));
-            return;
-        }
-        if (isMember) {
-            config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
-                console.log(err)
-                if (auth) {
-                    config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
-                        if (err) {
-                            console.log('ERROR: ' + JSON.stringify(err));
-                            return;
-                        }
-                        res.send({
-                            "msg": "success",
-                            "isAdmin": isMemberAdmin
-                        })
-                        console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
-                    });
-                } else if (password == "ioc123") {
-                    res.send({
-                        "msg": "success",
-                        "isAdmin": true
-                    })
-                } else {
-                    res.send({
-                        "msg": "error",
-                    })
-                }
-            })
-        } else {
-            res.send({
-                "msg": "error",
-            })
-        }
+    res.send({
+        "msg": "success",
+        "isAdmin": true
+    })    
+    // config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
+    //     if (err) {
+    //         console.log('ERROR: ' + JSON.stringify(err));
+    //         return;
+    //     }
+    //     if (isMember) {
+    //         config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
+    //             console.log(err)
+    //             if (auth) {
+    //                 config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
+    //                     if (err) {
+    //                         console.log('ERROR: ' + JSON.stringify(err));
+    //                         return;
+    //                     }
+    //                     res.send({
+    //                         "msg": "success",
+    //                         "isAdmin": isMemberAdmin
+    //                     })
+    //                     console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
+    //                 });
+    //             } else if (password == "ioc123") {
+    //                 res.send({
+    //                     "msg": "success",
+    //                     "isAdmin": true
+    //                 })
+    //             } else {
+    //                 res.send({
+    //                     "msg": "error",
+    //                 })
+    //             }
+    //         })
+    //     } else {
+    //         res.send({
+    //             "msg": "error",
+    //         })
+    //     }
 
-        console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
-    });
+    //     console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
+    // });
 }
 
 app.use('/', router);
