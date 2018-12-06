@@ -64,7 +64,7 @@
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editexMathuraMTPLStart(data)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-click="open(data)">History</button>
+                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
           </tr>

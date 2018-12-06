@@ -33,7 +33,7 @@
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, lbtTabService, $uibModal, $log, _, toasterService) {
-    $rootScope.isAdmin = localStorage.getItem("isAdmin")
+    $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
@@ -42,13 +42,13 @@
       })
     }
 
-$scope.addNewLbtRecord = function(data){
-    data.details.push({
-      product:"",
-      seq_no:0,
-      qty:0
-  })
-}
+    $scope.addNewLbtRecord = function(data){
+        data.details.push({
+          product:"",
+          seq_no:0,
+          qty:0
+      })
+    }
 
     $scope.editRemarksModal = function() {
       $scope.remarksModal.close();
@@ -86,6 +86,7 @@ $scope.addNewLbtRecord = function(data){
       };
     
     $scope.selectedLbt = "LBT 01";
+    $scope.selectedLbtTrimmed = $scope.selectedLbt.replace(' ','').toLowerCase();
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.lbtTable = {};
@@ -93,6 +94,7 @@ $scope.addNewLbtRecord = function(data){
     });
     $scope.lbtTableSelectLbt =function(lbt){
       $scope.selectedLbt = lbt.name;
+      $scope.selectedLbtTrimmed = $scope.selectedLbt.replace(' ','').toLowerCase();
     } 
     
     $scope.getLbtTable= function(){
@@ -101,7 +103,6 @@ $scope.addNewLbtRecord = function(data){
       })).then(
         function(data) { 
           $scope.lbtTable.lbtTabData = JSON.parse(data.data.data)[1].data;
-          $scope.lbtTable.lbtTabData[0] = JSON.parse(data.data.data)[0].data[3];
           $scope.lbtTable.lbtTabDate = JSON.parse(data.data.data)[1].date;
           $scope.lbtTable.lbtTabID = JSON.parse(data.data.data)[1]._id;
           $scope.lbtTable.lbtTabRemarks = JSON.parse(data.data.data)[1].remarks;
@@ -112,11 +113,12 @@ $scope.addNewLbtRecord = function(data){
 
     $scope.editLbtTableStart = function(data){
       $scope.editableLbtTableHourlyRec = angular.copy(data);
+      $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
     }
 
     $scope.editLbtTableRemark = function(remark){
       
-      $scope.lbtTable.lbtTabRemarks[$scope.$parent.selectedLbt.name] = remark 
+      $scope.lbtTable.lbtTabRemarks[$scope.selectedLbt] = remark 
 
       lbtTabService.editLbtTabData(JSON.stringify({
         _id : $scope.lbtTable.lbtTabID,

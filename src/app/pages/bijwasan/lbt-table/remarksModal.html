@@ -3,7 +3,7 @@
     </div>
     <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
         <div id="TextareaCtrl">
-                <a onbeforesave="editLbtTableRemark    ($data)" submit-on-enter="true" href="#" editable-textarea="lbtTable.lbtTabRemarks[$parent.selectedLbt]" e-rows="7" e-cols="40">
+                <a onbeforesave="editLbtTableRemark($data)" submit-on-enter="true" href="#" editable-textarea="lbtTable.lbtTabRemarks[$parent.selectedLbt]" e-rows="7" e-cols="40">
                     <pre>{{ lbtTable.lbtTabRemarks[$parent.selectedLbt] || 'no remarks' }}</pre>
                 </a>
         </div>

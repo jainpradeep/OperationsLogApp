@@ -33,7 +33,7 @@
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, bijwasanRemarksService, $uibModal, $log, _, toasterService) {
-    $rootScope.isAdmin = localStorage.getItem("isAdmin")
+    $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.selectedShift = "Shift A";
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];

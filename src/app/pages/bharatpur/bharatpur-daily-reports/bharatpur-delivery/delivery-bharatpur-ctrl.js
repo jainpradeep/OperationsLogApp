@@ -33,7 +33,7 @@
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http,$state, $filter, editableOptions, editableThemes, deliveryBharatpurService, $uibModal, $log, _, toasterService) {
-    $rootScope.isAdmin = localStorage.getItem("isAdmin")
+    $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,

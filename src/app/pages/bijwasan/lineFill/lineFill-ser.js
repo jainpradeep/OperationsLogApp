@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.lineFill').service('lineFillService', f
     this.getlineFillData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://localhost:3006/getlineFillRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getlineFillRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.lineFill').service('lineFillService', f
 
     this.editlineFillData  = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://localhost:3006/editlineFillRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editlineFillRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

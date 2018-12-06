@@ -11,6 +11,8 @@
                         <th>Product</th>
                         <th>Seq No.</th>
                         <th>Quantity</th>
+                        <th >Officer</th>
+                        <th >Edit Date</th>
                     </tr>
                     <tr ng-repeat="dt in flattenedHourEditHistory track by $index">
                         <td>  
@@ -28,6 +30,16 @@
                                 {{ dt.qty || '-' }}
                             </span>
                         </td>
+                        <td>
+                                <span>
+                                    {{ dt.officer || '-' }}
+                                </span>
+                          </td>
+                          <td>
+                                <span>
+                                        {{ dt.editedDate | date : "short"  || '-' }}
+                                </span>
+                          </td>
                     </tr>
                 </div>
                 </div>

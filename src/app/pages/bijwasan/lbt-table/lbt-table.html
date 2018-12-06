@@ -19,18 +19,18 @@
   <table class="table table-bordered table-hover table-condensed">
     <thead>
         <tr>
-          <th ng-repeat="data in lbtTable.lbtTabData track by $index">
+          <th ng-repeat="data in lbtTable.lbtTabData[selectedLbtTrimmed] track by $index">
             <span>
                 {{data.name}} 
             </span>
-            <span style = "float: right" ng-if = "data.addRowsEnabled">
+            <span style = "float: right" ng-if = "data.addRowsEnabled && $index > 0 && $index < 3">
                 <button type="button" ng-click= "addNewLbtRecord(data)" class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
             </span>  
           </th>
         </tr>
       </thead>
     <tr class="editable-row">
-      <td ng-repeat="data in lbtTable.lbtTabData track by $index" style="padding : 0px">
+      <td ng-repeat="data in lbtTable.lbtTabData[selectedLbtTrimmed] track by $index" style="padding : 0px">
           <table  style ="width: 100%;" class="table-bordered table-hover table-condensed">
               <tr>
                   <th>Product</th>
@@ -57,7 +57,7 @@
                 <td style="width :75px">
                     <form editable-form name="rowform" onaftersave = "editLbtTabData(dt, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                         shown="inserted == data">
-                    <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-default btn-xs">
+                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-default btn-xs">
                     <i class="ion-checkmark"></i>
                     </button>
                     <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-xs">
@@ -65,7 +65,7 @@
                     </button>
                     </form>
                     <div class="buttons" ng-show="!rowform.$visible">
-                      <button class="btn btn-default btn-xs" ng-if = "data.addRowsEnabled" ng-click="rowform.$show(); editLbtTableStart(dt)"><i class="ion-edit"></i></button>
+                      <button class="btn btn-default btn-xs" ng-if = "data.addRowsEnabled > 0 && $parent.$index > 0 && $parent.$index < 3" ng-click="rowform.$show(); editLbtTableStart(dt)"><i class="ion-edit"></i></button>
                       <button class="btn btn-default btn-xs" ng-click="open(dt)"><i class="ion-clipboard"></i></button>
                     </div>
                 </td>

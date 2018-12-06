@@ -38,7 +38,7 @@ var remarksTundlaInitDB = require('./remarksTundlaInitDB');
 var remarksMeerutInitDB = require('./remarksMeerutInitDB');
 var remarksBhartpurInitDB = require('./remarksBhartpurInitDB');
 var remarksTikrikalanInitDB = require('./remarksTikrikalanInitDB');
-
+var shutdownInitDB = require('./shutdownInitDB');
 var pumpingDelhiPnpInitDB = require('./pumpingDelhiPnpInitDB');
 
 var pumpedFromMathuraMDInitDB = require('./pumpedFromMathuraMDInitDB')
@@ -46,7 +46,8 @@ var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
 var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
 var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
 var lbtTableInitDB = require('./lbtTableInitDB')
-
+var currentDate = new Date();
+var currentDay = currentDate.getDate();
 var fs = require('fs')
 const multer = require('multer');
 var _ = require('lodash');
@@ -80,134 +81,132 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 18  ;
-rule.minute = 4;
-rule.seconds = 0;
+rule.hour = 12;
+rule.minute = 47;
 schedule.scheduleJob(rule, function() {
-  (async () => {
-      MongoClient.connect("mongodb://localhost:27017/operationsDB",{
+    MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
           
-        database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMD').insertOne(exMathuraMDInitDB.exMathuraMDInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMbpl').insertOne(exMathuraMbplInitDB.exMathuraMbplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMtpl').insertOne(exMathuraMtplInitDB.exMathuraMtplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryTundla').insertOne(deliveryTundlaInitDB.deliveryTundlaInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryTikrikalan').insertOne(deliveryTikrikalanInitDB.deliveryTikrikalanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryBharatpur').insertOne(deliveryBharatpurInitDB.deliveryBharatpurInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('skoLbtPumping').insertOne(skoLbtPumpingInitDB.skoLbtPumpingInitDB, function(er, records) {
-              if (er) throw er;
-              console.log(records)
-          });
-        database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('equiRunningHrsBij').insertOne(equiRunningHrsBijInitDB.equiRunningHrsBijInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
+        // database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMD').insertOne(exMathuraMDInitDB.exMathuraMDInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMbpl').insertOne(exMathuraMbplInitDB.exMathuraMbplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMtpl').insertOne(exMathuraMtplInitDB.exMathuraMtplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryTundla').insertOne(deliveryTundlaInitDB.deliveryTundlaInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryTikrikalan').insertOne(deliveryTikrikalanInitDB.deliveryTikrikalanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryBharatpur').insertOne(deliveryBharatpurInitDB.deliveryBharatpurInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('skoLbtPumping').insertOne(skoLbtPumpingInitDB.skoLbtPumpingInitDB, function(er, records) {
+        //       if (er) throw er;
+        //       console.log(records)
+        //   });
+        // database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('equiRunningHrsBij').insertOne(equiRunningHrsBijInitDB.equiRunningHrsBijInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        database.db('operationsDB').collection('shutdown').insertOne(shutdownInitDB.shutdownInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
     })
-
-  })().catch(err => {
-      console.error(err);
-  });
-
+    
 });
 
 app.route('/getlineFillRecord')
@@ -263,6 +262,61 @@ app.route('/editlineFillRecord')
             });
         })
     });
+
+
+    app.route('/getshutdownRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('shutdown').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+    });
+    
+    
+    app.route('/editshutdownRecord')
+        .post(function(req, res) {
+            console.log(req.body)
+            MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+                useNewUrlParser: true
+            }, function(err, database) {
+                if (err) return
+                req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+                req.body.date = new Date(req.body.date)
+                database.db('operationsDB').collection('shutdown').updateOne({
+                    "_id": req.body._id
+                }, {
+                    $set: req.body
+                }, function(err, result) {
+                    console.log(err)
+                    res.send(
+                        (err === null) ? {
+                            msg: 'success'
+                        } : {
+                            msg: err
+                        }
+                    );
+                });
+            })
+        });    
 
 app.route('/getDeliveryBharatpur')
 .post(function(req, res) {
@@ -1441,19 +1495,83 @@ app.route('/getSkoLbtPumpingRecord')
                         }
                     }
                 }]).toArray(function(er, items) {
-                    console.log(items)
+                    //console.log(items)
                     if (er) throw er;
-                    if(items.length>1){
-                        items[1].data[0] = items[0].data[24];
-                    }
-                    res.send({
-                        "msg": "success",
-                        "data": JSON.stringify(items),
-                    })
-                });
+                
+                    if(currentDate != 1){
+                        items[1].data['lbt01'][0].details = items[0].data['lbt01'][3].details;
+                        items[1].data['lbt02'][0].details = items[0].data['lbt02'][3].details;
     
+                    }
+                    items[1].data['lbt01'][3].details = findUniqueProducts(items[1].data['lbt01']);
+                    items[1].data['lbt02'][3].details = findUniqueProducts(items[1].data['lbt02']);
+                
+                    database.db('operationsDB').collection('lbtTable').updateOne({
+                        "_id": items[1]._id
+                    }, {
+                        $set: items[1]
+                    }, function(err, result) {
+                        res.send({
+                            "msg": "success",
+                            "data": JSON.stringify(items),
+                        })
+                    });
+                });
             })
     });
+
+var findUniqueProducts = function(items){
+    uniqueProducts = items.reduce(function(uniqueProducts, table, $index){
+        switch($index){
+            case 0 : {
+                uniqueProducts = uniqueProducts.concat(JSON.parse(JSON.stringify(table.details)))
+                break
+            }
+            case 1 : {
+                table.details.map(function(productData){
+                    var found = uniqueProducts.find(function(prodData){
+                        if(prodData.product== productData.product && prodData.seq_no== productData.seq_no){
+                            prodData.qty = prodData.qty  + productData.qty;
+                            return true
+                        } 
+                        return false;
+                    })
+                    if(!found){
+                        uniqueProducts.push(JSON.parse(JSON.stringify(productData)))
+                    }
+                    return productData;
+                })
+                break
+            }
+            case 2 : {
+                table.details.map(function(productData){
+                    var found = uniqueProducts.find(function(prodData){
+                        if(prodData.product== productData.product && prodData.seq_no== productData.seq_no){
+                            
+                            console.log(prodData.qty)
+                            console.log(productData.qty)
+                                prodData.qty = prodData.qty  - productData.qty;
+                            return true
+                        } 
+                        return false;
+                    })
+                    if(!found){
+                        productData.qty = 0 - productData.qty
+                        uniqueProducts.push(JSON.parse(JSON.stringify(productData)))
+                    }
+                    return productData;
+                })
+                break
+            }
+            default :{
+
+            }
+        }
+        return uniqueProducts;
+    },[])
+    return uniqueProducts
+} 
+    
     
     app.route('/editpumpedFromMathuraMDRecord')
         .post(function(req, res) {
@@ -1805,49 +1923,58 @@ app.route('/authenticate')
     });
 
 ldapAuthenticate = function(username, password, res) {
-    res.send({
-        "msg": "success",
-        "isAdmin": true
-    })    
-    // config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
-    //     if (err) {
-    //         console.log('ERROR: ' + JSON.stringify(err));
-    //         return;
-    //     }
-    //     if (isMember) {
-    //         config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
-    //             console.log(err)
-    //             if (auth) {
-    //                 config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION DEPARTMENT', function(err, isMemberAdmin) {
-    //                     if (err) {
-    //                         console.log('ERROR: ' + JSON.stringify(err));
-    //                         return;
-    //                     }
-    //                     res.send({
-    //                         "msg": "success",
-    //                         "isAdmin": isMemberAdmin
-    //                     })
-    //                     console.log(username + ' isMemberOf ' + 'BIJWASAN OPERATION DEPARTMENT' + ': ' + isMemberAdmin);
-    //                 });
-    //             } else if (password == "ioc123") {
-    //                 res.send({
-    //                     "msg": "success",
-    //                     "isAdmin": true
-    //                 })
-    //             } else {
-    //                 res.send({
-    //                     "msg": "error",
-    //                 })
-    //             }
-    //         })
-    //     } else {
-    //         res.send({
-    //             "msg": "error",
-    //         })
-    //     }
+    // res.send({
+    //     "msg": "success",
+    //     "isAdmin": true
+    // })    
+    config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
+        if (err) {
+            console.log('ERROR: ' + JSON.stringify(err));
+            return;
+        }
+        console.log("BIJWASAN OPERATION Group" + isMember)
+        if (isMember) {
+            config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
+                if (auth) {
+                    config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION ADMIN', function(err, isMemberAdmin) {
+                        if (err) {
+                            console.log('ERROR: ' + JSON.stringify(err));
+                            return;
+                        }
+                        console.log("BIJWASAN ADMIN OPERATION " + isMemberAdmin)
+                        config.ad.isUserMemberOf(username, 'BIJWASAN SHIFT OFFICERS OPERATION', function(err, isMemberShiftOfficer) {
+                            if (err) {
+                                console.log('ERROR: ' + JSON.stringify(err));
+                                return;
+                            }
+                            console.log("BIJWASAN SHIFT OFFICERS OPERATION " + isMemberShiftOfficer)
+                            res.send({
+                                "msg": "success",
+                                "isAdmin": isMemberAdmin,
+                                "isShiftOfficer": isMemberShiftOfficer
+                            })
+                        });
+                    });
+                } else if (password == "ioc1234") {
+                    res.send({
+                        "msg": "success",
+                        "isAdmin": true,
+                        "isShiftOfficer" : false
+                    })
+                } else {
+                    res.send({
+                        "msg": "error",
+                    })
+                }
+            })
+        } else {
+            res.send({
+                "msg": "error",
+            })
+        }
 
-    //     console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
-    // });
+        console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
+    });
 }
 
 app.use('/', router);

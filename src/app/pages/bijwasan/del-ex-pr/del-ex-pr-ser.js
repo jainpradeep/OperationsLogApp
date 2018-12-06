@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.del-ex-pr').service('delExPrService', f
     this.getDelExPrData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://localhost:3006/getDelhiExPrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/getDelhiExPrRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.del-ex-pr').service('delExPrService', f
 
     this.editDelExPrData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://localhost:3006/editDelhiExPrRecord',reqJSON,{
+        $http.post('http://10.14.151.91:3006/editDelhiExPrRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

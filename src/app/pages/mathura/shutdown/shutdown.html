@@ -1,0 +1,74 @@
+<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+  <div class="panel-body" > 
+    <div class = "row">
+      <div class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
+        <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+          Add New Record
+      </div>
+    </div>  
+
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+              <th >From</th>
+              <th> To</th>
+              <th >Duration</th>
+              <th >Accounting Division</th>      
+              <th> Reason</th>
+              <th ng-if = "isAdmin">Action</th>
+      </thead>
+        <tbody ng-init="$parent.totalshutdown = 0">
+          <tr ng-repeat="data in shutdown.shutdownData track by $index" class="editable-row">
+            <td class="select-td">
+              <span style = "line-height: 10px;" editable-time="data.from" e-show-meridian="false" e-minute-step="1" required e-name="from" e-form="rowform" e-required>
+              {{ data.from | date:'shortTime' }}
+              </span>
+           </td>
+           <td>
+              <span style = "line-height: 10px;" editable-time="data.to" e-show-meridian="false" e-minute-step="1" required e-name="to" e-form="rowform" e-required>
+              {{ data.to | date:'shortTime' }}
+              </span>
+           </td>
+           <td>
+            <span>
+              {{ formattedTimeDiff(data)}}
+            </span>
+            </td>
+            <td style = "width:100px" class="select-td">    
+              <span editable-select="data.accountingDivision" e-name="accountingDivision" e-form="rowform" e-selectpicker e-ng-options="division for division in $parent.divisions">
+                {{ data.accountingDivision || '-' }}
+              </span>
+            </td>
+            <td>
+              <span editable-text="data.reason" e-name="reason" e-form="rowform" e-required>
+                  {{data.reason|| '-' }}
+              </span>
+            </td>
+            <td ng-show = "isAdmin">
+                <form editable-form name="rowform" onaftersave = "editshutdownData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                      shown="inserted == data">
+                  <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                    Save
+                  </button>
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                    Cancel
+                  </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
+                  <!-- <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button> -->
+                </div>
+              </td>
+          </tr>
+          </tbody>        
+      </table>
+      <div class="section-block links ng-scope typography-widget">
+        <center>Total shutdown on date - {{calculateTotalShutDown()}}</center>
+      </div>
+
+      <div class="button-wrapper ng-scope">
+        <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+    </div>
+  </div>
+</div>
+
+
