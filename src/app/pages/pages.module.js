@@ -11,7 +11,8 @@
       'BlurAdmin.pages.config',
       'BlurAdmin.pages.main',
       'BlurAdmin.pages.dashboard',
-      'BlurAdmin.pages.bijwasan',
+      'BlurAdmin.pages.admin',
+      'BlurAdmin.pages.user',
       'BlurAdmin.pages.authSignIn'
     ])
     .config(routeConfig);
