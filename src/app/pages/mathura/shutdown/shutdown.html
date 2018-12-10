@@ -1,7 +1,11 @@
-<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
-  <div class="panel-body" > 
-    <div class = "row">
-      <div class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
+<div class="panel with-scroll animated zoomIn" ng-controller = "shutdown-ctrl" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+    <div class="row" ng-if = "!shutdown.shutdownData">
+        <div class="loader">Loading...</div>
+    </div>
+
+  <div ng-if ="shutdown.shutdownData" class="panel-body" > 
+    <div  class = "row">
+      <div ng-hide = "hideEditHistoryRemarks" class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
         <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
           Add New Record
       </div>
@@ -14,7 +18,7 @@
               <th >Duration</th>
               <th >Accounting Division</th>      
               <th> Reason</th>
-              <th ng-if = "isAdmin">Action</th>
+              <th ng-if = "isAdmin" ng-hide = "hideEditHistoryRemarks">Action</th>
       </thead>
         <tbody ng-init="$parent.totalshutdown = 0">
           <tr ng-repeat="data in shutdown.shutdownData track by $index" class="editable-row">
@@ -43,7 +47,7 @@
                   {{data.reason|| '-' }}
               </span>
             </td>
-            <td ng-show = "isAdmin">
+            <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">
                 <form editable-form name="rowform" onaftersave = "editshutdownData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">

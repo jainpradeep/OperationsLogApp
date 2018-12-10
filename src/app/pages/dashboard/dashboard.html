@@ -16,10 +16,8 @@
                <a class="" ng-click ="setSelectedView(view)"  data-toggle="tab" role="tab">{{view.name}}</a>
             </li>
          </ul>
-
-        <div>
-            <div ng-include="selectedView.htmlSource">
-                
+        <div ng-repeat="htmlSource in selectedView.htmlSource">
+            <div ng-include="htmlSource">
             </div>
         </div>
     </div>

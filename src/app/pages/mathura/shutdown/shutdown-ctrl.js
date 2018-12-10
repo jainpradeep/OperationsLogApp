@@ -65,7 +65,7 @@
       };
     
     $scope.selectedShift = "Shift A";
-    $scope.$parent.$parent.$watch('customDate', function(value){
+    $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.shutdown = {};
       $scope.getshutdown();

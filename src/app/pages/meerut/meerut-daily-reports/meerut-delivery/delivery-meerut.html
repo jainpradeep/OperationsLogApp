@@ -1,7 +1,7 @@
-<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div ng-controller = "tikrikalan-daily-report-ctrl" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
   <div class="panel-body" > 
     <div class = "row">
-      <div class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
+      <div ng-hide = "hideEditHistoryRemarks" class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
         <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
           Add New Record
       </div>
@@ -14,7 +14,7 @@
               <th colspan="1">Tank no</th>
               <th colspan="1">FMR Qty.</th>
               <th colspan="1">Dip Qty.</th>      
-              <th colspan="1" ng-if = "isAdmin">Actions</th>
+              <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-if = "isAdmin">Actions</th>
             </tr>
             <tr rowspan="2">
               <th>Product</th>
@@ -22,7 +22,7 @@
               <th></th>
               <th></th>
               <th></th>
-              <th ng-if = "isAdmin"></th>
+              <th ng-hide = "hideEditHistoryRemarks" ng-if = "isAdmin"></th>
             </tr>
         </thead>
         <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
@@ -52,7 +52,7 @@
                     {{ data.dip_qty || '-' }}
                 </span>
             </td>
-            <td ng-show = "isAdmin">
+            <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin">
                 <form editable-form name="rowform" onaftersave = "editdeliveryMeerutData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
@@ -84,14 +84,14 @@
                   <td> 
                       {{ totalDelDelivDip }}
                   </td>
-                  <td ng-show = "isAdmin">
+                  <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin">
                   </td>
               </tr>
           </tbody>        
       </table>
 
 
-      <div class="button-wrapper ng-scope">
+      <div ng-hide = "hideEditHistoryRemarks" class="button-wrapper ng-scope">
         <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
     </div>
   </div>

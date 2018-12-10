@@ -1,80 +1,83 @@
-<div class="row" ng-if = "!equiRunningHrsBijwasan.equiRunningHrsBijData">
-      <div class="loader">Loading...</div>
-  </div>
-      
-  <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0">
-      <div class="alert">
-          <h3>
-          <strong>Sorry!</strong> No records fould as per the set filters
-          </h3>
-      </div>
-  </div>  
-         
-<div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
-  <div class="panel-body" > 
-    <table class="table table-bordered table-hover table-condensed">
-      <thead>
-            <th>Name Of Equipment</th>
-            <th >Previous Hrs</th>
-            <th >Shift A</th>
-            <th >Shift B</th>
-            <th >Shift C</th>
-            <th >Cummulative Hrs</th>
-            <th ng-if = "isAdmin">Actions</th>
 
-      </thead>
-      <tr class="editable-row"  ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
-         <td>
-            <span >
-            {{ data.equipment || '-' }}
-            </span>
-         </td>
-         <td>    
-            <span>
-                 {{ data.previous  | date:'shortTime'}}
-            </span>
-         </td>
-         <td>  
-            <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required e-name="shiftA" e-form="rowform" e-required>
-                  {{ data.shiftA | date:'shortTime' }}
-            </span>  
-         </td>
-         <td>    
-               <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required e-name="shiftB" e-form="rowform" e-required>
-                  {{ data.shiftB | date:'shortTime' }}
-               </span>
-         </td>
-         <td> 
-            <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required e-name="shiftC" e-form="rowform" e-required>
-                  {{ data.shiftC | date:'shortTime' }}
-            </span>   
-         </td>
-         <td>    
-            <span>
-                  {{ data.cummulative | date:'shortTime' }}
-            </span>   
-         </td>
-         <td ng-show = "isAdmin">
-            <form editable-form name="rowform" onaftersave = "editEquiRunningHrsBijData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
-               shown="inserted == data">
-               <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
-               Save
-               </button>
-               <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
-               Cancel
-               </button>
-            </form>
-            <div class="buttons" ng-show="!rowform.$visible">
-               <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
-               <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+<div ng-controller = "equi-running-hrs-bij-ctrl">
+      <div class="row" ng-if = "!equiRunningHrsBijwasan.equiRunningHrsBijData">
+            <div class="loader">Loading...</div>
+        </div>
+            
+        <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0">
+            <div class="alert">
+                <h3>
+                <strong>Sorry!</strong> No records fould as per the set filters
+                </h3>
             </div>
-         </td>
-      </tr>
-    </table>
-    <div class="button-wrapper ng-scope">
-      <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
-    </div>
-  </div>
+        </div>  
+               
+      <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData && equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+        <div class="panel-body" > 
+          <table style="margin: 2px; padding:2px; font-size: 14px;" class="table-bordered table-hover table-condensed">
+            <thead>
+                  <th>Name Of Equipment</th>
+                  <th >Previous Hrs</th>
+                  <th >Shift A</th>
+                  <th >Shift B</th>
+                  <th >Shift C</th>
+                  <th >Cummulative Hrs</th>
+                  <th ng-if = "isAdmin"  ng-hide = "hideEditHistoryRemarks">Actions</th>
+            </thead>
+            <tr class="editable-row"  ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span >
+                  {{ data.equipment || '-' }}
+                  </span>
+               </td>
+               <td>    
+                  <span>
+                       {{ data.previous  | date:'shortTime'}}
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required e-name="shiftA" e-form="rowform" e-required>
+                        {{ data.shiftA | date:'shortTime' }}
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required e-name="shiftB" e-form="rowform" e-required>
+                        {{ data.shiftB | date:'shortTime' }}
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required e-name="shiftC" e-form="rowform" e-required>
+                        {{ data.shiftC | date:'shortTime' }}
+                  </span>   
+               </td>
+               <td>    
+                  <span>
+                        {{ data.cummulative | date:'shortTime' }}
+                  </span>   
+               </td>
+               <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">
+                  <form editable-form name="rowform" onaftersave = "editEquiRunningHrsBijData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                     shown="inserted == data">
+                     <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                     Save
+                     </button>
+                     <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                     Cancel
+                     </button>
+                  </form>
+                  <div class="buttons" ng-show="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                  </div>
+               </td>
+            </tr>
+          </table>
+          <div class="button-wrapper ng-scope" ng-hide = "hideEditHistoryRemarks">
+            <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+          </div>
+        </div>
+      </div>
 </div>
+
 
 

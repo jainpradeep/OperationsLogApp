@@ -11,23 +11,36 @@
     /** @ngInject */
     function dashboardCtrl($scope, $http) {
         $scope.shifts = ["ShiftA","ShiftB","ShiftC"]
+        $scope.lbts = ["lbt01","lbt02"]
         $scope.views = [{
             name : "Line Fill",
             isSelected : true,
-            htmlSource : "app/pages/dashboard/reports/reports.html"
+            htmlSource : ["app/pages/dashboard/reports/reports.html"]
         },{
             name : "Daily Reports",
             isSelected : false,
-            htmlSource : ""
-        },{
+            htmlSource : ["app/pages/bijwasan/daily-reports/delivery-del/delivery-del.html",
+                        "app/pages/bijwasan/daily-reports/rev-pumping-pnp-delhi/rev-pumping-pnp-delhi.html",
+                        "app/pages/bijwasan/daily-reports/pumping-del-pnp/pumping-delhi-pnp.html",
+                        "app/pages/bijwasan/daily-reports/delivery-pnp/delivery-pnp.html",
+                        "app/pages/bijwasan/daily-reports/delivery-del-rev/delivery-del-rev.html",
+                        "app/pages/mathura/mathura-daily-reports/ex-mathura-mbpl/ex-mathura-mbpl.html",
+                        "app/pages/mathura/mathura-daily-reports/ex-mathura-mtpl/ex-mathura-mtpl.html",
+                        "app/pages/tundla/tundla-daily-reports/tundla-delivery/delivery-tundla.html",
+                        "app/pages/tikrikalan/tikrikalan-daily-reports/tikrikalan-delivery/delivery-tikrikalan.html",
+                        "app/pages/meerut/meerut-daily-reports/meerut-delivery/delivery-meerut.html",
+                        "app/pages/bharatpur/bharatpur-daily-reports/bharatpur-delivery/delivery-bharatpur.html"]
+                    },{
             name : "LBT & Shutdown",
             isSelected : false,
-            htmlSource : "app/pages/bijwasan/lineFill/lineFill.html"
+            htmlSource : ["app/pages/mathura/shutdown/shutdown.html", "app/pages/dashboard/reports/lbt-table.html"]
         },{
             name : "Equipment Run Hrs",
             isSelected : false,
-            htmlSource : "app/pages/bijwasan/lineFill/lineFill.html"
+            htmlSource : ["app/pages/bijwasan/equi-running-hrs-bij/equi-running-hrs-bij.html"]
         }]
+
+        $scope.hideEditHistoryRemarks = true;
 
         $scope.setSelectedView = function(view){
             $scope.selectedView = view;

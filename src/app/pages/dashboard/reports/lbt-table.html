@@ -1,0 +1,55 @@
+<div ng-controller = "lbt-table-ctrl">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li ng-class="{active: lbt.isSelected == true}" class="nav-item" ng-repeat="lbt in $parent.lbt track by $index">
+               <a class="" data-toggle="tab" ng-click = "$parent.selectLbt(lbt); lbtTableSelectLbt(lbt)" role="tab">{{lbt.name}}</a>
+            </li>
+         </ul>
+       
+         <table  ng-if = "lbtTable.lbtTabData" style="margin: 0px" ng-repeat = "lbt in $parent.lbts  track by $index" class="table-bordered table-hover table-condensed" >
+                <tr>
+                    <th >{{lbt.toUpperCase()}}</th>
+              
+            
+                <td> 
+                    <table style= "margin:0px;padding:0px" class="table-bordered table-hover table-condensed">
+                        <thead>
+                            <th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index">
+                                <span>
+                                    {{data.name}} 
+                                </span>
+                            </th>
+                         </thead>
+                        <tr>
+                            <td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px">
+                                <table style ="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <tr ng-repeat="dt in data.details track by $index">
+                                        <td>  
+                                        <span>
+                                            {{ dt.product }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{ dt.seq_no || '-' }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span >
+                                                {{ dt.qty || '-' }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>  
+            </tr>
+        </table>
+    </div>
+    

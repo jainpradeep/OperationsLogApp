@@ -81,8 +81,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 09;
-rule.minute = 15;
+rule.hour = 12;
+rule.minute = 00;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -1495,7 +1495,7 @@ app.route('/getSkoLbtPumpingRecord')
                         }
                     }
                 }]).toArray(function(er, items) {
-                    //console.log(items)
+                    console.log(items)
                     if (er) throw er;
                 
                     if(currentDate != 1){
