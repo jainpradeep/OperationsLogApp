@@ -9,7 +9,7 @@
     .controller('lineFill-ctrl', TablesPageCtrl)
     .constant('_',
       window._
-    );
+    )
 
 
     /** @ngInject */

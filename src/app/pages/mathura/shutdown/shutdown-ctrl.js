@@ -36,23 +36,7 @@
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); 
     $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.totalShutDown = 0;
-    $scope.openRemarks = function(){
-    $scope.remarksModal =  $uibModal.open({
-        scope: $scope,
-        templateUrl: "/app/pages/mathura/shutdown/remarksmodal.html",
-        size: '',
-      })
-    }
   
-    $scope.editRemarksModal = function() {
-      $scope.remarksModal.close();
-    };
-  
-    $scope.cancelRemarksModal = function() {
-      $scope.remarksModal.dismiss('cancel');
-    };
-
-    
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -113,7 +97,8 @@
         });
     }
 
-    $scope.editshutdownfrom = function(data){
+
+    $scope.editshutdownStart = function(data){
       $scope.editableshutdownHourlyRec = angular.copy(data);
     }
 
@@ -141,7 +126,6 @@
           _id : $scope.shutdown.shutdownID,
           date: $scope.shutdown.shutdownDate,
           data: $scope.shutdown.shutdownData,
-          remarks:  $scope.shutdown.shutdownRemarks
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $state.reload();

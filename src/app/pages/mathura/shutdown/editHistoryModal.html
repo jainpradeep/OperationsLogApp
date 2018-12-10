@@ -8,60 +8,50 @@
                 <div class="col-sm">
                     <table  class="table table-bordered table-hover table-condensed">
                         <thead>
-                            <tr rowspan="2">
-                              <th colspan="2">Batch no</th>
-                              <th colspan="1">Tank no</th>
-                              <th colspan="1">FMR Qty.</th>
-                              <th colspan="1">Dip Qty.</th> 
-                              <th>Officer</th>
-                              <th>Edit Date</th>              
-                            </tr>
-                            <tr rowspan="2">
-                              <th>Product</th>
-                              <th>Seq. No</th>
-                              <th></th>
-                              <th></th>
-                              <th></th>
-                              <th></th>
-                              <th></th>
-                            </tr>
+                            <th >From</th>
+                            <th> To</th>
+                            <th >Duration</th>
+                            <th >Accounting Division</th>      
+                            <th> Reason</th>
+                            <th >Officer</th>      
+                            <th> Edited Date</th>
                           </thead>
                         <tr ng-repeat="data in flattenedHourEditHistory track by $index">
-                        <td style = "width:100px" class="select-td">    
-                            <span>
-                            {{ data.product || '-' }}
-                            </span>
-                        </td>
-                        <td>
-                            <span numbers-only>
-                                {{ data.seq_no || '-' }}
-                            </span>
-                        </td>
-                        <td>
-                            <span >
-                                {{ data.tank_no || '-' }}
-                            </span>
-                        </td>
-                        <td>
-                            <span >
-                                {{ data.fmr || '-' }}
-                            </span>
-                        </td>
-                        <td>
-                            <span >
-                                {{ data.dip_qty || '-' }}
-                            </span>
-                        </td>
-                        <td>
+                            <td>
+                                <span>
+                                {{ data.from | date:'shortTime' }}
+                                </span>
+                             </td>
+                             <td>
+                                <span>
+                                {{ data.to | date:'shortTime' }}
+                                </span>
+                             </td>
+                             <td>
+                              <span>
+                                {{ formattedTimeDiff(data)}}
+                              </span>
+                              </td>
+                              <td style = "width:100px" class="select-td">    
                                 <span >
-                                        {{ (data.editedDate| date : "short" ) || '-' }} 
-                                    </span>
-                                </td>
-                                <td>
-                                    <span >
-                                        {{data.officer|| '-' }}  
-                                    </span>
-                                </td>
+                                  {{ data.accountingDivision || '-' }}
+                                </span>
+                              </td>
+                              <td>
+                                <span >
+                                    {{data.reason|| '-' }}
+                                </span>
+                              </td>
+                        <td>
+                            <span >
+                                    {{ (data.editedDate| date : "short" ) || '-' }} 
+                                </span>
+                        </td>
+                        <td>
+                            <span >
+                                {{data.officer|| '-' }}  
+                            </span>
+                        </td>
                       </tr>
                     </table>
                 </div>

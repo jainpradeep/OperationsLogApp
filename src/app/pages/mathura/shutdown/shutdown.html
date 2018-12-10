@@ -55,7 +55,7 @@
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
-                  <!-- <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button> -->
+                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
           </tr>
@@ -64,10 +64,6 @@
       <div class="section-block links ng-scope typography-widget">
         <center>Total shutdown on date - {{calculateTotalShutDown()}}</center>
       </div>
-
-      <div class="button-wrapper ng-scope">
-        <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
-    </div>
   </div>
 </div>
 

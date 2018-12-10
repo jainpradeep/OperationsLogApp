@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-2">
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="customDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+</div>
+
+<div class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+    <div class="panel-body" > 
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li ng-class="{active: view.isSelected == true}" class="nav-item" ng-repeat = "view in views">
+               <a class="" ng-click ="setSelectedView(view)"  data-toggle="tab" role="tab">{{view.name}}</a>
+            </li>
+         </ul>
+
+        <div>
+            <div ng-include="selectedView.htmlSource">
+                
+            </div>
+        </div>
+    </div>
+</div>

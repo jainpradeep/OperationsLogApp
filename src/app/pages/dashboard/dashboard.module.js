@@ -5,7 +5,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.pages.dashboard', [])
+  angular.module('BlurAdmin.pages.dashboard', ['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
     .config(routeConfig); 
 
   /** @ngInject */
@@ -15,6 +15,7 @@
         url: '/dashboard',
         templateUrl: 'app/pages/dashboard/dashboard.html',
         title: 'Dashboard',
+        controller: "dashboard-ctrl",
         sidebarMeta: {
           icon: 'ion-waterdrop',
           order: 0,
