@@ -49,6 +49,7 @@ var lbtTableInitDB = require('./lbtTableInitDB')
 var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var fs = require('fs')
+
 const multer = require('multer');
 var _ = require('lodash');
 var schedule = require('node-schedule');
@@ -81,8 +82,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 12;
-rule.minute = 00;
+rule.hour = 09;
+rule.minute = 25;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -207,6 +208,26 @@ schedule.scheduleJob(rule, function() {
         });
     })
     
+
+});
+app.route('/getSummary')  
+.post(function (req, res) {
+    var options = { format: 'Letter'};
+    var html = createHTML({
+      title: 'example',
+      body: req.body.report.toString(),
+    })     
+    fs.writeFile('index.html', html, function (err) {
+      if (err)
+        return
+      var fi = fs.readFileSync('./index.html', 'utf8');
+      pdf.create(fi, options).toFile('./businesscard.pdf', function(er, response) {
+        if (er) return 
+        var data =fs.readFileSync('./businesscard.pdf');
+        res.contentType("application/pdf");
+        res.send(data);
+      });
+    })
 });
 
 app.route('/getlineFillRecord')

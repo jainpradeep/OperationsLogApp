@@ -1,4 +1,4 @@
-<div class="panel with-scroll animated zoomIn" ng-controller = "shutdown-ctrl" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div ng-controller = "shutdown-ctrl" zoom-in="" ba-panel-blur="">
     <div class="row" ng-if = "!shutdown.shutdownData">
         <div class="loader">Loading...</div>
     </div>
@@ -11,7 +11,7 @@
       </div>
     </div>  
 
-    <table class="table table-bordered table-hover table-condensed">
+    <table class="table table-bordered table-hover table-condensed" style="margin:0px">
       <thead>
               <th >From</th>
               <th> To</th>

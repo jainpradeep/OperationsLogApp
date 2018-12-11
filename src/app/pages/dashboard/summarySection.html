@@ -1,0 +1,89 @@
+<div>
+    <div id="summary-report" >
+        <div>
+            <style> 
+                table {
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    color: #4a4a4d;
+                    font: 8px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    }
+                    th,
+                    td {
+                    padding: 10px 15px;
+                    vertical-align: left;
+                    width: auto;
+                    }
+                    thead {
+                    background: #63bbb2;
+                    background: linear-gradient(#63bbb2, #63bbb2);
+                    color: #fff;
+                    font-size: 7px;
+                    text-transform: uppercase;
+                    }
+                    th:first-child {
+                    text-align: left;
+                    }
+                    th:last-child {
+                    }
+                    /* tbody tr:nth-child(even) {
+                    background: #f0f0f2;
+                    } */
+                    td {
+                    border-bottom: 1px solid #cecfd5;
+                    border-right: 1px solid #cecfd5;
+                    background-color: #fff
+                    }
+                    .verticalTableContent {
+                        text-align:center;
+                        white-space:nowrap;
+                        g-origin:50% 50%;
+                        padding: 10px 15px;
+                        vertical-align: left;
+                        width: auto;
+                        color: #fff;
+                        font-size: 7px;
+                        text-transform: uppercase;
+                    }
+            </style>
+            <img  style = "height: 70px; width:60px; margin: 20px; float: left" src="\assets\img\logo.png">
+            <span style = "float:left; margin: 20px;">
+                <h1 >
+                    Northern Region Piplines Division, <br>
+                    Indian Oil Corporation Limited
+                </h1>
+                <h3 >
+                    Daily Report : Time-Date : 7 AM {{parent.date | date :  "dd.MM.y"}} to 7 AM {{ parent.nextDate| date :  "dd.MM.y"}}
+                </h3>
+            </span>
+        </div>
+            <br>
+        <table>
+            <tbody>
+                    <tr style = "padding:0px; margin:0px; border: none">
+                        <td class = "col-md-5" valign="top" style = "padding:0px; margin:0px;border:0px" >
+                            <div ng-repeat="htmlSource in views[1].htmlSource">
+                                    <div ng-include="htmlSource">
+                                    </div>
+                                </div>
+                                <div ng-include="views[2].htmlSource[1]">
+                                    </div>
+                                    <div ng-include="views[3].htmlSource[0]">
+                                        </div>
+                        </td>
+                        <td class = "col-md-7" valign="top" style = "padding:0px; margin:0px" >
+                               
+                                <div valign="top" ng-include="views[2].htmlSource[0]">
+                                    </div>
+                            
+                            <div ng-include="views[0].htmlSource[0]">
+                                    </div>
+                        </td>
+                    </tr>
+            <tbody>
+        </table>
+    </div>
+    <div style="margin: 10px">
+       <button class= "btn btn-primary" ng-click="generateReport();">Generate PDF</button>
+    </div>
+</div>

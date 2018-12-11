@@ -11,9 +11,9 @@
           </div>
         </div>  
       
-      <div ng-if = "revPumpingPnpDelhi.revPumpingPnpDelhiData &&  revPumpingPnpDelhi.revPumpingPnpDelhiData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
-          <div class = "col-md-6">
-              <div class="panel-body" > 
+      <div ng-if = "revPumpingPnpDelhi.revPumpingPnpDelhiData &&  revPumpingPnpDelhi.revPumpingPnpDelhiData.length > 0"  style="background-size: 1679px 944px; background-position: 0px -79px;">
+          <div class = "col-md-6" style="padding:0px">
+              <div class="panel-body"   style="padding:0px"> 
                   <div ng-hide = "hideEditHistoryRemarks"  class = "row">
                     <div style="margin-bottom: 20px;margin-top: 10px">
                       <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
@@ -21,16 +21,22 @@
                     </div>
                   </div>  
                     
-                  <table class="table table-bordered table-hover table-condensed">
-                      <thead>
-                          <tr rowspan="2">
+                  <table ng-if = "revPumpingPnpDelhi.revPumpingPnpDelhiData" style="margin: 0px" class="table-bordered table-hover table-condensed" >
+                        <tr>
+                          <td> 
+                          <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr rowspan="3">
+                                        <th colspan="6">Pumping Panipat-Delhi (Reverse)</th>
+                                      </tr>
+                          <tr rowspan="3">
                             <th colspan="2">Batch no</th>
                             <th colspan="1">Tank no</th>
                             <th colspan="1">FMR Qty.</th>
                             <th colspan="1">Dip Qty.</th>      
                             <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-if = "isAdmin">Actions</th>
                           </tr>
-                          <tr rowspan="2">
+                          <tr rowspan="3">
                             <th>Product</th>
                             <th>Seq. No</th>
                             <th></th>
@@ -103,7 +109,9 @@
                             </tr>
                         </tbody>        
                     </table>
-                    
+                </td>
+            </tr>
+            </table>
                     <div ng-hide = "hideEditHistoryRemarks" class="button-wrapper ng-scope">
                       <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
                   </div>

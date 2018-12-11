@@ -9,28 +9,30 @@
 
 
     /** @ngInject */
-    function dashboardCtrl($scope, $http) {
+    function dashboardCtrl($scope, $http, $uibModal) {
         $scope.shifts = ["ShiftA","ShiftB","ShiftC"]
         $scope.lbts = ["lbt01","lbt02"]
         $scope.views = [{
             name : "Line Fill",
             isSelected : true,
-            htmlSource : ["app/pages/dashboard/reports/reports.html"]
+            htmlSource : ["app/pages/dashboard/reports/linefill.html"]
         },{
             name : "Daily Reports",
             isSelected : false,
-            htmlSource : ["app/pages/bijwasan/daily-reports/delivery-del/delivery-del.html",
+            htmlSource : [
+                        "app/pages/bijwasan/daily-reports/delivery-del/delivery-del.html",
                         "app/pages/bijwasan/daily-reports/rev-pumping-pnp-delhi/rev-pumping-pnp-delhi.html",
                         "app/pages/bijwasan/daily-reports/pumping-del-pnp/pumping-delhi-pnp.html",
                         "app/pages/bijwasan/daily-reports/delivery-pnp/delivery-pnp.html",
                         "app/pages/bijwasan/daily-reports/delivery-del-rev/delivery-del-rev.html",
                         "app/pages/mathura/mathura-daily-reports/ex-mathura-mbpl/ex-mathura-mbpl.html",
+                        "app/pages/mathura/mathura-daily-reports/ex-mathura-md/ex-mathura-md.html",
                         "app/pages/mathura/mathura-daily-reports/ex-mathura-mtpl/ex-mathura-mtpl.html",
                         "app/pages/tundla/tundla-daily-reports/tundla-delivery/delivery-tundla.html",
                         "app/pages/tikrikalan/tikrikalan-daily-reports/tikrikalan-delivery/delivery-tikrikalan.html",
                         "app/pages/meerut/meerut-daily-reports/meerut-delivery/delivery-meerut.html",
                         "app/pages/bharatpur/bharatpur-daily-reports/bharatpur-delivery/delivery-bharatpur.html"]
-                    },{
+        },{
             name : "LBT & Shutdown",
             isSelected : false,
             htmlSource : ["app/pages/mathura/shutdown/shutdown.html", "app/pages/dashboard/reports/lbt-table.html"]
@@ -39,11 +41,36 @@
             isSelected : false,
             htmlSource : ["app/pages/bijwasan/equi-running-hrs-bij/equi-running-hrs-bij.html"]
         }]
+        
 
         $scope.hideEditHistoryRemarks = true;
 
+        
+        $scope.open = function(data) {
+            $scope.$modalInstance =  $uibModal.open({
+                scope: $scope,
+                templateUrl: "/app/pages/dashboard/summarySection.html",
+                size: '',
+              })
+            };
+            
+            $scope.ok = function() {
+                $scope.$modalInstance.close();
+            };
+            
+            $scope.cancel = function() {
+                $scope.$modalInstance.dismiss('cancel');
+            };
+        
+        
+        
         $scope.setSelectedView = function(view){
             $scope.selectedView = view;
+            $scope.views.map(function(view){
+                view.isSelected = false
+                return view;
+            })
+            $scope.selectedView.isSelected = true;
         }
 
         $scope.today = function() {
@@ -95,6 +122,42 @@
         $scope.popup1 = {
             opened: false
         };
+
+        $scope.generateReport = function(){
+            var summaryReport = document.getElementById('summary-report').innerHTML;
+         $http({
+             method: 'POST',
+             url: 'http://10.14.151.91:3006/getSummary',
+             data: JSON.stringify({report : summaryReport}),
+             responseType: 'arraybuffer'
+         }).success(function (data, status, headers) {
+             headers = headers();
+      
+             var filename = headers['x-filename'];
+             var contentType = headers['content-type'];
+      
+             var linkElement = document.createElement('a');
+             try {
+                 var blob = new Blob([data], { type: contentType });
+                 var url = window.URL.createObjectURL(blob);
+      
+                 linkElement.setAttribute('href', url);
+                 linkElement.setAttribute("download", filename);
+      
+                 var clickEvent = new MouseEvent("click", {
+                     "view": window,
+                     "bubbles": true,
+                     "cancelable": false
+                 });
+                 linkElement.dispatchEvent(clickEvent);
+             } catch (ex) {
+                 console.log(ex);
+             }
+         }).error(function (data) {
+             console.log(data);
+         });
+     
+         }
 
         function getDayClass(data) {
             var date = data.date,

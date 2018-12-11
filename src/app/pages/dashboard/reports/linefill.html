@@ -1,31 +1,5 @@
-<div class="panel with-scroll animated zoomIn" ng-controller= "lineFill-ctrl" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div ng-controller= "lineFill-ctrl">
     <div class="panel-body" > 
-        <!-- <div >
-            <table style="margin: 0px" ng-repeat = "line in lineFill.lineFillData[shift]  track by $index" class="table table-bordered table-hover editable-row table-condensed">
-                    <tr>
-                        <th >{{line.lineFillName}}</th>
-                        <td  ng-repeat = "data in line.lineFill track by $index">
-                            <span editable-text="data.product" e-name="product" e-form="rowform" e-required>
-                                    {{ data.product  || '-' }}
-                            </span>
-                        </td>
-                        <th>Check</th>
-                    </tr>
-                    <tr>
-                        <th  >{{line.lineFillVolume}}</th>
-                        <td  ng-repeat = "data in line.lineFill track by $index">
-                            <span editable-number="data.volume" e-step="any" e-name="volume"  e-form="rowform" e-required>
-                                {{ data.volume || '-' }}
-                            </span>
-                        </td>
-                        <td  >
-                                <span ng-style="line.style"> 
-                                    {{ sumLineFill(line)  || '-' }}
-                                </span>
-                        </td>                
-                    </tr>
-            </table>
-        </div> -->
         <div class="row" ng-if = "!lineFill.lineFillData">
                 <div class="loader">Loading...</div>
         </div>
