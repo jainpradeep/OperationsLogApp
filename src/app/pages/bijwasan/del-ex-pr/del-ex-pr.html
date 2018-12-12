@@ -99,8 +99,8 @@
                       {{ data.tank_dip || '-' }}
                   </span>
               </td>
-              <td ng-show = "isAdmin">
-                <form editable-form name="rowform" onaftersave = "editDelExPrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+              <td ng-if = "isAdmin">
+                <form editable-form name="rowform" onaftersave = "editDelExPrData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                     Save
@@ -109,9 +109,9 @@
                     Cancel
                   </button>
                 </form>
-                <div class="buttons" ng-show="!rowform.$visible">
+                <div class="buttons" ng-if="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); editDelhiExPrStart(data)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                  <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
             </tr>

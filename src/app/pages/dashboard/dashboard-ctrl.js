@@ -123,41 +123,52 @@
             opened: false
         };
 
-        $scope.generateReport = function(){
-            var summaryReport = document.getElementById('summary-report').innerHTML;
-         $http({
-             method: 'POST',
-             url: 'http://10.14.151.91:3006/getSummary',
-             data: JSON.stringify({report : summaryReport}),
-             responseType: 'arraybuffer'
-         }).success(function (data, status, headers) {
-             headers = headers();
+        $scope.generateReport = function(divName){
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+       
+            document.body.innerHTML = printContents;
+       
+            window.print();
+       
+            document.body.innerHTML = originalContents;
+       }
+
+        // $scope.generateReport = function(){
+        //     var summaryReport = document.getElementById('summary-report').innerHTML;
+        //  $http({
+        //      method: 'POST',
+        //      url: 'http://10.14.151.91:3006/getSummary',
+        //      data: JSON.stringify({report : summaryReport}),
+        //      responseType: 'arraybuffer'
+        //  }).success(function (data, status, headers) {
+        //      headers = headers();
       
-             var filename = headers['x-filename'];
-             var contentType = headers['content-type'];
+        //      var filename = headers['x-filename'];
+        //      var contentType = headers['content-type'];
       
-             var linkElement = document.createElement('a');
-             try {
-                 var blob = new Blob([data], { type: contentType });
-                 var url = window.URL.createObjectURL(blob);
+        //      var linkElement = document.createElement('a');
+        //      try {
+        //          var blob = new Blob([data], { type: contentType });
+        //          var url = window.URL.createObjectURL(blob);
       
-                 linkElement.setAttribute('href', url);
-                 linkElement.setAttribute("download", filename);
+        //          linkElement.setAttribute('href', url);
+        //          linkElement.setAttribute("download", filename);
       
-                 var clickEvent = new MouseEvent("click", {
-                     "view": window,
-                     "bubbles": true,
-                     "cancelable": false
-                 });
-                 linkElement.dispatchEvent(clickEvent);
-             } catch (ex) {
-                 console.log(ex);
-             }
-         }).error(function (data) {
-             console.log(data);
-         });
+        //          var clickEvent = new MouseEvent("click", {
+        //              "view": window,
+        //              "bubbles": true,
+        //              "cancelable": false
+        //          });
+        //          linkElement.dispatchEvent(clickEvent);
+        //      } catch (ex) {
+        //          console.log(ex);
+        //      }
+        //  }).error(function (data) {
+        //      console.log(data);
+        //  });
      
-         }
+        //  }
 
         function getDayClass(data) {
             var date = data.date,
