@@ -54,19 +54,19 @@ const multer = require('multer');
 var _ = require('lodash');
 var schedule = require('node-schedule');
 var items;
+var createHTML = require('create-html')
+var pdf = require('html-pdf');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
-app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.json({limit: '16mb'})); // support json encoded bodies
 app.use(bodyParser.urlencoded({
     extended: true
 })); // support encoded bodies
 app.use(cors())
-
 router.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -82,8 +82,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 09;
-rule.minute = 25;
+rule.hour = 10;
+rule.minute = 30;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -212,7 +212,7 @@ schedule.scheduleJob(rule, function() {
 });
 app.route('/getSummary')  
 .post(function (req, res) {
-    var options = { format: 'Letter'};
+    var options = { format: 'A3'};
     var html = createHTML({
       title: 'example',
       body: req.body.report.toString(),
@@ -285,59 +285,59 @@ app.route('/editlineFillRecord')
     });
 
 
-    app.route('/getshutdownRecord')
+app.route('/getshutdownRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+        database.db('operationsDB').collection('shutdown').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        }]).toArray(function(er, items) {
+            if (er) throw er;
+            console.log(er);
+            console.log(items)
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
+
+
+app.route('/editshutdownRecord')
     .post(function(req, res) {
+        console.log(req.body)
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
-            database.db('operationsDB').collection('shutdown').aggregate([{
-                $match: {
-                    'date': {
-                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
-                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+            database.db('operationsDB').collection('shutdown').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
                     }
-                }
-            }]).toArray(function(er, items) {
-                if (er) throw er;
-                console.log(er);
-                console.log(items)
-                res.send({
-                    "msg": "success",
-                    "data": JSON.stringify(items),
-                })
-                //  database.close();
+                );
             });
         })
-    });
-    
-    
-    app.route('/editshutdownRecord')
-        .post(function(req, res) {
-            console.log(req.body)
-            MongoClient.connect("mongodb://localhost:27017/operationsDB", {
-                useNewUrlParser: true
-            }, function(err, database) {
-                if (err) return
-                req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
-                req.body.date = new Date(req.body.date)
-                database.db('operationsDB').collection('shutdown').updateOne({
-                    "_id": req.body._id
-                }, {
-                    $set: req.body
-                }, function(err, result) {
-                    console.log(err)
-                    res.send(
-                        (err === null) ? {
-                            msg: 'success'
-                        } : {
-                            msg: err
-                        }
-                    );
-                });
-            })
-        });    
+    });    
 
 app.route('/getDeliveryBharatpur')
 .post(function(req, res) {
