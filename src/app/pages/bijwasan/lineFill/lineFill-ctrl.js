@@ -130,8 +130,8 @@
         return prd;
       })
       var diff = line.lineFillSum - line.lineFillVolume
-      line.style = { "color" : diff > 0 ? "red" : diff < 0 ? "yellow": "green"}
-      return diff
+      line.style = { "color" : diff > 0 ? "red" : diff < 0 ? "yellow": "DeepSkyBlue"}
+      return Number(diff)
     }
 
     $scope.editlineFillRemark = function(remark){

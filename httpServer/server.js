@@ -83,7 +83,7 @@ app.listen(app.get('port'), function() {
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 10;
-rule.minute = 30;
+rule.minute = 43;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true

@@ -3,6 +3,10 @@
         <div id="summary-report" >
                 <div>
                     <style> 
+
+                        /* .col-md-6:nth-child(odd) {
+                            clear: both;
+                        } */
                         table {
                             border-collapse: separate;
                             border-spacing: 0;
@@ -63,14 +67,14 @@
                     <tbody>
                             <tr style = "padding:0px; margin:0px; border: none">
                                 <td class = "col-md-5" valign="top" style = "padding:0px; margin:0px;border:0px" >
-                                    <div ng-repeat="htmlSource in views[1].htmlSource">
+                                    <div style="float:none" ng-repeat="htmlSource in views[1].htmlSource">
                                             <div ng-include="htmlSource">
                                             </div>
+                                    </div>
+                                    <div ng-include="views[2].htmlSource[1]">
                                         </div>
-                                        <div ng-include="views[2].htmlSource[1]">
-                                            </div>
-                                            <div ng-include="views[3].htmlSource[0]">
-                                                </div>
+                                    <div ng-include="views[3].htmlSource[0]">
+                                        </div>
                                 </td>
                                 <td class = "col-md-7" valign="top" style = "padding:0px; margin:0px" >
                                        
