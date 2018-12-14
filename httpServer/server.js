@@ -54,8 +54,8 @@ const multer = require('multer');
 var _ = require('lodash');
 var schedule = require('node-schedule');
 var items;
-var createHTML = require('create-html')
-var pdf = require('html-pdf');
+// var createHTML = require('create-html')
+// var pdf = require('html-pdf');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

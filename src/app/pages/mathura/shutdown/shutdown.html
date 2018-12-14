@@ -18,7 +18,7 @@
               <th >Duration</th>
               <th >Accounting Division</th>      
               <th> Reason</th>
-              <th ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">Action</th>
+              <th ng-show = "isAdmin || isShiftOfficer" ng-hide = "hideEditHistoryRemarks">Action</th>
       </thead>
         <tbody ng-init="$parent.totalshutdown = 0">
           <tr ng-repeat="data in shutdown.shutdownData track by $index" class="editable-row">
@@ -47,7 +47,7 @@
                   {{data.reason|| '-' }}
               </span>
             </td>
-            <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">
+            <td ng-show = "isAdmin || isShiftOfficer" ng-hide = "hideEditHistoryRemarks">
                 <form editable-form name="rowform" onaftersave = "editshutdownData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
@@ -58,7 +58,7 @@
                   </button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
                   <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
