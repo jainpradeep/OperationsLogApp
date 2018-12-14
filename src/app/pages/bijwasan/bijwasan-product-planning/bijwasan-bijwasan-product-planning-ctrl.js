@@ -69,6 +69,8 @@
     });
     $scope.bijwasanProductPlanningSelectShift =function(shift){
       $scope.selectedShift = shift.name;
+      $scope.rowform.$cancel()
+      
     } 
     
     $scope.getbijwasanProductPlanning= function(){
@@ -84,8 +86,9 @@
         });
     }
 
-    $scope.editBijwasanProductPlanningStart = function(data){
+    $scope.editBijwasanProductPlanningStart = function(data,rowform){
       $scope.editableBijwasanProductPlanningHourlyRec = angular.copy(data);
+      $scope.rowform = rowform;
     }
 
     $scope.editBijwasanProductPlanningData = function(data, index){

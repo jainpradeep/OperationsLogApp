@@ -93,10 +93,10 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.monitoringMtMbMdpl.monMtMbMdplData = JSON.parse(data.data.data)[0].data;
-          $scope.monitoringMtMbMdpl.monMtMbMdplDate = JSON.parse(data.data.data)[0].date;
-          $scope.monitoringMtMbMdpl.monMtMbMdplID = JSON.parse(data.data.data)[0]._id;
-          $scope.monitoringMtMbMdpl.monMtMbMdplRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.monitoringMtMbMdpl.monMtMbMdplData = JSON.parse(data.data.data)[1].data;
+          $scope.monitoringMtMbMdpl.monMtMbMdplDate = JSON.parse(data.data.data)[1].date;
+          $scope.monitoringMtMbMdpl.monMtMbMdplID = JSON.parse(data.data.data)[1]._id;
+          $scope.monitoringMtMbMdpl.monMtMbMdplRemarks = JSON.parse(data.data.data)[1].remarks;
         },
         function(msg) {
         });
@@ -108,9 +108,9 @@
 
     $scope.editMonitoringMtMbMdplRemark = function(remark){
       
-      $scope.monitoringMtMbMdpl.monMtMbMdplRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.monitoringMtMbMdpl.monMtMbMdplRemarks[$scope.$parent.selectedShift] = remark 
 
-      delExMrService.editDelExMrData(JSON.stringify({
+      monMtMbMdplService.editMonMtMbMdplData(JSON.stringify({
         _id : $scope.monitoringMtMbMdpl.monMtMbMdplID,
         date: $scope.monitoringMtMbMdpl.monMtMbMdplDate,
         data: $scope.monitoringMtMbMdpl.monMtMbMdplData,

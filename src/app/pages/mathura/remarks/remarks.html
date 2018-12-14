@@ -16,7 +16,7 @@
                                     <th width= "50%" style ="text-align: right; padding-top: 8px">product</th>
                                     <td style ="border-top : 0px" class="editable-row">
                                                 <div editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
-                                                        {{data.product }}  
+                                                        {{data.product || '-'}}  
                                                     </div>
             
                                     </td>
@@ -25,7 +25,7 @@
                                     <th width= "50%" style ="text-align: right; padding-top: 8px">seqnNo</th>
                                     <td style ="border-top : 0px" border: none; class="editable-row">
                                             <div editable-number="data.seqnNo" e-name="seqnNo" e-form="rowform">
-                                                    {{ data.seqnNo }}
+                                                    {{ data.seqnNo || '-'}} 
                                                     </div>
                                     </td>
                                 </tr>
@@ -33,7 +33,7 @@
                                     <th width= "50%" style ="text-align: right; padding-top: 8px">fmrPumping</th>
                                     <td style ="border-top : 0px" class="editable-row">
                                             <div editable-text="data.fmrPumping" e-name="fmrPumping" e-form="rowform">
-                                                    {{ data.fmrPumping }}
+                                                    {{ data.fmrPumping || '-'}} 
                                                     </div>
                                     </td>
                                 </tr>      
@@ -41,7 +41,7 @@
                                     <th width= "50%" style ="text-align: right; padding-top: 8px">remarks</th>
                                             <td style ="border-top : 0px" class="editable-row">
                                                     <div editable-textArea="data.remarks" e-name="remarks" e-form="rowform">
-                                                            {{ data.remarks }}
+                                                            {{ data.remarks || '-'}} 
                                                         </div>
                                             </td>
                                 </tr>
@@ -50,7 +50,7 @@
                 </tbody>
             </table>
             <center>
-                    <form editable-form name="rowform" onaftersave = "editremarksData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+                    <form editable-form name="rowform" onaftersave = "editremarksData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                     shown="inserted == data">
                         <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button">
                         Save
@@ -59,8 +59,8 @@
                         Cancel
                         </button>
                     </form>
-                    <div class="buttons" ng-if="!rowform.$visible">
-                        <button class="btn btn-danger" ng-click="rowform.$show(); editremarksStart(data)">Edit</button>
+                    <div class="buttons" ng-show="!rowform.$visible">
+                        <button class="btn btn-danger" ng-click="rowform.$show(); editremarksStart(data,rowform)">Edit</button>
                         <button class="btn btn-info" ng-click="open(data)">History</button>
                     </div>
         

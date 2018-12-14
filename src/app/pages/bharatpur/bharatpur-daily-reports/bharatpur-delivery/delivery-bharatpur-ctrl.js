@@ -81,6 +81,8 @@
     $scope.$parent.$watch('customDate', function(value){
       $scope.customDate = $scope.$parent.customDate;
       $scope.deliveryBharatpur = {};
+      $scope.$parent.totalDelDelivFmr = 0;  
+      $scope.$parent.totalDelDelivDip = 0;
       $scope.getdeliveryBharatpur();
     });
     $scope.deliveryBharatpurSelectShift =function(shift){

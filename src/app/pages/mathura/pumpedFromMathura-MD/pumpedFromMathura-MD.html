@@ -16,7 +16,7 @@
                   <th colspan="1">FMR</th>
                   <th colspan="1">Flow Rate</th>      
                   <th colspan="1">Tank no</th>
-                    <th colspan="1" ng-if = "isAdmin">Actions</th>
+                    <th colspan="1" ng-show = "isAdmin">Actions</th>
                 </tr>
                 <tr rowspan="2">
                   <th></th>
@@ -29,7 +29,7 @@
                   <th></th>
                   <th></th>
                   <th></th>
-                  <th ng-if = "isAdmin"></th>
+                  <th ng-show = "isAdmin"></th>
                 </tr>
               </thead>
             <tr ng-repeat="data in pumpedFromMathuraMD.pumpedFromMatMDData | filter : {'shift':  selectedShift} track by $index" class="editable-row">
@@ -79,11 +79,11 @@
               </td>
               <td>
                     <div>
-                        <span ng-if= "data.position > 0 && data.fmr">
+                        <span ng-show= "data.position > 0 && data.fmr">
                         {{ (data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[data.position - 1].fmr) > 0 ? data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[data.position -1].fmr : data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[data.position -1].fmr + 10000 }}
                         </span>
                     </div>
-                    <span ng-if= "data.position == 0 ">
+                    <span ng-show= "data.position == 0 ">
                         {{ data.fmr}}
                   </span>
               </td>
@@ -92,8 +92,8 @@
                       {{ data.tank_no || '-' }}
                   </span>
               </td>
-              <td ng-if = "isAdmin" >
-                <form editable-form name="rowform" onaftersave = "editpumpedFromMatMDData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+              <td ng-show = "isAdmin" >
+                <form editable-form name="rowform" onaftersave = "editpumpedFromMatMDData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                     Save
@@ -103,7 +103,7 @@
                   </button>
                 </form>
                 <!-- ng-disabled = "!pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr"  -->
-                <div class="buttons" ng-if="!rowform.$visible">
+                <div class="buttons" ng-show="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); editpumpedFromMathuraMDStart(data)">Edit</button>
                   <button class="btn btn-info editable-table-button btn-xs"  ng-click="open(data)">History</button>
                 </div>

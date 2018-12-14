@@ -1,9 +1,9 @@
 <div ng-controller = "shutdown-ctrl" zoom-in="" ba-panel-blur="">
-    <div class="row" ng-if = "!shutdown.shutdownData">
+    <div class="row" ng-show = "!shutdown.shutdownData">
         <div class="loader">Loading...</div>
     </div>
 
-  <div ng-if ="shutdown.shutdownData" class="panel-body" > 
+  <div ng-show ="shutdown.shutdownData" class="panel-body" > 
     <div  class = "row">
       <div ng-hide = "hideEditHistoryRemarks" class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
         <button type="button" ng-click = "addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
@@ -18,7 +18,7 @@
               <th >Duration</th>
               <th >Accounting Division</th>      
               <th> Reason</th>
-              <th ng-if = "isAdmin" ng-hide = "hideEditHistoryRemarks">Action</th>
+              <th ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">Action</th>
       </thead>
         <tbody ng-init="$parent.totalshutdown = 0">
           <tr ng-repeat="data in shutdown.shutdownData track by $index" class="editable-row">
@@ -47,8 +47,8 @@
                   {{data.reason|| '-' }}
               </span>
             </td>
-            <td ng-if = "isAdmin" ng-hide = "hideEditHistoryRemarks">
-                <form editable-form name="rowform" onaftersave = "editshutdownData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+            <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">
+                <form editable-form name="rowform" onaftersave = "editshutdownData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                     Save
@@ -57,9 +57,9 @@
                     Cancel
                   </button>
                 </form>
-                <div class="buttons" ng-if="!rowform.$visible">
+                <div class="buttons" ng-show="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
           </tr>

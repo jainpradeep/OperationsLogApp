@@ -41,11 +41,8 @@
             isSelected : false,
             htmlSource : ["app/pages/bijwasan/equi-running-hrs-bij/equi-running-hrs-bij.html"]
         }]
-        
-
+        $scope.selectedView = $scope.views[0];
         $scope.hideEditHistoryRemarks = true;
-
-        
         $scope.open = function(data) {
             $scope.$modalInstance =  $uibModal.open({
                 scope: $scope,

@@ -108,9 +108,9 @@
 
     $scope.editpumpedFromMathuraMDRemark = function(remark){
       
-      $scope.delhiExMRpumpedFromMathuraMD.pumpedFromMatMDRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDRemarks[$scope.$parent.selectedShift] = remark 
 
-      delExMrService.editpumpedFromMatMDData(JSON.stringify({
+      pumpedFromMatMDService.editpumpedFromMatMDData(JSON.stringify({
         _id : $scope.pumpedFromMathuraMD.pumpedFromMatMDID,
         date: $scope.pumpedFromMathuraMD.pumpedFromMatMDDate,
         data: $scope.pumpedFromMathuraMD.pumpedFromMatMDData,

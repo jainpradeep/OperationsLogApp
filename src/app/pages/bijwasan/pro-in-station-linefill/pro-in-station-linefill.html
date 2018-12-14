@@ -1,8 +1,8 @@
-<div class="row" ng-if = "!productInStationLinefill.proInStationLinefillData">
+<div class="row" ng-show = "!productInStationLinefill.proInStationLinefillData">
     <div class="loader">Loading...</div>
 </div>
     
-<div ng-if = "productInStationLinefill.proInStationLinefillData &&  productInStationLinefill.proInStationLinefillData.length == 0">
+<div ng-show = "productInStationLinefill.proInStationLinefillData &&  productInStationLinefill.proInStationLinefillData.length == 0">
     <div class="alert">
         <h3>
         <strong>Sorry!</strong> No records fould as per the set filters
@@ -10,7 +10,7 @@
     </div>
 </div>  
  
-<div ng-if = "productInStationLinefill.proInStationLinefillData &&  productInStationLinefill.proInStationLinefillData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div ng-show = "productInStationLinefill.proInStationLinefillData &&  productInStationLinefill.proInStationLinefillData.length > 0" class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
   <div class="panel-body" > 
     <table class="table table-bordered table-hover table-condensed">
       <thead>
@@ -20,13 +20,13 @@
             <th>Shift B</th>
             <th>Shift C</th>      
             <th>Remarks</th>
-            <th ng-if = "isAdmin">Actions</th>
+            <th ng-show = "isAdmin">Actions</th>
           </tr>
         </thead>
       <tr class="editable-row" ng-repeat="data in productInStationLinefill.proInStationLinefillData track by $index">
         <td>
             <span >
-                {{ data.lineLocation || '-' }}
+                {{ data.lineLocation || '-' }}  
             </span>
         </td>
           <td ng-if = "data.productList">    
@@ -66,8 +66,8 @@
             {{ data.remarks  || '-' }}
           </span>
         </td>
-        <td ng-if = "isAdmin">
-          <form editable-form name="rowform" onaftersave = "editProInStationLinefillData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+        <td ng-show = "isAdmin">
+          <form editable-form name="rowform" onaftersave = "editProInStationLinefillData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                 shown="inserted == data">
             <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
               Save
@@ -76,9 +76,9 @@
               Cancel
             </button>
           </form>
-          <div class="buttons" ng-if="!rowform.$visible">
+          <div class="buttons" ng-show="!rowform.$visible">
             <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editProductInStationLinefillStart(data)">Edit</button>
-            <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+            <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
           </div>
         </td>
       </tr>

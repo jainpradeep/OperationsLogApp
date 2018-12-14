@@ -1,10 +1,10 @@
 <div ng-controller = "bharatpur-daily-report-ctrl">
   <div class = "col-md-6" style="padding:0px">
-      <div class="row" ng-if = "!deliveryBharatpur.deliveryBharatpurData">
+      <div class="row" ng-show = "!deliveryBharatpur.deliveryBharatpurData">
           <div class="loader"></div>
         </div>
         
-        <div  ng-if = "deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length == 0">
+        <div  ng-show = "deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length == 0">
           <div class="alert">
               <h3>
                 <strong>Sorry!</strong> No records fould as per the set filters
@@ -12,7 +12,7 @@
           </div>
         </div>  
          
-        <div ng-if = "deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length > 0"  style="background-size: 1679px 944px; background-position: 0px -79px;">
+        <div ng-show = "deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length > 0"  style="background-size: 1679px 944px; background-position: 0px -79px;">
           <div  class="panel-body" style="padding:0px"> 
             <div class = "row">
               <div ng-hide = "hideEditHistoryRemarks"  class = "col-md-4" style="margin-bottom: 20px;margin-top: 10px">
@@ -21,7 +21,7 @@
               </div>
             </div>  
         
-            <table ng-if = " deliveryBharatpur.deliveryBharatpurData" style="margin: 0px" class="table-bordered table-hover table-condensed" >
+            <table ng-show = " deliveryBharatpur.deliveryBharatpurData" style="margin: 0px; width:100%" class="table-bordered table-hover table-condensed" >
                 <tr>
                    <td> 
                   <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
@@ -34,7 +34,7 @@
                       <th colspan="1">Tank no</th>
                       <th colspan="1">FMR Qty.</th>
                       <th colspan="1">Dip Qty.</th>      
-                      <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-if = "isAdmin">Actions</th>
+                      <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-show = "isAdmin">Actions</th>
                     </tr>
                     <tr rowspan="3">
                       <th>Product</th>
@@ -42,7 +42,7 @@
                       <th></th>
                       <th></th>
                       <th></th>
-                      <th ng-hide = "hideEditHistoryRemarks" ng-if = "isAdmin"></th>
+                      <th ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin"></th>
                     </tr>
                 </thead>
                 <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
@@ -72,8 +72,8 @@
                             {{ data.dip_qty || '-' }}
                         </span>
                     </td>
-                    <td ng-hide = "hideEditHistoryRemarks" ng-if = "isAdmin">
-                        <form editable-form name="rowform" onaftersave = "editdeliveryBharatpurData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+                    <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin">
+                        <form editable-form name="rowform" onaftersave = "editdeliveryBharatpurData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                               shown="inserted == data">
                           <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                             Save
@@ -82,9 +82,9 @@
                             Cancel
                           </button>
                         </form>
-                        <div class="buttons" ng-if="!rowform.$visible">
+                        <div class="buttons" ng-show="!rowform.$visible">
                           <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryBharatpurStart(data)">Edit</button>
-                          <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                          <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                         </div>
                       </td>
                   </tr>
@@ -104,7 +104,7 @@
                           <td> 
                               {{ totalDelDelivDip }}
                           </td>
-                          <td ng-hide = "hideEditHistoryRemarks" ng-if = "isAdmin">
+                          <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin">
                           </td>
                       </tr>
                   </tbody>        

@@ -1,9 +1,9 @@
 
-<div class="row" ng-if = "!remarks.remarksData">
+<div class="row" ng-show = "!remarks.remarksData">
         <div class="loader"></div>
       </div>
       
-      <div ng-if = "remarks.remarksData &&  remarks.remarksData.length == 0">
+      <div ng-show = "remarks.remarksData &&  remarks.remarksData.length == 0">
         <div class="alert">
             <h3>
               <strong>Sorry!</strong> No records fould as per the set filters
@@ -11,7 +11,7 @@
         </div>
       </div>  
       
-<div ng-if = "remarks.remarksData &&  remarks.remarksData.length > 0" >
+<div ng-show = "remarks.remarksData &&  remarks.remarksData.length > 0" >
     <ul class="nav nav-tabs nav-justified" role="tablist">
         <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
         <a class="" data-toggle="tab" ng-click = "$parent.selectShift(shift); remarksSelectShift(shift)" role="tab">{{shift.name}}</a>
@@ -62,7 +62,7 @@
                     </tbody>
                 </table>
                 <center>
-                        <form editable-form name="rowform" onaftersave = "editremarksData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+                        <form editable-form name="rowform" onaftersave = "editremarksData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                         shown="inserted == data">
                             <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button">
                             Save
@@ -71,8 +71,8 @@
                             Cancel
                             </button>
                         </form>
-                        <div class="buttons" ng-if="!rowform.$visible">
-                            <button class="btn btn-danger" ng-click="rowform.$show(); editremarksStart(data)">Edit</button>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-danger" ng-click="rowform.$show(); editremarksStart(data,rowform)">Edit</button>
                             <button class="btn btn-info" ng-click="open(data)">History</button>
                         </div>
             

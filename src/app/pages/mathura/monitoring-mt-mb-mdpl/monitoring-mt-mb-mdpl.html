@@ -12,7 +12,7 @@
             <th colspan="1">Hours</th>
             <th colspan="3">M.T.P.L. & M.B.P.L.</th>
             <th colspan="3">Mathura</th>
-            <th colspan="1" ng-if = "isAdmin">Actions</th>
+            <th colspan="1" ng-show = "isAdmin">Actions</th>
           </tr>
           <tr rowspan="2">
             <th></th>
@@ -22,7 +22,7 @@
             <th>Suction Pressure</th>
             <th>Pump No.</th>
             <th>Line Pressure</th>
-            <th ng-if = "isAdmin"></th>
+            <th ng-show = "isAdmin"></th>
           </tr>
         </thead>
       <tr ng-repeat="data in monitoringMtMbMdpl.monMtMbMdplData | filter : selectedShift track by $index" class="editable-row">
@@ -68,8 +68,8 @@
           </span>
       </td>
   
-        <td ng-if = "isAdmin">
-          <form editable-form name="rowform" onaftersave = "editMonMtMbMdplData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+        <td ng-show = "isAdmin">
+          <form editable-form name="rowform" onaftersave = "editMonMtMbMdplData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                 shown="inserted == data">
             <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
               Save
@@ -78,9 +78,9 @@
               Cancel
             </button>
           </form>
-          <div class="buttons" ng-if="!rowform.$visible">
-            <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editMonitoringMtMbMdplStart(data)">Edit</button>
-            <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); editMonitoringMtMbMdplStart(data)">Edit</button>
+            <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
           </div>
         </td>
       </tr>

@@ -1,10 +1,10 @@
 
 <div ng-controller = "equi-running-hrs-bij-ctrl">
-      <div class="row" ng-if = "!equiRunningHrsBijwasan.equiRunningHrsBijData">
+      <div class="row" ng-show = "!equiRunningHrsBijwasan.equiRunningHrsBijData">
             <div class="loader">Loading...</div>
         </div>
             
-        <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0">
+        <div ng-show = "equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0">
             <div class="alert">
                 <h3>
                 <strong>Sorry!</strong> No records fould as per the set filters
@@ -12,7 +12,7 @@
             </div>
         </div>  
                
-      <div ng-if = "equiRunningHrsBijwasan.equiRunningHrsBijData && equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0">
+      <div ng-show = "equiRunningHrsBijwasan.equiRunningHrsBijData && equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0">
         <div class="panel-body" > 
           <table style="margin: 2px; padding:2px; font-size: 14px;" class="table-bordered table-hover table-condensed">
             <thead>
@@ -22,7 +22,7 @@
                   <th >Shift B</th>
                   <th >Shift C</th>
                   <th >Cummulative Hrs</th>
-                  <th ng-if = "isAdmin"  ng-hide = "hideEditHistoryRemarks">Actions</th>
+                  <th ng-show = "isAdmin"  ng-hide = "hideEditHistoryRemarks">Actions</th>
             </thead>
             <tr class="editable-row"  ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
                <td>
@@ -32,7 +32,7 @@
                </td>
                <td>    
                   <span>
-                       {{ data.previous  | date:'shortTime'}}
+                       {{ equiRunningHrsBijwasan.equipSum[data.equipment]  | date:'shortTime'}}
                   </span>
                </td>
                <td>  
@@ -55,8 +55,8 @@
                         {{ data.cummulative | date:'shortTime' }}
                   </span>   
                </td>
-               <td ng-if = "isAdmin" ng-hide = "hideEditHistoryRemarks">
-                  <form editable-form name="rowform" onaftersave = "editEquiRunningHrsBijData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+               <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">
+                  <form editable-form name="rowform" onaftersave = "editEquiRunningHrsBijData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                      shown="inserted == data">
                      <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                      Save
@@ -65,9 +65,9 @@
                      Cancel
                      </button>
                   </form>
-                  <div class="buttons" ng-if="!rowform.$visible">
+                  <div class="buttons" ng-show="!rowform.$visible">
                      <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
-                     <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                     <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                   </div>
                </td>
             </tr>

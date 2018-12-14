@@ -12,28 +12,41 @@
                         <th>SeqnNo</th>
                         <th>RmrPumping</th>
                         <th>Remarks</th>
+                        <th >Officer</th>
+                        <th >Edit Date</th>
+                        </tr>
                     </thead>
                     <tr ng-repeat="data in flattenedHourEditHistory track by $index">
                         <td>
                             <span >
-                                    {{data.product }}  
+                                    {{data.product || '-'}}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                    {{data.seqnNo }}  
+                                    {{data.seqnNo || '-'}}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                {{data.fmrPumping }}  
+                                {{data.fmrPumping || '-'}}  
                             </span>
                         </td>
                         <td>
                             <span >
-                                {{data.remarks }}  
+                                {{data.remarks || '-'}}  
                             </span>
                         </td>
+                        <td>
+                            <span>
+                                {{ data.officer || '-' }}
+                            </span>
+                      </td>
+                      <td>
+                            <span>
+                                    {{ data.editedDate | date : "short"  || '-' }}
+                            </span>
+                      </td>
                     </tr>
                 </table>
             </div>

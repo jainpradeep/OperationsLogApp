@@ -92,6 +92,7 @@
     $scope.lineFillSelectShift =function(shift){
       $scope.selectedShift = shift.name;
       $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
+      $scope.rowform.$cancel()
     } 
     
     $scope.getlineFill= function(){
@@ -119,8 +120,9 @@
         });
     }
 
-    $scope.editlineFillStart = function(data){
+    $scope.editlineFillStart = function(data,rowform){
       $scope.editablelineFillRec = angular.copy(data);
+      $scope.rowform = rowform;
     }
 
     $scope.sumLineFill = function(line){
@@ -136,7 +138,7 @@
 
     $scope.editlineFillRemark = function(remark){
       
-      $scope.lineFill.lineFillRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.lineFill.lineFillRemarks[$scope.selectedShift] = remark 
 
       lineFillService.editlineFillData(JSON.stringify({
         _id : $scope.lineFill.lineFillID,

@@ -82,134 +82,133 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 10;
-rule.minute = 43;
+rule.hour = 16;
+rule.minute =31;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
           
-        database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMD').insertOne(exMathuraMDInitDB.exMathuraMDInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMbpl').insertOne(exMathuraMbplInitDB.exMathuraMbplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('exMathuraMtpl').insertOne(exMathuraMtplInitDB.exMathuraMtplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryTundla').insertOne(deliveryTundlaInitDB.deliveryTundlaInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryTikrikalan').insertOne(deliveryTikrikalanInitDB.deliveryTikrikalanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryBharatpur').insertOne(deliveryBharatpurInitDB.deliveryBharatpurInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('skoLbtPumping').insertOne(skoLbtPumpingInitDB.skoLbtPumpingInitDB, function(er, records) {
-              if (er) throw er;
-              console.log(records)
-          });
-        database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
+        // database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMD').insertOne(exMathuraMDInitDB.exMathuraMDInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMbpl').insertOne(exMathuraMbplInitDB.exMathuraMbplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('exMathuraMtpl').insertOne(exMathuraMtplInitDB.exMathuraMtplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryTundla').insertOne(deliveryTundlaInitDB.deliveryTundlaInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryTikrikalan').insertOne(deliveryTikrikalanInitDB.deliveryTikrikalanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryBharatpur').insertOne(deliveryBharatpurInitDB.deliveryBharatpurInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('skoLbtPumping').insertOne(skoLbtPumpingInitDB.skoLbtPumpingInitDB, function(er, records) {
+        //       if (er) throw er;
+        //       console.log(records)
+        //   });
+        // database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
         database.db('operationsDB').collection('equiRunningHrsBij').insertOne(equiRunningHrsBijInitDB.equiRunningHrsBijInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
-        database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
-        database.db('operationsDB').collection('shutdown').insertOne(shutdownInitDB.shutdownInitDB, function(er, records) {
-            if (er) throw er;
-            console.log(records)
-        });
+        // database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
+        // database.db('operationsDB').collection('shutdown').insertOne(shutdownInitDB.shutdownInitDB, function(er, records) {
+        //     if (er) throw er;
+        //     console.log(records)
+        // });
     })
-    
-
 });
+
 app.route('/getSummary')  
 .post(function (req, res) {
     var options = { format: 'A3'};
@@ -1341,12 +1340,14 @@ app.route('/getDelhiExMrRecord')
                         if(mathuraItems.length>1){
                             mathuraItems[1].data[0] = mathuraItems[0].data[24];
                             mathuraItems[1].data[0].shift = "Shift A";
+                            mathuraItems[1].data[0].position = 0;
                             mathuraItems[1].data[0].editHistory = null;
                         }
 
                         if(items.length>1){
                             items[1].data[0] = items[0].data[24];
                             items[1].data[0].shift = "Shift A";
+                            items[1].data[0].position = 0;
                             items[1].data[0].editHistory = null;
                         }
                         res.send({
@@ -1392,28 +1393,50 @@ app.route('/getSkoLbtPumpingRecord')
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
-            database.db('operationsDB').collection('skoLbtPumping').findOne({}, function(err, result) {
-                if (err) throw err;
-
-            });
             req.body.date = new Date(req.body.date)
+            yesterdaysDate = new Date(req.body.date.valueOf())
+            var yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
             database.db('operationsDB').collection('skoLbtPumping').aggregate([{
                 $match: {
                     'date': {
                         $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
-                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                        $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
             }]).toArray(function(er, items) {
-                if (er) throw er;
-                console.log(er);
                 console.log(items)
+                if (er) throw er;
+                if(items.length>1){
+                    items[1].data[0] = items[0].data[24];
+                    items[1].data[0].shift = "Shift A";
+                    items[1].data[0].position = 0;
+                    items[1].data[0].editHistory = null;
+                }
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
                 })
-                //  database.close();
             });
+
+
+
+            // database.db('operationsDB').collection('skoLbtPumping').aggregate([{
+            //     $match: {
+            //         'date': {
+            //             $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+            //             $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+            //         }
+            //     }
+            // }]).toArray(function(er, items) {
+            //     if (er) throw er;
+            //     console.log(er);
+            //     console.log(items)
+            //     res.send({
+            //         "msg": "success",
+            //         "data": JSON.stringify(items),
+            //     })
+            //     //  database.close();
+            // });
         })
     });
 
@@ -1627,8 +1650,8 @@ app.route('/getDelhiExPrRecord')
         }, function(err, database) {
             if (err) return
             req.body.date = new Date(req.body.date)
-            yesterdaysDate = new Date(req.body.date.valueOf())
-            var yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
+            var yesterdaysDate = new Date(req.body.date.valueOf())
+            yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
             database.db('operationsDB').collection('delhiExPr').aggregate([{
                 $match: {
                     'date': {
@@ -1642,6 +1665,7 @@ app.route('/getDelhiExPrRecord')
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
                     items[1].data[0].shift = "Shift A";
+                    items[1].data[0].position = 0;
                     items[1].data[0].editHistory = null;
                 }
                 res.send({
@@ -1701,6 +1725,7 @@ app.route('/getpumpedFromMathuraMDRecord')
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
                     items[1].data[0].shift = "Shift A";
+                    items[1].data[0].position = 0;
                     items[1].data[0].editHistory = null;
                 }
                 res.send({
@@ -1745,16 +1770,14 @@ app.route('/getEquiRunningHrsBijwasanRecord')
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
-            database.db('operationsDB').collection('equiRunningHrsBij').findOne({}, function(err, result) {
-                if (err) throw err;
-
-            });
             req.body.date = new Date(req.body.date)
+            firstDate = new Date(req.body.date.valueOf())
+            firstDate = new Date(firstDate.setDate(1))
             database.db('operationsDB').collection('equiRunningHrsBij').aggregate([{
                 $match: {
                     'date': {
                         $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
-                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                        $gte: new Date(firstDate.setHours(0, 0, 0, 0))
                     }
                 }
             }]).toArray(function(er, items) {
@@ -1915,22 +1938,28 @@ app.route('/getMonitoringMtMbMdplRecord')
         }, function(err, database) {
             if (err) return
             req.body.date = new Date(req.body.date)
+            var yesterdaysDate = new Date(req.body.date.valueOf())
+            yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
             database.db('operationsDB').collection('monitoringMtMbMdpl').aggregate([{
                 $match: {
                     'date': {
                         $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
-                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                        $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
             }]).toArray(function(er, items) {
-                if (er) throw er;
-                console.log(er);
                 console.log(items)
+                if (er) throw er;
+                if(items.length>1){
+                    items[1].data[0] = items[0].data[24];
+                    items[1].data[0].shift = "Shift A";
+                    items[1].data[0].position = 0;
+                    items[1].data[0].editHistory = null;
+                }
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
                 })
-                //  database.close();
             });
         })
     });

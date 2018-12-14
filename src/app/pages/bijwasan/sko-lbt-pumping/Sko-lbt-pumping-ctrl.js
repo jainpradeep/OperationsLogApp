@@ -89,10 +89,10 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.skoLbtPumping.skoLbtPumpingData = JSON.parse(data.data.data)[0].data;
-          $scope.skoLbtPumping.skoLbtPumpingDate = JSON.parse(data.data.data)[0].date;
-          $scope.skoLbtPumping.skoLbtPumpingID = JSON.parse(data.data.data)[0]._id;
-          $scope.skoLbtPumping.skoLbtPumpingRemarks = JSON.parse(data.data.data)[0].remarks;
+          $scope.skoLbtPumping.skoLbtPumpingData = JSON.parse(data.data.data)[1].data;
+          $scope.skoLbtPumping.skoLbtPumpingDate = JSON.parse(data.data.data)[1].date;
+          $scope.skoLbtPumping.skoLbtPumpingID = JSON.parse(data.data.data)[1]._id;
+          $scope.skoLbtPumping.skoLbtPumpingRemarks = JSON.parse(data.data.data)[1].remarks;
         },
         function(msg) {
         });
@@ -104,7 +104,7 @@
 
     $scope.editSkoLbtPumpingRemark = function(remark){
       
-      $scope.skoLbtPumping.skoLbtPumpingRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.skoLbtPumping.skoLbtPumpingRemarks[$scope.$parent.selectedShift] = remark 
 
       skoLbtPumpingService.editSkoLbtPumpingData(JSON.stringify({
         _id : $scope.skoLbtPumping.skoLbtPumpingID,

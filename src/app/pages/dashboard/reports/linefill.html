@@ -1,10 +1,10 @@
 <div ng-controller= "lineFill-ctrl">
     <div class="panel-body" > 
-        <div class="row" ng-if = "!lineFill.lineFillData">
+        <div class="row" ng-show = "!lineFill.lineFillData">
                 <div class="loader">Loading...</div>
         </div>
 
-        <table ng-if = "lineFill.lineFillData" style="margin: 0px" ng-repeat = "shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed" >
+        <table ng-show = "lineFill.lineFillData" style="margin: 0px" ng-repeat = "shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed" >
                 <tr>
                     <th >{{shift}}</th>
               

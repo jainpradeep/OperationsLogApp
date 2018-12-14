@@ -87,10 +87,44 @@
         date : $scope.customDate
       })).then(
         function(data) { 
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijData = JSON.parse(data.data.data)[0].data;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate = JSON.parse(data.data.data)[0].date;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijID = JSON.parse(data.data.data)[0]._id;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = JSON.parse(data.data.data)[0].remarks;
+          var equipSum = JSON.parse(data.data.data)
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijData = equipSum[equipSum.length-1].data;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate = equipSum[equipSum.length-1].date;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijID = equipSum[equipSum.length-1]._id;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = equipSum[equipSum.length-1].remarks;
+          $scope.equiRunningHrsBijwasan.equipSum = equipSum.reduce(function(cumalativeRunHrs,dayData){
+            dayData.data.map(function(equipData){
+              var shiftA = {
+                mins: (new Date(equipData.shiftA)).getMinutes(),
+                hrs:  (new Date(equipData.shiftA)).getHours()
+              }
+              var shiftB ={
+                mins: (new Date(equipData.shiftB)).getMinutes(),
+                hrs:  (new Date(equipData.shiftB)).getHours()
+              }
+              var shiftC = {
+                mins: (new Date(equipData.shiftC)).getMinutes(),
+                hrs:  (new Date(equipData.shiftC)).getHours()
+              }
+              var minSum = shiftA.mins + shiftB.mins + shiftC.mins
+              var cumalativeSum = shiftA.hrs + shiftB.hrs + shiftC.hrs + minSum/60
+              cumalativeRunHrs[equipData.equipment] = cumalativeRunHrs[equipData.equipment] + cumalativeSum ? cumalativeSum : 0;
+              return equipData;
+            })
+            return cumalativeRunHrs;
+          },{
+            "BP 1" : 0,
+            "BP 2" : 0,
+            "MP 1" : 0,
+            "MP 2" : 0,
+            "MP 3" : 0,
+            "DG SET" : 0,
+            "FFE" : 0,
+            "FFM" : 0,
+            "SUMP PUMP" : 0,
+            "S/R PUMP" : 0,
+            "OWS PUMP" : 0
+          })        
         },
         function(msg) {
         });

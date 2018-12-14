@@ -69,6 +69,8 @@
     });
     $scope.remarksSelectShift =function(shift){
       $scope.selectedShift = shift.name;
+      $scope.rowform.$cancel()
+
     } 
     
     $scope.getremarks= function(){
@@ -84,8 +86,9 @@
         });
     }
 
-    $scope.editremarksStart = function(data){
+    $scope.editremarksStart = function(data, rowform){
       $scope.editableremarksHourlyRec = angular.copy(data);
+      $scope.rowform = rowform;
     }
 
     $scope.editremarksData = function(data, index){

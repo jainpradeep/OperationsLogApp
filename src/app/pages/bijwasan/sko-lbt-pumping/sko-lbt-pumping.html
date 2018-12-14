@@ -1,9 +1,9 @@
 
-<div class="row" ng-if = "!skoLbtPumping.skoLbtPumpingData">
+<div class="row" ng-show = "!skoLbtPumping.skoLbtPumpingData">
         <div class="loader"></div>
       </div>
       
-      <div ng-if = "skoLbtPumping.skoLbtPumpingData&&  skoLbtPumping.skoLbtPumpingData.length == 0">
+      <div ng-show = "skoLbtPumping.skoLbtPumpingData&&  skoLbtPumping.skoLbtPumpingData.length == 0">
         <div class="alert">
             <h3>
               <strong>Sorry!</strong> No records fould as per the set filters
@@ -11,7 +11,7 @@
         </div>
       </div>  
       
-<div ng-if = "skoLbtPumping.skoLbtPumpingData&&  skoLbtPumping.skoLbtPumpingData.length > 0"  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div ng-show = "skoLbtPumping.skoLbtPumpingData&&  skoLbtPumping.skoLbtPumpingData.length > 0"  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
     <div class="panel-body" > 
         <ul class="nav nav-tabs nav-justified" role="tablist">
             <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in $parent.shifts">
@@ -26,7 +26,7 @@
                   <th colspan="2">Density Temperature &deg;C</th>
                   <th colspan="1">FMR/Pumping</th>
                   <th colspan="1">Tank no</th>
-                  <th colspan="1" ng-if = "isAdmin">Actions</th>
+                  <th colspan="1" ng-show = "isAdmin">Actions</th>
                 </tr>
                 <tr rowspan="2">
                   <th></th>
@@ -36,7 +36,7 @@
                   <th>Temperature</th>
                   <th></th>
                   <th></th>
-                  <th ng-if = "isAdmin"></th>
+                  <th ng-show = "isAdmin"></th>
                 </tr>
               </thead>
             <tr ng-repeat="data in skoLbtPumping.skoLbtPumpingData | filter : selectedShift track by $index" class="editable-row">
@@ -79,8 +79,8 @@
                   </span>
               </td>
         
-              <td ng-if = "isAdmin">
-                <form editable-form name="rowform" onaftersave = "editSkoLbtPumpingData(data, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+              <td ng-show = "isAdmin">
+                <form editable-form name="rowform" onaftersave = "editSkoLbtPumpingData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
                     Save
@@ -89,9 +89,9 @@
                     Cancel
                   </button>
                 </form>
-                <div class="buttons" ng-if="!rowform.$visible">
-                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editSkoLbtPumpingStart(data)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-if = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); editSkoLbtPumpingStart(data)">Edit</button>
+                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                 </div>
               </td>
             </tr>

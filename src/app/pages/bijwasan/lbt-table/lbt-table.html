@@ -23,7 +23,7 @@
                 <span>
                     {{data.name}} 
                 </span>
-                <span ng-hide = "hideEditHistoryRemarks" style = "float: right" ng-if = "data.addRowsEnabled && $index > 0 && $index < 3">
+                <span ng-hide = "hideEditHistoryRemarks" style = "float: right" ng-show = "data.addRowsEnabled && $index > 0 && $index < 3">
                     <button type="button" ng-click= "addNewLbtRecord(data)" class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
                 </span>  
               </th>
@@ -55,7 +55,7 @@
                         </span>
                     </td>
                     <td style="width :75px" ng-hide = "hideEditHistoryRemarks">
-                        <form editable-form name="rowform" onaftersave = "editLbtTabData(dt, $index)" ng-if="rowform.$visible" class="form-buttons form-inline"
+                        <form editable-form name="rowform" onaftersave = "editLbtTabData(dt, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                             shown="inserted == data">
                         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-default btn-xs">
                         <i class="ion-checkmark"></i>
@@ -64,8 +64,8 @@
                               <i class="ion-close-round"></i>
                         </button>
                         </form>
-                        <div class="buttons" ng-if="!rowform.$visible">
-                          <button class="btn btn-default btn-xs" ng-if = "data.addRowsEnabled > 0 && $parent.$index > 0 && $parent.$index < 3" ng-click="rowform.$show(); editLbtTableStart(dt)"><i class="ion-edit"></i></button>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                          <button class="btn btn-default btn-xs" ng-show = "data.addRowsEnabled > 0 && $parent.$index > 0 && $parent.$index < 3" ng-click="rowform.$show(); editLbtTableStart(dt)"><i class="ion-edit"></i></button>
                           <button class="btn btn-default btn-xs" ng-click="open(dt)"><i class="ion-clipboard"></i></button>
                         </div>
                     </td>
