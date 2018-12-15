@@ -1,0 +1,2774 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<title>example</title>
+<meta charset="utf-8">
+
+
+
+
+</head>
+<body>
+
+            <div>
+                <style> 
+                    table {
+                        border-collapse: separate;
+                        border-spacing: 0;
+                        color: #4a4a4d;
+                        font: 8px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        }
+                        th,
+                        td {
+                        padding: 10px 15px;
+                        vertical-align: left;
+                        width: auto;
+                        }
+                        thead {
+                        background: #63bbb2;
+                        background: linear-gradient(#63bbb2, #63bbb2);
+                        color: #fff;
+                        font-size: 7px;
+                        text-transform: uppercase;
+                        }
+                        th:first-child {
+                        text-align: left;
+                        }
+                        th:last-child {
+                        }
+                        /* tbody tr:nth-child(even) {
+                        background: #f0f0f2;
+                        } */
+                        td {
+                        border-bottom: 1px solid #cecfd5;
+                        border-right: 1px solid #cecfd5;
+                        background-color: #fff
+                        }
+                        .verticalTableContent {
+                            text-align:center;
+                            white-space:nowrap;
+                            g-origin:50% 50%;
+                            padding: 10px 15px;
+                            vertical-align: left;
+                            width: auto;
+                            color: #fff;
+                            font-size: 7px;
+                            text-transform: uppercase;
+                        }
+                </style>
+                <!-- <img  style = "height: 70px; width:60px; margin: 20px; float: left" src="\assets\img\logo.png"> -->
+                <span style="float:left; margin: 20px;">
+                    <h1>
+                        Northern Region Piplines Division, <br>
+                        Indian Oil Corporation Limited
+                    </h1>
+                    <h3 class="ng-binding">
+                        Daily Report : Time-Date : 7 AM  to 7 AM 
+                    </h3>
+                </span>
+            </div>
+                <br>
+            <table>
+                <tbody>
+                        <tr style="padding:0px; margin:0px; border: none">
+                            <td class="col-md-5" valign="top" style="padding:0px; margin:0px;border:0px">
+                                <!-- ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope" style="">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="Delivery-del-ctrl" class="ng-scope">
+    <!-- ngIf: !delhiDelivery.delhiDeliveryData -->
+      
+        <!-- ngIf: delhiDelivery.delhiDeliveryData &&  delhiDelivery.delhiDeliveryData.length == 0 -->  
+       
+      <!-- ngIf: delhiDelivery.delhiDeliveryData &&  delhiDelivery.delhiDeliveryData.length > 0 --><div ng-if="delhiDelivery.delhiDeliveryData &amp;&amp;  delhiDelivery.delhiDeliveryData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+        <div class="col-md-6" style="padding:0px">
+            <div class="panel-body" style="padding:0px"> 
+                <div class="row ng-hide" ng-hide="hideEditHistoryRemarks">
+                  <div style="margin-bottom: 20px;margin-top: 10px">
+                    <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                      Add New Record
+                  </div>
+                </div>  
+    
+                
+                <!-- ngIf: delhiDelivery.delhiDeliveryData --><table ng-if="delhiDelivery.delhiDeliveryData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                    <tbody><tr>
+                       <td> 
+                      <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr rowspan="3">
+                                <th colspan="6">Delhi Delivery</th>
+                              </tr>
+                            <tr rowspan="3">
+                              <th colspan="2">Batch no</th>
+                              <th colspan="1">Tank no</th>
+                              <th colspan="1">FMR Qty.</th>
+                              <th colspan="1">Dip Qty.</th>      
+                              <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                            </tr>
+                            <tr rowspan="3">
+                              <th>Product</th>
+                              <th>Seq. No</th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                            </tr>
+                        </thead>
+                        <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                          <!-- ngRepeat: data in delhiDelivery.delhiDeliveryData track by $index --><tr ng-repeat="data in delhiDelivery.delhiDeliveryData track by $index" class="editable-row ng-scope">
+                            <td style="width:100px" class="select-td">    
+                              <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                                6M
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  12
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  232
+                              </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                                <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    323
+                                </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                                <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    332
+                                </span>
+                            </td>
+                            <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                          </tr><!-- end ngRepeat: data in delhiDelivery.delhiDeliveryData track by $index --><tr ng-repeat="data in delhiDelivery.delhiDeliveryData track by $index" class="editable-row ng-scope">
+                            <td style="width:100px" class="select-td">    
+                              <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                                4M
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  3332
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  232
+                              </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                                <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    223
+                                </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                                <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    2342
+                                </span>
+                            </td>
+                            <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                          </tr><!-- end ngRepeat: data in delhiDelivery.delhiDeliveryData track by $index --><tr ng-repeat="data in delhiDelivery.delhiDeliveryData track by $index" class="editable-row ng-scope">
+                            <td style="width:100px" class="select-td">    
+                              <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                                NSKO
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  2323
+                              </span>
+                            </td>
+                            <td>
+                              <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  232
+                              </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                                <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    232
+                                </span>
+                            </td>
+                            <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                                <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                    232
+                                </span>
+                            </td>
+                            <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                          </tr><!-- end ngRepeat: data in delhiDelivery.delhiDeliveryData track by $index -->
+                            <tr>
+                                <td style="width:100px" class="select-td">    
+                                    Total
+                                  </td>
+                            
+                                  <td>
+                    
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td class="ng-binding">
+                                      778
+                                  </td>
+                                  <td class="ng-binding"> 
+                                      2906
+                                  </td>
+                                  <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                                  </td><!-- end ngIf: isAdmin -->
+                              </tr>
+                          </tbody>        
+                      </table>
+                    </td>
+                    </tr>
+                    </tbody></table><!-- end ngIf: delhiDelivery.delhiDeliveryData -->
+                      
+                  <div class="button-wrapper ng-scope ng-hide" ng-hide="hideEditHistoryRemarks">
+                    <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+                </div>
+      
+        </div>
+        </div>
+      </div><!-- end ngIf: delhiDelivery.delhiDeliveryData &&  delhiDelivery.delhiDeliveryData.length > 0 -->
+</div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="Rev-pumping-pnp-delhi-ctrl" class="ng-scope">
+    <!-- ngIf: !revPumpingPnpDelhi.revPumpingPnpDelhiData -->
+      
+        <!-- ngIf: revPumpingPnpDelhi.revPumpingPnpDelhiData &&  revPumpingPnpDelhi.revPumpingPnpDelhiData.length == 0 -->  
+      
+      <!-- ngIf: revPumpingPnpDelhi.revPumpingPnpDelhiData &&  revPumpingPnpDelhi.revPumpingPnpDelhiData.length > 0 --><div ng-if="revPumpingPnpDelhi.revPumpingPnpDelhiData &amp;&amp;  revPumpingPnpDelhi.revPumpingPnpDelhiData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+          <div class="col-md-6" style="padding:0px">
+              <div class="panel-body" style="padding:0px"> 
+                  <div ng-hide="hideEditHistoryRemarks" class="row ng-hide">
+                    <div style="margin-bottom: 20px;margin-top: 10px">
+                      <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                        Add New Record
+                    </div>
+                  </div>  
+                    
+                  <!-- ngIf: revPumpingPnpDelhi.revPumpingPnpDelhiData --><table ng-if="revPumpingPnpDelhi.revPumpingPnpDelhiData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                        <tbody><tr>
+                          <td> 
+                          <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr rowspan="3">
+                                        <th colspan="6">Pumping Panipat-Delhi (Reverse)</th>
+                                      </tr>
+                          <tr rowspan="3">
+                            <th colspan="2">Batch no</th>
+                            <th colspan="1">Tank no</th>
+                            <th colspan="1">FMR Qty.</th>
+                            <th colspan="1">Dip Qty.</th>      
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                          </tr>
+                          <tr rowspan="3">
+                            <th>Product</th>
+                            <th>Seq. No</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                          </tr>
+                      </thead>
+                      <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                        <!-- ngRepeat: data in revPumpingPnpDelhi.revPumpingPnpDelhiData track by $index --><tr ng-repeat="data in revPumpingPnpDelhi.revPumpingPnpDelhiData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                              -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                  -
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                  -
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editrevPumpingPnpDelhiStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in revPumpingPnpDelhi.revPumpingPnpDelhiData track by $index -->
+                          <tr>
+                              <td style="width:100px" class="select-td">    
+                                  Total
+                                </td>
+                          
+                                <td>
+                  
+                                </td>
+                                <td>
+                                </td>
+                                <td class="ng-binding">
+                                    0
+                                </td>
+                                <td class="ng-binding"> 
+                                    0
+                                </td>
+                                <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                                </td><!-- end ngIf: isAdmin -->
+                            </tr>
+                        </tbody>        
+                    </table>
+                </td>
+            </tr>
+            </tbody></table><!-- end ngIf: revPumpingPnpDelhi.revPumpingPnpDelhiData -->
+                    <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+                      <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+                  </div>
+                </div>
+            </div>
+      </div><!-- end ngIf: revPumpingPnpDelhi.revPumpingPnpDelhiData &&  revPumpingPnpDelhi.revPumpingPnpDelhiData.length > 0 -->
+  </div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="pumping-delhi-pnp-ctrl" class="ng-scope">
+    <!-- ngIf: !PumpingDelhiPnp.PumpingDelhiPnpData -->
+      
+        <!-- ngIf: PumpingDelhiPnp.PumpingDelhiPnpData &&  PumpingDelhiPnp.PumpingDelhiPnpData.length == 0 -->  
+       
+      <!-- ngIf: PumpingDelhiPnp.PumpingDelhiPnpData &&  PumpingDelhiPnp.PumpingDelhiPnpData.length > 0 --><div ng-if="PumpingDelhiPnp.PumpingDelhiPnpData &amp;&amp;  PumpingDelhiPnp.PumpingDelhiPnpData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+          <div class="col-md-6" style="padding:0px">
+              <div class="panel-body" style="padding:0px"> 
+                  <div ng-hide="hideEditHistoryRemarks" class="row ng-hide">
+                    <div style="margin-bottom: 20px;margin-top: 10px">
+                      <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                        Add New Record
+                    </div>
+                  </div>  
+                    
+                  <!-- ngIf: PumpingDelhiPnp.PumpingDelhiPnpData --><table ng-if="PumpingDelhiPnp.PumpingDelhiPnpData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                        <tbody><tr>
+                           <td> 
+                          <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr rowspan="3">
+                                        <th colspan="6">Pumping in Del-Panipat</th>
+                                      </tr>
+                      <tr rowspan="3">
+                            <th colspan="2">Batch no</th>
+                            <th colspan="1">Tank no</th>
+                            <th colspan="1">FMR Qty.</th>
+                            <th colspan="1">Dip Qty.</th>      
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                          </tr>
+                          <tr rowspan="3">
+                            <th>Product</th>
+                            <th>Seq. No</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                          </tr>
+                      </thead>
+                      <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                        <!-- ngRepeat: data in PumpingDelhiPnp.PumpingDelhiPnpData track by $index --><tr ng-repeat="data in PumpingDelhiPnp.PumpingDelhiPnpData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                              -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                  -
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                  -
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editPumpingDelhiPnpStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in PumpingDelhiPnp.PumpingDelhiPnpData track by $index -->
+                          <tr>
+                              <td style="width:100px" class="select-td">    
+                                  Total
+                                </td>
+                          
+                                <td>
+                  
+                                </td>
+                                <td>
+                                </td>
+                                <td class="ng-binding">
+                                    0
+                                </td>
+                                <td class="ng-binding"> 
+                                    0
+                                </td>
+                                <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                                </td><!-- end ngIf: isAdmin -->
+                            </tr>
+                        </tbody>        
+                    </table>
+                </td>
+            </tr>
+            </tbody></table><!-- end ngIf: PumpingDelhiPnp.PumpingDelhiPnpData -->
+                    <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+                      <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+                  </div>
+                </div>
+            </div>
+
+      </div><!-- end ngIf: PumpingDelhiPnp.PumpingDelhiPnpData &&  PumpingDelhiPnp.PumpingDelhiPnpData.length > 0 -->  
+  </div>
+
+
+
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="Delivery-Pnp-ctrl" class="ng-scope">
+    <!-- ngIf: !DeliveryPnp.DeliveryPnpData -->
+      
+        <!-- ngIf: DeliveryPnp.DeliveryPnpData &&  DeliveryPnp.DeliveryPnpData.length == 0 -->  
+       
+      <!-- ngIf: DeliveryPnp.DeliveryPnpData &&  DeliveryPnp.DeliveryPnpData.length > 0 --><div ng-if="DeliveryPnp.DeliveryPnpData &amp;&amp;  DeliveryPnp.DeliveryPnpData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+          <div class="col-md-6" style="padding:0px">
+              <div class="panel-body" style="padding:0px"> 
+                  <div ng-hide="hideEditHistoryRemarks" class="row ng-hide">
+                    <div style="margin-bottom: 20px;margin-top: 10px">
+                      <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                        Add New Record
+                    </div>
+                  </div>  
+              
+                  <!-- ngIf: DeliveryPnp.DeliveryPnpData --><table ng-if="DeliveryPnp.DeliveryPnpData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                        <tbody><tr>
+                           <td> 
+                          <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                                     <thead>
+                                        <tr rowspan="3">
+                                            <th colspan="6">Delivery Panipat (PDPL at 14")</th>
+                                          </tr>
+                          <tr rowspan="3">
+                            <th colspan="2">Batch no</th>
+                            <th colspan="1">Tank no</th>
+                            <th colspan="1">FMR Qty.</th>
+                            <th colspan="1">Dip Qty.</th>      
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                          </tr>
+                          <tr rowspan="3">
+                            <th>Product</th>
+                            <th>Seq. No</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                          </tr>
+                      </thead>
+                      <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                        <!-- ngRepeat: data in DeliveryPnp.DeliveryPnpData track by $index --><tr ng-repeat="data in DeliveryPnp.DeliveryPnpData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                              PN
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editDeliveryPnpStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in DeliveryPnp.DeliveryPnpData track by $index --><tr ng-repeat="data in DeliveryPnp.DeliveryPnpData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                              -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editDeliveryPnpStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in DeliveryPnp.DeliveryPnpData track by $index --><tr ng-repeat="data in DeliveryPnp.DeliveryPnpData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                              NSKO
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                                -
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  -
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editDeliveryPnpStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in DeliveryPnp.DeliveryPnpData track by $index -->
+                          <tr>
+                              <td style="width:100px" class="select-td">    
+                                  Total
+                                </td>
+                          
+                                <td>
+                  
+                                </td>
+                                <td>
+                                </td>
+                                <td class="ng-binding">
+                                    0
+                                </td>
+                                <td class="ng-binding"> 
+                                    0
+                                </td>
+                                <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                                </td><!-- end ngIf: isAdmin -->
+                            </tr>
+                        </tbody>        
+                    </table>
+                </td>
+            </tr>
+            </tbody></table><!-- end ngIf: DeliveryPnp.DeliveryPnpData -->
+                    <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+                      <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+                  </div>
+            </div>
+          </div>
+      </div><!-- end ngIf: DeliveryPnp.DeliveryPnpData &&  DeliveryPnp.DeliveryPnpData.length > 0 -->        
+  </div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="Delivery-del-rev-ctrl" class="ng-scope">
+    <!-- ngIf: !delhiDeliveryRev.delhiDeliveryRevData -->
+      
+        <!-- ngIf: delhiDeliveryRev.delhiDeliveryRevData &&  delhiDeliveryRev.delhiDeliveryRevData.length == 0 -->  
+       
+      <!-- ngIf: delhiDeliveryRev.delhiDeliveryRevData &&  delhiDeliveryRev.delhiDeliveryRevData.length > 0 --><div ng-if="delhiDeliveryRev.delhiDeliveryRevData &amp;&amp;  delhiDeliveryRev.delhiDeliveryRevData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+        <div class="col-md-6" style="padding:0px"> 
+          <div class="panel-body " style="padding:0px">
+              <div class="row ng-hide" ng-hide="hideEditHistoryRemarks">
+                  <div style="margin-bottom: 20px;margin-top: 10px">
+                    <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                      Add New Record
+                  </div>
+                </div>  
+                  
+                <!-- ngIf: delhiDeliveryRev.delhiDeliveryRevData --><table ng-if="delhiDeliveryRev.delhiDeliveryRevData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                    <tbody><tr>
+                      <td> 
+                      <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr rowspan="3">
+                                    <th colspan="6">Delhi at Delivery Reverse</th>
+                                  </tr>
+                          <tr rowspan="3">
+                            <th colspan="2">Batch no</th>
+                            <th colspan="1">Tank no</th>
+                            <th colspan="1">FMR Qty.</th>
+                            <th colspan="1">Dip Qty.</th>      
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                          </tr>
+                          <tr rowspan="3">
+                            <th>Product</th>
+                            <th>Seq. No</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                          </tr>
+                      </thead>
+                      <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                        <!-- ngRepeat: data in delhiDeliveryRev.delhiDeliveryRevData track by $index --><tr ng-repeat="data in delhiDeliveryRev.delhiDeliveryRevData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                              PN
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                323
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                231
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  231230
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  2310
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryRevStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in delhiDeliveryRev.delhiDeliveryRevData track by $index --><tr ng-repeat="data in delhiDeliveryRev.delhiDeliveryRevData track by $index" class="editable-row ng-scope">
+                          <td style="width:100px" class="select-td">    
+                            <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable">
+                              SKO
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                32131
+                            </span>
+                          </td>
+                          <td>
+                            <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                232
+                            </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                              <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  2323
+                              </span>
+                          </td>
+                          <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                              <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                                  3430
+                              </span>
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                              <!-- ngIf: rowform.$visible -->
+                              <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdelhiDeliveryRevStart(data)">Edit</button>
+                                <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                              </div><!-- end ngIf: !rowform.$visible -->
+                            </td><!-- end ngIf: isAdmin -->
+                        </tr><!-- end ngRepeat: data in delhiDeliveryRev.delhiDeliveryRevData track by $index -->
+                          <tr>
+                              <td style="width:100px" class="select-td">    
+                                  Total
+                                </td>
+                          
+                                <td>
+                  
+                                </td>
+                                <td>
+                                </td>
+                                <td class="ng-binding">
+                                    233553
+                                </td>
+                                <td class="ng-binding"> 
+                                    5740
+                                </td>
+                                <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                                </td><!-- end ngIf: isAdmin -->
+                            </tr>
+                        </tbody>        
+                    </table>
+                  </td>
+                </tr>
+                </tbody></table><!-- end ngIf: delhiDeliveryRev.delhiDeliveryRevData -->
+                  <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+                    <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+                </div>
+          </div>
+
+        </div>
+      </div><!-- end ngIf: delhiDeliveryRev.delhiDeliveryRevData &&  delhiDeliveryRev.delhiDeliveryRevData.length > 0 -->
+      
+  </div>
+
+
+
+
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="ex-mathura-mbpl-ctrl" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+    <div class="panel-body" style="padding:0px"> 
+      <div class="row">
+        <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+          <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+            Add New Record
+        </div>
+      </div>  
+
+      <!-- ngIf: exMathuraMBPL.exMathuraMBPLData --><table ng-if=" exMathuraMBPL.exMathuraMBPLData" style="margin: 0px;" class="table-bordered table-hover table-condensed ng-scope">
+          <tbody><tr>
+            <td> 
+            <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+              <thead>
+                  <tr rowspan="3">
+                      <th colspan="6">Ex-Mathura MBPL</th>
+                    </tr>
+        <tr rowspan="3">
+                <th colspan="2">Batch no</th>
+                <th colspan="1">Tank no</th>
+                <th colspan="1">FMR Qty.</th>
+                <th colspan="1">Dip Qty.</th>      
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+              </tr>
+              <tr rowspan="3">
+                <th>Product</th>
+                <th>Seq. No</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+              </tr>
+          </thead>
+          <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+            <!-- ngRepeat: data in exMathuraMBPL.exMathuraMBPLData track by $index --><tr ng-repeat="data in exMathuraMBPL.exMathuraMBPLData track by $index" class="editable-row ng-scope">
+              <td style="width:100px" class="select-td">    
+                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                  -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                  <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                  <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                    <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editexMathuraMBPLStart(data)">Edit</button>
+                    <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+                </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in exMathuraMBPL.exMathuraMBPLData track by $index -->
+              <tr>
+                  <td style="width:100px" class="select-td">    
+                      Total
+                    </td>
+              
+                    <td>
+      
+                    </td>
+                    <td>
+                    </td>
+                    <td class="ng-binding">
+                        0
+                    </td>
+                    <td class="ng-binding"> 
+                        0
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                    </td><!-- end ngIf: isAdmin -->
+                </tr>
+            </tbody>        
+        </table>                </td>
+      </tr>
+      </tbody></table><!-- end ngIf: exMathuraMBPL.exMathuraMBPLData -->
+        <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+          <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="ex-mathura-md-ctrl" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+    <div class="panel-body" style="padding:0px"> 
+      <div class="row">
+        <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+          <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+            Add New Record
+        </div>
+      </div>  
+      <!-- ngIf: exMathuraMD.exMathuraMDData --><table ng-if=" exMathuraMD.exMathuraMDData" style="margin: 0px;" class="table-bordered table-hover table-condensed ng-scope">
+          <tbody><tr>
+           <td> 
+            <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr rowspan="3">
+                        <th colspan="6">Ex-Mathura MD</th>
+                      </tr>
+          <tr rowspan="3">
+                <th colspan="2">Batch no</th>
+                <th colspan="1">Tank no</th>
+                <th colspan="1">FMR Qty.</th>
+                <th colspan="1">Dip Qty.</th>      
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+              </tr>
+              <tr rowspan="3">
+                <th>Product</th>
+                <th>Seq. No</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+              </tr>
+          </thead>
+          <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+            <!-- ngRepeat: data in exMathuraMD.exMathuraMDData track by $index --><tr ng-repeat="data in exMathuraMD.exMathuraMDData track by $index" class="editable-row ng-scope">
+              <td style="width:100px" class="select-td">    
+                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                  -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                  <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                  <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                    <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editexMathuraMDStart(data)">Edit</button>
+                    <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+                </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in exMathuraMD.exMathuraMDData track by $index -->
+              <tr>
+                  <td style="width:100px" class="select-td">    
+                      Total
+                    </td>
+              
+                    <td>
+      
+                    </td>
+                    <td>
+                    </td>
+                    <td class="ng-binding">
+                        0
+                    </td>
+                    <td class="ng-binding"> 
+                        0
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                    </td><!-- end ngIf: isAdmin -->
+                </tr>
+            </tbody>        
+        </table>
+      </td>
+    </tr>
+    </tbody></table><!-- end ngIf: exMathuraMD.exMathuraMDData -->
+        <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+          <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="ex-mathura-mtpl-ctrl" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+  <div class="panel-body" style="padding:0px"> 
+    <div class="row">
+      <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+        <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+          Add New Record
+      </div>
+    </div>  
+
+    <!-- ngIf: exMathuraMTPL.exMathuraMTPLData --><table ng-if=" exMathuraMTPL.exMathuraMTPLData" style="margin: 0px;" class="table-bordered table-hover table-condensed ng-scope">
+        <tbody><tr>
+          <td> 
+          <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+            <thead>
+                <tr rowspan="3">
+                    <th colspan="6">Ex-Mathura MTPL</th>
+                  </tr>
+      <tr rowspan="3">
+              <th colspan="2">Batch no</th>
+              <th colspan="1">Tank no</th>
+              <th colspan="1">FMR Qty.</th>
+              <th colspan="1">Dip Qty.</th>      
+              <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+            </tr>
+            <tr rowspan="3">
+              <th>Product</th>
+              <th>Seq. No</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+            </tr>
+        </thead>
+        <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+          <!-- ngRepeat: data in exMathuraMTPL.exMathuraMTPLData track by $index --><tr ng-repeat="data in exMathuraMTPL.exMathuraMTPLData track by $index" class="editable-row ng-scope">
+            <td style="width:100px" class="select-td">    
+              <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                -
+              </span>
+            </td>
+            <td>
+              <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                  -
+              </span>
+            </td>
+            <td>
+              <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                  -
+              </span>
+            </td>
+            <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                    -
+                </span>
+            </td>
+            <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                    -
+                </span>
+            </td>
+            <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                <!-- ngIf: rowform.$visible -->
+                <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editexMathuraMTPLStart(data)">Edit</button>
+                  <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                </div><!-- end ngIf: !rowform.$visible -->
+              </td><!-- end ngIf: isAdmin -->
+          </tr><!-- end ngRepeat: data in exMathuraMTPL.exMathuraMTPLData track by $index -->
+            <tr>
+                <td style="width:100px" class="select-td">    
+                    Total
+                  </td>
+            
+                  <td>
+    
+                  </td>
+                  <td>
+                  </td>
+                  <td class="ng-binding">
+                      0
+                  </td>
+                  <td class="ng-binding"> 
+                      0
+                  </td>
+                  <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                  </td><!-- end ngIf: isAdmin -->
+              </tr>
+          </tbody>        
+      </table>                </td>
+    </tr>
+    </tbody></table><!-- end ngIf: exMathuraMTPL.exMathuraMTPLData -->
+
+      <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+        <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+    </div>
+  </div>
+  </div>
+  
+</div>
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="tundla-daily-report-ctrl" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+    <div class="panel-body" style="padding:0px"> 
+      <div class="row">
+        <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+          <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+            Add New Record
+        </div>
+      </div>  
+      
+      <!-- ngIf: deliveryTundla.deliveryTundlaData --><table ng-if=" deliveryTundla.deliveryTundlaData" style="margin: 0px;" class="table-bordered table-hover table-condensed ng-scope">
+          <tbody><tr>
+           <td> 
+            <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+               <thead>
+                  <tr rowspan="3">
+                      <th colspan="6">Tundla Delivery</th>
+                    </tr>
+        <tr rowspan="3">
+                <th colspan="2">Batch no</th>
+                <th colspan="1">Tank no</th>
+                <th colspan="1">FMR Qty.</th>
+                <th colspan="1">Dip Qty.</th>      
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+              </tr>
+              <tr rowspan="3">
+                <th>Product</th>
+                <th>Seq. No</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+              </tr>
+          </thead>
+          <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+            <!-- ngRepeat: data in deliveryTundla.deliveryTundlaData track by $index --><tr ng-repeat="data in deliveryTundla.deliveryTundlaData track by $index" class="editable-row ng-scope">
+              <td style="width:100px" class="select-td">    
+                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                  -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                  <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                  <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                    <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryTundlaStart(data)">Edit</button>
+                    <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+                </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in deliveryTundla.deliveryTundlaData track by $index -->
+              <tr>
+                  <td style="width:100px" class="select-td">    
+                      Total
+                    </td>
+              
+                    <td>
+      
+                    </td>
+                    <td>
+                    </td>
+                    <td class="ng-binding">
+                        0
+                    </td>
+                    <td class="ng-binding"> 
+                        0
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                    </td><!-- end ngIf: isAdmin -->
+                </tr>
+            </tbody>        
+        </table></td>
+      </tr>
+      </tbody></table><!-- end ngIf: deliveryTundla.deliveryTundlaData -->
+  
+      
+        <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+          <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+      </div>
+    </div>
+  </div>
+</div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="tikrikalan-daily-report-ctrl" class="ng-scope">
+    <!-- ngIf: !deliveryTikrikalan.deliveryTikrikalanData -->
+          
+    <!-- ngIf: deliveryTikrikalan.deliveryTikrikalanData &&  deliveryTikrikalan.deliveryTikrikalanData.length == 0 -->  
+           
+    <!-- ngIf: deliveryTikrikalan.deliveryTikrikalanData &&  deliveryTikrikalan.deliveryTikrikalanData.length > 0 --><div ng-if="deliveryTikrikalan.deliveryTikrikalanData &amp;&amp;  deliveryTikrikalan.deliveryTikrikalanData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+        <div class="col-md-6" style="padding:0px">
+      <div class="panel-body" style="padding:0px"> 
+        <div class="row">
+          <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+            <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+              Add New Record
+          </div>
+        </div>  
+          
+    
+        <!-- ngIf: deliveryTikrikalan.deliveryTikrikalanData --><table ng-if=" deliveryTikrikalan.deliveryTikrikalanData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                   <td> 
+                  <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                           <thead>
+                              <tr rowspan="3">
+                                  <th colspan="6">Tikri. K. Delivery</th>
+                                </tr>
+                    <tr rowspan="3">
+                      <th colspan="2">Batch no</th>
+                      <th colspan="1">Tank no</th>
+                      <th colspan="1">FMR Qty.</th>
+                      <th colspan="1">Dip Qty.</th>      
+                      <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                    </tr>
+                    <tr rowspan="3">
+                      <th style="width:100px">Product</th>
+                      <th>Seq. No</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                    </tr>
+                </thead>
+                <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                  <!-- ngRepeat: data in deliveryTikrikalan.deliveryTikrikalanData  track by $index --><tr ng-repeat="data in deliveryTikrikalan.deliveryTikrikalanData  track by $index" class="editable-row ng-scope">
+                    <td style="width:100px" class="select-td">    
+                      <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                        -
+                      </span>
+                    </td>
+                    <td>
+                      <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                          -
+                      </span>
+                    </td>
+                    <td>
+                      <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                          -
+                      </span>
+                    </td>
+                    <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                        <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                            -
+                        </span>
+                    </td>
+                    <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                        <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                            -
+                        </span>
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                            <!-- ngIf: rowform.$visible -->
+                            <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                              <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryTikrikalanStart(data)">Edit</button>
+                              <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                            </div><!-- end ngIf: !rowform.$visible -->
+                          </td><!-- end ngIf: isAdmin -->
+                  </tr><!-- end ngRepeat: data in deliveryTikrikalan.deliveryTikrikalanData  track by $index -->
+                    <tr>
+                        <td style="width:100px" class="select-td">    
+                            Total
+                          </td>
+                    
+                          <td>
+            
+                          </td>
+                          <td>
+                          </td>
+                          <td class="ng-binding">
+                              0
+                          </td>
+                          <td class="ng-binding"> 
+                              0
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                          </td><!-- end ngIf: isAdmin -->
+                      </tr>
+                  </tbody>        
+              </table>
+            </td>
+        </tr>
+        </tbody></table><!-- end ngIf: deliveryTikrikalan.deliveryTikrikalanData -->
+    
+          <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+            <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- end ngIf: deliveryTikrikalan.deliveryTikrikalanData &&  deliveryTikrikalan.deliveryTikrikalanData.length > 0 -->
+</div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="meerut-daily-report-ctrl" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+    <div class="panel-body" style="padding:0px"> 
+      <div class="row">
+        <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+          <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+            Add New Record
+        </div>
+      </div>  
+        
+      <!-- ngIf: deliveryMeerut.deliveryMeerutData --><table ng-if=" deliveryMeerut.deliveryMeerutData" style="margin: 0px;" class="table-bordered table-hover table-condensed ng-scope">
+          <tbody><tr>
+            <td> 
+            <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                  <thead>
+                      <tr rowspan="3">
+                          <th colspan="6">Meerut Delivery</th>
+                        </tr>
+            <tr rowspan="3">
+                <th colspan="2">Batch no</th>
+                <th colspan="1">Tank no</th>
+                <th colspan="1">FMR Qty.</th>
+                <th colspan="1">Dip Qty.</th>      
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+              </tr>
+              <tr rowspan="3">
+                <th>Product</th>
+                <th>Seq. No</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+              </tr>
+          </thead>
+          <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+            <!-- ngRepeat: data in deliveryMeerut.deliveryMeerutData track by $index --><tr ng-repeat="data in deliveryMeerut.deliveryMeerutData track by $index" class="editable-row ng-scope">
+              <td style="width:100px" class="select-td">    
+                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                  -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td>
+                <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                    -
+                </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                  <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                  <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                      -
+                  </span>
+              </td>
+              <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                    <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryMeerutStart(data)">Edit</button>
+                    <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+                </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in deliveryMeerut.deliveryMeerutData track by $index -->
+              <tr>
+                  <td style="width:100px" class="select-td">    
+                      Total
+                    </td>
+              
+                    <td>
+      
+                    </td>
+                    <td>
+                    </td>
+                    <td class="ng-binding">
+                        0
+                    </td>
+                    <td class="ng-binding"> 
+                        0
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                    </td><!-- end ngIf: isAdmin -->
+                </tr>
+            </tbody>        
+        </table>
+      </td>
+    </tr>
+    </tbody></table><!-- end ngIf: deliveryMeerut.deliveryMeerutData -->
+  
+        <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+          <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+
+</div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource --><div ng-repeat="htmlSource in views[1].htmlSource" class="ng-scope">
+                                        <!-- ngInclude: htmlSource --><div ng-include="htmlSource" class="ng-scope" style=""><div ng-controller="bharatpur-daily-report-ctrl" class="ng-scope">
+  <div class="col-md-6" style="padding:0px">
+      <!-- ngIf: !deliveryBharatpur.deliveryBharatpurData -->
+        
+        <!-- ngIf: deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length == 0 -->  
+         
+        <!-- ngIf: deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length > 0 --><div ng-if="deliveryBharatpur.deliveryBharatpurData &amp;&amp;  deliveryBharatpur.deliveryBharatpurData.length > 0" style="background-size: 1679px 944px; background-position: 0px -79px;" class="ng-scope">
+          <div class="panel-body" style="padding:0px"> 
+            <div class="row">
+              <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+                <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+                  Add New Record
+              </div>
+            </div>  
+        
+            <!-- ngIf: deliveryBharatpur.deliveryBharatpurData --><table ng-if=" deliveryBharatpur.deliveryBharatpurData" style="margin: 0px" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                   <td> 
+                  <table style="margin : 0px" class="table table-bordered table-hover table-condensed">
+                      <thead>
+                          <tr rowspan="3">
+                              <th colspan="6">Bharat pur Delivery</th>
+                            </tr>
+                <tr rowspan="3">
+                      <th colspan="2">Batch no</th>
+                      <th colspan="1">Tank no</th>
+                      <th colspan="1">FMR Qty.</th>
+                      <th colspan="1">Dip Qty.</th>      
+                      <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" colspan="1" ng-if="isAdmin" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+                    </tr>
+                    <tr rowspan="3">
+                      <th>Product</th>
+                      <th>Seq. No</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <!-- ngIf: isAdmin --><th ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide"></th><!-- end ngIf: isAdmin -->
+                    </tr>
+                </thead>
+                <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
+                  <!-- ngRepeat: data in deliveryBharatpur.deliveryBharatpurData track by $index --><tr ng-repeat="data in deliveryBharatpur.deliveryBharatpurData track by $index" class="editable-row ng-scope">
+                    <td style="width:100px" class="select-td">    
+                      <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker="" e-ng-options="product for product in $parent.products" class="ng-scope ng-binding editable editable-empty">
+                        -
+                      </span>
+                    </td>
+                    <td>
+                      <span editable-number="data.seq_no" e-step="any" e-name="seq_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                          -
+                      </span>
+                    </td>
+                    <td>
+                      <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                          -
+                      </span>
+                    </td>
+                    <td ng-init="$parent.totalDelDelivFmr = $parent.totalDelDelivFmr + data.fmr">
+                        <span editable-number="data.fmr" e-name="fmr" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                            -
+                        </span>
+                    </td>
+                    <td ng-init="$parent.totalDelDelivDip = $parent.totalDelDelivDip + data.dip_qty">
+                        <span editable-number="data.dip_qty" e-name="dip_qty" e-form="rowform" e-required="" class="ng-scope ng-binding editable">
+                            -
+                        </span>
+                    </td>
+                    <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                        <!-- ngIf: rowform.$visible -->
+                        <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                          <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryBharatpurStart(data)">Edit</button>
+                          <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                        </div><!-- end ngIf: !rowform.$visible -->
+                      </td><!-- end ngIf: isAdmin -->
+                  </tr><!-- end ngRepeat: data in deliveryBharatpur.deliveryBharatpurData track by $index -->
+                    <tr>
+                        <td style="width:100px" class="select-td">    
+                            Total
+                          </td>
+                    
+                          <td>
+            
+                          </td>
+                          <td>
+                          </td>
+                          <td class="ng-binding">
+                              0
+                          </td>
+                          <td class="ng-binding"> 
+                              0
+                          </td>
+                          <!-- ngIf: isAdmin --><td ng-hide="hideEditHistoryRemarks" ng-if="isAdmin" class="ng-scope ng-hide">
+                          </td><!-- end ngIf: isAdmin -->
+                      </tr>
+                  </tbody>        
+              </table></td>
+            </tr>
+            </tbody></table><!-- end ngIf: deliveryBharatpur.deliveryBharatpurData -->
+        
+                
+              <div ng-hide="hideEditHistoryRemarks" class="button-wrapper ng-scope ng-hide">
+                <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+            </div>  
+          </div>
+        </div><!-- end ngIf: deliveryBharatpur.deliveryBharatpurData &&  deliveryBharatpur.deliveryBharatpurData.length > 0 -->
+  </div>
+</div></div>
+                                    </div><!-- end ngRepeat: htmlSource in views[1].htmlSource -->
+                                    <!-- ngInclude: views[2].htmlSource[1] --><div ng-include="views[2].htmlSource[1]" class="ng-scope"><div ng-controller="lbt-table-ctrl" class="ng-scope">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <!-- ngRepeat: lbt in $parent.lbt track by $index -->
+         </ul>
+       
+         <!-- ngRepeat: lbt in $parent.lbts  track by $index --><!-- ngIf: lbtTable.lbtTabData --><table ng-if="lbtTable.lbtTabData" style="margin: 0px;" ng-repeat="lbt in $parent.lbts  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                    <th class="ng-binding">LBT01</th>
+              
+            
+                <td> 
+                    <table style="margin:0px;padding:0px" class="table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr><!-- ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Opening Stock 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Delivery 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Pumping 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Closing Stock 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index -->
+                         </tr></thead>
+                        <tbody><tr>
+                            <!-- ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            ATF
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                43
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                43
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            SKO
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                42
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                42
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            ATF
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                43
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                43
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            SKO
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                42
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                42
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index -->
+                        </tr>
+                    </tbody></table>
+                </td>  
+            </tr>
+        </tbody></table><!-- end ngIf: lbtTable.lbtTabData --><!-- end ngRepeat: lbt in $parent.lbts  track by $index --><!-- ngIf: lbtTable.lbtTabData --><table ng-if="lbtTable.lbtTabData" style="margin: 0px" ng-repeat="lbt in $parent.lbts  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                    <th class="ng-binding">LBT02</th>
+              
+            
+                <td> 
+                    <table style="margin:0px;padding:0px" class="table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr><!-- ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Opening Stock 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Delivery 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Pumping 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><th ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" class="ng-scope">
+                                <span class="ng-binding">
+                                    Closing Stock 
+                                </span>
+                            </th><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index -->
+                         </tr></thead>
+                        <tbody><tr>
+                            <!-- ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index --><td ng-repeat="data in lbtTable.lbtTabData[lbt] track by $index" style="padding : 0px" class="ng-scope">
+                                <table style="width: 100%;margin: 0px; padding:0px" class="table-bordered table-hover table-condensed">
+                                    <tbody><tr>
+                                        <th>Product</th>
+                                        <th>Seq No.</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <!-- ngRepeat: dt in data.details track by $index --><tr ng-repeat="dt in data.details track by $index" class="ng-scope">
+                                        <td>  
+                                        <span class="ng-binding">
+                                            
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="ng-binding">
+                                                -
+                                            </span>
+                                        </td>
+                                    </tr><!-- end ngRepeat: dt in data.details track by $index -->
+                                </tbody></table>
+                            </td><!-- end ngRepeat: data in lbtTable.lbtTabData[lbt] track by $index -->
+                        </tr>
+                    </tbody></table>
+                </td>  
+            </tr>
+        </tbody></table><!-- end ngIf: lbtTable.lbtTabData --><!-- end ngRepeat: lbt in $parent.lbts  track by $index -->
+    </div>
+    </div>
+                                        <!-- ngInclude: views[3].htmlSource[0] --><div ng-include="views[3].htmlSource[0]" class="ng-scope">
+<div ng-controller="equi-running-hrs-bij-ctrl" class="ng-scope">
+      <!-- ngIf: !equiRunningHrsBijwasan.equiRunningHrsBijData -->
+            
+        <!-- ngIf: equiRunningHrsBijwasan.equiRunningHrsBijData &&  equiRunningHrsBijwasan.equiRunningHrsBijData.length == 0 -->  
+               
+      <!-- ngIf: equiRunningHrsBijwasan.equiRunningHrsBijData && equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0 --><div ng-if="equiRunningHrsBijwasan.equiRunningHrsBijData &amp;&amp; equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0" class="ng-scope" style="">
+        <div class="panel-body"> 
+          <table style="margin: 2px; padding:2px; font-size: 14px;" class="table-bordered table-hover table-condensed">
+            <thead>
+                  <tr><th>Name Of Equipment</th>
+                  <th>Previous Hrs</th>
+                  <th>Shift A</th>
+                  <th>Shift B</th>
+                  <th>Shift C</th>
+                  <th>Cummulative Hrs</th>
+                  <!-- ngIf: isAdmin --><th ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">Actions</th><!-- end ngIf: isAdmin -->
+            </tr></thead>
+            <tbody><!-- ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  BP 1
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  BP 2
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  MP 1
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  MP 2
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  MP 3
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  DG SET
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  FFE
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  FFM
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  SUMP PUMP
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  S/R PUMP
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index --><tr class="editable-row ng-scope" ng-repeat="data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index">
+               <td>
+                  <span class="ng-binding">
+                  OWS PUMP
+                  </span>
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                       
+                  </span>
+               </td>
+               <td>  
+                  <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftA" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>  
+               </td>
+               <td>    
+                     <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftB" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                     </span>
+               </td>
+               <td> 
+                  <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required="" e-name="shiftC" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                        
+                  </span>   
+               </td>
+               <td>    
+                  <span class="ng-binding">
+                        
+                  </span>   
+               </td>
+               <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                  <!-- ngIf: rowform.$visible -->
+                  <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                     <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editEquiRunningHrsBijwasanStart(data)">Edit</button>
+                     <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                  </div><!-- end ngIf: !rowform.$visible -->
+               </td><!-- end ngIf: isAdmin -->
+            </tr><!-- end ngRepeat: data in equiRunningHrsBijwasan.equiRunningHrsBijData track by $index -->
+          </tbody></table>
+          <div class="button-wrapper ng-scope ng-hide" ng-hide="hideEditHistoryRemarks">
+            <button type="button" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+          </div>
+        </div>
+      </div><!-- end ngIf: equiRunningHrsBijwasan.equiRunningHrsBijData && equiRunningHrsBijwasan.equiRunningHrsBijData.length > 0 -->
+</div>
+
+
+
+</div>
+                            </td>
+                            <td class="col-md-7" valign="top" style="padding:0px; margin:0px">
+                                   
+                                    <!-- ngInclude: views[2].htmlSource[0] --><div valign="top" ng-include="views[2].htmlSource[0]" class="ng-scope" style=""><div ng-controller="shutdown-ctrl" zoom-in="" ba-panel-blur="" class="ng-scope animated zoomIn" style="background-size: 1373px 772px; background-position: 0px -70px;">
+    <!-- ngIf: !shutdown.shutdownData -->
+
+  <!-- ngIf: shutdown.shutdownData --><div ng-if="shutdown.shutdownData" class="panel-body ng-scope" style=""> 
+    <div class="row">
+      <div ng-hide="hideEditHistoryRemarks" class="col-md-4 ng-hide" style="margin-bottom: 20px;margin-top: 10px">
+        <button type="button" ng-click="addNewRecord()" class="btn btn-default btn-icon"><i class="ion-plus"></i></button> 
+          Add New Record
+      </div>
+    </div>  
+
+    <table class="table table-bordered table-hover table-condensed" style="margin:0px">
+      <thead>
+              <tr><th>From</th>
+              <th> To</th>
+              <th>Duration</th>
+              <th>Accounting Division</th>      
+              <th> Reason</th>
+              <!-- ngIf: isAdmin --><th ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">Action</th><!-- end ngIf: isAdmin -->
+      </tr></thead>
+        <tbody ng-init="$parent.totalshutdown = 0">
+          <!-- ngRepeat: data in shutdown.shutdownData track by $index --><tr ng-repeat="data in shutdown.shutdownData track by $index" class="editable-row ng-scope">
+            <td class="select-td">
+              <span style="line-height: 10px;" editable-time="data.from" e-show-meridian="false" e-minute-step="1" required="" e-name="from" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+              
+              </span>
+           </td>
+           <td>
+              <span style="line-height: 10px;" editable-time="data.to" e-show-meridian="false" e-minute-step="1" required="" e-name="to" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+              
+              </span>
+           </td>
+           <td>
+            <span class="ng-binding">
+              
+            </span>
+            </td>
+            <td style="width:100px" class="select-td">    
+              <span editable-select="data.accountingDivision" e-name="accountingDivision" e-form="rowform" e-selectpicker="" e-ng-options="division for division in $parent.divisions" class="ng-scope ng-binding editable editable-empty">
+                -
+              </span>
+            </td>
+            <td>
+              <span editable-text="data.reason" e-name="reason" e-form="rowform" e-required="" class="ng-scope ng-binding editable editable-empty">
+                  -
+              </span>
+            </td>
+            <!-- ngIf: isAdmin --><td ng-if="isAdmin" ng-hide="hideEditHistoryRemarks" class="ng-scope ng-hide">
+                <!-- ngIf: rowform.$visible -->
+                <!-- ngIf: !rowform.$visible --><div class="buttons ng-scope" ng-if="!rowform.$visible">
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editshutdownStart(data)">Edit</button>
+                  <!-- ngIf: isAdmin && !isShiftOfficer --><button class="btn btn-info editable-table-button btn-xs ng-scope" ng-if="isAdmin &amp;&amp; !isShiftOfficer" ng-click="open(data)">History</button><!-- end ngIf: isAdmin && !isShiftOfficer -->
+                </div><!-- end ngIf: !rowform.$visible -->
+              </td><!-- end ngIf: isAdmin -->
+          </tr><!-- end ngRepeat: data in shutdown.shutdownData track by $index -->
+          </tbody>        
+      </table>
+      <div class="section-block links ng-scope typography-widget">
+        <center class="ng-binding">Total shutdown on date - 0 hrs 0 mins</center>
+      </div>
+  </div><!-- end ngIf: shutdown.shutdownData -->
+</div>
+
+
+</div>
+                                
+                                <!-- ngInclude: views[0].htmlSource[0] --><div ng-include="views[0].htmlSource[0]" class="ng-scope" style=""><div ng-controller="lineFill-ctrl" class="ng-scope">
+    <div class="panel-body"> 
+        <!-- ngIf: !lineFill.lineFillData -->
+
+        <!-- ngRepeat: shift in $parent.shifts  track by $index --><!-- ngIf: lineFill.lineFillData --><table ng-if="lineFill.lineFillData" style="margin: 0px;" ng-repeat="shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                    <th class="ng-binding">ShiftA</th>
+              
+            
+                  <td> 
+                        <!-- ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Matura - Delhi</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">17738</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -17738
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Delhi-Tikri</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">1882</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -1882
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Tikri-Sonipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3125</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3125
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">PNP-BIJ (ATF)</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">5900</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -5900
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Panipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6145</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6145
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Meerut</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3775</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3775
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Bharatpur</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">752</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -752
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Tundla</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6995</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6995
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --> </td>  
+                    </tr>
+        </tbody></table><!-- end ngIf: lineFill.lineFillData --><!-- end ngRepeat: shift in $parent.shifts  track by $index --><!-- ngIf: lineFill.lineFillData --><table ng-if="lineFill.lineFillData" style="margin: 0px" ng-repeat="shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                    <th class="ng-binding">ShiftB</th>
+              
+            
+                  <td> 
+                        <!-- ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Matura - Delhi</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">17738</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -17738
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Delhi-Tikri</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">1882</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -1882
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Tikri-Sonipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3125</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3125
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">PNP-BIJ (ATF)</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">5900</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -5900
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Panipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6145</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6145
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Meerut</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3775</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3775
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Bharatpur</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">752</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -752
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Tundla</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6995</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6995
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --> </td>  
+                    </tr>
+        </tbody></table><!-- end ngIf: lineFill.lineFillData --><!-- end ngRepeat: shift in $parent.shifts  track by $index --><!-- ngIf: lineFill.lineFillData --><table ng-if="lineFill.lineFillData" style="margin: 0px" ng-repeat="shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                <tbody><tr>
+                    <th class="ng-binding">ShiftC</th>
+              
+            
+                  <td> 
+                        <!-- ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Matura - Delhi</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">17738</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -17738
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Delhi-Tikri</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">1882</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -1882
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Tikri-Sonipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3125</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3125
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">PNP-BIJ (ATF)</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">5900</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -5900
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Panipat</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6145</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6145
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Sonipat-Meerut</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">3775</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -3775
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Bharatpur</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">752</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -752
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --><table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat="line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed ng-scope">
+                                <tbody><tr>
+                                    <th style="width: 100px" class="ng-binding">Mathura-Tundla</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <th>Check</th>
+                                </tr>
+                                <tr style="line-height: 14px;">
+                                    <th class="ng-binding">6995</th>
+                                    <!-- ngRepeat: data in line.lineFill track by $index -->
+                                    <td>
+                                            <span ng-style="line.style" class="ng-binding" style="color: rgb(255, 255, 0);"> 
+                                                -6995
+                                            </span>
+                                    </td>                
+                                </tr>
+                        </tbody></table><!-- end ngRepeat: line in lineFill.lineFillData[shift]  track by $index --> </td>  
+                    </tr>
+        </tbody></table><!-- end ngIf: lineFill.lineFillData --><!-- end ngRepeat: shift in $parent.shifts  track by $index -->
+        
+    </div>
+  </div>
+
+
+ </div>
+                            </td>
+                        </tr>
+                </tbody><tbody>
+            </tbody></table>
+        
+
+</body>
+</html>

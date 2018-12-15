@@ -118,14 +118,14 @@
                     </span>
                 </td>
                 <td>
-                        <div>
-                            <span ng-show= "data.position > 0 && data.pumpingBypass > 0">
-                            {{delhiExMR.mathuraPumpedData[data.position].fmr - delhiExMR.mathuraPumpedData[data.position -1].fmr  - (data.flowRateDelivery + data.flowRatePumping) }}
+                    <div> 
+                            <span ng-if= "data.position > 0 && data.pumpingBypass > 0">
+                            {{calcFlowDiff(data)}}
                             </span>
                         </div>
-                        <span ng-show= "data.position == 0 ">
+                        <span ng-if= "data.position == 0 ">
                             {{ data.pumpingBypass }}
-                      </span>
+                      </span> 
                   </td>
                 <td ng-show = "isAdmin || isShiftOfficer">
                     <form editable-form name="rowform" onaftersave = "editDelExMrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"

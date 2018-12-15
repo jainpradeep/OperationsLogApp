@@ -68,6 +68,10 @@
           size: '',
         })
       };
+
+      $scope.calcFlowDiff = function(data){
+        return Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
+      }
       
       $scope.ok = function() {
           $scope.$modalInstance.close();
@@ -94,7 +98,7 @@
       })).then(
         function(data) { 
           $scope.delhiExMR.delExmrData = JSON.parse(data.data.data).items[1].data;
-          $scope.delhiExMR.mathuraPumpedData = JSON.parse(data.data.data).items[1].data;
+          $scope.delhiExMR.mathuraPumpedData = JSON.parse(data.data.data).mathuraItems[1].data;
           $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data).items[1].date;
           $scope.delhiExMR.delExmrID = JSON.parse(data.data.data).items[1]._id;
           $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data).items[1].remarks;
