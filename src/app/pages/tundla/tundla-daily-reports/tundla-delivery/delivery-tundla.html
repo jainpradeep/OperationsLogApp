@@ -21,7 +21,7 @@
                 <th colspan="1">Tank no</th>
                 <th colspan="1">FMR Qty.</th>
                 <th colspan="1">Dip Qty.</th>      
-                <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-show = "isAdmin">Actions</th>
+                <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-show = "isAdmin || isShiftOfficer">Actions</th>
               </tr>
               <tr rowspan="3">
                 <th>Product</th>
@@ -29,7 +29,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin"></th>
+                <th ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin || isShiftOfficer"></th>
               </tr>
           </thead>
           <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
@@ -59,7 +59,7 @@
                       {{ data.dip_qty || '-' }}
                   </span>
               </td>
-              <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin">
+              <td ng-hide = "hideEditHistoryRemarks" ng-show = "isAdmin || isShiftOfficer">
                   <form editable-form name="rowform" onaftersave = "editdeliveryTundlaData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                         shown="inserted == data">
                     <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
@@ -70,7 +70,7 @@
                     </button>
                   </form>
                   <div class="buttons" ng-show="!rowform.$visible">
-                    <button class="btn btn-danger editable-table-button btn-xs" ng-click="rowform.$show(); editdeliveryTundlaStart(data)">Edit</button>
+                    <button class="btn btn-danger editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-click="rowform.$show(); editdeliveryTundlaStart(data)">Edit</button>
                     <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                   </div>
                 </td>
@@ -101,7 +101,7 @@
   
       
         <div ng-hide = "hideEditHistoryRemarks" class="button-wrapper ng-scope">
-          <button type="button"  ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
+          <button type="button" ng-show = "isAdmin || isShiftOfficer" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>
       </div>
     </div>
   </div>

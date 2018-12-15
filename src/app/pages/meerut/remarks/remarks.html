@@ -60,8 +60,8 @@
                         </button>
                     </form>
                     <div class="buttons" ng-show="!rowform.$visible">
-                        <button class="btn btn-danger" ng-click="rowform.$show(); editremarksStart(data,rowform)">Edit</button>
-                        <button class="btn btn-info" ng-click="open(data)">History</button>
+                        <button class="btn btn-danger" ng-show = "isAdmin || isShiftOfficer" ng-click="rowform.$show(); editremarksStart(data,rowform)">Edit</button>
+                        <button class="btn btn-info" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
                     </div>
         
             </center>
