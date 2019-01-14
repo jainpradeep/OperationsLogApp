@@ -21,9 +21,13 @@
             shift.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate = new Date();
+            $scope.customDate = $scope.$parent.customDate;
         };
         $scope.today();
+
+        $scope.$watch('customDate', function(value){
+            $scope.$parent.customDate =  $scope.customDate; 
+          });
 
         $scope.clear = function() {
             $scope.customDate = null;

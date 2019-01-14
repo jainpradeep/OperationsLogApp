@@ -22,7 +22,7 @@
             shift.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate = new Date();
+            $scope.customDate = $scope.$parent.customDate
         };
         $scope.today();
 
@@ -47,6 +47,12 @@
                 mode = data.mode;
             return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
         }
+
+        $scope.$watch('customDate', function(value){
+            $scope.$parent.customDate =  $scope.customDate; 
+          });
+
+          
 
         $scope.toggleMin = function() {
             $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();

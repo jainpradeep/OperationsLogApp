@@ -21,7 +21,7 @@
             shift.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate = new Date();
+            $scope.customDate = $scope.$parent.customDate
         };
         $scope.today();
 
@@ -33,6 +33,10 @@
             minDate: new Date(),
             showWeeks: true
         };
+
+        $scope.$watch('customDate', function(value){
+            $scope.$parent.customDate =  $scope.customDate; 
+          });
 
         $scope.dateOptions = {
             formatYear: 'yy',

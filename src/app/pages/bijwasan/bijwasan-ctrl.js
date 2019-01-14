@@ -31,7 +31,7 @@
             lbt.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate = new Date();
+            $scope.customDate =$scope.$parent.customDate;
         };
         $scope.today();
 
@@ -57,6 +57,10 @@
             return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
         }
 
+        $scope.$watch('customDate', function(value){
+            $scope.$parent.customDate =  $scope.customDate; 
+          });
+
         $scope.toggleMin = function() {
             $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
             $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
@@ -73,7 +77,7 @@
         // };
 
         $scope.setDate = function(year, month, day) {
-            $scope.customDate = new Date(year, month, day);
+            $scope.customDate = $scope.$parent.customDate
         };
 
         $scope.popup1 = {

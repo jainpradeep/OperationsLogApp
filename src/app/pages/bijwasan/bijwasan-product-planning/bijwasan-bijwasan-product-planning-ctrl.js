@@ -67,6 +67,7 @@
       $scope.bijwasanProductPlanning = {};
       $scope.getbijwasanProductPlanning();
     });
+
     $scope.bijwasanProductPlanningSelectShift =function(shift){
       $scope.selectedShift = shift.name;
       $scope.rowform.$cancel()
