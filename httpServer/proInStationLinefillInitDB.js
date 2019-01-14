@@ -1,7 +1,7 @@
 exports.proInStationLinefillInitDB = {
     date : new Date(),
     data :  [{
-      productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+      productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
       lineLocation:"STN. BP",
       shiftA:"",
       shiftB:"",
@@ -11,7 +11,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
-      productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+      productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
       lineLocation:"STN. PMP. LINE",
       shiftA:"",
       shiftB:"",
@@ -21,7 +21,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"STN. DEL. (MD)",
     shiftA:"",
     shiftB:"",
@@ -31,7 +31,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"STN. DEL. (PD)",
       shiftA:"",
       shiftB:"",
@@ -41,7 +41,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"BP 1",
     shiftA:"",
     shiftB:"",
@@ -51,7 +51,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"BP 2",
       shiftA:"",
       shiftB:"",
@@ -61,7 +61,7 @@ exports.proInStationLinefillInitDB = {
       editedDate: "",
       oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 1",
     shiftA:"",
     shiftB:"",
@@ -71,7 +71,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 2",
     shiftA:"",
     shiftB:"",
@@ -81,7 +81,7 @@ exports.proInStationLinefillInitDB = {
     editedDate: "",
     oficer: "",
   }, {
-    productList :["6M","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
+    productList :["6M", "6H", "4M","4H","PN","PX","ATF","SKO","PCK","NSKO"],
     lineLocation:"MP 3",
       shiftA:"",
       shiftB:"",

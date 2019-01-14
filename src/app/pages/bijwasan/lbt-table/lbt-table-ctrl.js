@@ -133,6 +133,15 @@
       })  
     }
 
+    $scope.sumLineFill = function(lbt, index){
+      var dipSum = 0 
+        this.lbtTable.lbtTabData[lbt][index].details.map(function(lbtData){
+        dipSum = dipSum  + lbtData.qty
+          return lbtData
+        })
+      return dipSum
+    }
+
     $scope.editLbtTabData = function(data, index){
       data.editHistory = $scope.editableLbtTableHourlyRec;
       data.editedDate = new Date();

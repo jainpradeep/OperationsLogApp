@@ -24,7 +24,8 @@
                   <th colspan="2">Batch no</th>
                   <th colspan="2">Density temperature &deg;C</th>
                   <th colspan="2">FMR Pumping Bypass</th>
-                  <th colspan="2">Flow Rate</th>      
+                  <th colspan="2">Flow Rate</th>
+                  <!-- <th colspan="1">Flush Offset</th>       -->
                   <th colspan="1">Tank no</th>
                   <th colspan="1">Tank Dip</th>
                   <th colspan="1">Flow Difference</th>
@@ -40,6 +41,7 @@
                   <th>Pumping/Bypass</th>
                   <th>Delivery</th>
                   <th>Pumping</th>
+                  <!-- <th></th> -->
                   <th></th>
                   <th></th>
                   <th></th>
@@ -106,7 +108,12 @@
                             {{ data.pumpingBypass}}
                       </span>
                   </td>
-                <td>
+                <!-- <td>
+                    <span editable-text="data.flushOffset" e-name="flushOffset" e-form="rowform"  e-required>
+                        {{ data.flushOffset || '-' }}
+                    </span>
+                </td> -->
+                  <td>
                     <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
                         {{ data.tank_no || '-' }}
                     </span>
