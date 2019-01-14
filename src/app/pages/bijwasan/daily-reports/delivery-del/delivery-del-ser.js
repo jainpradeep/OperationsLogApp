@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.delivery-del').service('d
     this.getdelhiDeliveryData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDelhiDeliveryRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getDelhiDeliveryRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.delivery-del').service('d
 
     this.editdelhiDeliveryData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDelhiDeliveryRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editDelhiDeliveryRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.bijwasan-product-planning').service('bi
     this.getBijwasanProductPlanningData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getBijwasanProductPlanningData',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getBijwasanProductPlanningData',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.bijwasan-product-planning').service('bi
 
     this.editBijwasanProductPlanningData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editBijwasanProductPlanningData',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editBijwasanProductPlanningData',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

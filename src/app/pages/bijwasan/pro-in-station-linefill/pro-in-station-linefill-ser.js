@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.pro-in-station-linefill').service('proI
     this.getProInStationLinefillData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getProductInStationLinefillRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getProductInStationLinefillRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.pro-in-station-linefill').service('proI
 
     this.editProInStationLinefillData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editProductInStationLinefillRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editProductInStationLinefillRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.mathura.monitoring-mt-mb-mdpl').service('monMtMb
     this.getMonMtMbMdplData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getMonitoringMtMbMdplRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getMonitoringMtMbMdplRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.mathura.monitoring-mt-mb-mdpl').service('monMtMb
 
     this.editMonMtMbMdplData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editMonitoringMtMbMdplRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editMonitoringMtMbMdplRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

@@ -29,7 +29,7 @@
                             </span>
                     </td>
                     
-                    <td ng-show = "isAdmin">
+                    <td ng-show = "isAdmin || isShiftOfficer">
                         <form editable-form name="rowform" onaftersave = "editlineFillData(line, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                             shown="inserted == line">
                         <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
@@ -41,9 +41,9 @@
                         </form>
                         <div class="buttons" ng-show="!rowform.$visible">
                         <button class="btn btn-danger editable-table-button btn-xs" ng-show = "line.lineFill.length" ng-click="rowform.$show(); editlineFillStart(line,rowform)">Edit</button>
-                        <button class="btn btn-info editable-table-button btn-xs" ng-click="open(line)">History</button>
-                        <button type="button" ng-click= "rowform.$show();addNewRecord(line.lineFill)" class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
-                    </div>
+                        <button type="button" ng-click= "rowform.$show();addNewRecord(line.lineFill)"  class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
+                        <button class="btn btn-info editable-table-button btn-xs"  ng-show = "isAdmin && !isShiftOfficer" ng-click="open(line)">History</button>
+                              </div>
                     </td>
                 </tr>
             </table>

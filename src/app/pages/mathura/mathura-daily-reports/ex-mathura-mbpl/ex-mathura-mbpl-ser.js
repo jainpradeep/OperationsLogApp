@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.mathura.mathura-daily-reports.ex-mathura-mbpl').
     this.getexMathuraMBPLData  = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getExMathuraMbpl',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getExMathuraMbpl',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.mathura.mathura-daily-reports.ex-mathura-mbpl').
 
     this.editexMathuraMBPLData  = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editExMathuraMbpl',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editExMathuraMbpl',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

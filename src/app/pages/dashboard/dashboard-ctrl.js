@@ -131,7 +131,7 @@
         //     var summaryReport = document.getElementById('summary-report').innerHTML;
         //  $http({
         //      method: 'POST',
-        //      url: 'http://10.14.151.91:3006/getSummary',
+        //      url: 'http://10.14.151.179:3006/getSummary',
         //      data: JSON.stringify({report : summaryReport}),
         //      responseType: 'arraybuffer'
         //  }).success(function (data, status, headers) {

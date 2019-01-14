@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.Delivery-Pnp').service('D
     this.getDeliveryPnpData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDeliveryPnpRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getDeliveryPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.daily-reports.Delivery-Pnp').service('D
 
     this.editDeliveryPnpData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDeliveryPnpRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editDeliveryPnpRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

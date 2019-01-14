@@ -46,17 +46,17 @@
           </td>
 
         <td ng-if = "!data.productList">    
-            <span editable-number="data.shiftA" e-step="any" e-name="shiftA" e-form="rowform" e-required>
+            <span editable-text="data.shiftA" e-step="any" e-name="shiftA" e-form="rowform" e-required>
               {{ data.shiftA || '-' }}
             </span>
           </td>
           <td ng-if = "!data.productList">
-            <span editable-number="data.shiftB" e-step="any" e-name="shiftB"  e-form="rowform" e-required>
+            <span editable-text="data.shiftB" e-step="any" e-name="shiftB"  e-form="rowform" e-required>
                 {{ data.shiftB || '-' }}
             </span>
           </td>
           <td ng-if = "!data.productList">
-            <span editable-number="data.shiftC" e-step="any" e-name="shiftC"  e-form="rowform" e-required>
+            <span editable-text="data.shiftC" e-step="any" e-name="shiftC"  e-form="rowform" e-required>
                 {{ data.shiftC || '-' }}
             </span>
           </td>
@@ -66,7 +66,7 @@
             {{ data.remarks  || '-' }}
           </span>
         </td>
-        <td ng-show = "isAdmin">
+        <td ng-show = "isAdmin || isShiftOfficer">
           <form editable-form name="rowform" onaftersave = "editProInStationLinefillData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                 shown="inserted == data">
             <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">

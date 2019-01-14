@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bharatpur.bharatpur-daily-reports.delivery-bhara
     this.getdeliveryBharatpurData  = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getDeliveryBharatpur',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getDeliveryBharatpur',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bharatpur.bharatpur-daily-reports.delivery-bhara
 
     this.editdeliveryBharatpurData  = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editDeliveryBharatpur',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editDeliveryBharatpur',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

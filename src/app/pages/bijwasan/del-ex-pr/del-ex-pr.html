@@ -89,7 +89,7 @@
               </td>
         
               <td>
-                  <span editable-number="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
+                  <span editable-text="data.tank_no" e-name="tank_no" e-form="rowform"  e-required>
                       {{ data.tank_no || '-' }}
                   </span>
               </td>
@@ -99,7 +99,7 @@
                       {{ data.tank_dip || '-' }}
                   </span>
               </td>
-              <td ng-show = "isAdmin">
+              <td ng-show = "isAdmin || isShiftOfficer">
                 <form editable-form name="rowform" onaftersave = "editDelExPrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == data">
                   <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">

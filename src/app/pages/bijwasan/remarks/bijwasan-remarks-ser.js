@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.remarks').service('bijwasanRemarksServi
     this.getRemarksData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getRemarksbijwasanRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getRemarksbijwasanRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.remarks').service('bijwasanRemarksServi
 
     this.editRemarksData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editRemarksbijwasanRecord',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editRemarksbijwasanRecord',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

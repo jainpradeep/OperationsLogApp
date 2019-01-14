@@ -17,7 +17,7 @@
             var defer = $q.defer();
             $http({
                 method: 'POST',
-                url: 'http://10.14.151.91:3006/authenticate',
+                url: 'http://10.14.151.179:3006/authenticate',
                 data: JSON.stringify({username : username, password:password}),
             }).success(function (data, status, headers) {
                 if(data.msg === "success"){

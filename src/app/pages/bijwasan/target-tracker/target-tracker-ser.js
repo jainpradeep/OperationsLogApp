@@ -3,7 +3,7 @@ angular.module('BlurAdmin.pages.bijwasan.target-tracker').service('targetTracker
     this.getTargetTrackerData = function(reqJSON){
         var deferred = $q.defer();
 
-        $http.post('http://10.14.151.91:3006/getTargets',reqJSON,{
+        $http.post('http://10.14.151.179:3006/getTargets',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
                     }
@@ -22,7 +22,7 @@ angular.module('BlurAdmin.pages.bijwasan.target-tracker').service('targetTracker
 
     this.editTargetTrackerData = function(reqJSON){
         var deferred = $q.defer();
-        $http.post('http://10.14.151.91:3006/editTargets',reqJSON,{
+        $http.post('http://10.14.151.179:3006/editTargets',reqJSON,{
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
             }

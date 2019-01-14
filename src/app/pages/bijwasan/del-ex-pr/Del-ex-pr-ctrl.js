@@ -108,7 +108,7 @@
 
     $scope.editDelhiExPrRemark = function(remark){
       
-      $scope.delhiExPR.delExPrRemarks[$scope.$parent.selectedShift.name] = remark 
+      $scope.delhiExPR.delExPrRemarks[$scope.$parent.selectedShift] = remark 
 
       delExPrService.editDelExPrData(JSON.stringify({
         _id : $scope.delhiExPR.delExprID,
