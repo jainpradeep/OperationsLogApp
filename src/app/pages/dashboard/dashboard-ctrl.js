@@ -59,6 +59,10 @@
                 $scope.$modalInstance.dismiss('cancel');
             };
         
+            
+            $scope.$watch('customDate', function(value){
+                $scope.$parent.customDate =  $scope.customDate; 
+              });
         
         $scope.setSelectedView = function(view){
             $scope.selectedView = view;
@@ -70,7 +74,7 @@
         }
 
         $scope.today = function() {
-            $scope.customDate = new Date();
+            $scope.customDate = $scope.$parent.customDate
         };
         $scope.today();
 
