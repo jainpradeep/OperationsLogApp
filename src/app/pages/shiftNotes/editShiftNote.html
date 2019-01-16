@@ -1,0 +1,28 @@
+<div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add shit remark</h3>
+      </div>
+      <div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+        
+        <form>
+          <div class="form-group input-lg">
+            <label for="input01">Note Heading</label>
+            <input  ng-model = "editableNote.heading"  type="text" class="form-control" id="input01" placeholder="Heading">
+          </div>
+          <div class="form-group input-lg ">
+            <select class="form-control" ng-model = "editableNote.type" class="form-control"  id="sel1">
+                <option class="form-control"  ng-repeat="item in types">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group input-lg">
+            <label for="textarea01">Description</label>
+            <textarea ng-model = "editableNote.description" placeholder="Description" class="form-control" id="textarea01"></textarea>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="deleteNote()">Delete</button>
+        <button class="btn btn-primary" type="button" ng-click="editNote()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancelnotesEditModal()">Cancel</button>
+      </div>
+      

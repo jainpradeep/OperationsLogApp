@@ -1,0 +1,36 @@
+<!-- todo: remove whole block -->
+<div class="row">
+  <div class="col-md-2">
+    <p class="input-group">
+      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="customDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+  </div>
+  <div class="col-md-2">
+    <button type="button" class="btn btn-default" ng-click="opennotes()">Add Note</button>
+  </div>
+
+ </div>
+
+<div ba-panel>
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li ng-class="{active: shift.isSelected == true}" class="nav-item" ng-repeat="shift in shifts track by $index">
+       <a class="" data-toggle="tab" ng-click = "selectShift(shift); SelectShift(shift)" role="tab">{{shift.name}}</a>
+    </li>
+ </ul>
+  <section id="cd-timeline" ng-repeat = "notes in notes.notesData | filter : selectedShift.name track by $index" class="cd-container cssanimations">
+
+
+    <div class="cd-timeline-block"  ng-repeat = "note in notes.notes track by $index" >
+
+      <div class="cd-timeline-content" ng-click = "editnotes(note)" ng-class="note.type">
+        <h5>{{note.heading}}</h5>
+
+        <p>{{note.description}}</p>
+        <span class="cd-date">{{note.time}}</span>
+      </div>
+    </div>
+  </section>
+</div>

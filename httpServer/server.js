@@ -46,6 +46,7 @@ var equiRunningHrsBijInitDB = require('./equiRunningHrsBijInitDB')
 var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
 var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
 var lbtTableInitDB = require('./lbtTableInitDB')
+var notesInitDB =  require('./notesInitDB')
 var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var fs = require('fs')
@@ -82,8 +83,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 8;
-rule.minute =48;
+rule.hour = 7;
+rule.minute = 0;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -206,6 +207,10 @@ schedule.scheduleJob(rule, function() {
             console.log(records)
         });
         database.db('operationsDB').collection('shutdown').insertOne(shutdownInitDB.shutdownInitDB, function(er, records) {
+            if (er) throw er;
+            console.log(records)
+        });
+        database.db('operationsDB').collection('notes').insertOne(notesInitDB.notesInitDB, function(er, records) {
             if (er) throw er;
             console.log(records)
         });
@@ -1791,6 +1796,59 @@ app.route('/getpumpedFromMathuraMDRecord')
                 })
             });
 
+        })
+});
+
+app.route('/editNotes')
+    .post(function(req, res) {
+        console.log(req.body)
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('notes').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                console.log(err)
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+});
+
+app.route('/getNotes')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('notes').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                    }
+                }
+            }]).toArray(function(er, items) {
+                if (er) throw er;
+                console.log(er);
+                console.log(items)
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
         })
 });
 

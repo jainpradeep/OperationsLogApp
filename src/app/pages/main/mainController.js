@@ -10,7 +10,6 @@
   /** @ngInject */
   function MainCntrl($scope,$rootScope, toasterService){
     toasterService.openInfoToast("Welcome User : " + localStorage.getItem('username'));
-    $scope.customDate = new Date();
   }
 
 })();
