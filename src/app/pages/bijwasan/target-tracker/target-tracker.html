@@ -1,73 +1,75 @@
-
-<div class="row" ng-show = "!targetTracker.targetTrackerData">
-  <div class="loader"></div>
-</div>
-
-<div ng-show = "targetTracker.targetTrackerData &&  targetTracker.targetTrackerData.length == 0">
-  <div class="alert">
-      <h3>
-        <strong>Sorry!</strong> No records fould as per the set filters
-      </h3>
-  </div>
+<div ng-controller = "target-tracker-ctrl">
+    <div class="row" ng-show = "!targetTracker.targetTrackerData">
+        <div class="loader"></div>
+      </div>
+      
+      <div ng-show = "targetTracker.targetTrackerData &&  targetTracker.targetTrackerData.length == 0">
+        <div class="alert">
+            <h3>
+              <strong>Sorry!</strong> No records fould as per the set filters
+            </h3>
+        </div>
+      </div>  
+            
+      <div  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+          <div class="panel-body" > 
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li ng-class="{active: target.isSelected == true}" class="nav-item" ng-repeat="target in targets">
+                 <a class="" data-toggle="tab" ng-click = "selectTarget(target)" role="tab">{{target.name}}</a>
+              </li>
+           </ul>
+           <div ng-repeat="target in targetTracker.targetTrackerData | filter : selectedTarget.name track by $index">
+              <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                        <th>Pipline</th>
+                        <th>MOU target</th>
+                        <th>Mou Achieved</th>
+                        <th ng-show = "isAdmin">Action</th>
+                  </thead>
+                  <tr ng-repeat="piplineTarget in target.target track by $index" class="editable-row">
+                      <td>
+                          <span >
+                              {{ piplineTarget.name || '-' }}
+                          </span>
+                      </td>
+        
+                    <td>
+                      <span editable-number="piplineTarget.data.MOU_achieved" e-name="MOU_achieved" e-form="rowform" e-required>
+                          {{ piplineTarget.data.MOU_achieved || '-' }}
+                      </span>
+                  </td>
+      
+                  <td>
+                      <span editable-number="piplineTarget.data.MOU_proposed" e-name="MOU_proposed" e-form="rowform" e-required>
+                          {{ piplineTarget.data.MOU_proposed || '-' }}
+                      </span>
+                  </td>
+      
+      
+            
+                    <td ng-show = "isAdmin">
+                      <form editable-form name="rowform" onaftersave = "edittargetTrackerData(piplineTarget, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
+                            shown="inserted == piplineTarget">
+                        <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
+                          Save
+                        </button>
+                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+                          Cancel
+                          </button>
+                      </form>
+                      <div class="buttons" ng-show="!rowform.$visible">
+                        <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); edittargetTrackerStart(piplineTarget)">Edit</button>
+                        <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(piplineTarget)">History</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+          </div>
+      
+                
+          </div>
+        </div>
+        
 </div>  
-      
-<div  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
-    <div class="panel-body" > 
-      <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li ng-class="{active: target.isSelected == true}" class="nav-item" ng-repeat="target in targets">
-           <a class="" data-toggle="tab" ng-click = "selectTarget(target)" role="tab">{{target.name}}</a>
-        </li>
-     </ul>
-     <div ng-repeat="target in targetTracker.targetTrackerData | filter : selectedTarget.name track by $index">
-        <table class="table table-bordered table-hover table-condensed">
-            <thead>
-                  <th>Pipline</th>
-                  <th>MOU target</th>
-                  <th>Mou Achieved</th>
-                  <th ng-show = "isAdmin">Action</th>
-            </thead>
-            <tr ng-repeat="piplineTarget in target.target track by $index" class="editable-row">
-                <td>
-                    <span >
-                        {{ piplineTarget.name || '-' }}
-                    </span>
-                </td>
-  
-              <td>
-                <span editable-number="piplineTarget.data.MOU_achieved" e-name="MOU_achieved" e-form="rowform" e-required>
-                    {{ piplineTarget.data.MOU_achieved || '-' }}
-                </span>
-            </td>
 
-            <td>
-                <span editable-number="piplineTarget.data.MOU_proposed" e-name="MOU_proposed" e-form="rowform" e-required>
-                    {{ piplineTarget.data.MOU_proposed || '-' }}
-                </span>
-            </td>
-
-
-      
-              <td ng-show = "isAdmin">
-                <form editable-form name="rowform" onaftersave = "edittargetTrackerData(piplineTarget, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
-                      shown="inserted == piplineTarget">
-                  <button type="submit"  ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs">
-                    Save
-                  </button>
-                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
-                    Cancel
-                    </button>
-                </form>
-                <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); edittargetTrackerStart(piplineTarget)">Edit</button>
-                  <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(piplineTarget)">History</button>
-                </div>
-              </td>
-            </tr>
-          </table>
-    </div>
-
-          
-    </div>
-  </div>
-  
 

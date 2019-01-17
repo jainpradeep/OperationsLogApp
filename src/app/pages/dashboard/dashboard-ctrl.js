@@ -35,7 +35,7 @@
         },{
             name : "LBT & Shutdown",
             isSelected : false,
-            htmlSource : ["app/pages/mathura/shutdown/shutdown.html", "app/pages/dashboard/reports/lbt-table.html"]
+            htmlSource : ["app/pages/mathura/shutdown/shutdown.html", "app/pages/dashboard/reports/lbt-table.html", "app/pages/dashboard/reports/targetTracker.html"]
         },{
             name : "Equipment Run Hrs",
             isSelected : false,
