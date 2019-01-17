@@ -31,7 +31,7 @@
   function targetTrackerPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, targetTrackerService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
 
-    $scope.targets = [{name: "Yearly", isSelected : true, index : 0},{name: "Monthly", index : 1}, {name: "PSA Target", index : 1}]
+    $scope.targets = [{name: "Yearly", isSelected : true, index : 0},{name: "Monthly", index : 1}, {name: "psaTarget", index : 1}]
             
     $scope.selectedTarget = $scope.targets[0] ;
     $scope.selectTarget = function(target){
