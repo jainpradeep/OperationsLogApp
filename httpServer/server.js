@@ -83,8 +83,8 @@ app.listen(app.get('port'), function() {
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 7;
-rule.minute = 0;
+rule.hour = 9;
+rule.minute = 43;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -222,6 +222,7 @@ app.route('/getTargets')
     MongoClient.connect("mongodb://localhost:27017/operationsDB", {
         useNewUrlParser: true
     }, function(err, database) {
+        console.log(err)
         if (err) return
         req.body.date = new Date(req.body.date)
         database.db('operationsDB').collection('targetTracker').aggregate([{
@@ -250,6 +251,7 @@ app.route('/editTargets')
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
+            console.log(err)
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -2123,7 +2125,7 @@ ldapAuthenticate = function(username, password, res) {
                     res.send({
                         "msg": "success",
                         "isAdmin": true,
-                        "isShiftOfficer" : false
+                        "isShiftOfficer" : true
                     })
                 } else {
                     res.send({

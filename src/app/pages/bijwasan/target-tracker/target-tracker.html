@@ -11,16 +11,22 @@
   </div>
 </div>  
       
-<div ng-show = "targetTracker.targetTrackerData &&  targetTracker.targetTrackerData.length > 0"  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
+<div  class="panel with-scroll animated zoomIn" zoom-in="" ba-panel-blur="" style="background-size: 1679px 944px; background-position: 0px -79px;">
     <div class="panel-body" > 
-          <table class="table table-bordered table-hover table-condensed">
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li ng-class="{active: target.isSelected == true}" class="nav-item" ng-repeat="target in targets">
+           <a class="" data-toggle="tab" ng-click = "selectTarget(target)" role="tab">{{target.name}}</a>
+        </li>
+     </ul>
+     <div ng-repeat="target in targetTracker.targetTrackerData | filter : selectedTarget.name track by $index">
+        <table class="table table-bordered table-hover table-condensed">
             <thead>
                   <th>Pipline</th>
                   <th>MOU target</th>
                   <th>Mou Achieved</th>
-                  <th>Action</th>
+                  <th ng-show = "isAdmin">Action</th>
             </thead>
-            <tr ng-repeat="piplineTarget in targetTracker.targetTrackerData[0].target track by $index" class="editable-row">
+            <tr ng-repeat="piplineTarget in target.target track by $index" class="editable-row">
                 <td>
                     <span >
                         {{ piplineTarget.name || '-' }}
@@ -40,7 +46,7 @@
             </td>
 
 
-       
+      
               <td ng-show = "isAdmin">
                 <form editable-form name="rowform" onaftersave = "edittargetTrackerData(piplineTarget, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"
                       shown="inserted == piplineTarget">
@@ -49,7 +55,7 @@
                   </button>
                   <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
                     Cancel
-                     </button>
+                    </button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
                   <button class="btn btn-danger editable-table-button btn-xs" ng-disabled = "data.position==0" ng-click="rowform.$show(); edittargetTrackerStart(piplineTarget)">Edit</button>
@@ -58,7 +64,9 @@
               </td>
             </tr>
           </table>
-        
+    </div>
+
+          
     </div>
   </div>
   

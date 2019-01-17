@@ -8,77 +8,40 @@
                 <div class="col-sm">
                     <table  class="table table-bordered table-hover table-condensed">
                         <thead>
-                            <tr rowspan="2">
-                            <th colspan="1">Hours</th>
-                            <th colspan="2">Batch no</th>
-                            <th colspan="2">Density temperature &deg;C</th>
-                            <th colspan="1">FMR/Pumping</th>
-                            <th colspan="1">Tank no</th>
-                            <th colspan="1">Officer</th>
-                            <th colspan="1">Edit Date</th>
-                            </tr>
-                            <tr rowspan="2">
-                            <th></th>
-                            <th>Product</th>
-                            <th>Seq. No</th>
-                            <th>Density</th>
-                            <th>Temperature</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <tr>
+                                <th>Pipline</th>
+                                <th>MOU target</th>
+                                <th>Mou Achieved</th>
+                                <th>Officer</th>
+                                <th>Edit Date</th>
                             </tr>
                         </thead>
-                        <tr ng-repeat="data in flattenedHourEditHistory | filter : selectedShift track by $index">
+                        <tr ng-repeat="data in flattenedHourEditHistory track by $index">
                         <td>
                             <span >
-                                {{ data.hours || '-' }}
+                                {{ data.name || '-' }}
                             </span>
                         </td>
-                        <td class="select-td">    
+                        <td>    
                             <span>
-                            {{ data.product || '-'}}
+                            {{ data.data.MOU_achieved || '-'}}
                             </span>
                         </td>
-                        <td>
-                            <span numbers-only>
-                                {{ data.seq_no || '-' }}
-                            </span>
-                        </td>
-                    
                         <td>
                             <span>
-                                {{ data.density || '-' }}
+                                {{ data.data.MOU_proposed || '-' }}
                             </span>
-                        </td>
-                    
+                        </td>        
                         <td>
-                            <span >
-                                {{ data.temperature || '-' }}
+                            <span>
+                                {{ data.officer || '-' }}
                             </span>
-                        </td>
-                    
+                        </td>        
                         <td>
-                            <span >
-                                {{ data.fmr || '-' }}
+                            <span>
+                                    {{ (data.editedDate | date : "short" ) || '-' }}
                             </span>
-                        </td>
-                        <td>
-                            <span >
-                                {{ data.tank_no || '-' }}
-                            </span>
-                        </td>
-                        <td>
-                                <span>
-                                    {{ data.officer || '-' }}
-                                </span>
-                          </td>
-                          <td>
-                                <span>
-                                        {{ (data.editedDate | date : "short" ) || '-' }}
-                                </span>
-                          </td>
-                        </tr>
+                      </td>           
                     </table>
                 </div>
                 </div>

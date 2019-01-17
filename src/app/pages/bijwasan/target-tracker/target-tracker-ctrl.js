@@ -17,7 +17,7 @@
         .state('main.bijwasan.target-tracker', {
           url: '/target-tracker',
           templateUrl: 'app/pages/bijwasan/target-tracker/target-tracker.html',
-          title: 'target-tracker',
+          title: 'Target Tracker',
           controller: 'target-tracker-ctrl',
           sidebarMeta: {
             icon: '',
@@ -30,7 +30,19 @@
     /** @ngInject */
   function targetTrackerPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, targetTrackerService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
-     
+
+    $scope.targets = [{name: "Yearly", isSelected : true, index : 0},{name: "Monthly", index : 1}, {name: "PSA Target", index : 1}]
+            
+    $scope.selectedTarget = $scope.targets[0] ;
+    $scope.selectTarget = function(target){
+        $scope.targets.map(function(trgt){
+            trgt.isSelected = false
+            return trgt;
+        })
+        $scope.selectedTarget = target
+        target.isSelected = true;
+    }
+    
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -41,6 +53,7 @@
           recursivePush(data.editHistory)
         }
       }
+
 
       $scope.$modalInstance =  $uibModal.open({
           scope: $scope,
@@ -88,7 +101,7 @@
       targetTrackerService.editTargetTrackerData(JSON.stringify({
           _id : $scope.targetTracker.targetTrackerID,
           date: $scope.targetTracker.targetTrackerDate,
-          data: $scope.targetTracker.targetTrackerData,
+          targets: $scope.targetTracker.targetTrackerData,
           remarks:  $scope.targetTracker.targetTrackerRemarks
         })).then(function(){
           toasterService.openSucessToast("Record has been successfully inserted/updated!");

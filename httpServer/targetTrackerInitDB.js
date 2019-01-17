@@ -1,7 +1,7 @@
 exports.targetTrackerInitDB = {
   date : new Date(),
   targets : [{
-    targetName: "yearlyTargets",
+    targetName: "Yearly",
     target : [{
       name: "MBPL",
       data : {
@@ -22,7 +22,7 @@ exports.targetTrackerInitDB = {
       }
   }]
   },{    
-    targetName: "monthlyTarget",
+    targetName: "Monthly",
     target :[{
     name: "MBPL",
     data : {
@@ -42,7 +42,7 @@ exports.targetTrackerInitDB = {
       planned : 0,
     }
 }]},{
-  targetName: "psaTargetTillData",
+  targetName: "psaTarget",
   target :[{
     name: "MBPL",
     data : {
