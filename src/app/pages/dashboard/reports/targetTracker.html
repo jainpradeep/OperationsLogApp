@@ -1,0 +1,61 @@
+<div ng-controller = "target-tracker-ctrl">
+        <div class="row" ng-show = "!targetTracker.targetTrackerData">
+            <div class="loader"></div>
+          </div>
+          
+          <div ng-show = "targetTracker.targetTrackerData &&  targetTracker.targetTrackerData.length == 0">
+            <div class="alert">
+                <h3>
+                  <strong>Sorry!</strong> No records fould as per the set filters
+                </h3>
+            </div>
+          </div>  
+                
+          <div style="background-size: 1679px 944px; background-position: 0px -79px;">
+              <div> 
+               <div>
+                    <table style="margin: 0px" ng-repeat="target in targetTracker.targetTrackerData " class="table-bordered table-hover table-condensed" >
+                            <tr>
+                                <th >{{target.targetName.toUpperCase()}}</th>
+                            <td> 
+                                    <table style="margin: 2px; padding:2px; font-size: 10px;" class="table table-bordered table-hover table-condensed">
+                                            <thead>
+                                                  <th style ="width: 100px">Pipline</th>
+                                                  <th style ="width: 100px">MOU target</th>
+                                                  <th style ="width: 100px">Mou Achieved</th>
+                                            </thead>
+                                            <tr style = "line-height: 14px;" ng-repeat="piplineTarget in target.target track by $index" class="editable-row">
+                                                <td>
+                                                    <span >
+                                                        {{ piplineTarget.name || '-' }}
+                                                    </span>
+                                                </td>
+                                  
+                                              <td>
+                                                <span editable-number="piplineTarget.data.MOU_achieved" e-name="MOU_achieved" e-form="rowform" e-required>
+                                                    {{ piplineTarget.data.MOU_achieved || '-' }}
+                                                </span>
+                                            </td>
+                                
+                                            <td>
+                                                <span editable-number="piplineTarget.data.MOU_proposed" e-name="MOU_proposed" e-form="rowform" e-required>
+                                                    {{ piplineTarget.data.MOU_proposed || '-' }}
+                                                </span>
+                                              </td>
+                                            </tr>
+                                          </table>
+                            </td>  
+                        </tr>
+                    </table>
+                
+
+              </div>
+          
+                    
+              </div>
+            </div>
+            
+    </div>  
+    
+    
+    
