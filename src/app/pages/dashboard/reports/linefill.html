@@ -1,16 +1,15 @@
-<div ng-controller= "lineFill-ctrl">
+<div ng-controller= "lineFill-ctrl" ng-init = "fromDashBoard = true">
     <div class="panel-body" > 
         <div class="row" ng-show = "!lineFill.lineFillData">
                 <div class="loader">Loading...</div>
         </div>
 
-        <table ng-show = "lineFill.lineFillData" style="margin: 0px" ng-repeat = "shift in $parent.shifts  track by $index" class="table-bordered table-hover table-condensed" >
+        <table ng-show = "lineFill.lineFillData" style="margin: 0px" class="table-bordered table-hover table-condensed" >
                 <tr>
-                    <th >{{shift}}</th>
-              
-            
+                    <th >Shift A</th>
+                    
                   <td> 
-                        <table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat = "line in lineFill.lineFillData[shift]  track by $index" class="table-bordered table-hover table-condensed">
+                        <table style="margin: 2px; padding:2px; font-size: 10px;" ng-repeat = "line in lineFill.lineFillData['ShiftA']  track by $index" class="table-bordered table-hover table-condensed">
                                 <tr >
                                     <th style ="width: 100px">{{line.lineFillName}}</th>
                                     <td  ng-repeat = "data in line.lineFill track by $index">

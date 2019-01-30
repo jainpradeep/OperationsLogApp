@@ -23,7 +23,7 @@
                 <span>
                     {{data.name}} 
                 </span>
-                <span ng-hide = "hideEditHistoryRemarks" style = "float: right" ng-show = "data.addRowsEnabled && $index > 0 && $index < 3">
+                <span style = "float: right" ng-show = "data.addRowsEnabled && $index > 0 && $index < 3">
                     <button type="button" ng-click= "addNewLbtRecord(data)" class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
                 </span>  
               </th>
@@ -40,7 +40,7 @@
                       <th>Quantity</th>
                       <th ng-hide = "hideEditHistoryRemarks">Actions</th>
                     </tr>
-                  <tr ng-repeat="dt in data.details track by $index" class="editable-row">
+                  <tr ng-repeat="dt in data.details track by $index" ng-hide = "dt.hide && $parent.$index == 0" class="editable-row">
                     <td>  
                     <span editable-select="dt.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
                           {{ dt.product }}
@@ -52,7 +52,7 @@
                         </span>
                     </td>
                     <td>
-                        <span ng-init="$parent.lbtTotal[selectedLbtTrimmed][$parent.$index] = $parent.lbtTotal[selectedLbtTrimmed][$parent.$index] + dt.qty" editable-number="dt.qty" e-step="any" e-name="qty"  e-form="rowform" e-required>
+                        <span ng-init="$parent.lbtTotal[selectedLbtTrimmed][$parent.$index] = $parent.lbtTotal[selectedLbtTrimmed][$parent.$index] + (dt.hide? 0:dt.qty)" editable-number="dt.qty" e-step="any" e-name="qty"  e-form="rowform" e-required>
                             {{ dt.qty || '-' }}
                         </span>
                     </td>
@@ -69,6 +69,8 @@
                         <div class="buttons" ng-show="!rowform.$visible">
                           <button class="btn btn-default btn-xs" ng-show = "data.addRowsEnabled > 0 && $parent.$index > 0 && $parent.$index < 3" ng-click="rowform.$show(); editLbtTableStart(dt)"><i class="ion-edit"></i></button>
                           <button class="btn btn-default btn-xs" ng-click="open(dt)"><i class="ion-clipboard"></i></button>
+                          <button class="btn btn-default btn-xs" ng-show = "$parent.$index == 0" ng-click="hideLbtTableStart(dt, $index)"><i class="ion-trash-a"></i></button>
+             
                         </div>
                     </td>
                   </tr>

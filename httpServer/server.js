@@ -78,13 +78,12 @@ router.use(function(req, res, next) {
 app.set('port', process.env.PORT || 3006);
 
 app.listen(app.get('port'), function() {
-    console.log('Express up and listening on port ' + app.get('port'));
 });
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 9;
-rule.minute = 43;
+rule.minute = 14    ;
 schedule.scheduleJob(rule, function() {
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
@@ -92,127 +91,126 @@ schedule.scheduleJob(rule, function() {
           if (err) return
         database.db('operationsDB').collection('targetTracker').insertOne(targetTrackerInitDB.targetTrackerInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
         });          
         database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('deliveryMeerut').insertOne(deliveryMeerutInitDB.deliveryMeerutInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('exMathuraMD').insertOne(exMathuraMDInitDB.exMathuraMDInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('exMathuraMbpl').insertOne(exMathuraMbplInitDB.exMathuraMbplInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('exMathuraMtpl').insertOne(exMathuraMtplInitDB.exMathuraMtplInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('deliveryTundla').insertOne(deliveryTundlaInitDB.deliveryTundlaInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('deliveryTikrikalan').insertOne(deliveryTikrikalanInitDB.deliveryTikrikalanInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('deliveryBharatpur').insertOne(deliveryBharatpurInitDB.deliveryBharatpurInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('deliveryPnp').insertOne(deliveryPnpInitDB.deliveryPnpInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksBijwasan').insertOne(remarksBijwasanInitDB.remarksBijwasanInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksTundla').insertOne(remarksTundlaInitDB.remarksTundlaInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksMeerut').insertOne(remarksMeerutInitDB.remarksMeerutInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksBhartpur').insertOne(remarksBhartpurInitDB.remarksBhartpurInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksTikrikalan').insertOne(remarksTikrikalanInitDB.remarksTikrikalanInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('remarksMathura').insertOne(remarksMathuraInitDB.remarksMathuraInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('pumpingDelhiPnp').insertOne(pumpingDelhiPnpInitDB.pumpingDelhiPnpInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('revPumpingPnpDelhi').insertOne(revPumpingPnpDelhiInitDB.revPumpingPnpDelhiInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('delDeliveryRev').insertOne(delDeliveryRevInitDB.delDeliveryRevInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('skoLbtPumping').insertOne(skoLbtPumpingInitDB.skoLbtPumpingInitDB, function(er, records) {
               if (er) throw er;
-              console.log(records)
+              
           });
         database.db('operationsDB').collection('delhiExPr').insertOne(delExPrInitDB.delExPrInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('pumpedFromMathuraMD').insertOne(pumpedFromMathuraMDInitDB.pumpedFromMathuraMDInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('equiRunningHrsBij').insertOne(equiRunningHrsBijInitDB.equiRunningHrsBijInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('proInStationLinefill').insertOne(proInStationLinefillInitDB.proInStationLinefillInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('monitoringMtMbMdpl').insertOne(monitoringMtMbMdplInitDB.monitoringMtMbMdplInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('lbtTable').insertOne(lbtTableInitDB.lbtTableInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('lineFillTable').insertOne(lineFillTableInitDB.lineFillTableInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('shutdown').insertOne(shutdownInitDB.shutdownInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
         database.db('operationsDB').collection('notes').insertOne(notesInitDB.notesInitDB, function(er, records) {
             if (er) throw er;
-            console.log(records)
+            
         });
     })
 });
@@ -222,7 +220,7 @@ app.route('/getTargets')
     MongoClient.connect("mongodb://localhost:27017/operationsDB", {
         useNewUrlParser: true
     }, function(err, database) {
-        console.log(err)
+        
         if (err) return
         req.body.date = new Date(req.body.date)
         database.db('operationsDB').collection('targetTracker').aggregate([{
@@ -234,8 +232,8 @@ app.route('/getTargets')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -251,7 +249,7 @@ app.route('/editTargets')
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
-            console.log(err)
+            
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
@@ -260,7 +258,7 @@ app.route('/editTargets')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -309,8 +307,8 @@ app.route('/getlineFillRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -323,7 +321,7 @@ app.route('/getlineFillRecord')
 
 app.route('/editlineFillRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -335,7 +333,7 @@ app.route('/editlineFillRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -364,8 +362,8 @@ app.route('/getshutdownRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -378,7 +376,7 @@ app.route('/getshutdownRecord')
 
 app.route('/editshutdownRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -390,7 +388,7 @@ app.route('/editshutdownRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -418,8 +416,8 @@ app.route('/getDeliveryBharatpur')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -432,7 +430,7 @@ app.route('/getDeliveryBharatpur')
 
 app.route('/editDeliveryBharatpur')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -444,7 +442,7 @@ app.route('/editDeliveryBharatpur')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -472,8 +470,8 @@ app.route('/getDeliveryTundla')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -486,7 +484,7 @@ app.route('/getDeliveryTundla')
 
 app.route('/editDeliveryTundla')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -498,7 +496,7 @@ app.route('/editDeliveryTundla')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -526,8 +524,8 @@ app.route('/getExMathuraMtpl')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -540,7 +538,7 @@ app.route('/getExMathuraMtpl')
 
 app.route('/editExMathuraMtpl')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -552,7 +550,7 @@ app.route('/editExMathuraMtpl')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -580,8 +578,8 @@ app.route('/editExMathuraMtpl')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -594,7 +592,7 @@ app.route('/editExMathuraMtpl')
     
     app.route('/editExMathuraMbpl')
         .post(function(req, res) {
-            console.log(req.body)
+            
             MongoClient.connect("mongodb://localhost:27017/operationsDB", {
                 useNewUrlParser: true
             }, function(err, database) {
@@ -606,7 +604,7 @@ app.route('/editExMathuraMtpl')
                 }, {
                     $set: req.body
                 }, function(err, result) {
-                    console.log(err)
+                    
                     res.send(
                         (err === null) ? {
                             msg: 'success'
@@ -634,8 +632,8 @@ app.route('/editExMathuraMtpl')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -648,7 +646,7 @@ app.route('/editExMathuraMtpl')
 
 app.route('/editExMathuraMd')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -660,7 +658,7 @@ app.route('/editExMathuraMd')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -689,8 +687,8 @@ app.route('/getDeliveryTikrikalan')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -703,7 +701,7 @@ app.route('/getDeliveryTikrikalan')
 
 app.route('/editDeliveryTikrikalan')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -715,7 +713,7 @@ app.route('/editDeliveryTikrikalan')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -743,8 +741,8 @@ app.route('/getDeliveryMeerut')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -757,7 +755,7 @@ app.route('/getDeliveryMeerut')
 
 app.route('/editDeliveryMeerut')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -769,7 +767,7 @@ app.route('/editDeliveryMeerut')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -798,8 +796,8 @@ app.route('/editDeliveryMeerut')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -812,7 +810,7 @@ app.route('/editDeliveryMeerut')
     
     app.route('/editBijwasanProductPlanningData')
         .post(function(req, res) {
-            console.log(req.body)
+            
             MongoClient.connect("mongodb://localhost:27017/operationsDB", {
                 useNewUrlParser: true
             }, function(err, database) {
@@ -824,7 +822,7 @@ app.route('/editDeliveryMeerut')
                 }, {
                     $set: req.body
                 }, function(err, result) {
-                    console.log(err)
+                    
                     res.send(
                         (err === null) ? {
                             msg: 'success'
@@ -852,8 +850,8 @@ app.route('/getRemarksMathuraRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -866,7 +864,7 @@ app.route('/getRemarksMathuraRecord')
 
 app.route('/editRemarksMathuraRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -878,7 +876,7 @@ app.route('/editRemarksMathuraRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -906,8 +904,8 @@ app.route('/getDeliveryPnpRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -920,7 +918,7 @@ app.route('/getDeliveryPnpRecord')
 
 app.route('/editDeliveryPnpRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -932,7 +930,7 @@ app.route('/editDeliveryPnpRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -961,8 +959,8 @@ app.route('/getPumpingDelhiPnpRecord')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -975,7 +973,7 @@ app.route('/getPumpingDelhiPnpRecord')
     
 app.route('/editPumpingDelhiPnpRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -987,7 +985,7 @@ app.route('/editPumpingDelhiPnpRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1002,7 +1000,7 @@ app.route('/editPumpingDelhiPnpRecord')
 
 app.route('/editRemarksBharatpurRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1014,7 +1012,7 @@ app.route('/editRemarksBharatpurRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1042,8 +1040,8 @@ app.route('/getRemarksBharatpurRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1055,7 +1053,7 @@ app.route('/getRemarksBharatpurRecord')
 
 app.route('/editRemarksMeerutRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1067,7 +1065,7 @@ app.route('/editRemarksMeerutRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1095,8 +1093,8 @@ app.route('/getRemarksMeerutRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1108,7 +1106,7 @@ app.route('/getRemarksMeerutRecord')
 
 app.route('/editRemarksTundlaRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1120,7 +1118,7 @@ app.route('/editRemarksTundlaRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1148,8 +1146,8 @@ app.route('/getRemarksTundlaRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1161,7 +1159,7 @@ app.route('/getRemarksTundlaRecord')
 
 app.route('/editRemarksTikrikalanRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1173,7 +1171,7 @@ app.route('/editRemarksTikrikalanRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1201,8 +1199,8 @@ app.route('/getRemarksTikrikalanRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1214,7 +1212,7 @@ app.route('/getRemarksTikrikalanRecord')
 
 app.route('/editRemarksBijwasanRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1226,7 +1224,7 @@ app.route('/editRemarksBijwasanRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1254,8 +1252,8 @@ app.route('/getRemarksBijwasanRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1267,7 +1265,7 @@ app.route('/getRemarksBijwasanRecord')
 
 app.route('/editDelhiExMrRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1279,7 +1277,7 @@ app.route('/editDelhiExMrRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1307,8 +1305,8 @@ app.route('/getDelhiDeliveryRecord')
             }
         }]).toArray(function(er, items) {
             if (er) throw er;
-            console.log(er);
-            console.log(items)
+            
+            
             res.send({
                 "msg": "success",
                 "data": JSON.stringify(items),
@@ -1334,8 +1332,8 @@ app.route('/getRevPumpingPnpDelhiRecord')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -1347,7 +1345,7 @@ app.route('/getRevPumpingPnpDelhiRecord')
 
 app.route('/editRevPumpingPnpDelhiRecord')
     .post(function(req, res) {
-    console.log(req.body)
+    
     MongoClient.connect("mongodb://localhost:27017/operationsDB", {
         useNewUrlParser: true
     }, function(err, database) {
@@ -1359,7 +1357,7 @@ app.route('/editRevPumpingPnpDelhiRecord')
         }, {
             $set: req.body
         }, function(err, result) {
-            console.log(err)
+            
             res.send(
                 (err === null) ? {
                     msg: 'success'
@@ -1389,7 +1387,7 @@ app.route('/getDelhiExMrRecord')
                     }
                 }
             }]).toArray(function(er, items) {
-                console.log(items)
+                
                 if (er) throw er;
                 
                     database.db('operationsDB').collection('pumpedFromMathuraMD').aggregate([{
@@ -1427,7 +1425,7 @@ app.route('/getDelhiExMrRecord')
 });
 app.route('/editSkoLbtPumpingRecord')
 .post(function(req, res) {
-    console.log(req.body)
+    
     MongoClient.connect("mongodb://localhost:27017/operationsDB", {
         useNewUrlParser: true
     }, function(err, database) {
@@ -1439,7 +1437,7 @@ app.route('/editSkoLbtPumpingRecord')
         }, {
             $set: req.body
         }, function(err, result) {
-            console.log(err)
+            
             res.send(
                 (err === null) ? {
                     msg: 'success'
@@ -1468,7 +1466,7 @@ app.route('/getSkoLbtPumpingRecord')
                     }
                 }
             }]).toArray(function(er, items) {
-                console.log(items)
+                
                 if (er) throw er;
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
@@ -1493,8 +1491,8 @@ app.route('/getSkoLbtPumpingRecord')
             //     }
             // }]).toArray(function(er, items) {
             //     if (er) throw er;
-            //     console.log(er);
-            //     console.log(items)
+            //     
+            //     
             //     res.send({
             //         "msg": "success",
             //         "data": JSON.stringify(items),
@@ -1507,7 +1505,7 @@ app.route('/getSkoLbtPumpingRecord')
 
     app.route('/editDelhiExPrRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1519,7 +1517,7 @@ app.route('/getSkoLbtPumpingRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1533,7 +1531,7 @@ app.route('/getSkoLbtPumpingRecord')
 
     app.route('/editDelhiDeliveryRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1545,8 +1543,8 @@ app.route('/getSkoLbtPumpingRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
-                console.log(result)
+                
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1573,8 +1571,8 @@ app.route('/getSkoLbtPumpingRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
-                console.log(result)
+                
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1603,17 +1601,21 @@ app.route('/getSkoLbtPumpingRecord')
                         }
                     }
                 }]).toArray(function(er, items) {
-                    console.log(items)
+                    
                     if (er) throw er;
                 
-                    if(currentDate != 1){
-                        items[1].data['lbt01'][0].details = items[0].data['lbt01'][3].details;
-                        items[1].data['lbt02'][0].details = items[0].data['lbt02'][3].details;
-    
-                    }
-                    items[1].data['lbt01'][3].details = findUniqueProducts(items[1].data['lbt01']);
-                    items[1].data['lbt02'][3].details = findUniqueProducts(items[1].data['lbt02']);
+                    var oldLbt1 = items[1].data['lbt01'][3].details
+                    var oldlbt2 = items[1].data['lbt02'][3].details
+
+                    items[1].data['lbt01'][0].details = items[0].data['lbt01'][3].details;
+                    items[1].data['lbt02'][0].details = items[0].data['lbt02'][3].details;
+
+                    items[1].data['lbt01'][3].details = findUniqueProducts(oldLbt1, items[1].data['lbt01']);
+                    items[1].data['lbt02'][3].details = findUniqueProducts(oldlbt2, items[1].data['lbt02']);
                 
+
+
+
                     database.db('operationsDB').collection('lbtTable').updateOne({
                         "_id": items[1]._id
                     }, {
@@ -1628,11 +1630,11 @@ app.route('/getSkoLbtPumpingRecord')
             })
     });
 
-var findUniqueProducts = function(items){
+var findUniqueProducts = function(oldlbtData, items){
     uniqueProducts = items.reduce(function(uniqueProducts, table, $index){
         switch($index){
             case 0 : {
-                uniqueProducts = uniqueProducts.concat(JSON.parse(JSON.stringify(table.details)))
+                uniqueProducts = uniqueProducts.concat(JSON.parse(JSON.stringify(table.details)).filter(function(data){return !data.hide}))
                 break
             }
             case 1 : {
@@ -1656,8 +1658,8 @@ var findUniqueProducts = function(items){
                     var found = uniqueProducts.find(function(prodData){
                         if(prodData.product== productData.product && prodData.seq_no== productData.seq_no){
                             
-                            console.log(prodData.qty)
-                            console.log(productData.qty)
+                            
+                            
                                 prodData.qty = prodData.qty  - productData.qty;
                             return true
                         } 
@@ -1677,13 +1679,23 @@ var findUniqueProducts = function(items){
         }
         return uniqueProducts;
     },[])
+
+    oldlbtData.map(function(lbtData){
+        if(lbtData.hide){
+            uniqueProducts.map(function(uniqLbtData){
+                if(lbtData.product == uniqLbtData.product && lbtData.seq_no == uniqLbtData.seq_no){
+                    uniqLbtData.hide=true;
+                }
+            })
+        }
+    })
     return uniqueProducts
 } 
     
     
     app.route('/editpumpedFromMathuraMDRecord')
         .post(function(req, res) {
-            console.log(req.body)
+            
             MongoClient.connect("mongodb://localhost:27017/operationsDB", {
                 useNewUrlParser: true
             }, function(err, database) {
@@ -1695,7 +1707,7 @@ var findUniqueProducts = function(items){
                 }, {
                     $set: req.body
                 }, function(err, result) {
-                    console.log(err)
+                    
                     res.send(
                         (err === null) ? {
                             msg: 'success'
@@ -1724,7 +1736,7 @@ app.route('/getDelhiExPrRecord')
                     }
                 }
             }]).toArray(function(er, items) {
-                console.log(items)
+                
                 if (er) throw er;
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
@@ -1743,7 +1755,7 @@ app.route('/getDelhiExPrRecord')
 
 app.route('/editpumpedFromMathuraMDRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1755,7 +1767,7 @@ app.route('/editpumpedFromMathuraMDRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1784,7 +1796,7 @@ app.route('/getpumpedFromMathuraMDRecord')
                     }
                 }
             }]).toArray(function(er, items) {
-                console.log(items)
+                
                 if (er) throw er;
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
@@ -1803,7 +1815,7 @@ app.route('/getpumpedFromMathuraMDRecord')
 
 app.route('/editNotes')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1815,7 +1827,7 @@ app.route('/editNotes')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1843,8 +1855,8 @@ app.route('/getNotes')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -1856,7 +1868,7 @@ app.route('/getNotes')
 
 app.route('/editEquiRunningHrsBijwasanRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1868,7 +1880,7 @@ app.route('/editEquiRunningHrsBijwasanRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1898,8 +1910,8 @@ app.route('/getEquiRunningHrsBijwasanRecord')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -1912,20 +1924,20 @@ app.route('/getEquiRunningHrsBijwasanRecord')
 
 app.route('/editProductInStationLinefillRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
             if (err) return
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
-            console.log(req.body)
+            
             database.db('operationsDB').collection('proInStationLinefill').updateOne({
                 "_id": req.body._id
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -1953,8 +1965,8 @@ app.route('/getProductInStationLinefillRecord')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -1966,7 +1978,7 @@ app.route('/getProductInStationLinefillRecord')
 
     app.route('/editDelhiDeliveryRevRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1978,7 +1990,7 @@ app.route('/getProductInStationLinefillRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -2010,8 +2022,8 @@ app.route('/getDelhiDeliveryRevRecord')
                 }
             }]).toArray(function(er, items) {
                 if (er) throw er;
-                console.log(er);
-                console.log(items)
+                
+                
                 res.send({
                     "msg": "success",
                     "data": JSON.stringify(items),
@@ -2023,7 +2035,7 @@ app.route('/getDelhiDeliveryRevRecord')
 
     app.route('/editMonitoringMtMbMdplRecord')
     .post(function(req, res) {
-        console.log(req.body)
+        
         MongoClient.connect("mongodb://localhost:27017/operationsDB",{
             useNewUrlParser: true
         }, function(err, database) {
@@ -2035,7 +2047,7 @@ app.route('/getDelhiDeliveryRevRecord')
             }, {
                 $set: req.body
             }, function(err, result) {
-                console.log(err)
+                
                 res.send(
                     (err === null) ? {
                         msg: 'success'
@@ -2064,7 +2076,7 @@ app.route('/getMonitoringMtMbMdplRecord')
                     }
                 }
             }]).toArray(function(er, items) {
-                console.log(items)
+                
                 if (er) throw er;
                 if(items.length>1){
                     items[1].data[0] = items[0].data[24];
@@ -2084,7 +2096,7 @@ app.route('/getMonitoringMtMbMdplRecord')
 
 app.route('/authenticate')
     .post(function(req, res) {
-        console.log(req.body)
+        
         ldapAuthenticate(req.body.username, req.body.password, res)
     });
 
@@ -2095,25 +2107,20 @@ ldapAuthenticate = function(username, password, res) {
     // })    
     config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
         if (err) {
-            console.log('ERROR: ' + JSON.stringify(err));
+
             return;
         }
-        console.log("BIJWASAN OPERATION Group" + isMember)
         if (isMember) {
             config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
                 if (auth) {
                     config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION ADMIN', function(err, isMemberAdmin) {
                         if (err) {
-                            console.log('ERROR: ' + JSON.stringify(err));
-                            return;
+                                    return;
                         }
-                        console.log("BIJWASAN ADMIN OPERATION " + isMemberAdmin)
                         config.ad.isUserMemberOf(username, 'BIJWASAN SHIFT OFFICERS OPERATION', function(err, isMemberShiftOfficer) {
                             if (err) {
-                                console.log('ERROR: ' + JSON.stringify(err));
-                                return;
+                                                           return;
                             }
-                            console.log("BIJWASAN SHIFT OFFICERS OPERATION " + isMemberShiftOfficer)
                             res.send({
                                 "msg": "success",
                                 "isAdmin": isMemberAdmin,
@@ -2125,7 +2132,7 @@ ldapAuthenticate = function(username, password, res) {
                     res.send({
                         "msg": "success",
                         "isAdmin": true,
-                        "isShiftOfficer" : true
+                        "isShiftOfficer" : false
                     })
                 } else {
                     res.send({
@@ -2139,7 +2146,6 @@ ldapAuthenticate = function(username, password, res) {
             })
         }
 
-        console.log(username + ' isMemberOf ' + 'NRPL:DAILY_REPORT_BIJWASAN' + ': ' + isMember);
     });
 }
 

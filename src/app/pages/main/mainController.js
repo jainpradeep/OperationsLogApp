@@ -11,6 +11,7 @@
   function MainCntrl($scope,$rootScope, toasterService){
     toasterService.openInfoToast("Welcome User : " + localStorage.getItem('username'));
     $scope.customDate = new Date();
+    $scope.nextDate =  new Date(angular.copy($scope.customDate).setDate($scope.customDate.getDate() + 1));
   }
 
 })();

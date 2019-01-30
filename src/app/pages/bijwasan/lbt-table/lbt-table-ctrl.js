@@ -102,6 +102,7 @@
         date : $scope.customDate
       })).then(
         function(data) { 
+          $scope.yesterdaysClosing = JSON.parse(data.data.data)[0];
           $scope.lbtTable.lbtTabData = JSON.parse(data.data.data)[1].data;
           $scope.lbtTable.lbtTabDate = JSON.parse(data.data.data)[1].date;
           $scope.lbtTable.lbtTabID = JSON.parse(data.data.data)[1]._id;
@@ -117,13 +118,11 @@
     }
 
     $scope.editLbtTableRemark = function(remark){
-      
       $scope.lbtTable.lbtTabRemarks[$scope.selectedLbt] = remark 
-
       lbtTabService.editLbtTabData(JSON.stringify({
         _id : $scope.lbtTable.lbtTabID,
         date: $scope.lbtTable.lbtTabDate,
-        data: $scope.lbtTable.lbtTabData,
+        data:   $scope.lbtTable.lbtTabData[4],
         remarks: $scope.lbtTable.lbtTabRemarks
       })).then(function(){
         toasterService.openSucessToast ("Record has been successfully inserted/updated!");
@@ -133,10 +132,26 @@
       })  
     }
 
+    $scope.hideLbtTableStart = function(data,$index){
+      $scope.yesterdaysClosing.data[$scope.selectedLbtTrimmed][3].details[$index] = $scope.lbtTable.lbtTabData[$scope.selectedLbtTrimmed][3].details[$index]
+      $scope.yesterdaysClosing.data[$scope.selectedLbtTrimmed][3].details[$index].hide  = true;
+      lbtTabService.editLbtTabData(JSON.stringify({
+        _id : $scope.yesterdaysClosing._id,
+        date: $scope.yesterdaysClosing.date,
+        data: $scope.yesterdaysClosing.data,
+        remarks: $scope.yesterdaysClosing.remarks
+      })).then(function(){
+        toasterService.openSucessToast ("Record has been successfully inserted/updated!");
+        $scope.getLbtTable()  ;
+      },function(){
+        toasterService.openErrorToast("Record has been successfully inserted/updated!");
+      })  
+    }
+
     $scope.sumLineFill = function(lbt, index){
       var dipSum = 0 
         this.lbtTable.lbtTabData[lbt][index].details.map(function(lbtData){
-        dipSum = dipSum  + lbtData.qty
+        dipSum = dipSum  + !lbtData.hide ? lbtData.qty :0
           return lbtData
         })
       return dipSum

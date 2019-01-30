@@ -85,7 +85,8 @@
     $scope.selectedShift = "Shift A";
     $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
     $scope.$parent.$watch('customDate', function(value){
-      $scope.customDate = $scope.$parent.customDate;
+      $scope.tomorrowDate = new Date(angular.copy($scope.$parent.customDate).setDate($scope.$parent.customDate.getDate() + 1));
+      $scope.customDate = $scope.fromDashBoard ? $scope.tomorrowDate : $scope.$parent.customDate;
       $scope.lineFill = {};
       $scope.getlineFill();
     });

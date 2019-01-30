@@ -10,9 +10,9 @@
     /** @ngInject */
     function BijwasanCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
-        
+        $scope.dashboardDate = new Date();
         $scope.lbt = [{name: "LBT 01", isSelected : true},{name: "LBT 02"}]
-        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"]
+        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF"]
         $scope.selectedShift = $scope.shifts[0].name;
         $scope.selectShift = function(shift){
             $scope.shifts.map(function(shft){

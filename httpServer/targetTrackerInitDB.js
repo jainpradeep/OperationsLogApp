@@ -3,19 +3,19 @@ exports.targetTrackerInitDB = {
   targets : [{
     targetName: "Yearly",
     target : [{
-      name: "MBPL",
+      name: "MTPL",
       data : {
         MOU_proposed : 0,
         MOU_achieved : 0,
       }
     },{
-      name: "MBPL",
+      name: "MTPL",
       data : {
         MOU_proposed : 0,
         MOU_achieved : 0,
       }
     },{
-      name: "MBPL",
+      name: "MTPL",
       data : {
         MOU_proposed : 0,
         MOU_achieved : 0,
@@ -44,19 +44,19 @@ exports.targetTrackerInitDB = {
 }]},{
   targetName: "psaTarget",
   target :[{
-    name: "MBPL",
+    name: "MD",
     data : {
       target : 0,
       achieved : 0,
     }
   },{
-    name: "MBPL",
+    name: "MD",
     data : {
       target : 0,
       achieved : 0,
     }
   },{
-    name: "MBPL",
+    name: "MD",
     data : {
       target : 0,
       achieved : 0,

@@ -34,7 +34,7 @@
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http,$state, $filter, editableOptions, editableThemes, exMathuraMTPLService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
-    $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO"]
+    $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF"]
 
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
