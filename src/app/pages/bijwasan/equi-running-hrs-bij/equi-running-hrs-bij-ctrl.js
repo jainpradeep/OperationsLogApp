@@ -80,7 +80,7 @@
       $scope.customDate = $scope.$parent.customDate;
       $scope.equiRunningHrsBijwasan = {};
       $scope.getEquiRunningHrsBijwasan();
-      $scope.equiRunningHrsBijwasan.equipSum = {
+      $scope.equiRunningHrsBijwasan.equipSum = [{
         "BP 1" : 0,
         "BP 2" : 0,
         "MP 1" : 0,
@@ -92,7 +92,19 @@
         "SUMP PUMP" : 0,
         "S/R PUMP" : 0,
         "OWS PUMP" : 0
-      }
+      },{
+        "BP 1" : 0,
+        "BP 2" : 0,
+        "MP 1" : 0,
+        "MP 2" : 0,
+        "MP 3" : 0,
+        "DG SET" : 0,
+        "FFE" : 0,
+        "FFM" : 0,
+        "SUMP PUMP" : 0,
+        "S/R PUMP" : 0,
+        "OWS PUMP" : 0
+      }]
     });
     
     $scope.getEquiRunningHrsBijwasan= function(){
@@ -121,7 +133,9 @@
               }
               var minSum = !isNaN(shiftA.mins)?shiftA.mins:0 + !isNaN(shiftB.mins)?shiftB.mins:0 + !isNaN(shiftC.mins)?shiftC.mins:0
               var cumalativeSum = parseFloat((!isNaN(shiftA.hrs)?shiftA.hrs:0) + (!isNaN(shiftB.hrs)?shiftB.hrs:0) + (!isNaN(shiftC.hrs)?shiftC.hrs:0)) + parseFloat(minSum)/60.0
-              cumalativeRunHrs[equipData.equipment] = (cumalativeRunHrs[equipData.equipment]) + (cumalativeSum ? cumalativeSum : 0);
+              
+              cumalativeRunHrs[0][equipData.equipment] = cumalativeRunHrs[1][equipData.equipment];
+              cumalativeRunHrs[1][equipData.equipment] = (cumalativeRunHrs[1][equipData.equipment]) + (cumalativeSum ? cumalativeSum : 0);
               return equipData;
             })
             return cumalativeRunHrs;

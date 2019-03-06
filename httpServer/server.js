@@ -80,11 +80,33 @@ app.set('port', process.env.PORT || 3006);
 app.listen(app.get('port'), function() {
 });
 
+
+// var CronJob = require('cron').CronJob;
+// var job = new CronJob('00 00 7 * * 1-7', function() {
+// /*
+//  * Runs every day
+//  * at 7:00:00 AM.
+// */
+// initPush();
+// }, function () {
+//  /* This function is executed when the job stops */
+// 
+// },
+//  true, /* Start the job right now */
+//  timeZone /* Time zone of this job. */
+// );
+
+
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 9;
-rule.minute = 14    ;
+rule.hour = 7;
+rule.minute = 0;
 schedule.scheduleJob(rule, function() {
+
+});
+
+
+initPush = function(){
     MongoClient.connect("mongodb://localhost:27017/operationsDB",{
         useNewUrlParser: true
     }, function(err, database) {
@@ -213,7 +235,7 @@ schedule.scheduleJob(rule, function() {
             
         });
     })
-});
+}
 
 app.route('/getTargets')
 .post(function(req, res) {
@@ -298,6 +320,7 @@ app.route('/getlineFillRecord')
     }, function(err, database) {
         if (err) return
         req.body.date = new Date(req.body.date)
+  
         database.db('operationsDB').collection('lineFillTable').aggregate([{
             $match: {
                 'date': {
@@ -1559,7 +1582,7 @@ app.route('/getSkoLbtPumpingRecord')
 
  app.route('/editLbtTableRecord')
     .post(function(req, res) {
-        console.log(req.body)
+    
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
             useNewUrlParser: true
         }, function(err, database) {
@@ -1591,8 +1614,8 @@ app.route('/getSkoLbtPumpingRecord')
             }, function(err, database) {
                 if (err) return
                 req.body.date = new Date(req.body.date)
-                yesterdaysDate = new Date(req.body.date.valueOf())
-                var yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
+                var yesterdaysDate = new Date(req.body.date.valueOf())
+                yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
                 database.db('operationsDB').collection('lbtTable').aggregate([{
                     $match: {
                         'date': {
@@ -1601,9 +1624,8 @@ app.route('/getSkoLbtPumpingRecord')
                         }
                     }
                 }]).toArray(function(er, items) {
-                    
                     if (er) throw er;
-                
+              
                     var oldLbt1 = items[1].data['lbt01'][3].details
                     var oldlbt2 = items[1].data['lbt02'][3].details
 

@@ -32,27 +32,27 @@
                </td>
                <td>    
                   <span>
-                       {{ equiRunningHrsBijwasan.equipSum[data.equipment].toFixed(2)}}
+                       {{equiRunningHrsBijwasan.equipSum[0][data.equipment].toFixed(0)}} : {{(((equiRunningHrsBijwasan.equipSum[0][data.equipment].toFixed(2) + "").split(".")[1] | number)*.6).toFixed(0) }}
                   </span>
                </td>
                <td>  
                   <span editable-time="data.shiftA" e-show-meridian="false" e-minute-step="1" required e-name="shiftA" e-form="rowform" e-required>
-                        {{ data.shiftA | date:'shortTime' }}
+                        {{ data.shiftA | date:"HH:mm" }}
                   </span>  
                </td>
                <td>    
                      <span editable-time="data.shiftB" e-show-meridian="false" e-minute-step="1" required e-name="shiftB" e-form="rowform" e-required>
-                        {{ data.shiftB | date:'shortTime' }}
+                        {{ data.shiftB | date:"HH:mm"}}
                      </span>
                </td>
                <td> 
                   <span editable-time="data.shiftC" e-show-meridian="false" e-minute-step="1" required e-name="shiftC" e-form="rowform" e-required>
-                        {{ data.shiftC | date:'shortTime' }}
+                        {{ data.shiftC |date:"HH:mm" }}
                   </span>   
                </td>
                <td>    
                   <span>
-                        {{ data.cummulative | date:'shortTime' }}
+                        {{equiRunningHrsBijwasan.equipSum[1][data.equipment].toFixed(0)}} : {{(((equiRunningHrsBijwasan.equipSum[1][data.equipment].toFixed(2) + "").split(".")[1] | number)*.6).toFixed(0) }}
                   </span>   
                </td>
                <td ng-show = "isAdmin" ng-hide = "hideEditHistoryRemarks">

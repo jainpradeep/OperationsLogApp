@@ -151,7 +151,7 @@
     $scope.sumLineFill = function(lbt, index){
       var dipSum = 0 
         this.lbtTable.lbtTabData[lbt][index].details.map(function(lbtData){
-        dipSum = dipSum  + !lbtData.hide ? lbtData.qty :0
+        dipSum = dipSum  +  lbtData.qty 
           return lbtData
         })
       return dipSum
