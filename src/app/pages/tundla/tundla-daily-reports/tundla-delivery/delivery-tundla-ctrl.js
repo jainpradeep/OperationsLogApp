@@ -79,6 +79,7 @@
     
       $scope.addNewRecord = function(){
         $scope.deliveryTundla.deliveryTundlaData.push({
+          origin:"",
           product:"",
           seq_no:"",
           tank_no:"",

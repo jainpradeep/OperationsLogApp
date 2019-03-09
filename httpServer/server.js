@@ -51,7 +51,7 @@ var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var fs = require('fs')
 
-const multer = require('multer');
+multer = require('multer');
 var _ = require('lodash');
 var schedule = require('node-schedule');
 var items;
@@ -1423,10 +1423,10 @@ app.route('/getDelhiExMrRecord')
                     }]).toArray(function(er, mathuraItems) {
                         if (er) throw er;
                         if(mathuraItems.length>1){
-                            mathuraItems[1].data[0] = mathuraItems[0].data[24];
-                            mathuraItems[1].data[0].shift = "Shift A";
-                            mathuraItems[1].data[0].position = 0;
-                            mathuraItems[1].data[0].editHistory = null;
+                           mathuraItems[1].data[0] = mathuraItems[0].data[24];
+                           mathuraItems[1].data[0].shift = "Shift A";
+                           mathuraItems[1].data[0].position = 0;
+                           mathuraItems[1].data[0].editHistory = null;
                         }
 
                         if(items.length>1){
@@ -1825,6 +1825,7 @@ app.route('/getpumpedFromMathuraMDRecord')
                     items[1].data[0].shift = "Shift A";
                     items[1].data[0].position = 0;
                     items[1].data[0].editHistory = null;
+                    items[1].data[25]=items[0].data[23];
                 }
                 res.send({
                     "msg": "success",

@@ -91,6 +91,7 @@
     
     $scope.addNewRecord = function(){
       $scope.deliveryBharatpur.deliveryBharatpurData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

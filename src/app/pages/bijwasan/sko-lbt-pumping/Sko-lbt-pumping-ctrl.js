@@ -30,6 +30,7 @@
     /** @ngInject */
   function SkoLbtPumpingPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, skoLbtPumpingService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
+    $scope.currentIndex = -1;
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
@@ -118,7 +119,15 @@
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
     }
-
+    $scope.skoLbtCopy = function($index){
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].product=$scope.skoLbtPumping.skoLbtPumpingData[$index].product;
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].seq_no=$scope.skoLbtPumping.skoLbtPumpingData[$index].seq_no;
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].density=$scope.skoLbtPumping.skoLbtPumpingData[$index].density;
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].temperature=$scope.skoLbtPumping.skoLbtPumpingData[$index].temperature;
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].fmr=$scope.skoLbtPumping.skoLbtPumpingData[$index].fmr;
+      $scope.skoLbtPumping.skoLbtPumpingData[$index +1].tank_no=$scope.skoLbtPumping.skoLbtPumpingData[$index].tank_no;
+       $scope.editSkoLbtPumpingData($scope.skoLbtPumping.skoLbtPumpingData[$index +1],$index+1);
+    }
     $scope.editSkoLbtPumpingData = function(data, index){
       data.editHistory = $scope.editableSkoLbtPumpingHourlyRec;
       data.editedDate = new Date();

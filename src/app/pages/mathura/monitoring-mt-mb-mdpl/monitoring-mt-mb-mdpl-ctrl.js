@@ -33,6 +33,7 @@
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, monMtMbMdplService, $uibModal, $log, _, toasterService) {
+    $scope.currentIndex = -1;
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -121,6 +122,15 @@
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
+    }
+    $scope.monitoringMtMbMdplCopy = function($index){
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].mbr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].mbr;
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].tpr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].tpr;
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].bpr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].bpr;
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].suctionPressure=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].suctionPressure;
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].pumpNo=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].pumpNo;
+      $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].linePressure=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].linePressure;
+       $scope.editMonMtMbMdplData($scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1],$index+1);
     }
 
     $scope.editMonMtMbMdplData = function(data, index){

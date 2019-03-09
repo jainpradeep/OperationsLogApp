@@ -90,6 +90,7 @@
    
     $scope.addNewRecord = function(){
       $scope.DeliveryPnp.DeliveryPnpData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

@@ -32,7 +32,8 @@
                   <th ng-show = "isAdmin || isShiftOfficer"></th>
                 </tr>
               </thead>
-            <tr ng-repeat="data in pumpedFromMathuraMD.pumpedFromMatMDData | filter : {'shift':  selectedShift} track by $index" class="editable-row">
+              <tbody  ng-hide="$index == 10" ng-repeat="data in pumpedFromMathuraMD.pumpedFromMatMDData | filter : {'shift':  selectedShift} track by $index" class="editable-row">
+            <tr rowspan="2">
               <td>
                   <span >
                       {{ data.hours || '-' }}
@@ -84,7 +85,7 @@
                         </span>
                     </div>
                     <span ng-show= "data.position == 0 ">
-                        {{ data.fmr}}
+                        {{ (data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[25].fmr) > 0 ? data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[25].fmr : (data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[25].fmr) < 0  ?  data.fmr - pumpedFromMathuraMD.pumpedFromMatMDData[25].fmr + 10000  : 0}}
                   </span>
               </td>
               <td>
@@ -104,11 +105,20 @@
                 </form>
                 <!-- ng-disabled = "!pumpedFromMathuraMD.pumpedFromMatMDData[$index -1].fmr"  -->
                 <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-danger editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-disabled = "data.position==0" ng-click="rowform.$show(); editpumpedFromMathuraMDStart(data)">Edit</button>
+                  <button class="btn btn-danger editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-hide = "data.position==0" ng-click="rowform.$show(); editpumpedFromMathuraMDStart(data)">Edit</button>
                   <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
-                </div>
+                  <button class="btn btn-primary editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-click="pumpedFromMathuraCopy($index);" >Copy</button>
+                  </div>
               </td>
             </tr>
+            <tr  rowspan="2">
+              <td colspan="13" style="word-break: break-all;color:yellow">
+                      <span editable-textarea="data.remarks" e-name="remarks" e-form="rowform"  e-required>
+                          {{ data.remarks || 'No remarks' }}
+                      </span>
+                  </td> 
+         </tr>    
+          </tbody>
           </table>
           <div class="button-wrapper ng-scope">
               <button type="button"  ng-show = "isAdmin || isShiftOfficer" ng-click="openRemarks()" class="btn btn-primary btn-md">Remarks</button>

@@ -34,6 +34,7 @@
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExMrService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
+    $scope.currentIndex = -1;
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
@@ -49,6 +50,9 @@
     $scope.cancelRemarksModal = function() {
       $scope.remarksModal.dismiss('cancel');
     };
+
+
+   
 
     
     $scope.open = function(data) {
@@ -127,7 +131,17 @@
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
     }
-
+    $scope.delExMrCopy = function($index){
+      $scope.delhiExMR.delExmrData[$index +1].product=$scope.delhiExMR.delExmrData[$index].product;
+      $scope.delhiExMR.delExmrData[$index +1].seq_no=$scope.delhiExMR.delExmrData[$index].seq_no;
+      $scope.delhiExMR.delExmrData[$index +1].density=$scope.delhiExMR.delExmrData[$index].density;
+      $scope.delhiExMR.delExmrData[$index +1].temperature=$scope.delhiExMR.delExmrData[$index].temperature;
+      $scope.delhiExMR.delExmrData[$index +1].fmr=$scope.delhiExMR.delExmrData[$index].fmr;
+      $scope.delhiExMR.delExmrData[$index +1].pumpingBypass=$scope.delhiExMR.delExmrData[$index].pumpingBypass;
+      $scope.delhiExMR.delExmrData[$index +1].tank_no=$scope.delhiExMR.delExmrData[$index].tank_no;
+      $scope.delhiExMR.delExmrData[$index +1].tank_dip=$scope.delhiExMR.delExmrData[$index].tank_dip;
+       $scope.editDelExMrData($scope.delhiExMR.delExmrData[$index +1],$index+1);
+    }
     $scope.editDelExMrData = function(data, index){
       data.editHistory = $scope.editableDelhiExMrHourlyRec;
       data.editedDate = new Date();

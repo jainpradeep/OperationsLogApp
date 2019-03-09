@@ -92,6 +92,7 @@
     
     $scope.addNewRecord = function(){
       $scope.exMathuraMD.exMathuraMDData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

@@ -88,6 +88,7 @@
    
     $scope.addNewRecord = function(){
       $scope.delhiDelivery.delhiDeliveryData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

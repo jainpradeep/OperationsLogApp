@@ -89,6 +89,7 @@
     
     $scope.addNewRecord = function(){
       $scope.deliveryMeerut.deliveryMeerutData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

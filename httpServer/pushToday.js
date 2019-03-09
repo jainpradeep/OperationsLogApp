@@ -18,7 +18,7 @@ var path = require('path');
 var moment = require('moment');
 var config = require('./config');
 var today =  new Date();
-today.setDate(today.getDate() - 0)
+today.setDate(today.getDate() + 3)
 MockDate.set(today);
 var skoLbtPumpingInitDB = require('./skoLbtPumpingInitDB')
 var delExPrInitDB = require('./delExPrInitDB')

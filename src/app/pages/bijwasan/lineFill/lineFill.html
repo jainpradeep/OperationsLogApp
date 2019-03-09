@@ -39,10 +39,10 @@
                             Cancel
                         </button>
                         </form>
-                        <div class="buttons" ng-show="!rowform.$visible">
-                        <button class="btn btn-danger editable-table-button btn-xs" ng-show = "line.lineFill.length" ng-click="rowform.$show(); editlineFillStart(line,rowform)">Edit</button>
+                        <div class="buttons">
+                        <button class="btn btn-danger editable-table-button btn-xs" ng-show = "line.lineFill.length  && !rowform.$visible" ng-click="rowform.$show(); editlineFillStart(line,rowform)">Edit</button>
                         <button type="button" ng-click= "rowform.$show();addNewRecord(line.lineFill)"  class="btn btn-default btn-xs"><i class="ion-plus"></i></button> 
-                        <button class="btn btn-info editable-table-button btn-xs"  ng-show = "isAdmin && !isShiftOfficer" ng-click="open(line)">History</button>
+                        <button class="btn btn-info editable-table-button btn-xs"  ng-show = "isAdmin && !isShiftOfficer && !rowform.$visible" ng-click="open(line)">History</button>
                               </div>
                     </td>
                 </tr>

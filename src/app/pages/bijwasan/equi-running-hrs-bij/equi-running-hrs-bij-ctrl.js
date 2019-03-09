@@ -40,7 +40,7 @@
         size: '',
       })
     }
-
+    $scope.Math = window.Math;
     $scope.editRemarksModal = function() {
       $scope.remarksModal.close();
     };
@@ -108,34 +108,62 @@
     });
     
     $scope.getEquiRunningHrsBijwasan= function(){
+      $scope.equiRunningHrsBijwasan.equipSum = [{
+        "BP 1" : 0,
+        "BP 2" : 0,
+        "MP 1" : 0,
+        "MP 2" : 0,
+        "MP 3" : 0,
+        "DG SET" : 0,
+        "FFE" : 0,
+        "FFM" : 0,
+        "SUMP PUMP" : 0,
+        "S/R PUMP" : 0,
+        "OWS PUMP" : 0
+      },{
+        "BP 1" : 0,
+        "BP 2" : 0,
+        "MP 1" : 0,
+        "MP 2" : 0,
+        "MP 3" : 0,
+        "DG SET" : 0,
+        "FFE" : 0,
+        "FFM" : 0,
+        "SUMP PUMP" : 0,
+        "S/R PUMP" : 0,
+        "OWS PUMP" : 0
+      }];
+
       equiRunningHrsBijService.getEquiRunningHrsBijData(JSON.stringify({
         date : $scope.customDate
       })).then(
         function(data) { 
-          var equipSum = JSON.parse(data.data.data)
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijData = equipSum[equipSum.length-1].data;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate = equipSum[equipSum.length-1].date;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijID = equipSum[equipSum.length-1]._id;
-          $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = equipSum[equipSum.length-1].remarks;
-          $scope.equiRunningHrsBijwasan.equipSum = equipSum.reduce(function(cumalativeRunHrs,dayData){
+          var monthlyData = JSON.parse(data.data.data)
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijData = monthlyData[monthlyData.length-1].data;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijDate = monthlyData[monthlyData.length-1].date;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijID = monthlyData[monthlyData.length-1]._id;
+          $scope.equiRunningHrsBijwasan.equiRunningHrsBijRemarks = monthlyData[monthlyData.length-1].remarks;
+
+          $scope.equiRunningHrsBijwasan.equipSum = monthlyData.reduce(function(cumalativeRunHrs,dayData){
             dayData.data.map(function(equipData){
               var shiftA = {
-                mins: (new Date(equipData.shiftA)).getMinutes(),
-                hrs:  (new Date(equipData.shiftA)).getHours()
+                hrs : equipData.shiftAHH,
+                mins:  equipData.shiftAMM
               }
               var shiftB ={
-                mins: (new Date(equipData.shiftB)).getMinutes(),
-                hrs:  (new Date(equipData.shiftB)).getHours()
+                hrs: equipData.shiftBHH,
+                mins:  equipData.shiftBMM
               }
               var shiftC = {
-                mins: (new Date(equipData.shiftC)).getMinutes(),
-                hrs:  (new Date(equipData.shiftC)).getHours()
+                hrs: equipData.shiftCHH,
+                mins:  equipData.shiftCMM
               }
-              var minSum = !isNaN(shiftA.mins)?shiftA.mins:0 + !isNaN(shiftB.mins)?shiftB.mins:0 + !isNaN(shiftC.mins)?shiftC.mins:0
+              
+              var minSum = (!isNaN(shiftA.mins)?shiftA.mins:0) + (!isNaN(shiftB.mins)?shiftB.mins:0) + (!isNaN(shiftC.mins)?shiftC.mins:0)
               var cumalativeSum = parseFloat((!isNaN(shiftA.hrs)?shiftA.hrs:0) + (!isNaN(shiftB.hrs)?shiftB.hrs:0) + (!isNaN(shiftC.hrs)?shiftC.hrs:0)) + parseFloat(minSum)/60.0
               
-              cumalativeRunHrs[0][equipData.equipment] = cumalativeRunHrs[1][equipData.equipment];
-              cumalativeRunHrs[1][equipData.equipment] = (cumalativeRunHrs[1][equipData.equipment]) + (cumalativeSum ? cumalativeSum : 0);
+              cumalativeRunHrs[0][equipData.equipment] = angular.copy(cumalativeRunHrs[1][equipData.equipment]);
+              cumalativeRunHrs[1][equipData.equipment] = angular.copy(cumalativeRunHrs[1][equipData.equipment]) + (cumalativeSum ? cumalativeSum : 0);
               return equipData;
             })
             return cumalativeRunHrs;

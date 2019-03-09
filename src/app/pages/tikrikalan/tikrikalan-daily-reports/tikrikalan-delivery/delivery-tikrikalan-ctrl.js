@@ -89,6 +89,7 @@
 
     $scope.addNewRecord = function(){
       $scope.deliveryTikrikalan.deliveryTikrikalanData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

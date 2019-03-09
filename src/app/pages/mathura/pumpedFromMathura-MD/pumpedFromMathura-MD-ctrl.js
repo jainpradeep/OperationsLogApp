@@ -34,6 +34,7 @@
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, pumpedFromMatMDService, $uibModal, $log, _, toasterService) {
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
+    $scope.currentIndex = -1;
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
         scope: $scope,
@@ -50,7 +51,8 @@
       $scope.remarksModal.dismiss('cancel');
     };
 
-    
+  
+
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -121,6 +123,19 @@
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
+    }
+
+
+    $scope.pumpedFromMathuraCopy = function($index){
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].product=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].product;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].seq_no=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].seq_no;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].density1=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].density1;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].temperature=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].temperature;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].density2=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].density2;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].variation=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].variation;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].fmr=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].fmr;
+      $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].tank_no=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].tank_no;
+        $scope.editpumpedFromMatMDData($scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1],$index+1);
     }
 
     $scope.editpumpedFromMatMDData = function(data, index){

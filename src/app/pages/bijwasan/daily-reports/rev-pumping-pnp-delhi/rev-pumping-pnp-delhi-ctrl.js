@@ -90,6 +90,7 @@
    
     $scope.addNewRecord = function(){
       $scope.revPumpingPnpDelhi.revPumpingPnpDelhiData.push({
+        origin:"",
         product:"",
         seq_no:"",
         tank_no:"",

@@ -11,7 +11,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "8:00 AM",
       shift: "Shift A",
@@ -23,7 +23,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "9:00 AM",
       shift: "Shift A",
@@ -35,7 +35,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "10:00 AM",
       shift: "Shift A",
@@ -47,7 +47,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "11:00 AM",
       shift: "Shift A",
@@ -59,7 +59,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "12:00 PM",
       shift: "Shift A",
@@ -71,7 +71,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "13:00 PM",
       shift: "Shift A",
@@ -83,7 +83,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "14:00 PM",
       shift: "Shift A; Shift B",
@@ -95,7 +95,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "15:00 PM",
       batch_no: "",
@@ -108,7 +108,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "16:00 PM",
       shift: "Shift B",
@@ -120,7 +120,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "17:00 PM",
       shift: "Shift B",
@@ -132,7 +132,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "18:00 PM",
       shift: "Shift B",
@@ -144,7 +144,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "19:00 PM",
       shift: "Shift B",
@@ -156,7 +156,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "20:00 PM",
       shift: "Shift B",
@@ -168,7 +168,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "21:00 PM",
       shift: "Shift B",
@@ -180,7 +180,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "22:00 PM",
       batch_no: "",
@@ -193,7 +193,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "23:00 PM",
       shift: "Shift C",
@@ -205,7 +205,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "24:00 AM",
       shift: "Shift C",
@@ -217,7 +217,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "1:00 AM",
       shift: "Shift C",
@@ -229,7 +229,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "2:00 AM",
       shift: "Shift C",
@@ -241,7 +241,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "3:00 AM",
       shift: "Shift C",
@@ -253,7 +253,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "4:00 AM",
       shift: "Shift C",
@@ -265,7 +265,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "5:00 AM",
       shift: "Shift C",
@@ -277,7 +277,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
       hours: "6:00 AM",
       shift: "Shift C",
@@ -289,7 +289,7 @@ exports.monitoringMtMbMdplInitDB = {
       suctionPressure: "",
       pumpNo: "",
       linePressure: "",
-      oficer: "",
+      oficer: "", remarks:""
   }, {
     hours: "7:00 AM",
     shift: "Shift C",
@@ -301,7 +301,7 @@ exports.monitoringMtMbMdplInitDB = {
     suctionPressure: "",
     pumpNo: "",
     linePressure: "",
-    oficer: "",
+    oficer: "", remarks:""
 }],
   remarks: {
       "Shift A": "",

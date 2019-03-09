@@ -11,6 +11,7 @@
     function TundlaCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
         $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF"]
+        $scope.origin = ["BCO","PCO","LF"]
         $scope.selectedShift = $scope.shifts[0];
         $scope.selectShift = function(shift){
             $scope.shifts.map(function(shft){

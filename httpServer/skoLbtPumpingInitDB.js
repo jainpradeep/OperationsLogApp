@@ -9,7 +9,7 @@ exports.skoLbtPumpingInitDB = {
       fmr: "",
       bypass: "",
       tank_no: "",
-      oficer: "",
+      remarks:"",oficer: "",
   },{
     hours: "8:00 AM",
     shift: "Shift A",
@@ -19,7 +19,7 @@ exports.skoLbtPumpingInitDB = {
     fmr: "",
     bypass: "",
     tank_no: "",
- oficer: ""
+ remarks:"",oficer: ""
 },{
   hours: "9:00 AM",
   shift: "Shift A",
@@ -29,7 +29,7 @@ exports.skoLbtPumpingInitDB = {
   fmr: "",
   bypass: "",
   tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "10:00 AM",
 shift: "Shift A",
@@ -39,7 +39,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "11:00 AM",
 shift: "Shift A",
@@ -49,7 +49,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "12:00 PM",
 shift: "Shift A",
@@ -59,7 +59,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "13:00 PM",
 shift: "Shift A",
@@ -69,7 +69,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "14:00 PM",
 shift: "Shift A; Shift B",
@@ -79,7 +79,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "15:00 PM",
 batch_no: "",editHistory : null,
@@ -89,7 +89,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "16:00 PM",
 shift: "Shift B",
@@ -99,7 +99,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "17:00 PM",
 shift: "Shift B",
@@ -109,7 +109,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "18:00 PM",
 shift: "Shift B",
@@ -119,7 +119,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "19:00 PM",
 shift: "Shift B",
@@ -129,7 +129,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "20:00 PM",
 shift: "Shift B",
@@ -139,7 +139,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "21:00 PM",
 shift: "Shift B",
@@ -149,7 +149,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "22:00 PM",
 batch_no: "",editHistory : null,
@@ -159,7 +159,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "23:00 PM",
 shift: "Shift C",
@@ -169,7 +169,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "24:00 AM",
 shift: "Shift C",
@@ -179,7 +179,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "1:00 AM",
 shift: "Shift C",
@@ -189,7 +189,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "2:00 AM",
 shift: "Shift C",
@@ -199,7 +199,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "3:00 AM",
 shift: "Shift C",
@@ -209,7 +209,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "4:00 AM",
 shift: "Shift C",
@@ -219,7 +219,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "5:00 AM",
 shift: "Shift C",
@@ -229,7 +229,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
 hours: "6:00 AM",
 shift: "Shift C",
@@ -239,7 +239,7 @@ variation: "",
 fmr: "",
 bypass: "",
 tank_no: "",
-oficer: ""
+remarks:"",oficer: ""
 },{
   hours: "7:00 AM",
   shift: "Shift C",
@@ -249,7 +249,7 @@ oficer: ""
   fmr: "",
   bypass: "",
   tank_no: "",
-  oficer: ""
+  remarks:"",oficer: ""
   }],
 remarks : {
 "Shift A" : "",

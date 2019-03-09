@@ -14,7 +14,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "0"
+      remarks:"",oficer: "", position : "0"
   }, {
       hours: "8:00 AM",
       shift: "Shift A",
@@ -29,7 +29,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "1"
+      remarks:"",oficer: "", position : "1"
   }, {
       hours: "9:00 AM",
       shift: "Shift A",
@@ -44,7 +44,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "2"
+      remarks:"",oficer: "", position : "2"
   }, {
       hours: "10:00 AM",
       shift: "Shift A",
@@ -59,7 +59,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "3"
+      remarks:"",oficer: "", position : "3"
   }, {
       hours: "11:00 AM",
       shift: "Shift A",
@@ -74,7 +74,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "4"
+      remarks:"",oficer: "", position : "4"
   }, {
       hours: "12:00 PM",
       shift: "Shift A",
@@ -89,7 +89,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "5"
+      remarks:"",oficer: "", position : "5"
   }, {
       hours: "13:00 PM",
       shift: "Shift A",
@@ -104,7 +104,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "6"
+      remarks:"",oficer: "", position : "6"
   }, {
       hours: "14:00 PM",
       shift: "Shift A; Shift B",
@@ -119,7 +119,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "7"
+      remarks:"",oficer: "", position : "7"
   }, {
       hours: "15:00 PM",
       batch_no: "",
@@ -134,7 +134,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "8"
+      remarks:"",oficer: "", position : "8"
   }, {
       hours: "16:00 PM",
       shift: "Shift B",
@@ -149,7 +149,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "9"
+      remarks:"",oficer: "", position : "9"
   }, {
       hours: "17:00 PM",
       shift: "Shift B",
@@ -164,7 +164,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "10"
+      remarks:"",oficer: "", position : "10"
   }, {
       hours: "18:00 PM",
       shift: "Shift B",
@@ -179,7 +179,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "11"
+      remarks:"",oficer: "", position : "11"
   }, {
       hours: "19:00 PM",
       shift: "Shift B",
@@ -194,7 +194,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "12"
+      remarks:"",oficer: "", position : "12"
   }, {
       hours: "20:00 PM",
       shift: "Shift B",
@@ -209,7 +209,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "13"
+      remarks:"",oficer: "", position : "13"
   }, {
       hours: "21:00 PM",
       shift: "Shift B",
@@ -224,7 +224,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "14"
+      remarks:"",oficer: "", position : "14"
   }, {
       hours: "22:00 PM",
       batch_no: "",
@@ -239,7 +239,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "15"
+      remarks:"",oficer: "", position : "15"
   }, {
       hours: "23:00 PM",
       shift: "Shift C",
@@ -254,7 +254,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "16"
+      remarks:"",oficer: "", position : "16"
   }, {
       hours: "24:00 AM",
       shift: "Shift C",
@@ -269,7 +269,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "17"
+      remarks:"",oficer: "", position : "17"
   }, {
       hours: "1:00 AM",
       shift: "Shift C",
@@ -284,7 +284,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "18"
+      remarks:"",oficer: "", position : "18"
   }, {
       hours: "2:00 AM",
       shift: "Shift C",
@@ -299,7 +299,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",  
-      oficer: "", position : "19"
+      remarks:"",oficer: "", position : "19"
   }, {
       hours: "3:00 AM",
       shift: "Shift C",
@@ -314,7 +314,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "20"
+      remarks:"",oficer: "", position : "20"
   }, {
       hours: "4:00 AM",
       shift: "Shift C",
@@ -329,7 +329,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "21"
+      remarks:"",oficer: "", position : "21"
   }, {
       hours: "5:00 AM",
       shift: "Shift C",
@@ -344,7 +344,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "22"
+      remarks:"",oficer: "", position : "22"
   }, {
       hours: "6:00 AM",
       shift: "Shift C",
@@ -359,7 +359,7 @@ exports.pumpedFromMathuraMDInitDB = {
       flow_rate_pumping: "",
       tank_no: "",
       tank_dip: "",
-      oficer: "", position : "23"
+      remarks:"",oficer: "", position : "23"
   }, {
     hours: "7:00 AM",
     shift: "Shift C",
@@ -374,7 +374,7 @@ exports.pumpedFromMathuraMDInitDB = {
     flow_rate_pumping: "",
     tank_no: "",
     tank_dip: "",
-    oficer: "", position : "24"
+    remarks:"",oficer: "", position : "24"
 }],
   remarks: {
       "Shift A": "",

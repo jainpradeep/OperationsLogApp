@@ -16,13 +16,14 @@
                         <th colspan="6">Ex-Mathura MD</th>
                       </tr>
           <tr rowspan="3">
-                <th colspan="2">Batch no</th>
+                <th colspan="3">Batch no</th>
                 <th colspan="1">Tank no</th>
                 <th colspan="1">FMR Qty.</th>
                 <th colspan="1">Dip Qty.</th>      
                 <th ng-hide = "hideEditHistoryRemarks" colspan="1" ng-show = "isAdmin || isShiftOfficer">Actions</th>
               </tr>
               <tr rowspan="3">
+                  <th>Origin</th>
                 <th>Product</th>
                 <th>Seq. No</th>
                 <th></th>
@@ -33,8 +34,13 @@
           </thead>
           <tbody ng-init="$parent.totalDelDelivFmr = 0; $parent.totalDelDelivDip = 0;">
             <tr ng-repeat="data in exMathuraMD.exMathuraMDData track by $index" class="editable-row">
+                <td style = "width:100px" class="select-td">    
+                    <span editable-select="data.origin" e-name="origin" e-form="rowform" e-selectpicker e-ng-options="origin for origin in $parent.origin">
+                      {{ data.origin || '-' }}
+                    </span>
+                  </td>
               <td style = "width:100px" class="select-td">    
-                <span editable-select="data.product" e-name="group" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
+                <span editable-select="data.product" e-name="product" e-form="rowform" e-selectpicker e-ng-options="product for product in $parent.products">
                   {{ data.product || '-' }}
                 </span>
               </td>
@@ -84,6 +90,8 @@
                     </td>
                     <td>
                     </td>
+                    <td>
+                      </td>
                     <td>
                         {{ totalDelDelivFmr }}
                     </td>

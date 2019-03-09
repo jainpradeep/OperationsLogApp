@@ -33,6 +33,7 @@
  
   /** @ngInject */
   function TablesPageCtrl($scope,$rootScope, $http, $filter, editableOptions, editableThemes, delExPrService, $uibModal, $log, _, toasterService) {
+    $scope.currentIndex = -1;
     $rootScope.isAdmin = localStorage.getItem("isAdmin"); $rootScope.isShiftOfficer= localStorage.getItem("isShiftOfficer")
     $scope.openRemarks = function(){
     $scope.remarksModal =  $uibModal.open({
@@ -50,7 +51,24 @@
       $scope.remarksModal.dismiss('cancel');
     };
 
+    $scope.openRemarksColumnModal = function($index){
+      $scope.editDelhiExPrStart($scope.delhiExPR.delExprData[$index]);
+      $scope.currentIndex=$index;
+      $scope.remarksColumnModal =  $uibModal.open({
+          scope: $scope,
+          templateUrl: "/app/pages/bijwasan/del-ex-pr/remarks.html",
+          size: '',
+      })
+    }
+  
+      $scope.editRemarksColumnModal = function() {
+        $scope.remarksColumnModal.close();
+      };
     
+      $scope.cancelRemarksColumnModal = function() {
+        $scope.remarksColumnModal.dismiss('cancel');
+      };
+  
     $scope.open = function(data) {
       $scope.flattenedHourEditHistory = [];
       recursivePush(data)
@@ -121,6 +139,17 @@
       },function(){
         toasterService.openErrorToast("Record has been successfully inserted/updated!");
       })  
+    }
+
+    $scope.delExPrCopy = function($index){
+      $scope.delhiExPR.delExprData[$index +1].product=$scope.delhiExPR.delExprData[$index].product;
+      $scope.delhiExPR.delExprData[$index +1].seq_no=$scope.delhiExPR.delExprData[$index].seq_no;
+      $scope.delhiExPR.delExprData[$index +1].density=$scope.delhiExPR.delExprData[$index].density;
+      $scope.delhiExPR.delExprData[$index +1].temperature=$scope.delhiExPR.delExprData[$index].temperature;
+      $scope.delhiExPR.delExprData[$index +1].fmr=$scope.delhiExPR.delExprData[$index].fmr;
+      $scope.delhiExPR.delExprData[$index +1].tank_no=$scope.delhiExPR.delExprData[$index].tank_no;
+      $scope.delhiExPR.delExprData[$index +1].tank_dip=$scope.delhiExPR.delExprData[$index].tank_dip;
+      $scope.editDelExPrData($scope.delhiExPR.delExprData[$index +1],$index+1);
     }
 
     $scope.editDelExPrData = function(data, index){
