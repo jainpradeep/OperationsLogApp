@@ -1,0 +1,17 @@
+<div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Remarks</h3> 
+</div>
+
+<div class="modal-body" style = "overflow-x: auto; position: relative; overflow-y: auto;" id="modal-body">
+    <div id="TextareaCtrl">
+        <a onbeforesave="pumpedFromMathuraMD.pumpedFromMatMDData[currentIndex].remarks =$data;editpumpedFromMatMDData(pumpedFromMathuraMD.pumpedFromMatMDData[currentIndex],currentIndex)" submit-on-enter="true" href="#" editable-textarea="pumpedFromMathuraMD.pumpedFromMatMDData[currentIndex].remarks" e-rows="7" e-cols="40">
+            <pre>{{ pumpedFromMathuraMD.pumpedFromMatMDData[currentIndex].remarks || 'no remarks' }}</pre>
+        </a>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancelRemarksColumnModal()">Cancel</button>
+</div>
+
+    
