@@ -127,13 +127,17 @@
                         </td>
                         <td>
                             <div> 
-                                    <span ng-if= "data.position > 0 && data.pumpingBypass > 0">
+
+                                <span>
+                                    {{calcFlowDiff(data)}}
+                              </span>
+                                <!-- <span ng-if= "data.position > 0 && data.pumpingBypass > 0">
                                     {{calcFlowDiff(data)}}
                                     </span>
                                 </div>
                                 <span ng-if= "data.position == 0 ">
                                     {{ data.pumpingBypass }}
-                              </span> 
+                              </span>  -->
                           </td>
                         <td ng-show = "isAdmin || isShiftOfficer">
                             <form editable-form name="rowform" onaftersave = "editDelExMrData(data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline"

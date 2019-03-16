@@ -74,7 +74,10 @@
       };
 
       $scope.calcFlowDiff = function(data){
-        return Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
+        if(data.position==0)
+          return Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) - Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
+        else
+          return Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
       }
       
       $scope.ok = function() {
@@ -103,6 +106,7 @@
         function(data) { 
           $scope.delhiExMR.delExmrData = JSON.parse(data.data.data).items[1].data;
           $scope.delhiExMR.mathuraPumpedData = JSON.parse(data.data.data).mathuraItems[1].data;
+          $scope.delhiExMR.mathuraYesterdayPumpedData = JSON.parse(data.data.data).mathuraItems[0].data;
           $scope.delhiExMR.delExmrDate = JSON.parse(data.data.data).items[1].date;
           $scope.delhiExMR.delExmrID = JSON.parse(data.data.data).items[1]._id;
           $scope.delhiExMR.delExMrRemarks = JSON.parse(data.data.data).items[1].remarks;
@@ -128,7 +132,7 @@
         toasterService.openSucessToast("Record has been successfully inserted/updated!");
         $scope.getDelhiExMR();
       },function(){
-        toasterService.openErrorToast("Record has been successfully inserted/updated!");
+        toasterService.openErrorToast("Insert/update failed!");
       })  
     }
     $scope.delExMrCopy = function($index){
@@ -155,7 +159,7 @@
           toasterService.openSucessToast("Record has been successfully inserted/updated!");
           $scope.getDelhiExMR();
         },function(){
-          toasterService.openErrorToast("Record has been successfully inserted/updated!");
+          toasterService.openErrorToast("Insert/Update fail!");
         })      
     }
 
