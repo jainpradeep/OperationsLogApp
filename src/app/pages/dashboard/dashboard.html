@@ -20,9 +20,15 @@
                <a class="" ng-click ="setSelectedView(view)"  data-toggle="tab" role="tab">{{view.name}}</a>
             </li>
          </ul>
-        <div ng-repeat="htmlSource in selectedView.htmlSource">
+        <div  id="printableArea">
+          <div ng-repeat="htmlSource in selectedView.htmlSource">
             <div ng-include="htmlSource">
             </div>
         </div>
+        </div>
+
+        <div style="margin: 10px">
+          <button class= "btn btn-primary" ng-click="generateReport('printableArea');">Generate PDF</button>
+       </div>
     </div>
 </div>
