@@ -29,7 +29,11 @@
                     if(data.isShiftOfficer){
                         $rootScope.isShiftOfficer = true;
                         localStorage.setItem('isShiftOfficer', true);
-                    }    
+                    }   
+                    if(data.mathura){
+                        $rootScope.isMathura = true;
+                        localStorage.setItem('isMathura', true);
+                    }  
                     defer.resolve(data);
                 }
                 else{

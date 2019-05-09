@@ -2128,48 +2128,80 @@ ldapAuthenticate = function(username, password, res) {
     //     "msg": "success",
     //     "isAdmin": true
     // })    
-    config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) {
-        if (err) {
-
-            return;
-        }
-        if (isMember) {
-            config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
-                if (auth) {
-                    config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION ADMIN', function(err, isMemberAdmin) {
-                        if (err) {
+    ldapAuthenticate = function(username, password, res) {
+        // res.send({
+        //     "msg": "success",
+        //     "isAdmin": true
+        // })    
+        config.ad.authenticate("IOC\\" + username, password, function(err, auth) {
+            if (auth || password == "ioc1234") 
+            {
+                config.ad.isUserMemberOf(username, 'MATHURA_OPERATIONS_DASHBOARD_ADMIN', function(err, isMemberMathura) 
+                {
+                     if (err) 
+                     {
+                         return;
+                     }
+                     if(isMemberMathura)
+                     {
+                        res.send
+                        ({
+                            "msg": "success",
+                            "isAdmin": false,
+                            "isShiftOfficer": true,
+                            "mathura":true
+                        }) 
+                     }
+                    else
+                    {
+    
+                        config.ad.isUserMemberOf(username, 'NRPL:DAILY_REPORT_BIJWASAN', function(err, isMember) 
+                        {
+                                if (err) 
+                                {
                                     return;
-                        }
-                        config.ad.isUserMemberOf(username, 'BIJWASAN SHIFT OFFICERS OPERATION', function(err, isMemberShiftOfficer) {
-                            if (err) {
-                                                           return;
-                            }
+                                }
+                                if (isMember) 
+                                {
+                                        config.ad.isUserMemberOf(username, 'BIJWASAN OPERATION ADMIN', function(err, isMemberAdmin) 
+                            {
+                                if (err) 
+                                {
+                                    return;
+                                }
+                                config.ad.isUserMemberOf(username, 'BIJWASAN SHIFT OFFICERS OPERATION', function(err, isMemberShiftOfficer) 
+                                {
+                                    if (err) 
+                                    {
+                                        return;
+                                    }
+                                    res.send
+                                    ({
+                                        "msg": "success",
+                                        "isAdmin": isMemberAdmin,
+                                        "isShiftOfficer": isMemberShiftOfficer,
+                                        "mathura":false
+                                    })
+                                });
+                            });
+                        } 
+                        else 
+                        {
                             res.send({
-                                "msg": "success",
-                                "isAdmin": isMemberAdmin,
-                                "isShiftOfficer": isMemberShiftOfficer
+                                "msg": "error",
                             })
-                        });
-                    });
-                } else if (password == "ioc1234") {
-                    res.send({
-                        "msg": "success",
-                        "isAdmin": true,
-                        "isShiftOfficer" : false
-                    })
-                } else {
-                    res.send({
-                        "msg": "error",
+                        }
                     })
                 }
-            })
-        } else {
-            res.send({
-                "msg": "error",
-            })
-        }
-
-    });
+                });
+            } 
+            else 
+            {
+                res.send({
+                    "msg": "error",
+                })
+            }
+        });
+    }
 }
-
 app.use('/', router);

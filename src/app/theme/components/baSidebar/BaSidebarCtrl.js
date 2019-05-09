@@ -12,6 +12,25 @@
   function BaSidebarCtrl($scope, baSidebarService) {
 
     $scope.menuItems = baSidebarService.getMenuItems();
+
+    $scope.menuItemsAccess = [];
+
+    if(localStorage.getItem('isMathura')==='true'){
+    var jsonMenu = ['main.mathura','main.tundla','main.bharatpur']; // JSON from Service
+
+    angular.forEach($scope.menuItems, function (baSideBarMenu) {
+        angular.forEach(jsonMenu, function (accessMenu) {
+            if (accessMenu === baSideBarMenu.name) {
+                $scope.menuItemsAccess.push(baSideBarMenu)
+                return;
+            }
+        })
+    })
+    $scope.menuItems = $scope.menuItemsAccess;
+  }
+   
+
+
     $scope.defaultSidebarState = $scope.menuItems[0].stateRef;
 
     $scope.hoverItem = function ($event) {

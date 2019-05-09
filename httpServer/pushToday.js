@@ -18,7 +18,7 @@ var path = require('path');
 var moment = require('moment');
 var config = require('./config');
 var today =  new Date();
-today.setDate(today.getDate() + 3)
+today.setDate(today.getDate())
 MockDate.set(today);
 var skoLbtPumpingInitDB = require('./skoLbtPumpingInitDB')
 var delExPrInitDB = require('./delExPrInitDB')
@@ -63,7 +63,11 @@ var schedule = require('node-schedule');
         useNewUrlParser: true
     }, function(err, database) {
           if (err) return
-        database.db('operationsDB').collection('targetTracker').insertOne(targetTrackerInitDB.targetTrackerInitDB, function(er, records) {
+          database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+          database.db('operationsDB').collection('targetTracker').insertOne(targetTrackerInitDB.targetTrackerInitDB, function(er, records) {
             if (er) throw er;
         });          
         database.db('operationsDB').collection('productPlanningBijwasan').insertOne(productPlanningBijwasanInitDB.productPlanningBijwasanInitDB, function(er, records) {
@@ -134,10 +138,7 @@ var schedule = require('node-schedule');
             if (er) throw er;
             
         });
-        database.db('operationsDB').collection('delhiExMr').insertOne(delExMrInitDB.delExMrInitDB, function(er, records) {
-            if (er) throw er;
-            
-        });
+
         database.db('operationsDB').collection('delDelivery').insertOne(delDeliveryInitDB.delDeliveryInitDB, function(er, records) {
             if (er) throw er;
             
