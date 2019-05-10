@@ -10,8 +10,8 @@
     /** @ngInject */
     function MathuraCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
-        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF"]
-        $scope.origin = ["BCO","PCO","LF"]
+        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF","NILL"]
+        $scope.origin = ["MR","PR","LF","NILL"]
         $scope.divisions  = ["Pipelines","Marketing", "Refinery", "Scheduled shutdown"]
         $scope.selectedShift = $scope.shifts[0].name;
         $scope.selectShift = function(shift){

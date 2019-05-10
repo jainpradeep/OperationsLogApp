@@ -100,6 +100,7 @@
     }
 
     $scope.getDeliveryPnp= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       DeliveryPnpService.getDeliveryPnpData(JSON.stringify({
         date : $scope.customDate
       })).then(

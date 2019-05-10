@@ -101,6 +101,7 @@
     }
 
     $scope.getdeliveryBharatpur= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       deliveryBharatpurService.getdeliveryBharatpurData(JSON.stringify({
         date : $scope.customDate
       })).then(

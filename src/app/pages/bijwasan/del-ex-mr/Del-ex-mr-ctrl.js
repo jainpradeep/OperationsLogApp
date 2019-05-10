@@ -136,6 +136,7 @@
       })  
     }
     $scope.delExMrCopy = function($index){
+      $index=Number($index);
       $scope.delhiExMR.delExmrData[$index +1].product=$scope.delhiExMR.delExmrData[$index].product;
       $scope.delhiExMR.delExmrData[$index +1].seq_no=$scope.delhiExMR.delExmrData[$index].seq_no;
       $scope.delhiExMR.delExmrData[$index +1].density=$scope.delhiExMR.delExmrData[$index].density;

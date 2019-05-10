@@ -99,6 +99,7 @@
     }
     
     $scope.getdeliveryTikrikalan= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       deliveryTikrikalanService.getdeliveryTikrikalanData(JSON.stringify({
         date : $scope.customDate
       })).then(

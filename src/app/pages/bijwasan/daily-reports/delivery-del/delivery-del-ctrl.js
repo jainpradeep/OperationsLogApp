@@ -98,6 +98,7 @@
     }
 
     $scope.getdelhiDelivery= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       delhiDeliveryService.getdelhiDeliveryData(JSON.stringify({
         date : $scope.customDate
       })).then(

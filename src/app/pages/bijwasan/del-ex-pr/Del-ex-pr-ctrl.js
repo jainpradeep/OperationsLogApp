@@ -142,6 +142,7 @@
     }
 
     $scope.delExPrCopy = function($index){
+      $index=Number($index);
       $scope.delhiExPR.delExprData[$index +1].product=$scope.delhiExPR.delExprData[$index].product;
       $scope.delhiExPR.delExprData[$index +1].seq_no=$scope.delhiExPR.delExprData[$index].seq_no;
       $scope.delhiExPR.delExprData[$index +1].density=$scope.delhiExPR.delExprData[$index].density;

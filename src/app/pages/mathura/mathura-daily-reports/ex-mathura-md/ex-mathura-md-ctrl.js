@@ -102,6 +102,7 @@
     }
 
     $scope.getexMathuraMD= function(){
+     $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       exMathuraMDService.getexMathuraMDData(JSON.stringify({
         date : $scope.customDate
       })).then(

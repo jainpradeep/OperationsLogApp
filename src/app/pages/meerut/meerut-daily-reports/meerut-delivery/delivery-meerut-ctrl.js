@@ -99,6 +99,7 @@
     }
 
     $scope.getdeliveryMeerut= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       deliveryMeerutService.getdeliveryMeerutData(JSON.stringify({
         date : $scope.customDate
       })).then(

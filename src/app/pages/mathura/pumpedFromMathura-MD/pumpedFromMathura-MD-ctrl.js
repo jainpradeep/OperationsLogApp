@@ -127,6 +127,7 @@
 
 
     $scope.pumpedFromMathuraCopy = function($index){
+      $index=Number($index);
       $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].product=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].product;
       $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].seq_no=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].seq_no;
       $scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index +1].density1=$scope.pumpedFromMathuraMD.pumpedFromMatMDData[$index].density1;

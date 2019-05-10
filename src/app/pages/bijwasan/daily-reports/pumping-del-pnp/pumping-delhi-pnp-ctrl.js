@@ -97,6 +97,7 @@
     }
 
     $scope.getPumpingDelhiPnp= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       PumpingDelhiPnpService.getPumpingDelhiPnpData(JSON.stringify({
         date : $scope.customDate
       })).then(

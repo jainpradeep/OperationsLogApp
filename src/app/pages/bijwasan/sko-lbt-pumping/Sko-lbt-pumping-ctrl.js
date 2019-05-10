@@ -120,6 +120,7 @@
       })  
     }
     $scope.skoLbtCopy = function($index){
+      $index=Number($index);
       $scope.skoLbtPumping.skoLbtPumpingData[$index +1].product=$scope.skoLbtPumping.skoLbtPumpingData[$index].product;
       $scope.skoLbtPumping.skoLbtPumpingData[$index +1].seq_no=$scope.skoLbtPumping.skoLbtPumpingData[$index].seq_no;
       $scope.skoLbtPumping.skoLbtPumpingData[$index +1].density=$scope.skoLbtPumping.skoLbtPumpingData[$index].density;

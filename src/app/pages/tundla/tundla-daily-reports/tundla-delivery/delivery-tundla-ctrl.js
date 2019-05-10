@@ -100,6 +100,7 @@
     } 
     
     $scope.getdeliveryTundla= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       deliveryTundlaService.getdeliveryTundlaData(JSON.stringify({
         date : $scope.customDate
       })).then(

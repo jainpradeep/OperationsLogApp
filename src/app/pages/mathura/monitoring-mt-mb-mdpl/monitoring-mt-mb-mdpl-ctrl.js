@@ -124,6 +124,7 @@
       })  
     }
     $scope.monitoringMtMbMdplCopy = function($index){
+      $index=Number($index);
       $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].mbr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].mbr;
       $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].tpr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].tpr;
       $scope.monitoringMtMbMdpl.monMtMbMdplData[$index +1].bpr=$scope.monitoringMtMbMdpl.monMtMbMdplData[$index].bpr;

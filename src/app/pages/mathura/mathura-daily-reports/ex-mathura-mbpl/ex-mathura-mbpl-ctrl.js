@@ -101,6 +101,7 @@
     }
 
     $scope.getexMathuraMBPL= function(){
+      $scope.totalDelDelivFmr = 0; $scope.totalDelDelivDip = 0;
       exMathuraMBPLService.getexMathuraMBPLData(JSON.stringify({
         date : $scope.customDate
       })).then(

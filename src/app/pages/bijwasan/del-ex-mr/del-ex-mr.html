@@ -152,7 +152,7 @@
                             <div class="buttons" ng-show="!rowform.$visible">
                                 <button class="btn btn-danger editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-hide = "data.position==0" ng-click="rowform.$show(); editDelhiExMrStart(data)">Edit</button>
                                 <button class="btn btn-info editable-table-button btn-xs" ng-show = "isAdmin && !isShiftOfficer" ng-click="open(data)">History</button>
-                                <button class="btn btn-primary editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-click="delExMrCopy($index);" >Copy</button>
+                                <button class="btn btn-primary editable-table-button btn-xs" ng-show = "isAdmin || isShiftOfficer" ng-click="delExMrCopy(data.position);" >Copy</button>
                                   </div>
                         </td>
                </tr>
