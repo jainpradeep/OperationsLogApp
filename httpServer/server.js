@@ -252,7 +252,9 @@ app.route('/getTargets')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -328,7 +330,9 @@ app.route('/getlineFillRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -383,7 +387,9 @@ app.route('/getshutdownRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -437,7 +443,9 @@ app.route('/getDeliveryBharatpur')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -491,7 +499,9 @@ app.route('/getDeliveryTundla')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -545,7 +555,9 @@ app.route('/getExMathuraMtpl')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -599,7 +611,9 @@ app.route('/editExMathuraMtpl')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -653,7 +667,9 @@ app.route('/editExMathuraMtpl')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -708,7 +724,9 @@ app.route('/getDeliveryTikrikalan')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -762,7 +780,9 @@ app.route('/getDeliveryMeerut')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -817,7 +837,9 @@ app.route('/editDeliveryMeerut')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -871,7 +893,9 @@ app.route('/getRemarksMathuraRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -925,7 +949,9 @@ app.route('/getDeliveryPnpRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -980,7 +1006,9 @@ app.route('/getPumpingDelhiPnpRecord')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -1061,7 +1089,9 @@ app.route('/getRemarksBharatpurRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1114,7 +1144,9 @@ app.route('/getRemarksMeerutRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1167,7 +1199,9 @@ app.route('/getRemarksTundlaRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1220,7 +1254,9 @@ app.route('/getRemarksTikrikalanRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1273,7 +1309,9 @@ app.route('/getRemarksBijwasanRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1326,7 +1364,9 @@ app.route('/getDelhiDeliveryRecord')
                     $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                 }
             }
-        }]).toArray(function(er, items) {
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
             if (er) throw er;
             
             
@@ -1353,7 +1393,9 @@ app.route('/getRevPumpingPnpDelhiRecord')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -1409,7 +1451,8 @@ app.route('/getDelhiExMrRecord')
                         $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+                
+            }, { $sort : { date : 1} }]).toArray(function(er, items) {
                 
                 if (er) throw er;
                 
@@ -1420,13 +1463,18 @@ app.route('/getDelhiExMrRecord')
                                 $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                             }
                         }
-                    }]).toArray(function(er, mathuraItems) {
+                    },
+                    { $sort : { date : 1} }
+                ]).toArray(function(er, mathuraItems) {
                         if (er) throw er;
+                        console.log(items);
+                        console.log(mathuraItems);
                         if(mathuraItems.length>1){
                            mathuraItems[1].data[0] = mathuraItems[0].data[24];
                            mathuraItems[1].data[0].shift = "Shift A";
                            mathuraItems[1].data[0].position = 0;
                            mathuraItems[1].data[0].editHistory = null;
+                           
                         }
 
                         if(items.length>1){
@@ -1434,6 +1482,7 @@ app.route('/getDelhiExMrRecord')
                             items[1].data[0].shift = "Shift A";
                             items[1].data[0].position = 0;
                             items[1].data[0].editHistory = null;
+                            items[1].data[25]=items[0].data[23];
                         }
                         res.send({
                             "msg": "success",
@@ -1488,7 +1537,9 @@ app.route('/getSkoLbtPumpingRecord')
                         $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 
                 if (er) throw er;
                 if(items.length>1){
@@ -1623,7 +1674,9 @@ app.route('/getSkoLbtPumpingRecord')
                             $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                         }
                     }
-                }]).toArray(function(er, items) {
+                },
+                { $sort : { date : 1} }
+            ]).toArray(function(er, items) {
                     if (er) throw er;
               
                     var oldLbt1 = items[1].data['lbt01'][3].details
@@ -1757,7 +1810,9 @@ app.route('/getDelhiExPrRecord')
                         $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 
                 if (er) throw er;
                 if(items.length>1){
@@ -1817,7 +1872,9 @@ app.route('/getpumpedFromMathuraMDRecord')
                         $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 
                 if (er) throw er;
                 if(items.length>1){
@@ -1876,7 +1933,9 @@ app.route('/getNotes')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -1931,7 +1990,9 @@ app.route('/getEquiRunningHrsBijwasanRecord')
                         $gte: new Date(firstDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -1986,7 +2047,9 @@ app.route('/getProductInStationLinefillRecord')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -2043,7 +2106,9 @@ app.route('/getDelhiDeliveryRevRecord')
                         $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 if (er) throw er;
                 
                 
@@ -2098,7 +2163,9 @@ app.route('/getMonitoringMtMbMdplRecord')
                         $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
                     }
                 }
-            }]).toArray(function(er, items) {
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
                 
                 if (er) throw er;
                 if(items.length>1){

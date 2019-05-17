@@ -18,7 +18,7 @@
         $scope.origin = ["MR","PR","LF","NILL"]
         $scope.hours = _.range(24);
         $scope.minutes = _.range(60);
-        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF","NILL"]
+        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF","Interface","NILL"]
         $scope.selectedShift = $scope.shifts[0].name;
         $scope.selectShift = function(shift){
             $scope.shifts.map(function(shft){
@@ -37,7 +37,7 @@
             lbt.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate =$scope.$parent.customDate;
+            $scope.customDate = new Date(localStorage.getItem('customDate'))|| $scope.$parent.customDate;
         };
         $scope.today();
 
@@ -64,6 +64,7 @@
         }
 
         $scope.$watch('customDate', function(value){
+            localStorage.setItem('customDate', $scope.customDate);
             $scope.$parent.customDate =  $scope.customDate; 
           });
 
@@ -83,7 +84,7 @@
         // };
 
         $scope.setDate = function(year, month, day) {
-            $scope.customDate = $scope.$parent.customDate
+            $scope.customDate = localStorage.getObject('customDate') || $scope.$parent.customDate
         };
 
         $scope.popup1 = {

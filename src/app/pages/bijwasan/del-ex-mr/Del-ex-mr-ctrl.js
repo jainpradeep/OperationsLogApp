@@ -74,12 +74,20 @@
       };
 
       $scope.calcFlowDiff = function(data){
+
         if(data.position==0)
-          return Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) - Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
-        else
-          return Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
+        {
+          data.flowRateDelivery = (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[25].fmr)) > 0 ? (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[25].fmr)) :(Number(data.fmr) - Number($scope.delhiExMR.delExmrData[25].fmr)) < 0 ? (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[25].fmr) + 10000) : 0;
+          data.flowRatePumping = ((Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[25].pumpingBypass)) > 0) ? (Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[25].pumpingBypass)) : ((Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[25].pumpingBypass)) < 0) ? (Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[25].pumpingBypass) + 10000) : 0;
+          return ((Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) - Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr)) > 0 ? Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) -Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr) : (Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) - Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr)) < 0  ? Number($scope.delhiExMR.mathuraYesterdayPumpedData[24].fmr) - Number($scope.delhiExMR.mathuraYesterdayPumpedData[23].fmr) + 10000 : 0)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
+        }
+          else
+          {
+            data.flowRateDelivery = (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[data.position - 1].fmr)) > 0 ? (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[data.position -1].fmr)) :(Number(data.fmr) - Number($scope.delhiExMR.delExmrData[data.position - 1].fmr)) < 0 ? (Number(data.fmr) - Number($scope.delhiExMR.delExmrData[data.position -1].fmr) + 10000) : 0;
+            data.flowRatePumping = ((Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[data.position - 1].pumpingBypass)) > 0) ? (Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[data.position -1].pumpingBypass)) : ((Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[data.position - 1].pumpingBypass)) < 0) ? (Number(data.pumpingBypass) - Number($scope.delhiExMR.delExmrData[data.position -1].pumpingBypass) + 10000) : 0;
+            return ((Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)) > 0 ? Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr) : (Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr)) < 0  ? Number($scope.delhiExMR.mathuraPumpedData[data.position].fmr) - Number($scope.delhiExMR.mathuraPumpedData[data.position -1].fmr) + 10000 : 0)  - (Number(data.flowRateDelivery) + Number(data.flowRatePumping))
       }
-      
+    }
       $scope.ok = function() {
           $scope.$modalInstance.close();
       };

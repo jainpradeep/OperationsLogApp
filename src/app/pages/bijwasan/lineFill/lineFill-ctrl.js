@@ -83,10 +83,14 @@
       };
       $scope.$parent.lineFillTotal =0
     $scope.selectedShift = "Shift A";
+    $scope.customDate = $scope.$parent.customDate;
     $scope.selectedShiftTrimmed = $scope.selectedShift.replace(' ','');
     $scope.$parent.$watch('customDate', function(value){
       $scope.tomorrowDate = new Date(angular.copy($scope.$parent.customDate).setDate($scope.$parent.customDate.getDate() + 1));
-      $scope.customDate = $scope.fromDashBoard ? $scope.tomorrowDate : $scope.$parent.customDate;
+      $scope.customDate = $scope.$parent.customDate;
+      var today = new Date();
+      var myToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+      $scope.currentShift =  ($scope.$parent.customDate >= myToday) ? (new Date().getHours() < 7 ? "ShiftC" : new Date().getHours() < 14 ? "ShiftA" : "ShiftB") : "ShiftC" ;
       $scope.lineFill = {};
       $scope.getlineFill();
     });

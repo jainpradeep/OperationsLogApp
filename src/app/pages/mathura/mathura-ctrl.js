@@ -10,7 +10,7 @@
     /** @ngInject */
     function MathuraCtrl($scope, $http) {
         $scope.shifts = [{name: "Shift A", isSelected : true},{name: "Shift B"},{name: "Shift C"}]
-        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF","NILL"]
+        $scope.products = ["6M","6H","HSD","4M","4H","PN","PX","ATF","SKO","PCK","NSKO","LF","Interface","NILL"]
         $scope.origin = ["MR","PR","LF","NILL"]
         $scope.divisions  = ["Pipelines","Marketing", "Refinery", "Scheduled shutdown"]
         $scope.selectedShift = $scope.shifts[0].name;
@@ -23,7 +23,7 @@
             shift.isSelected = true;
         }
         $scope.today = function() {
-            $scope.customDate = $scope.$parent.customDate
+            $scope.customDate = new Date(localStorage.getItem('customDate'))|| $scope.$parent.customDate;
         };
         $scope.today();
 
@@ -50,8 +50,9 @@
         }
 
         $scope.$watch('customDate', function(value){
+            localStorage.setItem('customDate', $scope.customDate);
             $scope.$parent.customDate =  $scope.customDate; 
-          });
+        });
 
           
 

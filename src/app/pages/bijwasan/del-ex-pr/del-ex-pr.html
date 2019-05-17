@@ -43,7 +43,7 @@
                   <th ng-show = "isAdmin"></th>
                 </tr>
               </thead>
-            <tbody ng-repeat="data in delhiExPR.delExprData | filter : selectedShift track by $index" class="editable-row">
+            <tbody ng-repeat="data in delhiExPR.delExprData | filter : {shift: selectedShift} track by $index" class="editable-row">
              <tr rowspan="2"><td>
                 <span >
                     {{ data.hours || '-' }}

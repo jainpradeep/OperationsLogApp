@@ -48,7 +48,7 @@
                   <th ng-show = "isAdmin || isShiftOfficer"></th>
                 </tr>
               </thead>
-                <tbody ng-repeat="data in delhiExMR.delExmrData | filter : selectedShift track by $index" class="editable-row">
+                <tbody  ng-hide="$index == 10" ng-repeat="data in delhiExMR.delExmrData | filter : {shift: selectedShift} track by $index" class="editable-row">
                <tr   rowspan="2">
                     <td>
                             <span >
@@ -96,7 +96,7 @@
                                     </span>
                                 </div>
                                 <span ng-show= "data.position == 0 ">
-                                    {{ data.fmr}}
+                                   {{  data.flowRateDelivery = (data.fmr - delhiExMR.delExmrData[25].fmr) > 0 ? (data.fmr - delhiExMR.delExmrData[25].fmr) :(data.fmr - delhiExMR.delExmrData[25].fmr) < 0 ? (data.fmr - delhiExMR.delExmrData[25].fmr + 10000) : 0 }}
                               </span>
                           </td>
                           <td>
@@ -106,7 +106,7 @@
                                     </span>
                                 </div>
                                 <span ng-show= "data.position == 0 ">
-                                    {{ data.pumpingBypass}}
+                                {{ data.flowRatePumping = ((data.pumpingBypass - delhiExMR.delExmrData[25].pumpingBypass) > 0) ? (data.pumpingBypass - delhiExMR.delExmrData[25].pumpingBypass) : ((data.pumpingBypass - delhiExMR.delExmrData[25].pumpingBypass) < 0) ? (data.pumpingBypass - delhiExMR.delExmrData[25].pumpingBypass + 10000) : 0 }}
                               </span>
                           </td>
                         <!-- <td>
