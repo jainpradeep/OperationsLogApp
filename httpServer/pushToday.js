@@ -51,6 +51,10 @@ var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
 var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
 var lbtTableInitDB = require('./lbtTableInitDB')
 var notesInitDB =  require('./notesInitDB')
+var lineFillTableMathuraInitDB= require('./lineFillTableMathuraInitDB')
+var equiRunningHrsMDPLInitDB = require('./equiRunningHrsMDPLInitDB')
+var equiRunningHrsMTPLMBPLInitDB = require('./equiRunningHrsMTPLMBPLInitDB')
+var mathuraMdplInitDB = require('./mathuraMdplInitDB')
 var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var fs = require('fs')
@@ -187,4 +191,21 @@ var schedule = require('node-schedule');
             if (er) throw er;
             
         });
+        database.db('operationsDB').collection('mathuraLineFill').insertOne(lineFillTableMathuraInitDB.lineFillTableMathuraInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+        database.db('operationsDB').collection('equiRunningHrsMDPL').insertOne(equiRunningHrsMDPLInitDB.equiRunningHrsMDPLInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+        database.db('operationsDB').collection('equiRunningHrsMTPLMBPL').insertOne(equiRunningHrsMTPLMBPLInitDB.equiRunningHrsMTPLMBPLInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+        database.db('operationsDB').collection('mathuraMdpl').insertOne(mathuraMdplInitDB.mathuraMdplInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+
     })

@@ -61,6 +61,7 @@
         
             
             $scope.$watch('customDate', function(value){
+                localStorage.setItem('customDate', $scope.customDate);
                 $scope.$parent.customDate =  $scope.customDate; 
               });
         

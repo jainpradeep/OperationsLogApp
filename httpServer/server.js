@@ -47,6 +47,10 @@ var proInStationLinefillInitDB = require('./proInStationLinefillInitDB')
 var monitoringMtMbMdplInitDB = require('./monitoringMtMbMdplInitDB')
 var lbtTableInitDB = require('./lbtTableInitDB')
 var notesInitDB =  require('./notesInitDB')
+var lineFillTableMathuraInitDB= require('./lineFillTableMathuraInitDB')
+var equiRunningHrsMDPLInitDB = require('./equiRunningHrsMDPLInitDB')
+var equiRunningHrsMTPLMBPLInitDB = require('./equiRunningHrsMTPLMBPLInitDB')
+var mathuraMdplInitDB = require('./mathuraMdplInitDB')
 var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var fs = require('fs')
@@ -234,6 +238,24 @@ initPush = function(){
             if (er) throw er;
             
         });
+        database.db('operationsDB').collection('mathuraLineFill').insertOne(lineFillTableMathuraInitDB.lineFillTableMathuraInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+        database.db('operationsDB').collection('equiRunningHrsMDPL').insertOne(equiRunningHrsMDPLInitDB.equiRunningHrsMDPLInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+        database.db('operationsDB').collection('equiRunningHrsMTPLMBPL').insertOne(equiRunningHrsMTPLMBPLInitDB.equiRunningHrsMTPLMBPLInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+      
+        database.db('operationsDB').collection('mathuraMdpl').insertOne(mathuraMdplInitDB.mathuraMdplInitDB, function(er, records) {
+            if (er) throw er;
+            
+        });
+
     })
 }
 
@@ -345,6 +367,35 @@ app.route('/getlineFillRecord')
     })
 });
 
+app.route('/getlineFillMathuraRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+        useNewUrlParser: true
+    }, function(err, database) {
+        if (err) return
+        req.body.date = new Date(req.body.date)
+  
+        database.db('operationsDB').collection('mathuraLineFill').aggregate([{
+            $match: {
+                'date': {
+                    $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                    $gte: new Date(req.body.date.setHours(0, 0, 0, 0))
+                }
+            }
+        },
+        { $sort : { date : 1} }
+    ]).toArray(function(er, items) {
+            if (er) throw er;
+            
+            
+            res.send({
+                "msg": "success",
+                "data": JSON.stringify(items),
+            })
+            //  database.close();
+        });
+    })
+});
 
 app.route('/editlineFillRecord')
     .post(function(req, res) {
@@ -356,6 +407,32 @@ app.route('/editlineFillRecord')
             req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
             req.body.date = new Date(req.body.date)
             database.db('operationsDB').collection('lineFillTable').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+    app.route('/editlineFillMathuraRecord')
+    .post(function(req, res) {
+        
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('mathuraLineFill').updateOne({
                 "_id": req.body._id
             }, {
                 $set: req.body
@@ -1350,6 +1427,34 @@ app.route('/editDelhiExMrRecord')
         })
     });
 
+    app.route('/editMathuraMdplRecord')
+    .post(function(req, res) {
+        
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('mathuraMdpl').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+    });
+
+
+
 app.route('/getDelhiDeliveryRecord')
 .post(function(req, res) {
     MongoClient.connect("mongodb://localhost:27017/operationsDB", {
@@ -1495,6 +1600,64 @@ app.route('/getDelhiExMrRecord')
             });
         })
 });
+
+
+app.route('/getMathuraMdplRecord')
+.post(function(req, res) {
+    MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            yesterdaysDate = new Date(req.body.date.valueOf())
+            var yesterdaysDate = new Date(yesterdaysDate.setDate(yesterdaysDate.getDate() - 1))
+            database.db('operationsDB').collection('mathuraMdpl').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
+                    }
+                }
+                
+            }, { $sort : { date : 1} }]).toArray(function(er, items) {
+                
+                if (er) throw er;
+                
+                    database.db('operationsDB').collection('delhiExMr').aggregate([{
+                        $match: {
+                            'date': {
+                                $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                                $gte: new Date(yesterdaysDate.setHours(0, 0, 0, 0))
+                            }
+                        }
+                    },
+                    { $sort : { date : 1} }
+                ]).toArray(function(er, mathuraItems) {
+                        if (er) throw er;
+                       // console.log(items);
+                       // console.log(mathuraItems);
+                       
+
+                        if(items.length>1){
+                            items[1].data[0] = items[0].data[24];
+                            items[1].data[0].shift = "Shift A";
+                            items[1].data[0].position = 0;
+                            items[1].data[0].editHistory = null;
+                            items[1].data[25]=items[0].data[23];
+                        }
+                        res.send({
+                            "msg": "success",
+                            "data": JSON.stringify({
+                                mathuraItems : mathuraItems,
+                                items:items
+                            }),
+                        })
+                    });
+            });
+        })
+});
+
+
 app.route('/editSkoLbtPumpingRecord')
 .post(function(req, res) {
     
@@ -1974,6 +2137,58 @@ app.route('/editEquiRunningHrsBijwasanRecord')
         })
 });
 
+app.route('/editEquiRunningHrsMDPLRecord')
+    .post(function(req, res) {
+        
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('equiRunningHrsMDPL').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+});
+
+app.route('/editEquiRunningHrsMTPLMBPLRecord')
+    .post(function(req, res) {
+        
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body._id = new ObjectID.createFromHexString(req.body._id.toString());
+            req.body.date = new Date(req.body.date)
+            database.db('operationsDB').collection('equiRunningHrsMTPLMBPL').updateOne({
+                "_id": req.body._id
+            }, {
+                $set: req.body
+            }, function(err, result) {
+                
+                res.send(
+                    (err === null) ? {
+                        msg: 'success'
+                    } : {
+                        msg: err
+                    }
+                );
+            });
+        })
+});
+
 app.route('/getEquiRunningHrsBijwasanRecord')
     .post(function(req, res) {
         MongoClient.connect("mongodb://localhost:27017/operationsDB", {
@@ -2004,6 +2219,68 @@ app.route('/getEquiRunningHrsBijwasanRecord')
             });
         })
 });
+
+app.route('/getEquiRunningHrsMDPLRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            firstDate = new Date(req.body.date.valueOf())
+            firstDate = new Date(firstDate.setDate(1))
+            database.db('operationsDB').collection('equiRunningHrsMDPL').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(firstDate.setHours(0, 0, 0, 0))
+                    }
+                }
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
+                if (er) throw er;
+                
+                
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+});
+app.route('/getEquiRunningHrsMTPLMBPLRecord')
+    .post(function(req, res) {
+        MongoClient.connect("mongodb://localhost:27017/operationsDB", {
+            useNewUrlParser: true
+        }, function(err, database) {
+            if (err) return
+            req.body.date = new Date(req.body.date)
+            firstDate = new Date(req.body.date.valueOf())
+            firstDate = new Date(firstDate.setDate(1))
+            database.db('operationsDB').collection('equiRunningHrsMTPLMBPL').aggregate([{
+                $match: {
+                    'date': {
+                        $lte: new Date(req.body.date.setHours(23, 59, 59, 999)),
+                        $gte: new Date(firstDate.setHours(0, 0, 0, 0))
+                    }
+                }
+            },
+            { $sort : { date : 1} }
+        ]).toArray(function(er, items) {
+                if (er) throw er;
+                
+                
+                res.send({
+                    "msg": "success",
+                    "data": JSON.stringify(items),
+                })
+                //  database.close();
+            });
+        })
+});
+
 
 
 app.route('/editProductInStationLinefillRecord')

@@ -2,7 +2,7 @@ exports.lineFillTableInitDB = {
   date : new Date(),
   data :  {
     ShiftA :[{
-        lineFillName : "Matura - Delhi",
+        lineFillName : "Mathura - Delhi",
         lineFillVolume : "17738",
         lineFill : []
     },{
