@@ -44,7 +44,7 @@
     "main-bower-files": "~2.13.1",
     "method-override": "^3.0.0",
     "moment": "^2.22.2",
-    "mongodb": "^3.1.8",
+    "mongodb": "^3.1.13",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
     "uglify-save-license": "~0.4.1",
